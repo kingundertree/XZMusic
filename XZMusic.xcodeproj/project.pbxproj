@@ -20,6 +20,8 @@
 		F8288EBD19A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
+		F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C42C8319AF1CEC00DE0673 /* XZHeaderButton.m */; };
+		F8C42C8719AF1DA500DE0673 /* XZBaseButton+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C42C8619AF1DA500DE0673 /* XZBaseButton+CornerRadius.m */; };
 		F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */; };
 		F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7E19A978E100C5A7F7 /* XZMenuMainViewController.m */; };
 		F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD8219A9791D00C5A7F7 /* XZTabBarViewController.m */; };
@@ -62,6 +64,10 @@
 		F8288EC219A77752008D5573 /* XZMusicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XZMusicTests-Info.plist"; sourceTree = "<group>"; };
 		F8288EC419A77752008D5573 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
+		F8C42C8219AF1CEC00DE0673 /* XZHeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZHeaderButton.h; sourceTree = "<group>"; };
+		F8C42C8319AF1CEC00DE0673 /* XZHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZHeaderButton.m; sourceTree = "<group>"; };
+		F8C42C8519AF1DA500DE0673 /* XZBaseButton+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseButton+CornerRadius.h"; sourceTree = "<group>"; };
+		F8C42C8619AF1DA500DE0673 /* XZBaseButton+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseButton+CornerRadius.m"; sourceTree = "<group>"; };
 		F8F1FD7A19A977C100C5A7F7 /* XZLeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLeftMenu.h; sourceTree = "<group>"; };
 		F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLeftMenu.m; sourceTree = "<group>"; };
 		F8F1FD7D19A978E100C5A7F7 /* XZMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMenuMainViewController.h; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 			children = (
 				F8F1FD9219A988D800C5A7F7 /* XZMenuButton.h */,
 				F8F1FD9319A988D800C5A7F7 /* XZMenuButton.m */,
+				F8C42C8219AF1CEC00DE0673 /* XZHeaderButton.h */,
+				F8C42C8319AF1CEC00DE0673 /* XZHeaderButton.m */,
 			);
 			name = MenuButton;
 			sourceTree = "<group>";
@@ -235,6 +243,8 @@
 			children = (
 				F8F1FD9719A98C8800C5A7F7 /* XZBaseButton.h */,
 				F8F1FD9819A98C8800C5A7F7 /* XZBaseButton.m */,
+				F8C42C8519AF1DA500DE0673 /* XZBaseButton+CornerRadius.h */,
+				F8C42C8619AF1DA500DE0673 /* XZBaseButton+CornerRadius.m */,
 				F8F1FD9D19A98DBF00C5A7F7 /* XZLineView.h */,
 				F8F1FD9E19A98DBF00C5A7F7 /* XZLineView.m */,
 				F8F1FDA019A98E8C00C5A7F7 /* UIColor+XZ.h */,
@@ -378,6 +388,7 @@
 			files = (
 				F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */,
 				F8F1FDA219A98E8C00C5A7F7 /* UIColor+XZ.m in Sources */,
+				F8C42C8719AF1DA500DE0673 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8288EB219A77752008D5573 /* XZAppDelegate.m in Sources */,
 				F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */,
 				F8F1FD9919A98C8800C5A7F7 /* XZBaseButton.m in Sources */,
@@ -388,6 +399,7 @@
 				F8F1FDA519A995C100C5A7F7 /* XZBaseViewController.m in Sources */,
 				F8F1FD8919A9795E00C5A7F7 /* XZTabBarForMeViewController.m in Sources */,
 				F8F1FD9C19A98CB200C5A7F7 /* XZTabBarView.m in Sources */,
+				F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */,
 				F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

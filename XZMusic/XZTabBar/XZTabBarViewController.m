@@ -62,7 +62,6 @@
     [self.tabBarView initTabBarView:@[@"",@""] tabBarTitArr:@[@"XZ",@"ME"]];
     self.tabBarView.delegate = self;
     self.tabBarView.frame = CGRectMake(0, screenHeight-50, screenWidth, 50);
-    self.tabBarView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.tabBarView];
 }
 
@@ -76,9 +75,10 @@
         [vc.view removeFromSuperview];
         
         XZBaseViewController *newVc = (XZBaseViewController *)[self.tabVcArr objectAtIndex:index];
-        [self.view addSubview:newVc.view];
         
-        self.tabBarIndex = index;
+        [self.view insertSubview:newVc.view belowSubview:self.tabBarView];
+        
+        self.tabBarIndex = index;        
     }
 }
 - (void)didReceiveMemoryWarning

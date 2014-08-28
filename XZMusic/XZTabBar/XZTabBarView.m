@@ -33,14 +33,15 @@
     self.menuWidth = (float)screenWidth/tabBarIconArr.count;
     
     self.lineView = [[XZLineView alloc] initWithFrame:CGRectMake(0, 45, self.menuWidth, 5)];
-    self.lineView.lineColor = [UIColor redColor];
+    self.lineView.lineColor = [UIColor whiteColor];
     self.lineView.borderWidth = 5.0;
     [self addSubview:self.lineView];
     
     for (int i = 0; i < tabBarTitArr.count; i++) {
         XZBaseButton *btn = [XZBaseButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(i*self.menuWidth, 0, self.menuWidth, 45);
-        btn.backgroundColor = [UIColor whiteColor];
+        btn.backgroundColor = [UIColor clearColor];
+        btn.tag = i;
         [btn addTarget:self action:@selector(tabBarClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
         
@@ -52,16 +53,28 @@
         UILabel *btnLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, btn.frame.size.width, 25)];
         btnLab.text = [tabBarTitArr objectAtIndex:i];
         btnLab.font = [UIFont systemFontOfSize:20];
-        btnLab.textColor = [UIColor blueColor];
+        btnLab.textColor = [UIColor whiteColor];
         btnLab.textAlignment = NSTextAlignmentCenter;
         [btn addSubview:btnLab];
     }
 }
 
 - (void)tabBarClick:(id)sender{
+    XZBaseButton *btn = (XZBaseButton *)sender;
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(tabBarClick:)]) {
-        [self.delegate tabBarClick:0];
+        [self.delegate tabBarClick:btn.tag];
     }
+
+    [self tabBarLineSlide:btn.tag];
+}
+
+- (void)tabBarLineSlide:(NSInteger)index{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.lineView.frame = CGRectMake(index*self.menuWidth, 45, self.menuWidth, 5);
+    } completion:^(BOOL finished) {
+        DLog(@"slider over");
+    }];
 }
 
 - (void)selectedTabBar:(NSInteger)index{
