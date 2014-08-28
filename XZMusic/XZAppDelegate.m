@@ -7,6 +7,11 @@
 //
 
 #import "XZAppDelegate.h"
+#import "XZMenuMainViewController.h"
+
+@interface XZAppDelegate ()
+@property(nonatomic, strong) XZMenuMainViewController *menuMainVC;
+@end
 
 @implementation XZAppDelegate
 
@@ -16,6 +21,11 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    //初始化左右侧滑结构
+    self.menuMainVC = [[XZMenuMainViewController alloc] init];
+    self.window.rootViewController = self.menuMainVC;
+    
     return YES;
 }
 
