@@ -11,6 +11,7 @@
 #import "XZMenuButton.h"
 #import "XZHeaderButton.h"
 #import "XZBaseButton+CornerRadius.h"
+#import "XZBaseButton+IconWithTitle.h"
 
 @interface XZLeftMenu ()
 @property(nonatomic, strong) NSMutableArray *menuVCArr;
@@ -56,7 +57,7 @@
         btn.tag = i+1000;
         btn.frame = CGRectMake(0, screenHeight, menuViewWidth, 45);
         [btn addTarget:self action:@selector(menuClick:) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:[btnTitArr objectAtIndex:i] forState:UIControlStateNormal];
+        [btn showTitlt:[btnTitArr objectAtIndex:i] textColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:16] icon:@"love@2x.png"];
         [scrollView addSubview:btn];
     }
 }

@@ -8,15 +8,18 @@
 
 #import "XZMenuMainViewController.h"
 #import "XZLeftMenu.h"
-#import "XZTabBarViewController.h"
 #import "pop.h"
+#import "XZBaseNaviViewController.h"
+#import "PushBackNavigationController.h"
+#import "XZMusicPlayViewController.h"
 
 @interface XZMenuMainViewController ()
 @property(nonatomic, strong) XZLeftMenu *leftMenu;
-@property(nonatomic, strong) XZBaseViewController *mainVC;
+@property(nonatomic, strong) XZBaseNaviViewController *mainNav;
 @property(nonatomic, assign) BOOL isAnimating;
 @property(nonatomic, strong) UIView *coverView;
 @property(nonatomic, assign) float startX;
+@property(nonatomic, strong) XZTabBarViewController *tabBarVC;
 @end
 
 @implementation XZMenuMainViewController
@@ -32,6 +35,10 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.isOnFirstView = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -40,22 +47,41 @@
 
 - (void)initUI{
     self.leftMenu = [[XZLeftMenu alloc] init];
-    self.mainVC = [[XZTabBarViewController alloc] init];
+    self.tabBarVC = [[XZTabBarViewController alloc] init];
+    self.tabBarVC.backType = BackTypeNone;
+    self.tabBarVC.tabBarDelegate = self;
+    self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:self.tabBarVC];
     
     [self.view addSubview:self.leftMenu];
-    [self.view addSubview:self.mainVC.view];
+    [self.view addSubview:self.mainNav.view];
     
     //绑定手势
     UIPanGestureRecognizer *panGus = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGes:)];
     panGus.delegate = self;
     panGus.delaysTouchesBegan = YES;
     panGus.cancelsTouchesInView = NO;
-    [self.mainVC.view addGestureRecognizer:panGus];
+    [self.mainNav.view addGestureRecognizer:panGus];
 
-//    [self.mainVC addObserver:self forKeyPath:@"view.frame" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+//    [self.mainNav addObserver:self forKeyPath:@"view.frame" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
 }
 
+#pragma mark
+#pragma tabBarRightButtonAction
+- (void)tabBarRightButtonAction{
+    self.isOnFirstView = NO;
+    XZMusicPlayViewController *musicPlayVC = [[XZMusicPlayViewController alloc] init];
+    musicPlayVC.backType = BackTypePopBack;
+    [self.mainNav pushViewController:musicPlayVC animated:YES];
+}
 
+#pragma -mark UIGurstureDelegate
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if (self.isAnimating ||
+        !self.isOnFirstView) {
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark
 #pragma UIGestureRecognizerDelegate
@@ -70,15 +96,15 @@
     float mainViewX;
     
     if (panGes.state == UIGestureRecognizerStateBegan) {//
-        [self.mainVC.view addSubview:self.coverView];
+        [self.mainNav.view addSubview:self.coverView];
         
         startX = panPoint.x;
-        mainViewX = self.mainVC.view.frame.origin.x;
+        mainViewX = self.mainNav.view.frame.origin.x;
         
         if ([self statusCheck]) {
         }
     }else if (panGes.state == UIGestureRecognizerStateChanged){
-        CGRect frame = self.mainVC.view.frame;
+        CGRect frame = self.mainNav.view.frame;
         if (self.status == MainViewOnMain){
             if (panPoint.x - startX <= 0){
                 frame.origin.x = 0;
@@ -96,14 +122,14 @@
                 frame.origin.x = 0;
             }
         }
-        self.mainVC.view.frame = frame;
+        self.mainNav.view.frame = frame;
     }else if (panGes.state == UIGestureRecognizerStateCancelled || panGes.state == UIGestureRecognizerStateEnded || panGes.state == UIGestureRecognizerStateFailed || panGes.state == UIGestureRecognizerStatePossible){
-            float mainVCX = self.mainVC.view.frame.origin.x;
+            float mainNavX = self.mainNav.view.frame.origin.x;
             self.isAnimating = YES;
         
-            if (mainVCX >= 0 && mainVCX <= 70) {
-                [self showMainVC];
-            }else if (mainVCX >= 70 && mainVCX <= menuViewWidth + 20){
+            if (mainNavX >= 0 && mainNavX <= 70) {
+                [self showmainNav];
+            }else if (mainNavX >= 70 && mainNavX <= menuViewWidth + 20){
                 [self showMenu];
             }
     }
@@ -112,19 +138,19 @@
 #pragma mark
 #pragma UITapGestureRecognizer
 - (void)tapGus:(UITapGestureRecognizer *)tapGes{
-    [self showMainVC];
+    [self showmainNav];
 }
 
 #pragma mark
 #pragma observe
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    float mainVCX;
+    float mainNavX;
     if([keyPath isEqualToString:@"view.frame"]){
-        mainVCX = self.mainVC.view.frame.origin.x;
-        DLog(@"mainVCXwithcover--->>%f",mainVCX);
+        mainNavX = self.mainNav.view.frame.origin.x;
+        DLog(@"mainNavXwithcover--->>%f",mainNavX);
         
-        if (mainVCX >= 0 && mainVCX <= menuViewWidth) {
-            self.coverView.alpha = mainVCX/menuViewWidth;
+        if (mainNavX >= 0 && mainNavX <= menuViewWidth) {
+            self.coverView.alpha = mainNavX/menuViewWidth;
         }
     }
 }
@@ -132,9 +158,9 @@
 #pragma mark
 #pragma method
 - (BOOL)statusCheck{
-    if (self.mainVC.view.frame.origin.x == 0) {
+    if (self.mainNav.view.frame.origin.x == 0) {
         self.status = MainViewOnMain;
-    }else if (self.mainVC.view.frame.origin.x == menuViewWidth){
+    }else if (self.mainNav.view.frame.origin.x == menuViewWidth){
         self.status = MainViewOnRightStatic;
     }else{
         self.status = MainViewOnEles;
@@ -154,7 +180,7 @@
     //弹性速度
     springAnimation.springSpeed = 20.0;
     
-    [self.mainVC.view.layer pop_addAnimation:springAnimation forKey:@"changeposition1"];
+    [self.mainNav.view.layer pop_addAnimation:springAnimation forKey:@"changeposition1"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.isAnimating = NO;
@@ -162,8 +188,8 @@
     });
 }
 #pragma mark
-#pragma showMainVC
-- (void)showMainVC{
+#pragma showmainNav
+- (void)showmainNav{
     POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
     springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(screenWidth/2, screenHeight/2)];
     
@@ -172,7 +198,7 @@
     //弹性速度
     springAnimation.springSpeed = 5.0;
     
-    [self.mainVC.view.layer pop_addAnimation:springAnimation forKey:@"changeposition2"];
+    [self.mainNav.view.layer pop_addAnimation:springAnimation forKey:@"changeposition2"];
 
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -191,8 +217,8 @@
     [self.coverView removeFromSuperview];
 }
 - (void)addCoverView{
-    self.coverView.frame = self.mainVC.view.frame;
-    [self.view insertSubview:self.coverView aboveSubview:self.mainVC.view];
+    self.coverView.frame = self.mainNav.view.frame;
+    [self.view insertSubview:self.coverView aboveSubview:self.mainNav.view];
 }
 
 #pragma mark

@@ -32,5 +32,9 @@
     #import <Foundation/Foundation.h>
     #import "XZBaseButton.h"
     #import "XZBaseViewController.h"
+    #import "UIColor+XZ.h"
+    #import "UIFont+XZ.h"
+    #import "UIImage+XZ.h"
+    #import "UILabel+XZ.h"
 
 #endif

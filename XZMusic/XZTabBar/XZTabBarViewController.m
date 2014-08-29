@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setTitleViewWithString:@"XZ Music"];
     // Do any additional setup after loading the view.
 }
 
@@ -46,23 +47,35 @@
 #pragma initTabBar
 - (void)initTabBar{
     XZTabBarForHomeViewController *homeVC = [[XZTabBarForHomeViewController alloc] init];
+    homeVC.backType = BackTypeNone;
     homeVC.view.frame = CGRectMake(0, 0, screenWidth, screenHeight-50);
-    UINavigationController *navHome = [[UINavigationController alloc] initWithRootViewController:homeVC];
+//    UINavigationController *navHome = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
     XZTabBarForMeViewController *meVC = [[XZTabBarForMeViewController alloc] init];
+    meVC.backType = BackTypeNone;
     meVC.view.frame = CGRectMake(0, 0, screenWidth, screenHeight-50);
-    UINavigationController *navMeVC = [[UINavigationController alloc] initWithRootViewController:meVC];
+//    UINavigationController *navMeVC = [[UINavigationController alloc] initWithRootViewController:meVC];
     
-    [self.tabVcArr addObject:navHome];
-    [self.tabVcArr addObject:navMeVC];
+    [self.tabVcArr addObject:homeVC];
+    [self.tabVcArr addObject:meVC];
     
-    [self.view addSubview:navHome.view];
+    [self.view addSubview:homeVC.view];
+    
+    [self addRightButton:@"+"];
     
     self.tabBarView = [[XZTabBarView alloc] init];
     [self.tabBarView initTabBarView:@[@"",@""] tabBarTitArr:@[@"XZ",@"ME"]];
     self.tabBarView.delegate = self;
-    self.tabBarView.frame = CGRectMake(0, screenHeight-50, screenWidth, 50);
+    self.tabBarView.frame = CGRectMake(0, screenHeight-50-64, screenWidth, 50);
     [self.view addSubview:self.tabBarView];
+}
+
+#pragma mark
+#pragma rightButtonAction
+- (void)rightButtonAction:(id)sender{
+    if (self.tabBarDelegate && [self.tabBarDelegate respondsToSelector:@selector(tabBarRightButtonAction)]) {
+        [self.tabBarDelegate tabBarRightButtonAction];
+    }
 }
 
 #pragma mark
@@ -78,7 +91,13 @@
         
         [self.view insertSubview:newVc.view belowSubview:self.tabBarView];
         
-        self.tabBarIndex = index;        
+        self.tabBarIndex = index;
+        
+        if (self.tabBarIndex == 0) {
+            [self setTitleViewWithString:@"XZ Music"];
+        }else{
+            [self setTitleViewWithString:@"ME"];
+        }
     }
 }
 - (void)didReceiveMemoryWarning

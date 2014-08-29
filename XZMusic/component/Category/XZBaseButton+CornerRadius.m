@@ -24,7 +24,9 @@
     lab.backgroundColor = [UIColor clearColor];
     lab.font = font;
     lab.text = title;
+    lab.textColor = textColor;
     lab.textAlignment = NSTextAlignmentCenter;
     [self addSubview:lab];
 }
+
 @end

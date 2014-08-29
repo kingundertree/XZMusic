@@ -19,8 +19,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"My";
-        self.view.backgroundColor = [UIColor whiteColor];
+//        self.title = @"My";
+        self.view.backgroundColor = [UIColor blueColor];
     }
     return self;
 }

@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "XZBaseViewController.h"
 
+@protocol xzTabBarDelegate <NSObject>
+
+- (void)tabBarRightButtonAction;
+
+@end
+
 @interface XZTabBarViewController : XZBaseViewController
 @property(nonatomic, assign) NSInteger tabBarIndex;
+@property(nonatomic, assign) id<xzTabBarDelegate> tabBarDelegate;
+
 @end

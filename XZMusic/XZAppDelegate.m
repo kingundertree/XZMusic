@@ -15,9 +15,18 @@
 
 @implementation XZAppDelegate
 
++ (XZAppDelegate *)sharedAppDelegate {
+    return (XZAppDelegate *) [UIApplication sharedApplication].delegate;
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+        [application setStatusBarStyle:UIStatusBarStyleLightContent];//黑体白字
+    }
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

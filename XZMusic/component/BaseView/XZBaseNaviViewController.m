@@ -1,24 +1,28 @@
 //
-//  XZBaseViewController.m
+//  XZBaseNaviViewController.m
 //  XZMusic
 //
-//  Created by xiazer on 14-8-24.
+//  Created by xiazer on 14-8-29.
 //  Copyright (c) 2014年 xiazer. All rights reserved.
 //
 
-#import "XZBaseViewController.h"
+#import "XZBaseNaviViewController.h"
 
-@interface XZBaseViewController ()
+@interface XZBaseNaviViewController ()
 
 @end
 
-@implementation XZBaseViewController
+@implementation XZBaseNaviViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.navigationBar.translucent = NO;
+
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage createImageWithColor:[UIColor colorWithHex:0x252D3B alpha:1.0]] forBarMetrics:UIBarMetricsDefault];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
     }
     return self;
 }

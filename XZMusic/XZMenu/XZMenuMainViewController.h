@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XZBaseViewController.h"
+#import "XZTabBarViewController.h"
 
 typedef enum : NSUInteger {
     MainViewOnEles = 0,
@@ -15,6 +16,8 @@ typedef enum : NSUInteger {
     MainViewOnRightStatic,
 } mainViewStatus;
 
-@interface XZMenuMainViewController : XZBaseViewController<UIGestureRecognizerDelegate>
+@interface XZMenuMainViewController : XZBaseViewController<UIGestureRecognizerDelegate,xzTabBarDelegate>
 @property(nonatomic, assign) mainViewStatus status;
+@property(nonatomic, assign) BOOL isOnFirstView;
+
 @end

@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"Xiazer Music";
+//        self.title = @"Xiazer Music";
         self.view.backgroundColor = [UIColor whiteColor];
     }
     return self;
