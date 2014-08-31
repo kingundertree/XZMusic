@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface XZLeftMenu : UIView
+@property(nonatomic, strong) NSMutableArray *menuVCArr;
+
 
 - (void)menuShow:(BOOL)isMenuShow;
 

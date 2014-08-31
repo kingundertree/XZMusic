@@ -20,7 +20,14 @@
 		F8288EBD19A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
+		F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */; };
+		F8C0886419B2D92D00FFF778 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886319B2D92D00FFF778 /* settings@2x.png */; };
+		F8C0886619B2D93600FFF778 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886519B2D93600FFF778 /* search@2x.png */; };
+		F8C0886819B2D96300FFF778 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886719B2D96300FFF778 /* music@2x.png */; };
 		F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C42C8319AF1CEC00DE0673 /* XZHeaderButton.m */; };
+		F8C766D819B2EB5A00C01953 /* XZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766D719B2EB5A00C01953 /* XZSettingViewController.m */; };
+		F8C766DC19B2EB7D00C01953 /* XZLovingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766DB19B2EB7D00C01953 /* XZLovingViewController.m */; };
+		F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */; };
 		F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */; };
 		F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7E19A978E100C5A7F7 /* XZMenuMainViewController.m */; };
 		F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD8219A9791D00C5A7F7 /* XZTabBarViewController.m */; };
@@ -37,10 +44,8 @@
 		F8FA3AEC19B018FF00D478F9 /* music-25.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9019B018FF00D478F9 /* music-25.png */; };
 		F8FA3AED19B018FF00D478F9 /* music-256.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9119B018FF00D478F9 /* music-256.png */; };
 		F8FA3AEE19B018FF00D478F9 /* music-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9219B018FF00D478F9 /* music-32.png */; };
-		F8FA3AEF19B018FF00D478F9 /* music-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9319B018FF00D478F9 /* music-50.png */; };
 		F8FA3AF019B018FF00D478F9 /* music-512_.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9419B018FF00D478F9 /* music-512_.png */; };
 		F8FA3AF119B018FF00D478F9 /* music-75.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9519B018FF00D478F9 /* music-75.png */; };
-		F8FA3AF219B018FF00D478F9 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9619B018FF00D478F9 /* music@2x.png */; };
 		F8FA3AF319B018FF00D478F9 /* sad-100.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9819B018FF00D478F9 /* sad-100.png */; };
 		F8FA3AF419B018FF00D478F9 /* sad-128.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9919B018FF00D478F9 /* sad-128.png */; };
 		F8FA3AF519B018FF00D478F9 /* sad-25.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3A9A19B018FF00D478F9 /* sad-25.png */; };
@@ -54,7 +59,6 @@
 		F8FA3AFD19B018FF00D478F9 /* search-25.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA319B018FF00D478F9 /* search-25.png */; };
 		F8FA3AFE19B018FF00D478F9 /* search-256.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA419B018FF00D478F9 /* search-256.png */; };
 		F8FA3AFF19B018FF00D478F9 /* search-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA519B018FF00D478F9 /* search-32.png */; };
-		F8FA3B0019B018FF00D478F9 /* search-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA619B018FF00D478F9 /* search-50.png */; };
 		F8FA3B0119B018FF00D478F9 /* search-512_.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA719B018FF00D478F9 /* search-512_.png */; };
 		F8FA3B0219B018FF00D478F9 /* search-75.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AA819B018FF00D478F9 /* search-75.png */; };
 		F8FA3B0319B018FF00D478F9 /* settings-100.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AAA19B018FF00D478F9 /* settings-100.png */; };
@@ -62,7 +66,6 @@
 		F8FA3B0519B018FF00D478F9 /* settings-25.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AAC19B018FF00D478F9 /* settings-25.png */; };
 		F8FA3B0619B018FF00D478F9 /* settings-256.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AAD19B018FF00D478F9 /* settings-256.png */; };
 		F8FA3B0719B018FF00D478F9 /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AAE19B018FF00D478F9 /* settings-32.png */; };
-		F8FA3B0819B018FF00D478F9 /* settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AAF19B018FF00D478F9 /* settings-50.png */; };
 		F8FA3B0919B018FF00D478F9 /* settings-512_.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AB019B018FF00D478F9 /* settings-512_.png */; };
 		F8FA3B0A19B018FF00D478F9 /* settings-75.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AB119B018FF00D478F9 /* settings-75.png */; };
 		F8FA3B0B19B018FF00D478F9 /* star-100.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3AB319B018FF00D478F9 /* star-100.png */; };
@@ -170,8 +173,19 @@
 		F8288EC219A77752008D5573 /* XZMusicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XZMusicTests-Info.plist"; sourceTree = "<group>"; };
 		F8288EC419A77752008D5573 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
+		F8C0886019B2D84700FFF778 /* XZDownLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZDownLoadViewController.h; sourceTree = "<group>"; };
+		F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZDownLoadViewController.m; sourceTree = "<group>"; };
+		F8C0886319B2D92D00FFF778 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		F8C0886519B2D93600FFF778 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		F8C0886719B2D96300FFF778 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
 		F8C42C8219AF1CEC00DE0673 /* XZHeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZHeaderButton.h; sourceTree = "<group>"; };
 		F8C42C8319AF1CEC00DE0673 /* XZHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZHeaderButton.m; sourceTree = "<group>"; };
+		F8C766D619B2EB5A00C01953 /* XZSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSettingViewController.h; sourceTree = "<group>"; };
+		F8C766D719B2EB5A00C01953 /* XZSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSettingViewController.m; sourceTree = "<group>"; };
+		F8C766DA19B2EB7D00C01953 /* XZLovingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLovingViewController.h; sourceTree = "<group>"; };
+		F8C766DB19B2EB7D00C01953 /* XZLovingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLovingViewController.m; sourceTree = "<group>"; };
+		F8C766DE19B2EBB900C01953 /* XZSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSearchViewController.h; sourceTree = "<group>"; };
+		F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSearchViewController.m; sourceTree = "<group>"; };
 		F8F1FD7A19A977C100C5A7F7 /* XZLeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLeftMenu.h; sourceTree = "<group>"; };
 		F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLeftMenu.m; sourceTree = "<group>"; };
 		F8F1FD7D19A978E100C5A7F7 /* XZMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMenuMainViewController.h; sourceTree = "<group>"; };
@@ -197,10 +211,8 @@
 		F8FA3A9019B018FF00D478F9 /* music-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-25.png"; sourceTree = "<group>"; };
 		F8FA3A9119B018FF00D478F9 /* music-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-256.png"; sourceTree = "<group>"; };
 		F8FA3A9219B018FF00D478F9 /* music-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-32.png"; sourceTree = "<group>"; };
-		F8FA3A9319B018FF00D478F9 /* music-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-50.png"; sourceTree = "<group>"; };
 		F8FA3A9419B018FF00D478F9 /* music-512_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-512_.png"; sourceTree = "<group>"; };
 		F8FA3A9519B018FF00D478F9 /* music-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music-75.png"; sourceTree = "<group>"; };
-		F8FA3A9619B018FF00D478F9 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
 		F8FA3A9819B018FF00D478F9 /* sad-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sad-100.png"; sourceTree = "<group>"; };
 		F8FA3A9919B018FF00D478F9 /* sad-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sad-128.png"; sourceTree = "<group>"; };
 		F8FA3A9A19B018FF00D478F9 /* sad-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sad-25.png"; sourceTree = "<group>"; };
@@ -214,7 +226,6 @@
 		F8FA3AA319B018FF00D478F9 /* search-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-25.png"; sourceTree = "<group>"; };
 		F8FA3AA419B018FF00D478F9 /* search-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-256.png"; sourceTree = "<group>"; };
 		F8FA3AA519B018FF00D478F9 /* search-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-32.png"; sourceTree = "<group>"; };
-		F8FA3AA619B018FF00D478F9 /* search-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50.png"; sourceTree = "<group>"; };
 		F8FA3AA719B018FF00D478F9 /* search-512_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-512_.png"; sourceTree = "<group>"; };
 		F8FA3AA819B018FF00D478F9 /* search-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-75.png"; sourceTree = "<group>"; };
 		F8FA3AAA19B018FF00D478F9 /* settings-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-100.png"; sourceTree = "<group>"; };
@@ -222,7 +233,6 @@
 		F8FA3AAC19B018FF00D478F9 /* settings-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-25.png"; sourceTree = "<group>"; };
 		F8FA3AAD19B018FF00D478F9 /* settings-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-256.png"; sourceTree = "<group>"; };
 		F8FA3AAE19B018FF00D478F9 /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-32.png"; sourceTree = "<group>"; };
-		F8FA3AAF19B018FF00D478F9 /* settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-50.png"; sourceTree = "<group>"; };
 		F8FA3AB019B018FF00D478F9 /* settings-512_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-512_.png"; sourceTree = "<group>"; };
 		F8FA3AB119B018FF00D478F9 /* settings-75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-75.png"; sourceTree = "<group>"; };
 		F8FA3AB319B018FF00D478F9 /* star-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-100.png"; sourceTree = "<group>"; };
@@ -373,6 +383,11 @@
 		F8288EA719A77752008D5573 /* XZMusic */ = {
 			isa = PBXGroup;
 			children = (
+				F8C766DD19B2EBAF00C01953 /* Search */,
+				F8C766D919B2EB7200C01953 /* Loving */,
+				F8C766D519B2DDB300C01953 /* Setting */,
+				F8C0885E19B2D83100FFF778 /* DownLoad */,
+				F8C0885F19B2D83100FFF778 /* Model */,
 				F8FA3B8F19B0687400D478F9 /* ViewController */,
 				F8FA3A8919B018FF00D478F9 /* Resource */,
 				F8F1FD9619A98C8800C5A7F7 /* Component */,
@@ -413,6 +428,49 @@
 				F8288EC319A77752008D5573 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8C0885E19B2D83100FFF778 /* DownLoad */ = {
+			isa = PBXGroup;
+			children = (
+				F8C0886019B2D84700FFF778 /* XZDownLoadViewController.h */,
+				F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */,
+			);
+			path = DownLoad;
+			sourceTree = "<group>";
+		};
+		F8C0885F19B2D83100FFF778 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8C766D519B2DDB300C01953 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F8C766D619B2EB5A00C01953 /* XZSettingViewController.h */,
+				F8C766D719B2EB5A00C01953 /* XZSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F8C766D919B2EB7200C01953 /* Loving */ = {
+			isa = PBXGroup;
+			children = (
+				F8C766DA19B2EB7D00C01953 /* XZLovingViewController.h */,
+				F8C766DB19B2EB7D00C01953 /* XZLovingViewController.m */,
+			);
+			path = Loving;
+			sourceTree = "<group>";
+		};
+		F8C766DD19B2EBAF00C01953 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F8C766DE19B2EBB900C01953 /* XZSearchViewController.h */,
+				F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		F8F1FD7919A9772D00C5A7F7 /* XZMenu */ = {
@@ -491,7 +549,6 @@
 				F8FA3A8B19B018FF00D478F9 /* download@2x.png */,
 				F8FA3A8C19B018FF00D478F9 /* love@2x.png */,
 				F8FA3A8D19B018FF00D478F9 /* music */,
-				F8FA3A9619B018FF00D478F9 /* music@2x.png */,
 				F8FA3A9719B018FF00D478F9 /* sad */,
 				F8FA3AA019B018FF00D478F9 /* search */,
 				F8FA3AA919B018FF00D478F9 /* settings */,
@@ -508,12 +565,12 @@
 		F8FA3A8D19B018FF00D478F9 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				F8C0886719B2D96300FFF778 /* music@2x.png */,
 				F8FA3A8E19B018FF00D478F9 /* music-100.png */,
 				F8FA3A8F19B018FF00D478F9 /* music-128.png */,
 				F8FA3A9019B018FF00D478F9 /* music-25.png */,
 				F8FA3A9119B018FF00D478F9 /* music-256.png */,
 				F8FA3A9219B018FF00D478F9 /* music-32.png */,
-				F8FA3A9319B018FF00D478F9 /* music-50.png */,
 				F8FA3A9419B018FF00D478F9 /* music-512_.png */,
 				F8FA3A9519B018FF00D478F9 /* music-75.png */,
 			);
@@ -538,12 +595,12 @@
 		F8FA3AA019B018FF00D478F9 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				F8C0886519B2D93600FFF778 /* search@2x.png */,
 				F8FA3AA119B018FF00D478F9 /* search-100.png */,
 				F8FA3AA219B018FF00D478F9 /* search-128.png */,
 				F8FA3AA319B018FF00D478F9 /* search-25.png */,
 				F8FA3AA419B018FF00D478F9 /* search-256.png */,
 				F8FA3AA519B018FF00D478F9 /* search-32.png */,
-				F8FA3AA619B018FF00D478F9 /* search-50.png */,
 				F8FA3AA719B018FF00D478F9 /* search-512_.png */,
 				F8FA3AA819B018FF00D478F9 /* search-75.png */,
 			);
@@ -553,12 +610,12 @@
 		F8FA3AA919B018FF00D478F9 /* settings */ = {
 			isa = PBXGroup;
 			children = (
+				F8C0886319B2D92D00FFF778 /* settings@2x.png */,
 				F8FA3AAA19B018FF00D478F9 /* settings-100.png */,
 				F8FA3AAB19B018FF00D478F9 /* settings-128.png */,
 				F8FA3AAC19B018FF00D478F9 /* settings-25.png */,
 				F8FA3AAD19B018FF00D478F9 /* settings-256.png */,
 				F8FA3AAE19B018FF00D478F9 /* settings-32.png */,
-				F8FA3AAF19B018FF00D478F9 /* settings-50.png */,
 				F8FA3AB019B018FF00D478F9 /* settings-512_.png */,
 				F8FA3AB119B018FF00D478F9 /* settings-75.png */,
 			);
@@ -851,13 +908,13 @@
 				F8FA3B1519B018FF00D478F9 /* thumb_down-25.png in Resources */,
 				F8FA3B1E19B018FF00D478F9 /* thumb_up-256.png in Resources */,
 				F8FA3B5E19B024B700D478F9 /* logo_57.png in Resources */,
-				F8FA3AEF19B018FF00D478F9 /* music-50.png in Resources */,
 				F8FA3AEE19B018FF00D478F9 /* music-32.png in Resources */,
 				F8FA3B3519B018FF00D478F9 /* wifi-25.png in Resources */,
 				F8FA3B0119B018FF00D478F9 /* search-512_.png in Resources */,
 				F8FA3AF819B018FF00D478F9 /* sad-50.png in Resources */,
 				F8FA3B1419B018FF00D478F9 /* thumb_down-128.png in Resources */,
 				F8FA3AF019B018FF00D478F9 /* music-512_.png in Resources */,
+				F8C0886619B2D93600FFF778 /* search@2x.png in Resources */,
 				F8FA3AF519B018FF00D478F9 /* sad-25.png in Resources */,
 				F8FA3B2219B018FF00D478F9 /* thumb_up-75.png in Resources */,
 				F8FA3B3419B018FF00D478F9 /* wifi-128.png in Resources */,
@@ -868,16 +925,14 @@
 				F8FA3B0F19B018FF00D478F9 /* star-32.png in Resources */,
 				F8FA3B2919B018FF00D478F9 /* trash-512_.png in Resources */,
 				F8FA3B2719B018FF00D478F9 /* trash-32.png in Resources */,
+				F8C0886419B2D92D00FFF778 /* settings@2x.png in Resources */,
 				F8FA3B0619B018FF00D478F9 /* settings-256.png in Resources */,
 				F8FA3B1219B018FF00D478F9 /* star-75.png in Resources */,
 				F8FA3B6019B024B700D478F9 /* logo_60.png in Resources */,
 				F8FA3B1319B018FF00D478F9 /* thumb_down-100.png in Resources */,
-				F8FA3B0819B018FF00D478F9 /* settings-50.png in Resources */,
-				F8FA3AF219B018FF00D478F9 /* music@2x.png in Resources */,
 				F8FA3B0C19B018FF00D478F9 /* star-128.png in Resources */,
 				F8FA3AF319B018FF00D478F9 /* sad-100.png in Resources */,
 				F8FA3B2819B018FF00D478F9 /* trash-50.png in Resources */,
-				F8FA3B0019B018FF00D478F9 /* search-50.png in Resources */,
 				F8FA3B6319B024B700D478F9 /* logo_72@2x.png in Resources */,
 				F8FA3B2319B018FF00D478F9 /* trash-100.png in Resources */,
 				F8FA3B1019B018FF00D478F9 /* star-50.png in Resources */,
@@ -899,6 +954,7 @@
 				F8FA3B0E19B018FF00D478F9 /* star-256.png in Resources */,
 				F8FA3B1919B018FF00D478F9 /* thumb_down-512_.png in Resources */,
 				F8FA3B5C19B024B700D478F9 /* logo_29.png in Resources */,
+				F8C0886819B2D96300FFF778 /* music@2x.png in Resources */,
 				F8FA3B5D19B024B700D478F9 /* logo_29@2x.png in Resources */,
 				F8FA3B1F19B018FF00D478F9 /* thumb_up-32.png in Resources */,
 				F8FA3AEC19B018FF00D478F9 /* music-25.png in Resources */,
@@ -963,9 +1019,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */,
 				F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */,
 				F8FA3B8919B0644E00D478F9 /* UIColor+XZ.m in Sources */,
 				F8FA3B9819B06E7D00D478F9 /* UILabel+XZ.m in Sources */,
+				F8C766DC19B2EB7D00C01953 /* XZLovingViewController.m in Sources */,
 				F8288EB219A77752008D5573 /* XZAppDelegate.m in Sources */,
 				F8FA3B7D19B0479C00D478F9 /* pushBackLock.m in Sources */,
 				F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */,
@@ -977,11 +1035,13 @@
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
 				F8FA3B9519B06B3D00D478F9 /* UIImage+XZ.m in Sources */,
 				F8FA3B7A19B0479C00D478F9 /* XZBaseViewController.m in Sources */,
+				F8C766D819B2EB5A00C01953 /* XZSettingViewController.m in Sources */,
 				F8F1FD8919A9795E00C5A7F7 /* XZTabBarForMeViewController.m in Sources */,
 				F8F1FD9C19A98CB200C5A7F7 /* XZTabBarView.m in Sources */,
 				F8FA3B9219B0688800D478F9 /* XZMusicPlayViewController.m in Sources */,
 				F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */,
 				F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */,
+				F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */,
 				F8FA3B8119B05D8500D478F9 /* UIBarButtonItem+NavItem.m in Sources */,
 				F8FA3B8A19B0644E00D478F9 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8FA3B7919B0479C00D478F9 /* XZBaseNaviViewController.m in Sources */,

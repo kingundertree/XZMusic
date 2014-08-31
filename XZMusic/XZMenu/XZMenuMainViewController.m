@@ -30,7 +30,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self initUI];
+        self.backType = BackTypeNone;
     }
     return self;
 }
@@ -42,13 +42,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initUI];
     // Do any additional setup after loading the view.
 }
 
 - (void)initUI{
     self.leftMenu = [[XZLeftMenu alloc] init];
     self.tabBarVC = [[XZTabBarViewController alloc] init];
-    self.tabBarVC.backType = BackTypeNone;
     self.tabBarVC.tabBarDelegate = self;
     self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:self.tabBarVC];
     
@@ -208,6 +208,23 @@
         [self.leftMenu menuShow:NO];
     });
 }
+#pragma mark
+#pragma replaceMainVC
+- (void)replaceMainVC:(XZBaseViewController *)replaceVC{
+    [self.mainNav.view removeFromSuperview];
+    
+    self.mainNav = nil;
+    self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:replaceVC];
+    [self.view addSubview:self.mainNav.view];
+
+    //绑定手势
+    UIPanGestureRecognizer *panGus = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGes:)];
+    panGus.delegate = self;
+    panGus.delaysTouchesBegan = YES;
+    panGus.cancelsTouchesInView = NO;
+    [self.mainNav.view addGestureRecognizer:panGus];
+}
+
 #pragma mark
 #pragma hideCoverView or addCoverView
 - (void)hideCoverView{

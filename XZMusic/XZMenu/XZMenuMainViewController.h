@@ -20,4 +20,8 @@ typedef enum : NSUInteger {
 @property(nonatomic, assign) mainViewStatus status;
 @property(nonatomic, assign) BOOL isOnFirstView;
 
+
+- (void)showMenu;
+- (void)showmainNav;
+- (void)replaceMainVC:(XZBaseViewController *)replaceVC;
 @end

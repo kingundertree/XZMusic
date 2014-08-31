@@ -1,25 +1,24 @@
 //
-//  XZTabBarForMeViewController.m
+//  XZSearchViewController.m
 //  XZMusic
 //
-//  Created by xiazer on 14-8-24.
+//  Created by xiazer on 14-8-31.
 //  Copyright (c) 2014年 xiazer. All rights reserved.
 //
 
-#import "XZTabBarForMeViewController.h"
+#import "XZSearchViewController.h"
 
-@interface XZTabBarForMeViewController ()
+@interface XZSearchViewController ()
 
 @end
 
-@implementation XZTabBarForMeViewController
+@implementation XZSearchViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.view.backgroundColor = [UIColor yellowColor];
     }
     return self;
 }
@@ -27,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"搜索";
     // Do any additional setup after loading the view.
 }
 

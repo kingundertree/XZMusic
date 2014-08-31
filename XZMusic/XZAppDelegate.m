@@ -7,10 +7,8 @@
 //
 
 #import "XZAppDelegate.h"
-#import "XZMenuMainViewController.h"
 
 @interface XZAppDelegate ()
-@property(nonatomic, strong) XZMenuMainViewController *menuMainVC;
 @end
 
 @implementation XZAppDelegate

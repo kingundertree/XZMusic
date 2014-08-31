@@ -24,7 +24,6 @@
     if (self) {
         // Custom initialization
         self.view.backgroundColor = [UIColor blackColor];
-        
         [self initData];
         [self initTabBar];
     }
@@ -33,6 +32,7 @@
 
 - (void)viewDidLoad
 {
+    self.backType = BackTypeNone;
     [super viewDidLoad];
     [self setTitleViewWithString:@"XZ Music"];
     // Do any additional setup after loading the view.

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XZMenuMainViewController.h"
 
 @interface XZAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, strong) XZMenuMainViewController *menuMainVC;
 
 + (XZAppDelegate *)sharedAppDelegate;
 
