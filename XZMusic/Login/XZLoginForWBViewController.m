@@ -13,7 +13,7 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) NSString *appID;
 @property (nonatomic, strong) NSString *uri;
-@property (nonatomic, weak) id<WBLoginWithControllerDelegate> delegate;
+@property (nonatomic, assign) id<WBLoginWithControllerDelegate> delegate;
 
 @end
 

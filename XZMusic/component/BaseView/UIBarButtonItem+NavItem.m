@@ -48,7 +48,7 @@
         [btn setTitle:titleStr forState:UIControlStateHighlighted];
         [btn setTitleColor:[UIColor XZWhiteColor] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor XZLightGrayColor] forState:UIControlStateHighlighted];
-        btn.titleLabel.font = [UIFont xzH1Font];
+        btn.titleLabel.font = [UIFont systemFontOfSize:18];
     }
     [btn addTarget:taget action:action forControlEvents:UIControlEventTouchUpInside];
     

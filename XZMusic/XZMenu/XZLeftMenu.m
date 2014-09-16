@@ -41,7 +41,6 @@
 
 #pragma mark
 #pragma method
-
 - (void)initData{
     self.menuVCArr = [NSMutableArray array];
 }
@@ -52,6 +51,7 @@
     self.headerImgButton.backgroundColor = [UIColor whiteColor];
     [self.headerImgButton setRadius:1.0 borderColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5]];
     [self.headerImgButton showTitlt:@"login" textColor:[UIColor blackColor] font:[UIFont systemFontOfSize:30]];
+    [self.headerImgButton addTarget:self action:@selector(doLogin:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.headerImgButton];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20, menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20))];
@@ -74,6 +74,8 @@
     }
 }
 
+#pragma mark
+#pragma 菜单点击事件
 - (void)menuClick:(id)sender{
     XZMenuButton *btn = (XZMenuButton *)sender;
     NSInteger tagIndex = btn.tag - 1000;
@@ -103,12 +105,14 @@
         
         XZBaseViewController *baseVC = (XZBaseViewController *)[self.menuVCArr objectAtIndex:tagIndex];
         [[XZAppDelegate sharedAppDelegate].menuMainVC replaceMainVC:baseVC];
+        [[XZAppDelegate sharedAppDelegate].menuMainVC showmainNav];
         
         self.menuIndex = btn.tag;
     }
-    
 }
 
+#pragma mark
+#pragma 显示左侧菜单
 - (void)menuShow:(BOOL)isMenuShow{
     if (isMenuShow) {
         float deleyTime = 0.0;
@@ -130,6 +134,12 @@
             btn.frame = CGRectMake(0, screenHeight, menuViewWidth, 45);
         }
     }
+}
+
+#pragma mark
+#pragma 登录按钮点击
+- (void)doLogin:(id)sender{
+    [[XZAppDelegate sharedAppDelegate].menuMainVC WBLogin];
 }
 
 @end

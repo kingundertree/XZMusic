@@ -90,6 +90,10 @@
     if ([capImageArr count] >= 1) {
         [capImageArr removeLastObject];
     }
+    
+    [backGroundImg removeFromSuperview];
+    backGroundImg = nil;
+    
     return [super popViewControllerAnimated:animated];
 }
 #pragma mark -popToRootView

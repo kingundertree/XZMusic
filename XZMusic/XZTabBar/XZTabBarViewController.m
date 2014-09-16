@@ -30,6 +30,10 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = YES;
+}
+
 - (void)viewDidLoad
 {
     self.backType = BackTypeNone;

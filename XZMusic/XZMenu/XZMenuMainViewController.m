@@ -12,6 +12,7 @@
 #import "XZBaseNaviViewController.h"
 #import "PushBackNavigationController.h"
 #import "XZMusicPlayViewController.h"
+#import "XZWBLoginManager.h"
 
 @interface XZMenuMainViewController ()
 @property(nonatomic, strong) XZLeftMenu *leftMenu;
@@ -211,10 +212,12 @@
 #pragma mark
 #pragma replaceMainVC
 - (void)replaceMainVC:(XZBaseViewController *)replaceVC{
+    CGRect frame = self.mainNav.view.frame;
     [self.mainNav.view removeFromSuperview];
     
     self.mainNav = nil;
     self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:replaceVC];
+    self.mainNav.view.frame = frame;
     [self.view addSubview:self.mainNav.view];
 
     //绑定手势
@@ -259,6 +262,20 @@
         [_coverView addGestureRecognizer:panGus];
     }
     return _coverView;
+}
+
+- (void)WBLogin{
+    [[XZWBLoginManager sharedInstance] WBLoginWithFinishBlock:^(WBLoginResult result, id callBackValue) {
+        if ([callBackValue isKindOfClass:[XZBaseViewController class]]) {
+            XZBaseViewController *vc = (XZBaseViewController *)callBackValue;
+            vc.backType = BackTypeDismiss;
+            
+            XZBaseNaviViewController *nav = [[XZBaseNaviViewController alloc] initWithRootViewController:vc];
+            [self.mainNav presentViewController:nav animated:YES completion:^{
+            }];
+        }else{
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning

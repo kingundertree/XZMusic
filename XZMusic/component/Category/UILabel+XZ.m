@@ -13,7 +13,7 @@
 + (UILabel *)getTitleView:(NSString *)titleStr{
     UILabel *lb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 44)];
     lb.backgroundColor = [UIColor clearColor];
-    lb.font = [UIFont systemFontOfSize:16];
+    lb.font = [UIFont systemFontOfSize:20];
     lb.text = titleStr;
     lb.textAlignment = NSTextAlignmentCenter;
     lb.textColor = [UIColor whiteColor];

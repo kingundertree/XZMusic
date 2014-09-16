@@ -36,5 +36,6 @@
     #import "UIFont+XZ.h"
     #import "UIImage+XZ.h"
     #import "UILabel+XZ.h"
+    #import "XZAppDelegate.h"
 
 #endif

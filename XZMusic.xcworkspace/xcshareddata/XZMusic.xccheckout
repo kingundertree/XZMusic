@@ -10,29 +10,29 @@
 	<string>XZMusic</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2ACBF03D-7FE9-4C57-80F1-556EBE8C7551</key>
+		<key>E432672246D92FABEE02325083C5AC3690F14C27</key>
 		<string>https://github.com/kingundertree/XZMusic.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>XZMusic.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2ACBF03D-7FE9-4C57-80F1-556EBE8C7551</key>
+		<key>E432672246D92FABEE02325083C5AC3690F14C27</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/kingundertree/XZMusic.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2ACBF03D-7FE9-4C57-80F1-556EBE8C7551</string>
+	<string>E432672246D92FABEE02325083C5AC3690F14C27</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2ACBF03D-7FE9-4C57-80F1-556EBE8C7551</string>
+			<string>E432672246D92FABEE02325083C5AC3690F14C27</string>
 			<key>IDESourceControlWCCName</key>
 			<string>XZMusic</string>
 		</dict>
