@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"设置";
+    [self setTitleViewWithString:@"设置"];
     // Do any additional setup after loading the view.
 }
 

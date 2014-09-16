@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"下载";
+    [self setTitleViewWithString:@"下载"];
     // Do any additional setup after loading the view.
 }
 

@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"最爱";
+    [self setTitleViewWithString:@"最爱"];
 
     // Do any additional setup after loading the view.
 }

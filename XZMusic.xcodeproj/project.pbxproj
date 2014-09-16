@@ -28,6 +28,10 @@
 		F8C766D819B2EB5A00C01953 /* XZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766D719B2EB5A00C01953 /* XZSettingViewController.m */; };
 		F8C766DC19B2EB7D00C01953 /* XZLovingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766DB19B2EB7D00C01953 /* XZLovingViewController.m */; };
 		F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */; };
+		F8D3C7BE19C848D2004AFF2F /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D3C7BB19C848D2004AFF2F /* libWeiboSDK.a */; };
+		F8D3C7BF19C848D2004AFF2F /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8D3C7BC19C848D2004AFF2F /* WeiboSDK.bundle */; };
+		F8D3C7C519C848E1004AFF2F /* XZLoginForWBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D3C7C219C848E1004AFF2F /* XZLoginForWBViewController.m */; };
+		F8D3C7C619C848E1004AFF2F /* XZWBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D3C7C419C848E1004AFF2F /* XZWBLoginManager.m */; };
 		F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */; };
 		F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD7E19A978E100C5A7F7 /* XZMenuMainViewController.m */; };
 		F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F1FD8219A9791D00C5A7F7 /* XZTabBarViewController.m */; };
@@ -186,6 +190,13 @@
 		F8C766DB19B2EB7D00C01953 /* XZLovingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLovingViewController.m; sourceTree = "<group>"; };
 		F8C766DE19B2EBB900C01953 /* XZSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSearchViewController.h; sourceTree = "<group>"; };
 		F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSearchViewController.m; sourceTree = "<group>"; };
+		F8D3C7BB19C848D2004AFF2F /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		F8D3C7BC19C848D2004AFF2F /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		F8D3C7BD19C848D2004AFF2F /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		F8D3C7C119C848E1004AFF2F /* XZLoginForWBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLoginForWBViewController.h; sourceTree = "<group>"; };
+		F8D3C7C219C848E1004AFF2F /* XZLoginForWBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLoginForWBViewController.m; sourceTree = "<group>"; };
+		F8D3C7C319C848E1004AFF2F /* XZWBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginManager.h; sourceTree = "<group>"; };
+		F8D3C7C419C848E1004AFF2F /* XZWBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginManager.m; sourceTree = "<group>"; };
 		F8F1FD7A19A977C100C5A7F7 /* XZLeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLeftMenu.h; sourceTree = "<group>"; };
 		F8F1FD7B19A977C100C5A7F7 /* XZLeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLeftMenu.m; sourceTree = "<group>"; };
 		F8F1FD7D19A978E100C5A7F7 /* XZMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMenuMainViewController.h; sourceTree = "<group>"; };
@@ -328,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D3C7BE19C848D2004AFF2F /* libWeiboSDK.a in Frameworks */,
 				F8288EA419A77752008D5573 /* CoreGraphics.framework in Frameworks */,
 				F8288EA619A77752008D5573 /* UIKit.framework in Frameworks */,
 				F8288EA219A77752008D5573 /* Foundation.framework in Frameworks */,
@@ -351,6 +363,7 @@
 		F8288E9519A77752008D5573 = {
 			isa = PBXGroup;
 			children = (
+				F8D3C7BA19C848D2004AFF2F /* libWeiboSDK */,
 				F8288EA719A77752008D5573 /* XZMusic */,
 				F8288EC019A77752008D5573 /* XZMusicTests */,
 				F8288EA019A77752008D5573 /* Frameworks */,
@@ -383,6 +396,7 @@
 		F8288EA719A77752008D5573 /* XZMusic */ = {
 			isa = PBXGroup;
 			children = (
+				F8D3C7C019C848E1004AFF2F /* Login */,
 				F8C766DD19B2EBAF00C01953 /* Search */,
 				F8C766D919B2EB7200C01953 /* Loving */,
 				F8C766D519B2DDB300C01953 /* Setting */,
@@ -471,6 +485,27 @@
 				F8C766DF19B2EBB900C01953 /* XZSearchViewController.m */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		F8D3C7BA19C848D2004AFF2F /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				F8D3C7BB19C848D2004AFF2F /* libWeiboSDK.a */,
+				F8D3C7BC19C848D2004AFF2F /* WeiboSDK.bundle */,
+				F8D3C7BD19C848D2004AFF2F /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
+		F8D3C7C019C848E1004AFF2F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F8D3C7C119C848E1004AFF2F /* XZLoginForWBViewController.h */,
+				F8D3C7C219C848E1004AFF2F /* XZLoginForWBViewController.m */,
+				F8D3C7C319C848E1004AFF2F /* XZWBLoginManager.h */,
+				F8D3C7C419C848E1004AFF2F /* XZWBLoginManager.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		F8F1FD7919A9772D00C5A7F7 /* XZMenu */ = {
@@ -911,6 +946,7 @@
 				F8FA3AEE19B018FF00D478F9 /* music-32.png in Resources */,
 				F8FA3B3519B018FF00D478F9 /* wifi-25.png in Resources */,
 				F8FA3B0119B018FF00D478F9 /* search-512_.png in Resources */,
+				F8D3C7BF19C848D2004AFF2F /* WeiboSDK.bundle in Resources */,
 				F8FA3AF819B018FF00D478F9 /* sad-50.png in Resources */,
 				F8FA3B1419B018FF00D478F9 /* thumb_down-128.png in Resources */,
 				F8FA3AF019B018FF00D478F9 /* music-512_.png in Resources */,
@@ -1019,6 +1055,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D3C7C619C848E1004AFF2F /* XZWBLoginManager.m in Sources */,
 				F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */,
 				F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */,
 				F8FA3B8919B0644E00D478F9 /* UIColor+XZ.m in Sources */,
@@ -1030,6 +1067,7 @@
 				F8F1FD9919A98C8800C5A7F7 /* XZBaseButton.m in Sources */,
 				F8F1FD8619A9794500C5A7F7 /* XZTabBarForHomeViewController.m in Sources */,
 				F8F1FD9F19A98DBF00C5A7F7 /* XZLineView.m in Sources */,
+				F8D3C7C519C848E1004AFF2F /* XZLoginForWBViewController.m in Sources */,
 				F8FA3B8E19B0655C00D478F9 /* UIFont+XZ.m in Sources */,
 				F8F1FD9419A988D800C5A7F7 /* XZMenuButton.m in Sources */,
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
@@ -1168,6 +1206,10 @@
 				GCC_PREFIX_HEADER = "XZMusic/XZMusic-Prefix.pch";
 				INFOPLIST_FILE = "XZMusic/XZMusic-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libWeiboSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1183,6 +1225,10 @@
 				GCC_PREFIX_HEADER = "XZMusic/XZMusic-Prefix.pch";
 				INFOPLIST_FILE = "XZMusic/XZMusic-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libWeiboSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

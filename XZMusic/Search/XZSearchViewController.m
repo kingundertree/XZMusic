@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"搜索";
+    [self setTitleViewWithString:@"搜索"];
     // Do any additional setup after loading the view.
 }
 
