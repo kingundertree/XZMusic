@@ -81,6 +81,7 @@
         return [super pushViewController:viewController animated:YES];
     }
 }
+
 #pragma mark -popView
 -(UIViewController *)popViewControllerAnimated:(BOOL)animated{
     if (isMoving) {
@@ -89,16 +90,23 @@
     isMoving = YES;
     if ([capImageArr count] >= 1) {
         [capImageArr removeLastObject];
+
+        [backGroundImg removeFromSuperview];
+        backGroundImg = nil;
+        [backGroundView removeFromSuperview];
+        backGroundView = nil;
     }
-    
-    [backGroundImg removeFromSuperview];
-    backGroundImg = nil;
     
     return [super popViewControllerAnimated:animated];
 }
 #pragma mark -popToRootView
 -(NSArray *)popToRootViewControllerAnimated:(BOOL)animated{
     [capImageArr removeAllObjects];
+    [backGroundImg removeFromSuperview];
+    backGroundImg = nil;
+    [backGroundView removeFromSuperview];
+    backGroundView = nil;
+
     return [super popToRootViewControllerAnimated:animated];
 }
 #pragma -mark UINavigationControllerDelegate

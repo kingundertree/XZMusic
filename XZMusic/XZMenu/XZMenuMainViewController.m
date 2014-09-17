@@ -81,6 +81,11 @@
         !self.isOnFirstView) {
         return NO;
     }
+    
+    if ([touch.view isKindOfClass:[UIButton class]]) {
+        return NO;
+    }
+    
     return YES;
 }
 
@@ -214,9 +219,17 @@
 - (void)replaceMainVC:(XZBaseViewController *)replaceVC{
     CGRect frame = self.mainNav.view.frame;
     [self.mainNav.view removeFromSuperview];
+    self.mainNav.view = nil;
     
     self.mainNav = nil;
-    self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:replaceVC];
+    if ([replaceVC isKindOfClass:[XZTabBarViewController class]]) {
+        self.tabBarVC = (XZTabBarViewController *)replaceVC;
+        self.tabBarVC.tabBarDelegate = self;
+        self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:self.tabBarVC];
+    }else{
+        self.mainNav = [[PushBackNavigationController alloc] initWithRootViewController:replaceVC];
+    }
+
     self.mainNav.view.frame = frame;
     [self.view addSubview:self.mainNav.view];
 
@@ -246,7 +259,7 @@
 - (UIView *)coverView{
     if (_coverView == nil) {
         _coverView = [[UIView alloc] initWithFrame:self.view.bounds];
-        _coverView.backgroundColor = [UIColor clearColor];
+        _coverView.backgroundColor = [UIColor colorWithRed:134/255.0 green:21/255.0 blue:45/255.0 alpha:0.5];
         
         UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGus:)];
         tapGes.delegate                = self;
