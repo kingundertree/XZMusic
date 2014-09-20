@@ -25,4 +25,5 @@ typedef enum : NSUInteger {
 - (void)showmainNav;
 - (void)replaceMainVC:(XZBaseViewController *)replaceVC;
 - (void)WBLogin;
+- (void)mainVCLeftMenuAction;
 @end

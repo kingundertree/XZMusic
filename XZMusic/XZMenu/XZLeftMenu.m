@@ -22,7 +22,7 @@
 @interface XZLeftMenu ()
 @property(nonatomic, strong) XZHeaderButton *headerImgButton;
 @property(nonatomic, assign) NSInteger menuIndex;
-
+@property(nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation XZLeftMenu
@@ -54,10 +54,10 @@
     [self.headerImgButton addTarget:self action:@selector(doLogin:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.headerImgButton];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20, menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20))];
-    scrollView.contentSize = CGSizeMake(menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20)+1);
-    scrollView.backgroundColor = [UIColor lightGrayColor];
-    [self addSubview:scrollView];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20, menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20))];
+    self.scrollView.contentSize = CGSizeMake(menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20)+1);
+    self.scrollView.backgroundColor = [UIColor lightGrayColor];
+    [self addSubview:self.scrollView];
     
     NSArray *btnTitArr = @[@"XZ Music",@"最爱",@"下载中心",@"搜索",@"设置"];
     NSArray *btnIconArr = @[@"music@2x.png",@"love@2x.png",@"download@2x.png",@"search@2x.png",@"settings@2x.png"];
@@ -70,7 +70,7 @@
         [btn showTitlt:[btnTitArr objectAtIndex:i] textColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:16] icon:[btnIconArr objectAtIndex:i]];
         [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor blueColor]] forState:UIControlStateHighlighted];
-        [scrollView addSubview:btn];
+        [self.scrollView addSubview:btn];
     }
 }
 
@@ -87,18 +87,23 @@
         if (![[self.menuVCArr objectAtIndex:tagIndex] isKindOfClass:[XZBaseViewController class]]) {
             if (tagIndex == 0) {
                 XZTabBarViewController *vc = [[XZTabBarViewController alloc] init];
+                vc.backType = BackTypeForMenu;
                 [self.menuVCArr replaceObjectAtIndex:0 withObject:vc];
             }else if (tagIndex == 1){
                 XZLovingViewController *vc = [[XZLovingViewController alloc] init];
+                vc.backType = BackTypeForMenu;
                 [self.menuVCArr replaceObjectAtIndex:1 withObject:vc];
             }else if (tagIndex == 2){
                 XZDownLoadViewController *vc = [[XZDownLoadViewController alloc] init];
+                vc.backType = BackTypeForMenu;
                 [self.menuVCArr replaceObjectAtIndex:2 withObject:vc];
             }else if (tagIndex == 3){
                 XZSearchViewController *vc = [[XZSearchViewController alloc] init];
+                vc.backType = BackTypeForMenu;
                 [self.menuVCArr replaceObjectAtIndex:3 withObject:vc];
             }else if (tagIndex == 4){
                 XZSettingViewController *vc = [[XZSettingViewController alloc] init];
+                vc.backType = BackTypeForMenu;
                 [self.menuVCArr replaceObjectAtIndex:4 withObject:vc];
             }
         }
@@ -117,7 +122,7 @@
     if (isMenuShow) {
         float deleyTime = 0.0;
         for (int i = 0; i < 5; i++) {
-            XZMenuButton *btn = (XZMenuButton *)[self viewWithTag:i+1000];
+            XZMenuButton *btn = (XZMenuButton *)[self.scrollView viewWithTag:i+1000];
             deleyTime = i*0.2;
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(deleyTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -12,6 +12,7 @@ typedef enum {
     BackTypePopBack = 0,
     BackTypeDismiss,
     BackTypePopToRoot,
+    BackTypeForMenu,
     BackTypeNone
 } BackType;
 

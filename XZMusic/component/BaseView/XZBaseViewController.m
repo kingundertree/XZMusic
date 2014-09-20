@@ -50,6 +50,10 @@
         buttonItem = [UIBarButtonItem getBackBarButtonItemForPresent:self action:@selector(doBack:)];
     }
     
+    if (self.backType == BackTypeForMenu) {
+        buttonItem = [UIBarButtonItem getBarButtonItemWithImage:[UIImage imageNamed:@"nav_menu_icon"] highLihtedImg:[UIImage imageNamed:@"nav_menu_icon"] taget:self action:@selector(doBack:)];
+    }
+    
     if (SYSTEM_VERSION_LESS_THAN(@"7.0")){
         if (self.backType == BackTypeDismiss){
             [self.navigationItem setLeftBarButtonItem:buttonItem];

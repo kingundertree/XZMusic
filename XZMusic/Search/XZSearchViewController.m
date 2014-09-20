@@ -26,8 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self setTitleViewWithString:@"搜索"];
     // Do any additional setup after loading the view.
+}
+#pragma mark
+#pragma leftButtonAction
+- (void)doBack:(id)sender{
+    [[XZAppDelegate sharedAppDelegate].menuMainVC mainVCLeftMenuAction];
 }
 
 - (void)didReceiveMemoryWarning

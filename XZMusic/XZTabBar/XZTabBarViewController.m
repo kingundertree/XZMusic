@@ -36,9 +36,11 @@
 
 - (void)viewDidLoad
 {
-    self.backType = BackTypeNone;
+    self.backType = BackTypeForMenu;
     [super viewDidLoad];
     [self setTitleViewWithString:@"XZ Music"];
+    
+    [self addRightButton:@"+"];
     // Do any additional setup after loading the view.
 }
 
@@ -65,13 +67,17 @@
     
     [self.view addSubview:homeVC.view];
     
-    [self addRightButton:@"+"];
-    
     self.tabBarView = [[XZTabBarView alloc] init];
     [self.tabBarView initTabBarView:@[@"",@""] tabBarTitArr:@[@"XZ",@"ME"]];
     self.tabBarView.delegate = self;
     self.tabBarView.frame = CGRectMake(0, screenHeight-50-64, screenWidth, 50);
     [self.view addSubview:self.tabBarView];
+}
+
+#pragma mark
+#pragma leftButtonAction
+- (void)doBack:(id)sender{
+    [[XZAppDelegate sharedAppDelegate].menuMainVC mainVCLeftMenuAction];
 }
 
 #pragma mark

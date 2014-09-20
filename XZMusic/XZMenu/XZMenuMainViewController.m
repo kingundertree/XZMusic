@@ -68,6 +68,16 @@
 
 #pragma mark
 #pragma tabBarRightButtonAction
+- (void)mainVCLeftMenuAction{
+    if (self.mainNav.view.frame.origin.x == 0) {
+        [self showMenu];
+    }else{
+        [self showmainNav];
+    }
+}
+
+#pragma mark
+#pragma tabBarRightButtonAction
 - (void)tabBarRightButtonAction{
     self.isOnFirstView = NO;
     XZMusicPlayViewController *musicPlayVC = [[XZMusicPlayViewController alloc] init];
@@ -259,7 +269,7 @@
 - (UIView *)coverView{
     if (_coverView == nil) {
         _coverView = [[UIView alloc] initWithFrame:self.view.bounds];
-        _coverView.backgroundColor = [UIColor colorWithRed:134/255.0 green:21/255.0 blue:45/255.0 alpha:0.5];
+        _coverView.backgroundColor = [UIColor clearColor];
         
         UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGus:)];
         tapGes.delegate                = self;
