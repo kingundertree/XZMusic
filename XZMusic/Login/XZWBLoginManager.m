@@ -9,6 +9,7 @@
 #import "XZWBLoginManager.h"
 #import "WeiboSDK.h"
 #import "XZLoginForWBViewController.h"
+#import "XZWBLoginInfo.h"
 
 #define SINAAPPID @"3573053395"
 #define SINAAPPSECRET @"2b6a15ba909ceccc07cb200599f9a4c5"
@@ -17,7 +18,7 @@
 
 @interface XZWBLoginManager ()<WBLoginWithControllerDelegate,WeiboSDKDelegate>
 @property (nonatomic, strong) WBLoginBack block;
-@property (nonatomic, strong) NSString *WBToken;
+@property (nonatomic, strong) XZWBLoginInfo *wbLoginInfo;
 
 @end
 
@@ -36,10 +37,6 @@
     [WeiboSDK registerApp:SINAAPPID];
     
     self.block = block;
-
-//    XZBaseViewController *vc = (XZBaseViewController *)[XZAppDelegate sharedAppDelegate].menuMainVC;
-//    SinaWeibo WB = [[SinaWeibo alloc] initWithAppKey:SINAAPPID appSecret:SINAAPPSECRET appRedirectURI:SINAAPPRedirectURI andDelegate:vc];
-
     
     if ([WeiboSDK isWeiboAppInstalled]) {
         WBAuthorizeRequest *req = [WBAuthorizeRequest request];
@@ -63,10 +60,7 @@
 
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request
 {
-    if ([request isKindOfClass:WBProvideMessageForWeiboRequest.class])
-    {
-//        ProvideMessageForWeiboViewController *controller = [[ProvideMessageForWeiboViewController alloc] init];
-//        [self.viewController presentModalViewController:controller animated:YES];
+    if ([request isKindOfClass:WBProvideMessageForWeiboRequest.class]){
     }
 }
 
@@ -85,23 +79,12 @@
     }
     else if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
-        NSString *title = @"认证结果";
-        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",(int)response.statusCode,[(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
+        self.wbLoginInfo = [[XZWBLoginInfo alloc] init];
+        self.wbLoginInfo.userId = [(WBAuthorizeResponse *)response userID];
+        self.wbLoginInfo.accessToken = [(WBAuthorizeResponse *)response accessToken];
         
-        self.WBToken = [(WBAuthorizeResponse *)response accessToken];
-        
-        [alert show];
+        self.block(WBLoginResultSuccess,self.wbLoginInfo);
     }
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [WeiboSDK handleOpenURL:url delegate:nil];
 }
 
 @end

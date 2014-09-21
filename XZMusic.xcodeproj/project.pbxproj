@@ -20,6 +20,7 @@
 		F8288EBD19A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
+		F88EECEC19CEA0D60041C4B3 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F88EECEB19CEA0D60041C4B3 /* XZWBLoginInfo.m */; };
 		F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */; };
 		F8C0886419B2D92D00FFF778 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886319B2D92D00FFF778 /* settings@2x.png */; };
 		F8C0886619B2D93600FFF778 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886519B2D93600FFF778 /* search@2x.png */; };
@@ -178,6 +179,8 @@
 		F8288EC219A77752008D5573 /* XZMusicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XZMusicTests-Info.plist"; sourceTree = "<group>"; };
 		F8288EC419A77752008D5573 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
+		F88EECEA19CEA0D60041C4B3 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
+		F88EECEB19CEA0D60041C4B3 /* XZWBLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginInfo.m; sourceTree = "<group>"; };
 		F8C0886019B2D84700FFF778 /* XZDownLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZDownLoadViewController.h; sourceTree = "<group>"; };
 		F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZDownLoadViewController.m; sourceTree = "<group>"; };
 		F8C0886319B2D92D00FFF778 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 		F8D3C7C019C848E1004AFF2F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F88EECEA19CEA0D60041C4B3 /* XZWBLoginInfo.h */,
+				F88EECEB19CEA0D60041C4B3 /* XZWBLoginInfo.m */,
 				F8D3C7C119C848E1004AFF2F /* XZLoginForWBViewController.h */,
 				F8D3C7C219C848E1004AFF2F /* XZLoginForWBViewController.m */,
 				F8D3C7C319C848E1004AFF2F /* XZWBLoginManager.h */,
@@ -1083,6 +1088,7 @@
 				F8FA3B9219B0688800D478F9 /* XZMusicPlayViewController.m in Sources */,
 				F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */,
 				F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */,
+				F88EECEC19CEA0D60041C4B3 /* XZWBLoginInfo.m in Sources */,
 				F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */,
 				F8FA3B8119B05D8500D478F9 /* UIBarButtonItem+NavItem.m in Sources */,
 				F8FA3B8A19B0644E00D478F9 /* XZBaseButton+CornerRadius.m in Sources */,
