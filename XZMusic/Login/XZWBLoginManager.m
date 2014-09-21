@@ -15,7 +15,7 @@
 #define SINAAPPRedirectURI @"http://www.xiazer.com/"
 
 
-@interface XZWBLoginManager ()<WBLoginWithControllerDelegate>
+@interface XZWBLoginManager ()<WBLoginWithControllerDelegate,WeiboSDKDelegate>
 @property (nonatomic, strong) WBLoginBack block;
 @property (nonatomic, strong) NSString *WBToken;
 
@@ -51,6 +51,10 @@
         XZLoginForWBViewController *WBloginVC = [[XZLoginForWBViewController alloc] initWithAppID:SINAAPPID redirectURI:@"http://www.xiazer.com/" delegate:self];
         self.block(WBLoginResultForNone,WBloginVC);
     }
+}
+
+- (BOOL)WbHandUrl:(NSURL *)url{
+    return [WeiboSDK handleOpenURL:url delegate:self];
 }
 
 - (void)WBLoginWithControllerDidFinishRequestWIthCoode:(NSString *)code{

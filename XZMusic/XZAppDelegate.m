@@ -35,6 +35,13 @@
     
     return YES;
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [[XZWBLoginManager sharedInstance] WbHandUrl:url];
+}
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    [[XZWBLoginManager sharedInstance] WbHandUrl:url];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

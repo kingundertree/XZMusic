@@ -37,5 +37,6 @@
     #import "UIImage+XZ.h"
     #import "UILabel+XZ.h"
     #import "XZAppDelegate.h"
+    #import "XZWBLoginManager.h"
 
 #endif

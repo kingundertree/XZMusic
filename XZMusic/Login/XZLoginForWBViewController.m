@@ -89,6 +89,7 @@
     NSString *url = [request.URL absoluteString];
     if ([url hasPrefix:self.uri]) {
         [self.delegate WBLoginWithControllerDidFinishRequestWIthCoode:[url substringFromIndex:[url rangeOfString:@"?code="].location + 6]];
+        [self dismissViewControllerAnimated:YES completion:nil];
         return NO;
     }
     

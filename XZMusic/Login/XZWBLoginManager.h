@@ -22,5 +22,5 @@ typedef void (^WBLoginBack)(WBLoginResult result, id callBackValue);
 
 + (id)sharedInstance;
 - (void)WBLoginWithFinishBlock:(WBLoginBack)block;
-
+- (BOOL)WbHandUrl:(NSURL *)url;
 @end
