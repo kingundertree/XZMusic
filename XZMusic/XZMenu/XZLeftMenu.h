@@ -13,5 +13,5 @@
 
 
 - (void)menuShow:(BOOL)isMenuShow;
-
+- (void)updateUserLoginInfo:(NSDictionary *)userInfoDic;
 @end

@@ -147,4 +147,11 @@
     [[XZAppDelegate sharedAppDelegate].menuMainVC WBLogin];
 }
 
+#pragma mark
+#pragma 更新用户头像信息
+- (void)updateUserLoginInfo:(NSDictionary *)userInfoDic{
+    [self.headerImgButton setTitle:@"" forState:UIControlStateNormal];
+    [self.headerImgButton setimageWithUrl:userInfoDic[@"avatar_hd"]];
+}
+
 @end

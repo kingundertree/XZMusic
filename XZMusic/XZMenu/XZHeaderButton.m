@@ -7,6 +7,10 @@
 //
 
 #import "XZHeaderButton.h"
+#import "UIImageView+AFnetworking.h"
+
+@interface XZHeaderButton ()
+@end
 
 @implementation XZHeaderButton
 
@@ -19,5 +23,14 @@
     return self;
 }
 
+- (void)setimageWithUrl:(NSString *)url{
+    if (self.imageView) {
+        [self.imageView removeFromSuperview];
+        self.imageView = nil;
+    }
+    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    [self.imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
+    [self addSubview:self.imageView];
+}
 
 @end

@@ -9,5 +9,8 @@
 #import "XZBaseButton.h"
 
 @interface XZHeaderButton : XZBaseButton
+@property(nonatomic, strong) UIImageView *imageView;
+
+- (void)setimageWithUrl:(NSString *)url;
 
 @end

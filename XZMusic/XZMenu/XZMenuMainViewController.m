@@ -287,17 +287,37 @@
     return _coverView;
 }
 
+//微博登陆
 - (void)WBLogin{
+    __weak XZMenuMainViewController *this = self;
     [[XZWBLoginManager sharedInstance] WBLoginWithFinishBlock:^(WBLoginResult result, id callBackValue) {
         if ([callBackValue isKindOfClass:[XZBaseViewController class]]) {
             XZBaseViewController *vc = (XZBaseViewController *)callBackValue;
             vc.backType = BackTypeDismiss;
             
             XZBaseNaviViewController *nav = [[XZBaseNaviViewController alloc] initWithRootViewController:vc];
-            [self.mainNav presentViewController:nav animated:YES completion:^{
+            [this.mainNav presentViewController:nav animated:YES completion:^{
             }];
         }else{
+            if (result == WBLoginResultSuccess) {
+                [self requestWBUserInfo:(XZWBLoginInfo *)callBackValue];
+            }else{
+                DLog(@"微博登录失败");
+            }
         }
+    }];
+}
+
+//获取微博用户信息
+- (void)requestWBUserInfo:(XZWBLoginInfo *)info{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?uid=%@&access_token=%@",info.userId,info.accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            [self.leftMenu updateUserLoginInfo:responseObject];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DLog(@"微博用户信息获取失败");
     }];
 }
 
