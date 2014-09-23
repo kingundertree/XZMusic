@@ -39,5 +39,6 @@
     #import "XZWBLoginInfo.h"
     #import "AFHTTPRequestOperation.h"
     #import "AFHTTPRequestOperationManager.h"
+    #import "MBProgressHUD.h"
 
 #endif

@@ -45,8 +45,13 @@
         req.scope = @"all";
         [WeiboSDK sendRequest:req];
     }else{
-        XZLoginForWBViewController *WBloginVC = [[XZLoginForWBViewController alloc] initWithAppID:SINAAPPID redirectURI:@"http://www.xiazer.com/" delegate:self];
-        self.block(WBLoginResultForNone,WBloginVC);
+        WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+        request.redirectURI = SINAAPPRedirectURI;
+        request.scope = @"all";
+        [WeiboSDK sendRequest:request];
+        
+//        XZLoginForWBViewController *WBloginVC = [[XZLoginForWBViewController alloc] initWithAppID:SINAAPPID redirectURI:@"http://www.xiazer.com/" delegate:self];
+//        self.block(WBLoginResultForNone,WBloginVC);
     }
 }
 
@@ -76,11 +81,18 @@
                                               otherButtonTitles:nil];
         [alert show];
     }else if ([response isKindOfClass:WBAuthorizeResponse.class]){
-        self.wbLoginInfo = [[XZWBLoginInfo alloc] init];
-        self.wbLoginInfo.userId = [(WBAuthorizeResponse *)response userID];
-        self.wbLoginInfo.accessToken = [(WBAuthorizeResponse *)response accessToken];
-        
-        self.block(WBLoginResultSuccess,self.wbLoginInfo);
+        if (response.statusCode == WeiboSDKResponseStatusCodeUserCancel) {
+            self.block(WBLoginResultCancel,nil);
+        }else if (response.statusCode == WeiboSDKResponseStatusCodeSuccess){
+            self.wbLoginInfo = [[XZWBLoginInfo alloc] init];
+            self.wbLoginInfo.userId = [(WBAuthorizeResponse *)response userID];
+            self.wbLoginInfo.accessToken = [(WBAuthorizeResponse *)response accessToken];
+            
+            self.block(WBLoginResultSuccess,self.wbLoginInfo);
+        }else{
+            DLog(@"登录异常");
+            self.block(WBLoginResultFail,nil);
+        }
     }
 }
 

@@ -289,20 +289,22 @@
 
 //微博登陆
 - (void)WBLogin{
-    __weak XZMenuMainViewController *this = self;
+//    __weak XZMenuMainViewController *this = self;
     [[XZWBLoginManager sharedInstance] WBLoginWithFinishBlock:^(WBLoginResult result, id callBackValue) {
         if ([callBackValue isKindOfClass:[XZBaseViewController class]]) {
-            XZBaseViewController *vc = (XZBaseViewController *)callBackValue;
-            vc.backType = BackTypeDismiss;
-            
-            XZBaseNaviViewController *nav = [[XZBaseNaviViewController alloc] initWithRootViewController:vc];
-            [this.mainNav presentViewController:nav animated:YES completion:^{
-            }];
+//            XZBaseViewController *vc = (XZBaseViewController *)callBackValue;
+//            vc.backType = BackTypeDismiss;
+//            
+//            XZBaseNaviViewController *nav = [[XZBaseNaviViewController alloc] initWithRootViewController:vc];
+//            [this.mainNav presentViewController:nav animated:YES completion:^{
+//            }];
         }else{
             if (result == WBLoginResultSuccess) {
                 [self requestWBUserInfo:(XZWBLoginInfo *)callBackValue];
-            }else{
-                DLog(@"微博登录失败");
+            }else if (result == WBLoginResultCancel){
+                DLog(@"微博登录取消");
+            }else if (result == WBLoginResultFail){
+                DLog(@"微博登录异常");
             }
         }
     }];

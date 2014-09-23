@@ -19,8 +19,6 @@
         longPressGestureRecognizer.cancelsTouchesInView = NO;
         longPressGestureRecognizer.minimumPressDuration = 0.1;
         [self addGestureRecognizer:longPressGestureRecognizer];
-
-        
     }
     return self;
 }

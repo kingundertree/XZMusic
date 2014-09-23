@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		242485980DF14B4E892E85FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE61FDE33D3473AA45B7F01 /* libPods.a */; };
+		F8088FEE19D1AF8800797B9C /* UIViewController+TipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */; };
 		F8288EA219A77752008D5573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA119A77752008D5573 /* Foundation.framework */; };
 		F8288EA419A77752008D5573 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA319A77752008D5573 /* CoreGraphics.framework */; };
 		F8288EA619A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
@@ -163,6 +164,8 @@
 /* Begin PBXFileReference section */
 		6DE61FDE33D3473AA45B7F01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D36750BFE44555902081CD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F8088FEC19D1AF8800797B9C /* UIViewController+TipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TipsView.h"; path = "XZMusic/component/Category/UIViewController+TipsView.h"; sourceTree = SOURCE_ROOT; };
+		F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TipsView.m"; path = "XZMusic/component/Category/UIViewController+TipsView.m"; sourceTree = SOURCE_ROOT; };
 		F8288E9E19A77752008D5573 /* XZMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8288EA119A77752008D5573 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8288EA319A77752008D5573 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -812,6 +815,8 @@
 				F8FA3B9419B06B3D00D478F9 /* UIImage+XZ.m */,
 				F8FA3B9619B06E7D00D478F9 /* UILabel+XZ.h */,
 				F8FA3B9719B06E7D00D478F9 /* UILabel+XZ.m */,
+				F8088FEC19D1AF8800797B9C /* UIViewController+TipsView.h */,
+				F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */,
 				F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */,
 				F88EECEC19CEA0D60041C4B3 /* XZWBLoginInfo.m in Sources */,
+				F8088FEE19D1AF8800797B9C /* UIViewController+TipsView.m in Sources */,
 				F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */,
 				F8FA3B8119B05D8500D478F9 /* UIBarButtonItem+NavItem.m in Sources */,
 				F8FA3B8A19B0644E00D478F9 /* XZBaseButton+CornerRadius.m in Sources */,
