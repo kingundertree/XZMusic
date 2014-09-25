@@ -40,5 +40,6 @@
     #import "AFHTTPRequestOperation.h"
     #import "AFHTTPRequestOperationManager.h"
     #import "MBProgressHUD.h"
+    #import "XZBaseViewController+TipsView.h"
 
 #endif

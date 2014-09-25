@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		242485980DF14B4E892E85FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DE61FDE33D3473AA45B7F01 /* libPods.a */; };
-		F8088FEE19D1AF8800797B9C /* UIViewController+TipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */; };
 		F8288EA219A77752008D5573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA119A77752008D5573 /* Foundation.framework */; };
 		F8288EA419A77752008D5573 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA319A77752008D5573 /* CoreGraphics.framework */; };
 		F8288EA619A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
@@ -22,6 +21,13 @@
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
 		F88EECEC19CEA0D60041C4B3 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F88EECEB19CEA0D60041C4B3 /* XZWBLoginInfo.m */; };
+		F8A9B74A19D3C9350006B697 /* UIColor+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B73D19D3C9350006B697 /* UIColor+XZ.m */; };
+		F8A9B74B19D3C9350006B697 /* UIFont+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B73F19D3C9350006B697 /* UIFont+XZ.m */; };
+		F8A9B74C19D3C9350006B697 /* UIImage+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B74119D3C9350006B697 /* UIImage+XZ.m */; };
+		F8A9B74D19D3C9350006B697 /* UILabel+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B74319D3C9350006B697 /* UILabel+XZ.m */; };
+		F8A9B74E19D3C9350006B697 /* XZBaseButton+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B74519D3C9350006B697 /* XZBaseButton+CornerRadius.m */; };
+		F8A9B74F19D3C9350006B697 /* XZBaseButton+IconWithTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B74719D3C9350006B697 /* XZBaseButton+IconWithTitle.m */; };
+		F8A9B75019D3C9350006B697 /* XZBaseViewController+TipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B74919D3C9350006B697 /* XZBaseViewController+TipsView.m */; };
 		F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */; };
 		F8C0886419B2D92D00FFF778 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886319B2D92D00FFF778 /* settings@2x.png */; };
 		F8C0886619B2D93600FFF778 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8C0886519B2D93600FFF778 /* search@2x.png */; };
@@ -140,13 +146,7 @@
 		F8FA3B7D19B0479C00D478F9 /* pushBackLock.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B7619B0479C00D478F9 /* pushBackLock.m */; };
 		F8FA3B7E19B0479C00D478F9 /* PushBackNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B7819B0479C00D478F9 /* PushBackNavigationController.m */; };
 		F8FA3B8119B05D8500D478F9 /* UIBarButtonItem+NavItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B8019B05D8500D478F9 /* UIBarButtonItem+NavItem.m */; };
-		F8FA3B8919B0644E00D478F9 /* UIColor+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B8419B0644E00D478F9 /* UIColor+XZ.m */; };
-		F8FA3B8A19B0644E00D478F9 /* XZBaseButton+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B8619B0644E00D478F9 /* XZBaseButton+CornerRadius.m */; };
-		F8FA3B8B19B0644E00D478F9 /* XZBaseButton+IconWithTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B8819B0644E00D478F9 /* XZBaseButton+IconWithTitle.m */; };
-		F8FA3B8E19B0655C00D478F9 /* UIFont+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B8D19B0655C00D478F9 /* UIFont+XZ.m */; };
 		F8FA3B9219B0688800D478F9 /* XZMusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B9119B0688800D478F9 /* XZMusicPlayViewController.m */; };
-		F8FA3B9519B06B3D00D478F9 /* UIImage+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B9419B06B3D00D478F9 /* UIImage+XZ.m */; };
-		F8FA3B9819B06E7D00D478F9 /* UILabel+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8FA3B9719B06E7D00D478F9 /* UILabel+XZ.m */; };
 		F8FA3B9C19B0866700D478F9 /* anjuke_icon_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3B9A19B0866700D478F9 /* anjuke_icon_back@2x.png */; };
 		F8FA3B9D19B0866700D478F9 /* anjuke_icon_back_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8FA3B9B19B0866700D478F9 /* anjuke_icon_back_press@2x.png */; };
 /* End PBXBuildFile section */
@@ -164,8 +164,6 @@
 /* Begin PBXFileReference section */
 		6DE61FDE33D3473AA45B7F01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D36750BFE44555902081CD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		F8088FEC19D1AF8800797B9C /* UIViewController+TipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+TipsView.h"; path = "XZMusic/component/Category/UIViewController+TipsView.h"; sourceTree = SOURCE_ROOT; };
-		F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TipsView.m"; path = "XZMusic/component/Category/UIViewController+TipsView.m"; sourceTree = SOURCE_ROOT; };
 		F8288E9E19A77752008D5573 /* XZMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8288EA119A77752008D5573 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8288EA319A77752008D5573 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -184,6 +182,20 @@
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
 		F88EECEA19CEA0D60041C4B3 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
 		F88EECEB19CEA0D60041C4B3 /* XZWBLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginInfo.m; sourceTree = "<group>"; };
+		F8A9B73C19D3C9350006B697 /* UIColor+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XZ.h"; sourceTree = "<group>"; };
+		F8A9B73D19D3C9350006B697 /* UIColor+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XZ.m"; sourceTree = "<group>"; };
+		F8A9B73E19D3C9350006B697 /* UIFont+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+XZ.h"; sourceTree = "<group>"; };
+		F8A9B73F19D3C9350006B697 /* UIFont+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+XZ.m"; sourceTree = "<group>"; };
+		F8A9B74019D3C9350006B697 /* UIImage+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XZ.h"; sourceTree = "<group>"; };
+		F8A9B74119D3C9350006B697 /* UIImage+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XZ.m"; sourceTree = "<group>"; };
+		F8A9B74219D3C9350006B697 /* UILabel+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+XZ.h"; sourceTree = "<group>"; };
+		F8A9B74319D3C9350006B697 /* UILabel+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+XZ.m"; sourceTree = "<group>"; };
+		F8A9B74419D3C9350006B697 /* XZBaseButton+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseButton+CornerRadius.h"; sourceTree = "<group>"; };
+		F8A9B74519D3C9350006B697 /* XZBaseButton+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseButton+CornerRadius.m"; sourceTree = "<group>"; };
+		F8A9B74619D3C9350006B697 /* XZBaseButton+IconWithTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseButton+IconWithTitle.h"; sourceTree = "<group>"; };
+		F8A9B74719D3C9350006B697 /* XZBaseButton+IconWithTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseButton+IconWithTitle.m"; sourceTree = "<group>"; };
+		F8A9B74819D3C9350006B697 /* XZBaseViewController+TipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseViewController+TipsView.h"; sourceTree = "<group>"; };
+		F8A9B74919D3C9350006B697 /* XZBaseViewController+TipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseViewController+TipsView.m"; sourceTree = "<group>"; };
 		F8C0886019B2D84700FFF778 /* XZDownLoadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZDownLoadViewController.h; sourceTree = "<group>"; };
 		F8C0886119B2D84700FFF778 /* XZDownLoadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZDownLoadViewController.m; sourceTree = "<group>"; };
 		F8C0886319B2D92D00FFF778 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
@@ -324,20 +336,8 @@
 		F8FA3B7819B0479C00D478F9 /* PushBackNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushBackNavigationController.m; sourceTree = "<group>"; };
 		F8FA3B7F19B05D8500D478F9 /* UIBarButtonItem+NavItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+NavItem.h"; sourceTree = "<group>"; };
 		F8FA3B8019B05D8500D478F9 /* UIBarButtonItem+NavItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+NavItem.m"; sourceTree = "<group>"; };
-		F8FA3B8319B0644E00D478F9 /* UIColor+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+XZ.h"; sourceTree = "<group>"; };
-		F8FA3B8419B0644E00D478F9 /* UIColor+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+XZ.m"; sourceTree = "<group>"; };
-		F8FA3B8519B0644E00D478F9 /* XZBaseButton+CornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseButton+CornerRadius.h"; sourceTree = "<group>"; };
-		F8FA3B8619B0644E00D478F9 /* XZBaseButton+CornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseButton+CornerRadius.m"; sourceTree = "<group>"; };
-		F8FA3B8719B0644E00D478F9 /* XZBaseButton+IconWithTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZBaseButton+IconWithTitle.h"; sourceTree = "<group>"; };
-		F8FA3B8819B0644E00D478F9 /* XZBaseButton+IconWithTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZBaseButton+IconWithTitle.m"; sourceTree = "<group>"; };
-		F8FA3B8C19B0655C00D478F9 /* UIFont+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+XZ.h"; sourceTree = "<group>"; };
-		F8FA3B8D19B0655C00D478F9 /* UIFont+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+XZ.m"; sourceTree = "<group>"; };
 		F8FA3B9019B0688800D478F9 /* XZMusicPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayViewController.h; sourceTree = "<group>"; };
 		F8FA3B9119B0688800D478F9 /* XZMusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayViewController.m; sourceTree = "<group>"; };
-		F8FA3B9319B06B3D00D478F9 /* UIImage+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+XZ.h"; sourceTree = "<group>"; };
-		F8FA3B9419B06B3D00D478F9 /* UIImage+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+XZ.m"; sourceTree = "<group>"; };
-		F8FA3B9619B06E7D00D478F9 /* UILabel+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+XZ.h"; sourceTree = "<group>"; };
-		F8FA3B9719B06E7D00D478F9 /* UILabel+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+XZ.m"; sourceTree = "<group>"; };
 		F8FA3B9A19B0866700D478F9 /* anjuke_icon_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anjuke_icon_back@2x.png"; sourceTree = "<group>"; };
 		F8FA3B9B19B0866700D478F9 /* anjuke_icon_back_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anjuke_icon_back_press@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -450,6 +450,27 @@
 				F8288EC319A77752008D5573 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F8A9B73B19D3C92D0006B697 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F8A9B73C19D3C9350006B697 /* UIColor+XZ.h */,
+				F8A9B73D19D3C9350006B697 /* UIColor+XZ.m */,
+				F8A9B73E19D3C9350006B697 /* UIFont+XZ.h */,
+				F8A9B73F19D3C9350006B697 /* UIFont+XZ.m */,
+				F8A9B74019D3C9350006B697 /* UIImage+XZ.h */,
+				F8A9B74119D3C9350006B697 /* UIImage+XZ.m */,
+				F8A9B74219D3C9350006B697 /* UILabel+XZ.h */,
+				F8A9B74319D3C9350006B697 /* UILabel+XZ.m */,
+				F8A9B74419D3C9350006B697 /* XZBaseButton+CornerRadius.h */,
+				F8A9B74519D3C9350006B697 /* XZBaseButton+CornerRadius.m */,
+				F8A9B74619D3C9350006B697 /* XZBaseButton+IconWithTitle.h */,
+				F8A9B74719D3C9350006B697 /* XZBaseButton+IconWithTitle.m */,
+				F8A9B74819D3C9350006B697 /* XZBaseViewController+TipsView.h */,
+				F8A9B74919D3C9350006B697 /* XZBaseViewController+TipsView.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 		F8C0885E19B2D83100FFF778 /* DownLoad */ = {
@@ -567,7 +588,7 @@
 		F8F1FD9619A98C8800C5A7F7 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				F8FA3B8219B0644E00D478F9 /* Category */,
+				F8A9B73B19D3C92D0006B697 /* Category */,
 				F8FA3B6D19B0479C00D478F9 /* BaseView */,
 				F8FA3B7219B0479C00D478F9 /* PushBackClass */,
 				F8F1FD9719A98C8800C5A7F7 /* XZBaseButton.h */,
@@ -798,27 +819,6 @@
 				F8FA3B7819B0479C00D478F9 /* PushBackNavigationController.m */,
 			);
 			path = PushBackClass;
-			sourceTree = "<group>";
-		};
-		F8FA3B8219B0644E00D478F9 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				F8FA3B8319B0644E00D478F9 /* UIColor+XZ.h */,
-				F8FA3B8419B0644E00D478F9 /* UIColor+XZ.m */,
-				F8FA3B8C19B0655C00D478F9 /* UIFont+XZ.h */,
-				F8FA3B8D19B0655C00D478F9 /* UIFont+XZ.m */,
-				F8FA3B8519B0644E00D478F9 /* XZBaseButton+CornerRadius.h */,
-				F8FA3B8619B0644E00D478F9 /* XZBaseButton+CornerRadius.m */,
-				F8FA3B8719B0644E00D478F9 /* XZBaseButton+IconWithTitle.h */,
-				F8FA3B8819B0644E00D478F9 /* XZBaseButton+IconWithTitle.m */,
-				F8FA3B9319B06B3D00D478F9 /* UIImage+XZ.h */,
-				F8FA3B9419B06B3D00D478F9 /* UIImage+XZ.m */,
-				F8FA3B9619B06E7D00D478F9 /* UILabel+XZ.h */,
-				F8FA3B9719B06E7D00D478F9 /* UILabel+XZ.m */,
-				F8088FEC19D1AF8800797B9C /* UIViewController+TipsView.h */,
-				F8088FED19D1AF8800797B9C /* UIViewController+TipsView.m */,
-			);
-			path = Category;
 			sourceTree = "<group>";
 		};
 		F8FA3B8F19B0687400D478F9 /* ViewController */ = {
@@ -1069,23 +1069,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8A9B74D19D3C9350006B697 /* UILabel+XZ.m in Sources */,
 				F8D3C7C619C848E1004AFF2F /* XZWBLoginManager.m in Sources */,
 				F8C0886219B2D84700FFF778 /* XZDownLoadViewController.m in Sources */,
 				F8F1FD8319A9791D00C5A7F7 /* XZTabBarViewController.m in Sources */,
-				F8FA3B8919B0644E00D478F9 /* UIColor+XZ.m in Sources */,
-				F8FA3B9819B06E7D00D478F9 /* UILabel+XZ.m in Sources */,
 				F8C766DC19B2EB7D00C01953 /* XZLovingViewController.m in Sources */,
 				F8288EB219A77752008D5573 /* XZAppDelegate.m in Sources */,
 				F8FA3B7D19B0479C00D478F9 /* pushBackLock.m in Sources */,
 				F8F1FD7C19A977C100C5A7F7 /* XZLeftMenu.m in Sources */,
 				F8F1FD9919A98C8800C5A7F7 /* XZBaseButton.m in Sources */,
+				F8A9B74B19D3C9350006B697 /* UIFont+XZ.m in Sources */,
 				F8F1FD8619A9794500C5A7F7 /* XZTabBarForHomeViewController.m in Sources */,
+				F8A9B74F19D3C9350006B697 /* XZBaseButton+IconWithTitle.m in Sources */,
+				F8A9B75019D3C9350006B697 /* XZBaseViewController+TipsView.m in Sources */,
 				F8F1FD9F19A98DBF00C5A7F7 /* XZLineView.m in Sources */,
 				F8D3C7C519C848E1004AFF2F /* XZLoginForWBViewController.m in Sources */,
-				F8FA3B8E19B0655C00D478F9 /* UIFont+XZ.m in Sources */,
 				F8F1FD9419A988D800C5A7F7 /* XZMenuButton.m in Sources */,
+				F8A9B74C19D3C9350006B697 /* UIImage+XZ.m in Sources */,
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
-				F8FA3B9519B06B3D00D478F9 /* UIImage+XZ.m in Sources */,
+				F8A9B74A19D3C9350006B697 /* UIColor+XZ.m in Sources */,
+				F8A9B74E19D3C9350006B697 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8FA3B7A19B0479C00D478F9 /* XZBaseViewController.m in Sources */,
 				F8C766D819B2EB5A00C01953 /* XZSettingViewController.m in Sources */,
 				F8F1FD8919A9795E00C5A7F7 /* XZTabBarForMeViewController.m in Sources */,
@@ -1094,12 +1097,9 @@
 				F8C42C8419AF1CEC00DE0673 /* XZHeaderButton.m in Sources */,
 				F8F1FD7F19A978E100C5A7F7 /* XZMenuMainViewController.m in Sources */,
 				F88EECEC19CEA0D60041C4B3 /* XZWBLoginInfo.m in Sources */,
-				F8088FEE19D1AF8800797B9C /* UIViewController+TipsView.m in Sources */,
 				F8C766E019B2EBB900C01953 /* XZSearchViewController.m in Sources */,
 				F8FA3B8119B05D8500D478F9 /* UIBarButtonItem+NavItem.m in Sources */,
-				F8FA3B8A19B0644E00D478F9 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8FA3B7919B0479C00D478F9 /* XZBaseNaviViewController.m in Sources */,
-				F8FA3B8B19B0644E00D478F9 /* XZBaseButton+IconWithTitle.m in Sources */,
 				F8FA3B7E19B0479C00D478F9 /* PushBackNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

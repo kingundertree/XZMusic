@@ -1,19 +1,17 @@
 //
-//  UIViewController+TipsView.h
+//  XZBaseViewController+TipsView.h
 //  XZMusic
 //
-//  Created by xiazer on 14-9-23.
+//  Created by xiazer on 14-9-25.
 //  Copyright (c) 2014年 xiazer. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "XZBaseViewController.h"
 
-@interface UIViewController (TipsView)
-
+@interface XZBaseViewController (TipsView)
 - (void)showLoading;
 - (void)hideLoading;
 - (void)showTips:(NSString *)tips;
-- (void)showDetailTips:(NSString *)tips;
 - (void)hideHudTips;
 
 @end

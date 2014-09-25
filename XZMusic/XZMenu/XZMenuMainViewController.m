@@ -310,6 +310,10 @@
     }];
 }
 
+- (void)WBQuite{
+    
+}
+
 //获取微博用户信息
 - (void)requestWBUserInfo:(XZWBLoginInfo *)info{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

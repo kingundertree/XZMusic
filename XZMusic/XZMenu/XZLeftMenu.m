@@ -144,7 +144,14 @@
 #pragma mark
 #pragma 登录按钮点击
 - (void)doLogin:(id)sender{
-    [[XZAppDelegate sharedAppDelegate].menuMainVC WBLogin];
+    if (self.headerImgButton.headerImageView) {
+        [[XZAppDelegate sharedAppDelegate].menuMainVC WBQuite];
+        [self.headerImgButton WBLooginQuite];
+        
+        [(XZBaseViewController *)[XZAppDelegate sharedAppDelegate].menuMainVC showTips:@"退出登录成功"];
+    }else{
+        [[XZAppDelegate sharedAppDelegate].menuMainVC WBLogin];    
+    }
 }
 
 #pragma mark
@@ -152,6 +159,8 @@
 - (void)updateUserLoginInfo:(NSDictionary *)userInfoDic{
     [self.headerImgButton setTitle:@"" forState:UIControlStateNormal];
     [self.headerImgButton setimageWithUrl:userInfoDic[@"avatar_hd"]];
+
+    [(XZBaseViewController *)[XZAppDelegate sharedAppDelegate].menuMainVC showTips:@"微博登录成功"];
 }
 
 @end

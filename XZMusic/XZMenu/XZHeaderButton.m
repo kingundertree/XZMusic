@@ -10,7 +10,6 @@
 #import "UIImageView+AFnetworking.h"
 
 @interface XZHeaderButton ()
-@property(nonatomic, strong) UIImageView *headerImageView;
 @end
 
 @implementation XZHeaderButton
@@ -32,6 +31,13 @@
     self.headerImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     [self.headerImageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
     [self addSubview:self.headerImageView];
+}
+
+- (void)WBLooginQuite{
+    if (self.headerImageView) {
+        [self.headerImageView removeFromSuperview];
+        self.headerImageView = nil;
+    }
 }
 
 @end
