@@ -20,6 +20,15 @@
 		F8288EBD19A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
+		F88F477E19F3851E00F3118F /* XZRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F477B19F3851E00F3118F /* XZRequestManager.m */; };
+		F88F477F19F3851E00F3118F /* XZRequestResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F477D19F3851E00F3118F /* XZRequestResponse.m */; };
+		F88F478319F3876200F3118F /* XZApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F478219F3876200F3118F /* XZApiManager.m */; };
+		F88F478A19F38B4500F3118F /* XZNetService.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F478919F38B4500F3118F /* XZNetService.m */; };
+		F88F478D19F38BC100F3118F /* XZNetServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F478C19F38BC100F3118F /* XZNetServiceFactory.m */; };
+		F88F479119F38E8E00F3118F /* XZNetBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F479019F38E8E00F3118F /* XZNetBridge.m */; };
+		F88F479319F396DC00F3118F /* XZNetWorking.h in Sources */ = {isa = PBXBuildFile; fileRef = F88F479219F396DC00F3118F /* XZNetWorking.h */; };
+		F88F479A19F3A19E00F3118F /* XZMusicForBaidu.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F479919F3A19E00F3118F /* XZMusicForBaidu.m */; };
+		F88F479E19F3A86300F3118F /* XZRequestGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = F88F479D19F3A86300F3118F /* XZRequestGenerator.m */; };
 		F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */; };
 		F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75E19D3CAEA0006B697 /* XZWBLoginInfo.m */; };
 		F8A9B82519D3CAEA0006B697 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B76119D3CAEA0006B697 /* download@2x.png */; };
@@ -162,8 +171,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		254492C36D2B45C8E18B3CDC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		39553E8A0BB2EE8E912A8B3B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6DE61FDE33D3473AA45B7F01 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8D36750BFE44555902081CD /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F8288E9E19A77752008D5573 /* XZMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8288EA119A77752008D5573 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8288EA319A77752008D5573 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -180,6 +190,23 @@
 		F8288EC219A77752008D5573 /* XZMusicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XZMusicTests-Info.plist"; sourceTree = "<group>"; };
 		F8288EC419A77752008D5573 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
+		F88F477A19F3851E00F3118F /* XZRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZRequestManager.h; sourceTree = "<group>"; };
+		F88F477B19F3851E00F3118F /* XZRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZRequestManager.m; sourceTree = "<group>"; };
+		F88F477C19F3851E00F3118F /* XZRequestResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZRequestResponse.h; sourceTree = "<group>"; };
+		F88F477D19F3851E00F3118F /* XZRequestResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZRequestResponse.m; sourceTree = "<group>"; };
+		F88F478119F3876200F3118F /* XZApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZApiManager.h; sourceTree = "<group>"; };
+		F88F478219F3876200F3118F /* XZApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZApiManager.m; sourceTree = "<group>"; };
+		F88F478819F38B4500F3118F /* XZNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZNetService.h; sourceTree = "<group>"; };
+		F88F478919F38B4500F3118F /* XZNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZNetService.m; sourceTree = "<group>"; };
+		F88F478B19F38BC100F3118F /* XZNetServiceFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZNetServiceFactory.h; sourceTree = "<group>"; };
+		F88F478C19F38BC100F3118F /* XZNetServiceFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZNetServiceFactory.m; sourceTree = "<group>"; };
+		F88F478F19F38E8E00F3118F /* XZNetBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZNetBridge.h; sourceTree = "<group>"; };
+		F88F479019F38E8E00F3118F /* XZNetBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZNetBridge.m; sourceTree = "<group>"; };
+		F88F479219F396DC00F3118F /* XZNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZNetWorking.h; sourceTree = "<group>"; };
+		F88F479819F3A19E00F3118F /* XZMusicForBaidu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicForBaidu.h; sourceTree = "<group>"; };
+		F88F479919F3A19E00F3118F /* XZMusicForBaidu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicForBaidu.m; sourceTree = "<group>"; };
+		F88F479C19F3A86300F3118F /* XZRequestGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZRequestGenerator.h; sourceTree = "<group>"; };
+		F88F479D19F3A86300F3118F /* XZRequestGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZRequestGenerator.m; sourceTree = "<group>"; };
 		F8A9B75919D3CAEA0006B697 /* XZWBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginManager.h; sourceTree = "<group>"; };
 		F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginManager.m; sourceTree = "<group>"; };
 		F8A9B75D19D3CAEA0006B697 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
@@ -368,6 +395,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FE0B94153C75D371C598679 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				39553E8A0BB2EE8E912A8B3B /* Pods.debug.xcconfig */,
+				254492C36D2B45C8E18B3CDC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F8288E9519A77752008D5573 = {
 			isa = PBXGroup;
 			children = (
@@ -375,7 +411,7 @@
 				F8288EC019A77752008D5573 /* XZMusicTests */,
 				F8288EA019A77752008D5573 /* Frameworks */,
 				F8288E9F19A77752008D5573 /* Products */,
-				C8D36750BFE44555902081CD /* Pods.xcconfig */,
+				8FE0B94153C75D371C598679 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -443,6 +479,70 @@
 				F8288EC319A77752008D5573 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F88F477919F3851E00F3118F /* XZNetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				F88F479B19F3A81F00F3118F /* XZNETURL */,
+				F88F479219F396DC00F3118F /* XZNetWorking.h */,
+				F88F478E19F38E6B00F3118F /* XZBridge */,
+				F88F478719F38B0300F3118F /* XZNetService */,
+				F88F478019F3861600F3118F /* XZResponse */,
+				F88F477A19F3851E00F3118F /* XZRequestManager.h */,
+				F88F477B19F3851E00F3118F /* XZRequestManager.m */,
+				F88F478119F3876200F3118F /* XZApiManager.h */,
+				F88F478219F3876200F3118F /* XZApiManager.m */,
+			);
+			path = XZNetWorking;
+			sourceTree = "<group>";
+		};
+		F88F478019F3861600F3118F /* XZResponse */ = {
+			isa = PBXGroup;
+			children = (
+				F88F477C19F3851E00F3118F /* XZRequestResponse.h */,
+				F88F477D19F3851E00F3118F /* XZRequestResponse.m */,
+			);
+			name = XZResponse;
+			sourceTree = "<group>";
+		};
+		F88F478719F38B0300F3118F /* XZNetService */ = {
+			isa = PBXGroup;
+			children = (
+				F88F479719F3A10D00F3118F /* XZMusicServive */,
+				F88F478819F38B4500F3118F /* XZNetService.h */,
+				F88F478919F38B4500F3118F /* XZNetService.m */,
+				F88F478B19F38BC100F3118F /* XZNetServiceFactory.h */,
+				F88F478C19F38BC100F3118F /* XZNetServiceFactory.m */,
+			);
+			name = XZNetService;
+			sourceTree = "<group>";
+		};
+		F88F478E19F38E6B00F3118F /* XZBridge */ = {
+			isa = PBXGroup;
+			children = (
+				F88F478F19F38E8E00F3118F /* XZNetBridge.h */,
+				F88F479019F38E8E00F3118F /* XZNetBridge.m */,
+			);
+			name = XZBridge;
+			sourceTree = "<group>";
+		};
+		F88F479719F3A10D00F3118F /* XZMusicServive */ = {
+			isa = PBXGroup;
+			children = (
+				F88F479819F3A19E00F3118F /* XZMusicForBaidu.h */,
+				F88F479919F3A19E00F3118F /* XZMusicForBaidu.m */,
+			);
+			name = XZMusicServive;
+			sourceTree = "<group>";
+		};
+		F88F479B19F3A81F00F3118F /* XZNETURL */ = {
+			isa = PBXGroup;
+			children = (
+				F88F479C19F3A86300F3118F /* XZRequestGenerator.h */,
+				F88F479D19F3A86300F3118F /* XZRequestGenerator.m */,
+			);
+			name = XZNETURL;
 			sourceTree = "<group>";
 		};
 		F8A9B75719D3CAEA0006B697 /* Manager */ = {
@@ -849,8 +949,8 @@
 		F8A9B8A919D3CB7C0006B697 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				F88F477919F3851E00F3118F /* XZNetWorking */,
 				F8A9B8AA19D3CB7C0006B697 /* libWeiboSDK */,
-				F8A9B8AE19D3CB7C0006B697 /* XZNetWorking */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -863,13 +963,6 @@
 				F8A9B8AD19D3CB7C0006B697 /* WeiboSDK.h */,
 			);
 			path = libWeiboSDK;
-			sourceTree = "<group>";
-		};
-		F8A9B8AE19D3CB7C0006B697 /* XZNetWorking */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = XZNetWorking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1076,7 +1169,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DE9C6858993E45ACB6AB40F4 /* Check Pods Manifest.lock */ = {
@@ -1105,21 +1198,28 @@
 				F8A9B8A119D3CAEA0006B697 /* XZHeaderButton.m in Sources */,
 				F8A9B8A519D3CAEA0006B697 /* XZTabBarForHomeViewController.m in Sources */,
 				F8A9B88619D3CAEA0006B697 /* XZBaseViewController.m in Sources */,
+				F88F477F19F3851E00F3118F /* XZRequestResponse.m in Sources */,
 				F8A9B89B19D3CAEA0006B697 /* XZDownLoadViewController.m in Sources */,
 				F8A9B88D19D3CAEA0006B697 /* XZBaseViewController+TipsView.m in Sources */,
 				F8A9B88719D3CAEA0006B697 /* UIColor+XZ.m in Sources */,
+				F88F479E19F3A86300F3118F /* XZRequestGenerator.m in Sources */,
 				F8A9B89819D3CAEA0006B697 /* XZBaseButton.m in Sources */,
 				F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */,
 				F8A9B88519D3CAEA0006B697 /* XZBaseNaviViewController.m in Sources */,
+				F88F477E19F3851E00F3118F /* XZRequestManager.m in Sources */,
 				F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */,
+				F88F478D19F38BC100F3118F /* XZNetServiceFactory.m in Sources */,
 				F8288EB219A77752008D5573 /* XZAppDelegate.m in Sources */,
+				F88F479119F38E8E00F3118F /* XZNetBridge.m in Sources */,
 				F8A9B8A219D3CAEA0006B697 /* XZLeftMenu.m in Sources */,
 				F8A9B88419D3CAEA0006B697 /* UIBarButtonItem+NavItem.m in Sources */,
+				F88F479319F396DC00F3118F /* XZNetWorking.h in Sources */,
 				F8A9B8A619D3CAEA0006B697 /* XZTabBarForMeViewController.m in Sources */,
 				F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */,
 				F8A9B8A019D3CAEA0006B697 /* XZMusicPlayViewController.m in Sources */,
 				F8A9B88C19D3CAEA0006B697 /* XZBaseButton+IconWithTitle.m in Sources */,
 				F8A9B89C19D3CAEA0006B697 /* XZLoginForWBViewController.m in Sources */,
+				F88F478319F3876200F3118F /* XZApiManager.m in Sources */,
 				F8A9B89D19D3CAEA0006B697 /* XZLovingViewController.m in Sources */,
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
 				F8A9B8A719D3CAEA0006B697 /* XZTabBarView.m in Sources */,
@@ -1130,9 +1230,11 @@
 				F8A9B8A419D3CAEA0006B697 /* XZMenuMainViewController.m in Sources */,
 				F8A9B88919D3CAEA0006B697 /* UIImage+XZ.m in Sources */,
 				F8A9B89119D3CAEA0006B697 /* PushBackNavigationController.m in Sources */,
+				F88F479A19F3A19E00F3118F /* XZMusicForBaidu.m in Sources */,
 				F8A9B88B19D3CAEA0006B697 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8A9B89A19D3CAEA0006B697 /* XZLineView.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
+				F88F478A19F38B4500F3118F /* XZNetService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1246,7 +1348,7 @@
 		};
 		F8288ECB19A77752008D5573 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8D36750BFE44555902081CD /* Pods.xcconfig */;
+			baseConfigurationReference = 39553E8A0BB2EE8E912A8B3B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1265,7 +1367,7 @@
 		};
 		F8288ECC19A77752008D5573 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8D36750BFE44555902081CD /* Pods.xcconfig */;
+			baseConfigurationReference = 254492C36D2B45C8E18B3CDC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
