@@ -25,4 +25,15 @@
 
 + (id)shareInstance;
 
+@property (nonatomic, strong, readonly) NSString *publicKey;
+@property (nonatomic, strong, readonly) NSString *privateKey;
+@property (nonatomic, strong, readonly) NSString *apiBaseUrl;
+@property (nonatomic, strong, readonly) NSString *apiVersion;
+@property (nonatomic, strong, readonly) NSString *appName;
+
+@property (nonatomic, readonly) BOOL isOldApi;
+@property (nonatomic, readonly) BOOL isREST;
+
+@property (nonatomic, weak) id<XZNetServiceProtocal> child;
+
 @end

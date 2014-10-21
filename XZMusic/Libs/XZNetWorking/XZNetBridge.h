@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XZNetWorking.h"
 
 @interface XZNetBridge : NSObject
 

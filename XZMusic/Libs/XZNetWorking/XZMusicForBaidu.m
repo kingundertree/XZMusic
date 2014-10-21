@@ -10,4 +10,49 @@
 
 @implementation XZMusicForBaidu
 
+- (BOOL)isOnline
+{
+    return YES;
+}
+
+- (NSString *)onlineApiBaseUrl
+{
+    return @"";
+}
+
+- (NSString *)onlineApiVersion
+{
+    return @"";
+}
+
+- (NSString *)onlinePrivateKey
+{
+    return @"";
+}
+
+- (NSString *)onlinePublicKey
+{
+    return @"";;
+}
+
+- (NSString *)offlineApiBaseUrl
+{
+    return @"";
+}
+
+- (NSString *)offlineApiVersion
+{
+    return @"";
+}
+
+- (NSString *)offlinePrivateKey
+{
+    return @"";
+}
+
+- (NSString *)offlinePublicKey
+{
+    return @"";
+}
+
 @end

@@ -2,18 +2,18 @@
 //  XZNetServiceFactory.m
 //  XZMusic
 //
-//  Created by xiazer on 14/10/19.
+//  Created by xiazer on 14/10/21.
 //  Copyright (c) 2014年 xiazer. All rights reserved.
 //
 
 #import "XZNetServiceFactory.h"
-
+#import "XZMusicForBaidu.h"
 
 // XZMusic
-NSString * const NXZMusicServiceGet = @"NXZMusicServiceGet";
-NSString * const NXZMusicServicePost = @"NXZMusicServicePost";
-NSString * const NXZMusicServiceRESTGet = @"NXZMusicServiceRESTGet";
-NSString * const NXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
+NSString * const kXZMusicServiceGet = @"kXZMusicServiceGet";
+NSString * const kXZMusicServicePost = @"kXZMusicServicePost";
+NSString * const kXZMusicServiceRESTGet = @"kXZMusicServiceRESTGet";
+NSString * const kXZMusicServiceRESTPost = @"kXZMusicServiceRESTPost";
 
 @interface XZNetServiceFactory ()
 @property(nonatomic, strong) NSMutableDictionary *serviceStorage;
@@ -47,10 +47,11 @@ NSString * const NXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
 }
 
 - (XZNetService<XZNetServiceProtocal> *)newServiceWithIdentify:(NSString *)identify{
-    if ([identify isEqualToString:NXZMusicServiceGet]) {
+    if ([identify isEqualToString:kXZMusicServiceGet]) {
         return [[XZMusicForBaidu alloc] init];
     }
     return nil;
 }
+
 
 @end
