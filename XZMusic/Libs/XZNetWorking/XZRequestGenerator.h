@@ -11,6 +11,7 @@
 #import "XZNetServiceFactory.h"
 
 @interface XZRequestGenerator : NSObject
++ (instancetype)sharedInstance;
 
 - (NSURLRequest *)generateGETRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName;
 

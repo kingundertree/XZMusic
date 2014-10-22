@@ -8,6 +8,7 @@
 
 #import "XZRequestManager.h"
 #import "XZApiManager.h"
+#import "XZRequestResponse+XZNetMethod.h"
 
 @implementation XZRequestManager
 
@@ -21,9 +22,26 @@
 }
 
 #pragma mark --Normal request
-//- (XZRequestID)asyncGetWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)paras target:(id)target action:(SEL)action{
-//    
-//}
+- (XZRequestID)asyncGetWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)params target:(id)target action:(SEL)action
+{
+    NSInteger requestId = [[XZApiManager shareInstance] callGETWithParams:params
+                                                        serviceIdentifier:[XZNetBridge bridgeServiceWithId:serviceID]
+                                                               methodName:methodName
+                                                                  success:^(XZRequestResponse *response)
+    {
+        if ([target respondsToSelector:action]) {
+            [target performSelector:action withObject:[response returnNetworkResponse]];
+        }
+    } fail:^(XZRequestResponse *response) {
+        if ([target respondsToSelector:action]) {
+            [target performSelector:action withObject:[response returnNetworkResponse]];
+        }
+    }];
+    
+    return (XZRequestID)requestId;
+}
+
+
 //- (XZRequestID)asyncPostWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)paras target:(id)target action:(SEL)action;
 - (XZRequestResponse *)syncGetWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)params{
     if ([self isRest:serviceID]) {
@@ -31,8 +49,6 @@
     }
     
     return [[XZApiManager shareInstance] callGETWithParams:params serviceIdentifier:[XZNetBridge bridgeServiceWithId:serviceID] methodName:methodName];
-    
-    return nil;
 }
 //- (XZRequestResponse *)syncPostWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSString *)params;
 

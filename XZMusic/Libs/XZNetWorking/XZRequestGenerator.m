@@ -25,6 +25,18 @@
 
 @implementation XZRequestGenerator
 
+#pragma mark - public methods
++ (instancetype)sharedInstance
+{
+    static dispatch_once_t onceToken;
+    static XZRequestGenerator *sharedInstance = nil;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[XZRequestGenerator alloc] init];
+    });
+    return sharedInstance;
+}
+
+
 #pragma mark - getters and setters
 - (AFHTTPRequestSerializer *)httpRequestSerializer{
     if (_httpRequestSerializer == nil) {

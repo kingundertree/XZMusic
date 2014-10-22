@@ -170,6 +170,7 @@
 		F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B82019D3CAEA0006B697 /* XZTabBarViewController.m */; };
 		F8A9B8AF19D3CB7C0006B697 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */; };
 		F8A9B8B019D3CB7C0006B697 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */; };
+		F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -404,6 +405,8 @@
 		F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		F8A9B8AD19D3CB7C0006B697 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		F8B5AD3C19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZRequestResponse+XZNetMethod.h"; sourceTree = "<group>"; };
+		F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZRequestResponse+XZNetMethod.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -524,12 +527,12 @@
 				F85E4F0B19F6910000AA6DE1 /* Components */,
 				F85E4F0719F6907400AA6DE1 /* Assist */,
 				F85E4F0619F68EF800AA6DE1 /* XZSignatureGenerator */,
-				F85E4EFA19F68EEC00AA6DE1 /* XZApiManager.h */,
-				F85E4EFB19F68EEC00AA6DE1 /* XZApiManager.m */,
 				F85E4EFC19F68EEC00AA6DE1 /* XZRequestGenerator.h */,
 				F85E4EFD19F68EEC00AA6DE1 /* XZRequestGenerator.m */,
 				F85E4EFE19F68EEC00AA6DE1 /* XZRequestManager.h */,
 				F85E4EFF19F68EEC00AA6DE1 /* XZRequestManager.m */,
+				F85E4EFA19F68EEC00AA6DE1 /* XZApiManager.h */,
+				F85E4EFB19F68EEC00AA6DE1 /* XZApiManager.m */,
 				F85E4EE019F6885900AA6DE1 /* XZNetService */,
 				F85E4EDC19F6883B00AA6DE1 /* XZResponse */,
 				F85E4ED819F6881500AA6DE1 /* XZNetBridge */,
@@ -555,6 +558,8 @@
 				F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */,
 				F85E4F2119F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.h */,
 				F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */,
+				F8B5AD3C19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.h */,
+				F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1327,6 +1332,7 @@
 				F8A9B88919D3CAEA0006B697 /* UIImage+XZ.m in Sources */,
 				F85E4F1D19F6958D00AA6DE1 /* XZDeviceInfo.m in Sources */,
 				F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */,
+				F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */,
 				F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */,
 				F8A9B89119D3CAEA0006B697 /* PushBackNavigationController.m in Sources */,
 				F8A9B88B19D3CAEA0006B697 /* XZBaseButton+CornerRadius.m in Sources */,

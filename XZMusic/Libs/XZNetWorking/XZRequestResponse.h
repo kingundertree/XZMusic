@@ -10,7 +10,7 @@
 
 NS_ENUM(NSInteger, XZNetWorkingResponseStatus){
     XZNetWorkingResponseStatusSuccess,
-    XZNetWorkingResponseStatusFailed,
+    XZNetWorkingResponseStatusTimeOut,
     XZNetWorkingResponseStatusError
 };
 
@@ -21,6 +21,15 @@ typedef unsigned int XZServiceType;
 
 @property(nonatomic, assign) XZRequestID requestID;
 @property(nonatomic, assign) enum XZNetWorkingResponseStatus status;
-@property(nonatomic, strong) NSDictionary *content;
+//@property(nonatomic, strong) NSDictionary *content;
+@property (nonatomic, copy) NSDictionary *requestParams;
+@property (nonatomic, copy, readwrite) id content;
+
+
+- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData status:(enum XZNetWorkingResponseStatus)status;
+
+- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData error:(NSError *)error;
+- (void)updateWithContent:(id)content requestId:(NSInteger)requestId status:(enum XZNetWorkingResponseStatus)status;
+@property (nonatomic, assign, readwrite) NSInteger requestId;
 
 @end
