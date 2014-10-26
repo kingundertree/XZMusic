@@ -10,7 +10,7 @@
 
 @interface NSArray (XZNetMethod)
 
-- (NSString *)XZNet_jsonString;
+- (NSString *)XZNet_ArrTojsonString;
 - (NSString *)XZNet_paramsString;
 
 @end

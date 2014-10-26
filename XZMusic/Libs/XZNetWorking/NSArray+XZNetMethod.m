@@ -28,7 +28,7 @@
 }
 
 /** 数组变json */
-- (NSString *)XZNet_jsonString
+- (NSString *)XZNet_ArrTojsonString
 {
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:NULL];
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

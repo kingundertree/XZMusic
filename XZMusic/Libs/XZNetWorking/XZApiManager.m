@@ -52,8 +52,19 @@
     }
     
     NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    
 
+    return [self callApiWithRequestSynchronously:request];
+}
+
+- (XZRequestResponse *)callPostWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName{
+    XZNetService *service = [[XZNetServiceFactory shareInstance] serviceWithIdentifier:servieIdentifier];
+    
+    if (service.isREST) {
+        return nil;
+    }
+    
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generatePostRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    
     return [self callApiWithRequestSynchronously:request];
 }
 
@@ -90,6 +101,55 @@
     return [requestId integerValue];
 }
 
+
+- (NSInteger)callPostWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(XZCallback)success fail:(XZCallback)fail
+{
+    XZNetService *service = [[XZNetServiceFactory shareInstance] serviceWithIdentifier:servieIdentifier];
+    
+    if (service.isREST) {
+        return 0;
+    }
+    
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    
+    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+    return [requestId integerValue];
+    
+//    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generatePOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+//    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+//    return [requestId integerValue];
+
+}
+
+- (NSInteger)callRestfulGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(XZCallback)success fail:(XZCallback)fail{
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateRestfulGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+    
+    return [requestId integerValue];
+}
+
+- (NSInteger)callRestfulPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(XZCallback)success fail:(XZCallback)fail{
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateRestfulPOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
+    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
+    
+    return [requestId integerValue];
+}
+
+- (XZRequestResponse *)callRestfulPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName
+{
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateRestfulPOSTRequestWithServiceIdentifier:servieIdentifier
+                                                                                                   requestParams:params
+                                                                                                      methodName:methodName];
+    return [self callApiWithRequestSynchronously:request];
+}
+
+- (XZRequestResponse *)callRestfulGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName
+{
+    NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateRestfulGETRequestWithServiceIdentifier:servieIdentifier
+                                                                                                   requestParams:params
+                                                                                                      methodName:methodName];
+    return [self callApiWithRequestSynchronously:request];
+}
 
 #pragma mark - private methods
 /** AFNetworking 核心功能 */
