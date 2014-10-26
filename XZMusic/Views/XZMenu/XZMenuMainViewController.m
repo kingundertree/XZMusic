@@ -325,6 +325,11 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         DLog(@"微博用户信息获取失败");
     }];
+    
+//    NSString *method = @"users/show.json";
+//    NSDictionary *params = @{@"uid":info.userId,@"access_token":info.accessToken};
+    
+//    [[XZRequestManager shareInstance] asyncGetWithServiceID:XZMusicGetServiceID methodName:method params:params target:self action:@selector(weiboInfoReturn:)];
 }
 
 - (void)didReceiveMemoryWarning

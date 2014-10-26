@@ -10,11 +10,11 @@
 #import "XZRequestResponse.h"
 #import "XZNetBridge.h"
 
-unsigned int XZMusicGetServiceID;
-unsigned int XZMusicPostServiceID;
-unsigned int XZMusicRESTGetServiceID;
-unsigned int XZMusicRESTPostServiceID;
-
+unsigned int XZMusicGetServiceID = 0;
+unsigned int XZMusicPostServiceID = 1;
+unsigned int XZMusicRESTGetServiceID = 2;
+unsigned int XZMusicRESTPostServiceID = 3;
+unsigned int XZWeiboGetServiceID = 4;
 
 @interface XZRequestManager : NSObject
 
