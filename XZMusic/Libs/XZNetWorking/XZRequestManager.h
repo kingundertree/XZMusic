@@ -15,6 +15,7 @@ unsigned int XZMusicPostServiceID;
 unsigned int XZMusicRESTGetServiceID;
 unsigned int XZMusicRESTPostServiceID;
 
+
 @interface XZRequestManager : NSObject
 
 + (id)shareInstance;
