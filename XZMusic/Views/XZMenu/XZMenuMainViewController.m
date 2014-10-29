@@ -13,6 +13,7 @@
 #import "PushBackNavigationController.h"
 #import "XZMusicPlayViewController.h"
 #import "XZWBLoginManager.h"
+#import "XZRequestManager.h"
 
 @interface XZMenuMainViewController ()
 @property(nonatomic, strong) XZLeftMenu *leftMenu;
@@ -316,20 +317,24 @@
 
 //获取微博用户信息
 - (void)requestWBUserInfo:(XZWBLoginInfo *)info{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:[NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?uid=%@&access_token=%@",info.userId,info.accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            [self.leftMenu updateUserLoginInfo:responseObject];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        DLog(@"微博用户信息获取失败");
-    }];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:[NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?uid=%@&access_token=%@",info.userId,info.accessToken] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        NSLog(@"JSON: %@", responseObject);
+//        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//            [self.leftMenu updateUserLoginInfo:responseObject];
+//        }
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        DLog(@"微博用户信息获取失败");
+//    }];
     
-//    NSString *method = @"users/show.json";
-//    NSDictionary *params = @{@"uid":info.userId,@"access_token":info.accessToken};
+    NSString *method = @"users/show.json";
+    NSDictionary *params = @{@"uid":info.userId,@"access_token":info.accessToken};
+
+    [[XZRequestManager shareInstance] asyncGetWithServiceID:XZWeiboGetServiceID methodName:method params:params target:self action:@selector(weiboInfoReturn:)];
+}
+
+- (void)weiboInfoReturn:(XZRequestResponse *)response{
     
-//    [[XZRequestManager shareInstance] asyncGetWithServiceID:XZMusicGetServiceID methodName:method params:params target:self action:@selector(weiboInfoReturn:)];
 }
 
 - (void)didReceiveMemoryWarning

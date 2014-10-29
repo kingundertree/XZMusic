@@ -7,6 +7,7 @@
 //
 
 #import "XZAppDelegate.h"
+#import "XZRequestManager.h"
 
 @interface XZAppDelegate ()
 @end
@@ -20,6 +21,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // XZNet 初始化
+    [XZRequestManager initServieId];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [application setStatusBarStyle:UIStatusBarStyleLightContent];//黑体白字

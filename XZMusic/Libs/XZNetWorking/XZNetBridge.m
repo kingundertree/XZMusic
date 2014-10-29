@@ -8,18 +8,17 @@
 
 #import "XZNetBridge.h"
 
-unsigned int XZMusicGetServiceID;
-unsigned int XZMusicPostServiceID;
-unsigned int XZMusicRESTGetServiceID;
-unsigned int XZMusicRESTPostServiceID;
-
 static unsigned int RTServiceID = 0;
 static NSArray *bridgeServiceTypeMap = nil;
 
+// music
 NSString * const NXZMusicServiceGet = @"NXZMusicServiceGet";
 NSString * const NXZMusicServicePost = @"NXZMusicServicePost";
 NSString * const NXZMusicServiceRESTGet = @"NXZMusicServiceRESTGet";
 NSString * const NXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
+
+// weibo
+NSString * const NXZWeiboServiceGet = @"NXZWeiboServiceGet";
 
 
 @interface XZNetBridge ()
@@ -37,16 +36,18 @@ NSString * const NXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
     return sharedInstance;
 }
 
-+ (void)initialize{
++ (void)initServieId{
     bridgeServiceTypeMap = @[NXZMusicServiceGet,
                              NXZMusicServicePost,
                              NXZMusicServiceRESTGet,
-                             NXZMusicServiceRESTPost];
+                             NXZMusicServiceRESTPost,
+                             NXZWeiboServiceGet];
  
     XZMusicGetServiceID = RTServiceID;
     XZMusicPostServiceID = [self nextService];
     XZMusicRESTGetServiceID = [self nextService];
     XZMusicRESTPostServiceID = [self nextService];
+    XZWeiboGetServiceID = [self nextService];
 }
 
 + (NSString *)bridgeServiceWithId:(unsigned int)serviceId{

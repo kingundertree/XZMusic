@@ -58,7 +58,7 @@ static NSTimeInterval kAIFNetworkingTimeoutSeconds = 20.0f;
     XZNetService *service = [[XZNetServiceFactory shareInstance] serviceWithIdentifier:serviceIdentifier];
 
     NSMutableDictionary *sigParams = [NSMutableDictionary dictionaryWithDictionary:requestParams];
-    sigParams[@"api_key"] = service.publicKey;
+//    sigParams[@"api_key"] = service.publicKey;
     NSString *signature = [XZSignatureGenerator signGetWithSigParams:sigParams methodName:methodName apiVersion:service.apiVersion privateKey:service.privateKey publicKey:service.publicKey];
 
     NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:[XZNetCommonParamsGenerator commonParamsDictionary]];

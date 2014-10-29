@@ -11,13 +11,13 @@
 #import "XZMusicForWeibo.h"
 
 // XZMusic
-NSString * const kXZMusicServiceGet = @"kXZMusicServiceGet";
-NSString * const kXZMusicServicePost = @"kXZMusicServicePost";
-NSString * const kXZMusicServiceRESTGet = @"kXZMusicServiceRESTGet";
-NSString * const kXZMusicServiceRESTPost = @"kXZMusicServiceRESTPost";
+NSString * const kXZMusicServiceGet = @"NXZMusicServiceGet";
+NSString * const kXZMusicServicePost = @"NXZMusicServicePost";
+NSString * const kXZMusicServiceRESTGet = @"NXZMusicServiceRESTGet";
+NSString * const kXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
 
 // weibo
-NSString * const kXZWeiboServiceRESTPost = @"kXZWeiboServiceGet";
+NSString * const kXZWeiboServiceRESTPost = @"NXZWeiboServiceGet";
 
 @interface XZNetServiceFactory ()
 @property(nonatomic, strong) NSMutableDictionary *serviceStorage;
