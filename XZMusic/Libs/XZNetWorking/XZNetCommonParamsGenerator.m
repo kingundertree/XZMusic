@@ -14,23 +14,23 @@
 + (NSDictionary *)commonParamsDictionary
 {
     XZAppContext *context = [XZAppContext sharedInstance];
-    return @{
-             @"cid":context.cid,
-             @"ostype2":context.ostype2,
-             @"udid2":context.udid2,
-             @"uuid2":context.uuid2,
-             @"app":context.appName,
-             @"cv":context.cv,
-             @"from":context.from,
-             @"m":context.m,
-             @"macid":context.macid,
-             @"o":context.o,
-             @"pm":context.pm,
-             @"qtime":context.qtime,
-             @"uuid":context.uuid,
-             @"i":context.i,
-             @"v":context.v
-             };
+    
+    //@"cid":context.cid,
+    return @{@"ostype2":context.ostype2,
+                                  @"udid2":context.udid2,
+                                  @"uuid2":context.uuid2,
+                                  @"app":context.appName,
+                                  @"cv":context.cv,
+                                  @"from":context.from,
+                                  @"m":context.m,
+                                  @"macid":context.macid,
+                                  @"o":context.o,
+                                  @"pm":context.pm,
+                                  @"qtime":context.qtime,
+                                  @"uuid":context.uuid,
+                                  @"i":context.i,
+                                  @"v":context.v
+                                  };
 }
 
 + (NSDictionary *)commonParamsDictionaryForLog

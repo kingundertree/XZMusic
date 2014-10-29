@@ -114,13 +114,13 @@
     return _from;
 }
 
-//- (NSString *)ostype2
-//{
-//    if (_ostype2 == nil) {
-//        _ostype2 = [self.device.XZNet_ostype XZNet_defaultValue:@""];
-//    }
-//    return _ostype2;
-//}
+- (NSString *)ostype2
+{
+    if (_ostype2 == nil) {
+        _ostype2 = [self.device.XZNet_ostype XZNet_defaultValue:@""];
+    }
+    return _ostype2;
+}
 
 - (NSString *)uuid2
 {
@@ -175,7 +175,7 @@
 - (NSString *)appName
 {
     if (_appName == nil) {
-        _appName = @"i-ajk";
+        _appName = @"XZ_Music";
     }
     return _appName;
 }

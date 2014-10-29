@@ -63,7 +63,8 @@ static NSTimeInterval kAIFNetworkingTimeoutSeconds = 20.0f;
 
     NSMutableDictionary *allParams = [NSMutableDictionary dictionaryWithDictionary:[XZNetCommonParamsGenerator commonParamsDictionary]];
     [allParams addEntriesFromDictionary:sigParams];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?%@&sig=%@", service.apiBaseUrl, service.apiVersion, methodName, [allParams XZNet_urlParamsStringSignature:NO], signature];
+//    NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?%@&sig=%@", service.apiBaseUrl, service.apiVersion, methodName, [allParams XZNet_urlParamsStringSignature:NO], signature];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@?%@&sig=%@", service.apiBaseUrl, methodName, [allParams XZNet_urlParamsStringSignature:NO], signature];
 
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:NULL];
     request.timeoutInterval = 20;

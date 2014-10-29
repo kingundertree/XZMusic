@@ -15,7 +15,8 @@
 
 + (NSString *)signGetWithSigParams:(NSDictionary *)allParams methodName:(NSString *)methodName apiVersion:(NSString *)apiVersion privateKey:(NSString *)privateKey publicKey:(NSString *)publicKey{
     NSString *sigString = [allParams XZNet_urlParamsStringSignature:YES];
-    return [[NSString stringWithFormat:@"%@%@", sigString, privateKey] STR_md5];
+    NSString *sigWithKeyString = [NSString stringWithFormat:@"%@%@", sigString, privateKey ? privateKey : @""];
+    return [sigWithKeyString STR_md5];
 }
 
 + (NSString *)signPostWithApiParams:(NSDictionary *)apiParams privateKey:(NSString *)privateKey publicKey:(NSString *)publicKey{

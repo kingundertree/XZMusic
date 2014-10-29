@@ -9,20 +9,21 @@
 #import "NSObject+XZNetMethod.h"
 
 @implementation NSObject (XZNetMethod)
-- (id)XZnet_defaultValue:(id)defaultData
+
+- (id)XZNet_defaultValue:(id)defaultData
 {
     if (![defaultData isKindOfClass:[self class]]) {
         return defaultData;
     }
     
-    if ([self XZnet_isEmptyObject]) {
+    if ([self XZNet_isEmptyObject]) {
         return defaultData;
     }
     
     return self;
 }
 
-- (BOOL)XZnet_isEmptyObject
+- (BOOL)XZNet_isEmptyObject
 {
     if ([self isEqual:[NSNull null]]) {
         return YES;

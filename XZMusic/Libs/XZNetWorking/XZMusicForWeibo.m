@@ -18,7 +18,7 @@
 
 - (NSString *)onlineApiBaseUrl
 {
-    return @"";
+    return @"https://api.weibo.com/2/";
 }
 
 - (NSString *)onlineApiVersion
@@ -38,7 +38,7 @@
 
 - (NSString *)offlineApiBaseUrl
 {
-    return @"";
+    return @"https://api.weibo.com/2";
 }
 
 - (NSString *)offlineApiVersion
