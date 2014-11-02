@@ -41,6 +41,7 @@
 		F85E4F1D19F6958D00AA6DE1 /* XZDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F1C19F6958D00AA6DE1 /* XZDeviceInfo.m */; };
 		F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */; };
 		F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */; };
+		F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87143D01A05DCAF00CF0447 /* Launch Screen.xib */; };
 		F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */; };
 		F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75E19D3CAEA0006B697 /* XZWBLoginInfo.m */; };
 		F8A9B82519D3CAEA0006B697 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B76119D3CAEA0006B697 /* download@2x.png */; };
@@ -246,6 +247,7 @@
 		F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		F85E4F2119F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+XZNetMethod.h"; sourceTree = "<group>"; };
 		F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+XZNetMethod.m"; sourceTree = "<group>"; };
+		F87143D01A05DCAF00CF0447 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		F8A9B75919D3CAEA0006B697 /* XZWBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginManager.h; sourceTree = "<group>"; };
 		F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginManager.m; sourceTree = "<group>"; };
 		F8A9B75D19D3CAEA0006B697 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 		F8288E9519A77752008D5573 = {
 			isa = PBXGroup;
 			children = (
+				F87143D01A05DCAF00CF0447 /* Launch Screen.xib */,
 				F8288EA719A77752008D5573 /* XZMusic */,
 				F8288EC019A77752008D5573 /* XZMusicTests */,
 				F8288EA019A77752008D5573 /* Frameworks */,
@@ -1179,6 +1182,7 @@
 				F8A9B85119D3CAEA0006B697 /* thumb_down-25.png in Resources */,
 				F8A9B85A19D3CAEA0006B697 /* thumb_up-256.png in Resources */,
 				F8A9B87919D3CAEA0006B697 /* logo_57.png in Resources */,
+				F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */,
 				F8A9B82B19D3CAEA0006B697 /* music-32.png in Resources */,
 				F8A9B82919D3CAEA0006B697 /* music-25.png in Resources */,
 				F8A9B87119D3CAEA0006B697 /* wifi-25.png in Resources */,
