@@ -37,5 +37,8 @@ typedef NS_ENUM(NSUInteger, XZNetworkDetailStatus)
 - (XZRequestResponse *)callRestfulPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName;
 - (XZRequestResponse *)callRestfulGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName;
 
-
+#pragma mark - Cancel request
+- (void)cancelRequest:(XZRequestID)requestID;
+- (void)cancelRequestsWithTarget:(id)target;
+- (void)cancelRequestWithRequestID:(NSNumber *)requestID;
 @end

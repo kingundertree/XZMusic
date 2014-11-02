@@ -257,6 +257,31 @@
 //    [AIFPerformanceReporter reportWithModel:model];
 //}
 
+#pragma mark - Cancel requests
+- (void)cancelRequest:(XZRequestID)requestID
+{
+    [[XZApiManager shareInstance] cancelRequestWithRequestID:@(requestID)];
+}
+
+- (void)cancelRequestsWithTarget:(id)target
+{
+    
+}
+
+- (void)cancelRequestWithRequestID:(NSNumber *)requestID
+{
+    NSOperation *requestOperation = self.dispatchTable[requestID];
+    [requestOperation cancel];
+    [self.dispatchTable removeObjectForKey:requestID];
+}
+
+- (void)cancelRequestWithRequestIDList:(NSArray *)requestIDList
+{
+    for (NSNumber *requestId in requestIDList) {
+        [self cancelRequestWithRequestID:requestId];
+    }
+}
+
 - (NSNumber *)generateRequestId
 {
     if (_recordedRequestId == nil) {

@@ -35,11 +35,15 @@
                                                                   success:^(XZRequestResponse *response)
     {
         if ([target respondsToSelector:action]) {
-            [target performSelector:action withObject:[response returnNetworkResponse]];
+            SuppressPerformSelectorLeakWarning(
+                                               [target performSelector:action withObject:[response returnNetworkResponse]]
+                                               );
         }
     } fail:^(XZRequestResponse *response) {
         if ([target respondsToSelector:action]) {
-            [target performSelector:action withObject:[response returnNetworkResponse]];
+            SuppressPerformSelectorLeakWarning(
+                                               [target performSelector:action withObject:[response returnNetworkResponse]]
+                                               );
         }
     }];
     
@@ -54,11 +58,15 @@
                                                                    success:^(XZRequestResponse *response)
                            {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            } fail:^(XZRequestResponse *response) {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            }];
     
@@ -87,12 +95,16 @@
                            ^(XZRequestResponse *response)
                            {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            }fail:^(XZRequestResponse *response)
                            {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            }];
 
@@ -107,13 +119,17 @@
                                                                           success:^(XZRequestResponse *response)
                            {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            }
                                                                              fail:^(XZRequestResponse *response)
                            {
                                if ([target respondsToSelector:action]) {
-                                   [target performSelector:action withObject:[response returnNetworkResponse]];
+                                   SuppressPerformSelectorLeakWarning(
+                                                                      [target performSelector:action withObject:[response returnNetworkResponse]]
+                                                                      );
                                }
                            }];
 
@@ -127,6 +143,16 @@
     return [[XZApiManager shareInstance] callRestfulGETWithParams:params serviceIdentifier:[XZNetBridge bridgeServiceWithId:serviceID] methodName:methodName];
 }
 
+#pragma mark - Cancel requests
+- (void)cancelRequest:(XZRequestID)requestID
+{
+    [[XZApiManager shareInstance] cancelRequestWithRequestID:@(requestID)];
+}
+
+- (void)cancelRequestsWithTarget:(id)target
+{
+    //    [apiRequestProxy cancelRequestsWithTarget:target];
+}
 
 - (BOOL)isRest:(XZServiceType)serviceID{
     if (serviceID == XZMusicGetServiceID ||
