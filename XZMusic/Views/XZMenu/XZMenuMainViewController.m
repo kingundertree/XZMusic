@@ -334,7 +334,13 @@
 }
 
 - (void)weiboInfoReturn:(XZRequestResponse *)response{
-    
+    if (response.status == XZNetWorkingResponseStatusSuccess) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            [self.leftMenu updateUserLoginInfo:response.content];
+        }
+    }else{
+        DLog(@"微博用户信息获取失败");
+    };
 }
 
 - (void)didReceiveMemoryWarning

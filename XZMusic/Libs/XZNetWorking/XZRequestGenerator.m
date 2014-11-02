@@ -18,6 +18,7 @@
 #import "XZNetService.h"
 #import "AFURLRequestSerialization.h"
 #import "NSURLRequest+XZNetMethod.h"
+#import "XZNetServiceFactory.h"
 
 static NSString * const httpMethodRestfulGet = @"GET";
 static NSString * const httpMethodRestfulPost = @"POST";
@@ -74,7 +75,7 @@ static NSTimeInterval kAIFNetworkingTimeoutSeconds = 20.0f;
 }
 
 - (NSURLRequest *)generatePostRequestWithServiceIdentifier:(NSString *)serviceIdentifier requestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName{
-    XZNetService *service = [[XZNetService shareInstance] serviceWithIdentifier:serviceIdentifier];
+    XZNetService *service = [[XZNetServiceFactory shareInstance] serviceWithIdentifier:serviceIdentifier];
     
     NSString *signature = [XZSignatureGenerator signPostWithApiParams:requestParams privateKey:service.privateKey publicKey:service.publicKey];
     NSString *urlString = [NSString stringWithFormat:@"%@%@/%@?api_key=%@&sig=%@&%@", service.apiBaseUrl, service.apiVersion, methodName, service.publicKey, signature, [[XZNetCommonParamsGenerator commonParamsDictionary] XZNet_urlParamsStringSignature:NO]];

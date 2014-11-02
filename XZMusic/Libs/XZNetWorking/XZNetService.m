@@ -7,18 +7,45 @@
 //
 
 #import "XZNetService.h"
+#import "XZAppContext.h"
 
 @implementation XZNetService
 
+//+ (id)shareInstance{
+//    static dispatch_once_t pred;
+//    static XZNetService *sharedInstance = nil;
+//    dispatch_once(&pred, ^{
+//        sharedInstance = [[XZNetService alloc] init];
+//    });
+//    return sharedInstance;
+//}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        if ([self conformsToProtocol:@protocol(XZNetServiceProtocal)]) {
+            self.child = (id<XZNetServiceProtocal>)self;
+        }
+    }
+    return self;
+}
 
-+ (id)shareInstance{
-    static dispatch_once_t pred;
-    static XZNetService *sharedInstance = nil;
-    dispatch_once(&pred, ^{
-        sharedInstance = [[XZNetService alloc] init];
-    });
-    return sharedInstance;
+#pragma mark - getters and setters
+
+- (BOOL)isOldApi
+{
+    return NO;
+}
+
+- (BOOL)isREST
+{
+    return NO;
+}
+
+- (NSString *)appName
+{
+    return [[XZAppContext sharedInstance] appName];
 }
 
 - (NSString *)privateKey

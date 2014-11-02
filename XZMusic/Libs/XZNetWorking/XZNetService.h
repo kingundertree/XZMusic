@@ -23,7 +23,7 @@
 
 @interface XZNetService : NSObject
 
-+ (id)shareInstance;
+//+ (id)shareInstance;
 
 @property (nonatomic, strong, readonly) NSString *publicKey;
 @property (nonatomic, strong, readonly) NSString *privateKey;

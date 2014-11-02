@@ -155,10 +155,9 @@
 /** AFNetworking 核心功能 */
 - (NSNumber *)callApiWithRequest:(NSURLRequest *)request success:(XZCallback)success fail:(XZCallback)fail
 {
-    return 0;
     // 之所以不用getter，是因为如果放到getter里面的话，每次调用self.recordedRequestId的时候值就都变了，违背了getter的初衷
     NSNumber *requestId = [self generateRequestId];
-    NSTimeInterval time = [NSDate timeIntervalSinceReferenceDate];
+//    NSTimeInterval time = [NSDate timeIntervalSinceReferenceDate];
     
     // 跑到这里的block的时候，就已经是主线程了。
     AFHTTPRequestOperation *httpRequestOperation = [self.operationManager HTTPRequestOperationWithRequest:request
