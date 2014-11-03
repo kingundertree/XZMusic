@@ -172,6 +172,8 @@
 		F8A9B8AF19D3CB7C0006B697 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */; };
 		F8A9B8B019D3CB7C0006B697 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */; };
 		F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */; };
+		F8BFA5521A07ADE600577C19 /* XZNetDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFA5511A07ADE600577C19 /* XZNetDebug.m */; };
+		F8BFA5581A07B05300577C19 /* NSMutableString+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFA5571A07B05300577C19 /* NSMutableString+XZNetMethod.m */; };
 		F8CD339B19FD1ECB001A55C6 /* XZMusicForWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CD339A19FD1ECB001A55C6 /* XZMusicForWeibo.m */; };
 /* End PBXBuildFile section */
 
@@ -410,6 +412,10 @@
 		F8A9B8AD19D3CB7C0006B697 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		F8B5AD3C19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZRequestResponse+XZNetMethod.h"; sourceTree = "<group>"; };
 		F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZRequestResponse+XZNetMethod.m"; sourceTree = "<group>"; };
+		F8BFA5501A07ADE600577C19 /* XZNetDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZNetDebug.h; sourceTree = "<group>"; };
+		F8BFA5511A07ADE600577C19 /* XZNetDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZNetDebug.m; sourceTree = "<group>"; };
+		F8BFA5561A07B05300577C19 /* NSMutableString+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+XZNetMethod.h"; sourceTree = "<group>"; };
+		F8BFA5571A07B05300577C19 /* NSMutableString+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+XZNetMethod.m"; sourceTree = "<group>"; };
 		F8CD339919FD1ECB001A55C6 /* XZMusicForWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicForWeibo.h; sourceTree = "<group>"; };
 		F8CD339A19FD1ECB001A55C6 /* XZMusicForWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicForWeibo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -530,6 +536,7 @@
 		F85E4EB219F687B900AA6DE1 /* XZNetWorking */ = {
 			isa = PBXGroup;
 			children = (
+				F8BFA54F1A07ADC000577C19 /* Dedug */,
 				F85E4F0B19F6910000AA6DE1 /* Components */,
 				F85E4F0719F6907400AA6DE1 /* Assist */,
 				F85E4F0619F68EF800AA6DE1 /* XZSignatureGenerator */,
@@ -566,6 +573,8 @@
 				F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */,
 				F8B5AD3C19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.h */,
 				F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */,
+				F8BFA5561A07B05300577C19 /* NSMutableString+XZNetMethod.h */,
+				F8BFA5571A07B05300577C19 /* NSMutableString+XZNetMethod.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1064,6 +1073,15 @@
 			path = libWeiboSDK;
 			sourceTree = "<group>";
 		};
+		F8BFA54F1A07ADC000577C19 /* Dedug */ = {
+			isa = PBXGroup;
+			children = (
+				F8BFA5501A07ADE600577C19 /* XZNetDebug.h */,
+				F8BFA5511A07ADE600577C19 /* XZNetDebug.m */,
+			);
+			name = Dedug;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1306,6 +1324,7 @@
 				F8A9B88719D3CAEA0006B697 /* UIColor+XZ.m in Sources */,
 				F8A9B89819D3CAEA0006B697 /* XZBaseButton.m in Sources */,
 				F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */,
+				F8BFA5581A07B05300577C19 /* NSMutableString+XZNetMethod.m in Sources */,
 				F85E4EDB19F6882600AA6DE1 /* XZNetBridge.m in Sources */,
 				F8A9B88519D3CAEA0006B697 /* XZBaseNaviViewController.m in Sources */,
 				F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */,
@@ -1325,6 +1344,7 @@
 				F85E4ECD19F687B900AA6DE1 /* NSString+XZNetMethod.m in Sources */,
 				F85E4F1419F692D800AA6DE1 /* XZUDIDGenerator.m in Sources */,
 				F8A9B89D19D3CAEA0006B697 /* XZLovingViewController.m in Sources */,
+				F8BFA5521A07ADE600577C19 /* XZNetDebug.m in Sources */,
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
 				F85E4F1719F693A000AA6DE1 /* XZKeychain.m in Sources */,
 				F8A9B8A719D3CAEA0006B697 /* XZTabBarView.m in Sources */,

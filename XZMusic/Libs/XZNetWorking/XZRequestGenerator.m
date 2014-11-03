@@ -19,6 +19,7 @@
 #import "AFURLRequestSerialization.h"
 #import "NSURLRequest+XZNetMethod.h"
 #import "XZNetServiceFactory.h"
+#import "XZNetDebug.h"
 
 static NSString * const httpMethodRestfulGet = @"GET";
 static NSString * const httpMethodRestfulPost = @"POST";
@@ -70,7 +71,8 @@ static NSTimeInterval kAIFNetworkingTimeoutSeconds = 20.0f;
     NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlString parameters:nil error:NULL];
     request.timeoutInterval = 20;
     request.requestParams = requestParams;
-//    [AIFApiDebugger logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"GET"];
+    
+    [XZNetDebug logDebugInfoWithRequest:request apiName:methodName service:service requestParams:requestParams httpMethod:@"GET"];
     return request;
 }
 

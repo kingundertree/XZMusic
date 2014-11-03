@@ -18,7 +18,7 @@ typedef unsigned int XZRequestID;
 typedef unsigned int XZServiceType;
 
 @interface XZRequestResponse : NSObject
-
+@property (nonatomic, copy, readwrite) NSString *contentString;
 @property(nonatomic, assign) XZRequestID requestID;
 @property(nonatomic, assign) enum XZNetWorkingResponseStatus status;
 //@property(nonatomic, strong) NSDictionary *content;

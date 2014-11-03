@@ -11,12 +11,9 @@
 #import "NSURLRequest+XZNetMethod.h"
 
 @interface XZRequestResponse ()
-//@property (nonatomic, assign, readwrite) enum XZNetWorkingResponseStatus status;
-@property (nonatomic, copy, readwrite) NSString *contentString;
 @property (nonatomic, copy, readwrite) NSURLRequest *request;
 @property (nonatomic, copy, readwrite) NSData *responseData;
 @property (nonatomic, assign, readwrite) BOOL isCache;
-
 @end
 
 @implementation XZRequestResponse

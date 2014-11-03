@@ -8,6 +8,7 @@
 
 #import "XZApiManager.h"
 #import "XZRequestGenerator.h"
+#import "XZNetDebug.h"
 
 @interface XZApiManager ()
 @property (nonatomic, strong) NSMutableDictionary *dispatchTable;
@@ -113,12 +114,7 @@
     NSURLRequest *request = [[XZRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
     
     NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-    
-//    NSURLRequest *request = [[AIFRequestGenerator sharedInstance] generatePOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-//    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-//    return [requestId integerValue];
-
+    return [requestId integerValue];    
 }
 
 - (NSInteger)callRestfulGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(XZCallback)success fail:(XZCallback)fail{
@@ -171,10 +167,11 @@
         } else {
             [self.dispatchTable removeObjectForKey:requestId];
         }
-//        [AIFApiDebugger logDebugInfoWithResponse:operation.response
-//                                   resposeString:operation.responseString
-//                                         request:operation.request
-//                                           error:NULL];
+
+        [XZNetDebug logDebugInfoWithResponse:operation.response
+                                   resposeString:operation.responseString
+                                         request:operation.request
+                                           error:NULL];
         
         XZRequestResponse *response = [[XZRequestResponse alloc]
                                        initWithResponseString:operation.responseString
@@ -215,10 +212,11 @@
             [self.dispatchTable removeObjectForKey:requestId];
         }
         
-//        [AIFApiDebugger logDebugInfoWithResponse:operation.response
-//                                   resposeString:operation.responseString
-//                                         request:operation.request
-//                                           error:error];
+        [XZNetDebug logDebugInfoWithResponse:operation.response
+                               resposeString:operation.responseString
+                                     request:operation.request
+                                       error:error];
+
         XZRequestResponse *response = [[XZRequestResponse alloc]
                                        initWithResponseString:operation.responseString
                                        requestId:requestId
