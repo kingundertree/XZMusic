@@ -139,6 +139,7 @@ if(_model_tableName.length == 0)\
     
 //    NSString* filePath = [LKDBUtils getPathForDocuments:fileName inDir:@"db"];
     NSString* filePath = [LKDBUtils getPathForDocuments:fileName inDir:nil];
+
     return filePath;
 }
 -(void)setDBName:(NSString *)dbName
@@ -753,7 +754,6 @@ if(_model_tableName.length == 0)\
     }];
     return results;
 }
-
 -(NSMutableArray *)searchWithSQL:(NSString *)sql toClass:(Class)modelClass
 {
     //replace @t to model table name
