@@ -38,6 +38,8 @@ PODS:
   - FMDB/common (2.3)
   - FMDB/standard (2.3):
     - FMDB/common
+  - LKDBHelper (HEAD based on 2.0.2):
+    - FMDB
   - MBProgressHUD (0.9)
   - pop (1.0.6)
   - Reachability (3.1.1)
@@ -46,6 +48,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - ASIHTTPRequest (~> 1.8.2)
   - FMDB
+  - LKDBHelper (HEAD)
   - MBProgressHUD (~> 0.8)
   - pop (~> 1.0)
 
@@ -53,6 +56,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   ASIHTTPRequest: 2c8335b49410c0e2ad42829c438e74d454b77590
   FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
+  LKDBHelper: 6e547374150797780acdb7fd90ec6aaf0cef7cd2
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   pop: e518794da38942c05255eb64b36d894e70cb4f00
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7

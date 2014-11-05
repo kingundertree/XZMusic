@@ -8,3 +8,33 @@
 6. 2014.10.22 逐步实现asyncGetWithServiceID和的同步和异步方法，流程走通，待测试
 7. 2014.10.29 调试url参数，service阶段
 8. 2013.11.2 调试XZNetWork Get请求成功。api请求告一段落
+9. add LKDBHelper，实现歌手列表搜索，需要设计搜索模块
+
+
+
+
+
+### 需要fix 方法
+
+```
+- (instancetype)init
+{
+    return [self initWithDBName:@"FreeMusic"];
+}
+
++(NSString*)getDBPathWithDBName:(NSString*)dbName
+{
+    NSString* fileName = nil;
+    if([dbName hasSuffix:@".db"] == NO) {
+        fileName = [NSString stringWithFormat:@"%@.db",dbName];
+    }
+    else {
+        fileName = dbName;
+    }
+    
+//    NSString* filePath = [LKDBUtils getPathForDocuments:fileName inDir:@"db"];
+    NSString* filePath = [LKDBUtils getPathForDocuments:fileName inDir:nil];
+    return filePath;
+}
+
+```

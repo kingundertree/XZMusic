@@ -7,6 +7,7 @@
 //
 
 #import "XZSearchViewController.h"
+#import "XZMusicSingerModel.h"
 
 @interface XZSearchViewController ()
 
@@ -29,11 +30,20 @@
 
     [self setTitleViewWithString:@"搜索"];
     // Do any additional setup after loading the view.
+    
+    [self getSingerData];
 }
 #pragma mark
 #pragma leftButtonAction
 - (void)doBack:(id)sender{
     [[XZAppDelegate sharedAppDelegate].menuMainVC mainVCLeftMenuAction];
+}
+
+-(void)getSingerData
+{
+    XZMusicSingerModel *model = [XZMusicSingerModel new];
+    NSArray *array = [NSArray arrayWithArray:[model itemTop100]];
+    DLog(@"歌手列表--->>%lu/%@",(unsigned long)array.count,array)
 }
 
 - (void)didReceiveMemoryWarning

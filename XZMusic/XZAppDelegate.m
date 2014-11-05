@@ -9,6 +9,9 @@
 #import "XZAppDelegate.h"
 #import "XZRequestManager.h"
 
+#define DocumentsPath [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
+
+
 @interface XZAppDelegate ()
 @end
 
@@ -24,10 +27,22 @@
     // XZNet 初始化
     [XZRequestManager initServieId];
     
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSString *dbPath = [DocumentsPath stringByAppendingPathComponent:@"FreeMusic.db"];
+    NSLog(@"%@",dbPath);
+    
+    if (![fileMgr fileExistsAtPath:dbPath]) {
+        NSString *srcPath = [[NSBundle mainBundle] pathForResource:@"FreeMusic" ofType:@"db"];
+        [fileMgr copyItemAtPath:srcPath toPath:dbPath error:NULL];
+        
+        DLog(@"lastsrcPath--->>%@",srcPath);
+    }
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
         [application setStatusBarStyle:UIStatusBarStyleLightContent];//黑体白字
     }
+    
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
