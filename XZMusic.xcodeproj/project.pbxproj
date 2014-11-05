@@ -42,6 +42,7 @@
 		F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */; };
 		F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */; };
 		F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87143D01A05DCAF00CF0447 /* Launch Screen.xib */; };
+		F897C5001A0A41E200BE6AB4 /* FreeMusic.db in Resources */ = {isa = PBXBuildFile; fileRef = F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */; };
 		F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */; };
 		F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75E19D3CAEA0006B697 /* XZWBLoginInfo.m */; };
 		F8A9B82519D3CAEA0006B697 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B76119D3CAEA0006B697 /* download@2x.png */; };
@@ -250,6 +251,7 @@
 		F85E4F2119F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+XZNetMethod.h"; sourceTree = "<group>"; };
 		F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+XZNetMethod.m"; sourceTree = "<group>"; };
 		F87143D01A05DCAF00CF0447 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreeMusic.db; sourceTree = "<group>"; };
 		F8A9B75919D3CAEA0006B697 /* XZWBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginManager.h; sourceTree = "<group>"; };
 		F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginManager.m; sourceTree = "<group>"; };
 		F8A9B75D19D3CAEA0006B697 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 		F8288EA719A77752008D5573 /* XZMusic */ = {
 			isa = PBXGroup;
 			children = (
+				F897C4FE1A0A41D600BE6AB4 /* Data */,
 				F8A9B8A919D3CB7C0006B697 /* Libs */,
 				F8A9B75719D3CAEA0006B697 /* Manager */,
 				F8A9B75B19D3CAEA0006B697 /* Model */,
@@ -651,6 +654,14 @@
 				F85E4F0D19F6911700AA6DE1 /* XZAppContext.m */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		F897C4FE1A0A41D600BE6AB4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		F8A9B75719D3CAEA0006B697 /* Manager */ = {
@@ -1169,6 +1180,7 @@
 				F8A9B82519D3CAEA0006B697 /* download@2x.png in Resources */,
 				F8A9B86B19D3CAEA0006B697 /* user_male3-32.png in Resources */,
 				F8A9B87319D3CAEA0006B697 /* wifi-32.png in Resources */,
+				F897C5001A0A41E200BE6AB4 /* FreeMusic.db in Resources */,
 				F8A9B82D19D3CAEA0006B697 /* music-75.png in Resources */,
 				F8A9B88119D3CAEA0006B697 /* anjuke_icon_back@2x.png in Resources */,
 				F8A9B82619D3CAEA0006B697 /* love@2x.png in Resources */,
