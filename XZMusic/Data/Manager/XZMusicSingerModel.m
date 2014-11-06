@@ -44,7 +44,7 @@
 }
 - (NSMutableArray *)itemTop100
 {
-    return [self itemWith:@"李"];
+    return [self itemWith:@"周"];
 }
 
 @end
