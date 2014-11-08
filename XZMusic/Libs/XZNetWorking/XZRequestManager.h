@@ -21,6 +21,7 @@
 
 + (id)shareInstance;
 + (void)initServieId;
++ (BOOL)isNetWorkReachable;
 
 #pragma mark --Normal request
 - (XZRequestID)asyncGetWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)params target:(id)target action:(SEL)action;

@@ -18,7 +18,7 @@
 
 - (NSString *)onlineApiBaseUrl
 {
-    return @"";
+    return @"http://tingapi.ting.baidu.com/v1";
 }
 
 - (NSString *)onlineApiVersion

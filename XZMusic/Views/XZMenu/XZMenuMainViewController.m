@@ -13,7 +13,7 @@
 #import "PushBackNavigationController.h"
 #import "XZMusicPlayViewController.h"
 #import "XZWBLoginManager.h"
-#import "XZRequestManager.h"
+#import "XZMusicRequestForWeiboInfoManager.h"
 
 @interface XZMenuMainViewController ()
 @property(nonatomic, strong) XZLeftMenu *leftMenu;
@@ -22,6 +22,7 @@
 @property(nonatomic, strong) UIView *coverView;
 @property(nonatomic, assign) float startX;
 @property(nonatomic, strong) XZTabBarViewController *tabBarVC;
+@property(nonatomic, strong) XZMusicRequestForWeiboInfoManager *weiboInfoRequest;
 @end
 
 @implementation XZMenuMainViewController
@@ -65,6 +66,13 @@
     [self.mainNav.view addGestureRecognizer:panGus];
 
 //    [self.mainNav addObserver:self forKeyPath:@"view.frame" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+}
+
+- (XZMusicRequestForWeiboInfoManager *)weiboInfoRequest{
+    if (!_weiboInfoRequest) {
+        _weiboInfoRequest = [[XZMusicRequestForWeiboInfoManager alloc] init];
+    }
+    return _weiboInfoRequest;
 }
 
 #pragma mark
@@ -327,20 +335,21 @@
 //        DLog(@"微博用户信息获取失败");
 //    }];
     
-    NSString *method = @"users/show.json";
+//    NSString *method = @"users/show.json";
     NSDictionary *params = @{@"uid":info.userId,@"access_token":info.accessToken};
-
-    [[XZRequestManager shareInstance] asyncGetWithServiceID:XZWeiboGetServiceID methodName:method params:params target:self action:@selector(weiboInfoReturn:)];
-}
-
-- (void)weiboInfoReturn:(XZRequestResponse *)response{
-    if (response.status == XZNetWorkingResponseStatusSuccess) {
-        if ([response.content isKindOfClass:[NSDictionary class]]) {
-            [self.leftMenu updateUserLoginInfo:response.content];
-        }
-    }else{
-        DLog(@"微博用户信息获取失败");
-    };
+    
+    __weak XZMenuMainViewController *this = self;
+    [self.weiboInfoRequest requestForWeiboInfo:params block:^(XZRequestResponse *response) {
+        if (response.status == XZNetWorkingResponseStatusSuccess) {
+            if ([response.content isKindOfClass:[NSDictionary class]]) {
+                [this.leftMenu updateUserLoginInfo:response.content];
+            }
+        }else if (response.status == XZNetWorkingResponseStatusNetError){
+            [this showTips:@"请检查网络"];
+        }else{
+            DLog(@"微博用户信息获取失败");
+        };
+    }];
 }
 
 - (void)didReceiveMemoryWarning

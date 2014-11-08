@@ -59,6 +59,10 @@
     [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [self getSingerData];
+}
+
 - (void)initData{
     self.singerListArr = [NSMutableArray array];
 }
@@ -72,12 +76,6 @@
     self.tableView.delegate = self;
     self.tableView.eventDelegate = self;
     [self.view addSubview:self.tableView];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        self.edgesForExtendedLayout =  UIRectEdgeBottom ;
-    }
-    
-    [self getSingerData];
 }
 
 #pragma mark --XZBaseTableForTurnPageEventDelegate
@@ -95,16 +93,16 @@
 }
 
 -(void)getSingerData{
+    [self showLoading];
     self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周"];
-//    self.tableView.tableData = self.singerListArr;
     [self.tableView reloadData];
     
+    [self hideLoading];
     DLog(@"歌手列表--->>%lu/%@",(unsigned long)self.singerListArr.count,self.singerListArr)
 }
 
 #pragma mark -
 #pragma mark - UIDataSourceDelegate
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.singerListArr count];
 }

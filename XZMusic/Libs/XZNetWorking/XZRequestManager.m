@@ -26,6 +26,14 @@
     [XZNetBridge initServieId];
 }
 
++ (BOOL)isNetWorkReachable{
+    if ([AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusNotReachable){
+        return NO;
+    }
+    return YES;
+}
+
+
 #pragma mark --Normal request
 - (XZRequestID)asyncGetWithServiceID:(XZServiceType)serviceID methodName:(NSString *)methodName params:(NSDictionary *)params target:(id)target action:(SEL)action
 {

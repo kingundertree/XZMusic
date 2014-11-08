@@ -11,6 +11,7 @@
 NS_ENUM(NSInteger, XZNetWorkingResponseStatus){
     XZNetWorkingResponseStatusSuccess,
     XZNetWorkingResponseStatusTimeOut,
+    XZNetWorkingResponseStatusNetError,
     XZNetWorkingResponseStatusError
 };
 

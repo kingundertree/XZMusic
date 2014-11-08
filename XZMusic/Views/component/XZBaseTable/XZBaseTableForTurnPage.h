@@ -16,7 +16,6 @@ NS_ENUM(NSInteger, XZBaseTableForTurnPageStatus){
 
 @protocol XZBaseTableForTurnPageEventDelegate <NSObject>
 - (void)tableStatus:(enum XZBaseTableForTurnPageStatus)status;
-- (void)tableViewDidSelect:(id)Data indexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface XZBaseTableForTurnPage : UITableView 
