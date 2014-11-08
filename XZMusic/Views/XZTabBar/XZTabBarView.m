@@ -28,9 +28,9 @@
 }
 
 - (void)initTabBarView:(NSArray *)tabBarIconArr tabBarTitArr:(NSArray *)tabBarTitArr{
-    self.frame = CGRectMake(0, 0, screenWidth, 50);
+    self.frame = CGRectMake(0, 0, ScreenWidth, 50);
     self.backgroundColor = [UIColor blackColor];
-    self.menuWidth = (float)screenWidth/tabBarIconArr.count;
+    self.menuWidth = (float)ScreenWidth/tabBarIconArr.count;
     
     self.lineView = [[XZLineView alloc] initWithFrame:CGRectMake(0, 45, self.menuWidth, 5)];
     self.lineView.lineColor = [UIColor whiteColor];

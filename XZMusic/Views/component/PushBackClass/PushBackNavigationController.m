@@ -57,7 +57,7 @@
     // Do any additional setup after loading the view.
     UIImageView *shadowImageView = [[UIImageView alloc] init];
     shadowImageView.image = [UIImage imageNamed:@"leftside_shadow_bg.png"];
-    shadowImageView.frame = CGRectMake(-10, 0, 10, screenHeight);
+    shadowImageView.frame = CGRectMake(-10, 0, 10, ScreenHeight);
     [self.view addSubview:shadowImageView];
     
     UIPanGestureRecognizer *panGus = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesReceive:)];
@@ -218,7 +218,7 @@
 }
 
 - (void)moveToX:(float)x{
-    x = x >= screenWidth ? screenWidth : x;
+    x = x >= ScreenWidth ? ScreenWidth : x;
     x = x < 0 ? 0 : x;
     CGRect frame = self.view.frame;
     float alpha = 0.5 - x/800;
@@ -228,10 +228,10 @@
     maskCover.alpha = alpha;
     
     if (pushBackType == PushBackWithSlowMove) {
-        frame.origin.x = x*(1 - moveProportion) - screenWidth*(1 - moveProportion);
+        frame.origin.x = x*(1 - moveProportion) - ScreenWidth*(1 - moveProportion);
         backGroundView.frame = frame;
     }else{
-        float scale = x/(screenWidth*20) + 0.95;
+        float scale = x/(ScreenWidth*20) + 0.95;
         backGroundView.transform = CGAffineTransformMakeScale(scale, scale);
     }
 }

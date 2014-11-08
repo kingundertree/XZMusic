@@ -7,8 +7,8 @@
 #import <Availability.h>
 
 #define menuViewWidth 140
-#define screenWidth [UIScreen mainScreen].bounds.size.width
-#define screenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #ifdef DEBUG
 #	define DLog(fmt, ...) NSLog((@"%s #%d " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
@@ -50,5 +50,6 @@ do { \
     #import "AFHTTPRequestOperationManager.h"
     #import "MBProgressHUD.h"
     #import "XZBaseViewController+TipsView.h"
+    #import "UIImageView+AFNetworking.h"
 
 #endif

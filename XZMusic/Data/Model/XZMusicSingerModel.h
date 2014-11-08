@@ -36,8 +36,5 @@
 @property (nonatomic,copy) NSString * avatar_s1000;
 @property (nonatomic,assign) int piao_id;
 
--(NSMutableArray *)itemWith:(NSString *)name;
--(NSMutableArray *)itemTop100;
-
 
 @end

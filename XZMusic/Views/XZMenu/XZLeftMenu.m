@@ -32,7 +32,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor lightGrayColor];
-        self.frame = CGRectMake(0, 0, menuViewWidth+100, screenHeight);
+        self.frame = CGRectMake(0, 0, menuViewWidth+100, ScreenHeight);
         self.menuVCArr = [NSMutableArray arrayWithObjects:@"",@"",@"",@"",@"", nil];
         self.menuIndex = 0;
     }
@@ -54,8 +54,8 @@
     [self.headerImgButton addTarget:self action:@selector(doLogin:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.headerImgButton];
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20, menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20))];
-    self.scrollView.contentSize = CGSizeMake(menuViewWidth, screenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20)+1);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20, menuViewWidth, ScreenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20))];
+    self.scrollView.contentSize = CGSizeMake(menuViewWidth, ScreenHeight - (self.headerImgButton.frame.origin.y+self.headerImgButton.frame.size.height+20)+1);
     self.scrollView.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:self.scrollView];
     
@@ -65,7 +65,7 @@
     for (int i = 0; i < 5; i++) {
         XZMenuButton *btn = [XZMenuButton buttonWithType:UIButtonTypeCustom];
         btn.tag = i+1000;
-        btn.frame = CGRectMake(0, screenHeight, menuViewWidth, 45);
+        btn.frame = CGRectMake(0, ScreenHeight, menuViewWidth, 45);
         [btn addTarget:self action:@selector(menuClick:) forControlEvents:UIControlEventTouchUpInside];
         [btn showTitlt:[btnTitArr objectAtIndex:i] textColor:[UIColor whiteColor] font:[UIFont systemFontOfSize:16] icon:[btnIconArr objectAtIndex:i]];
         [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
@@ -136,7 +136,7 @@
     }else{
         for (int i = 0; i < 5; i++) {
             XZMenuButton *btn = (XZMenuButton *)[self viewWithTag:i+1000];
-            btn.frame = CGRectMake(0, screenHeight, menuViewWidth, 45);
+            btn.frame = CGRectMake(0, ScreenHeight, menuViewWidth, 45);
         }
     }
 }

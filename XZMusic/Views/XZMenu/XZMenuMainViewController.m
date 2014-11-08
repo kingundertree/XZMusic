@@ -190,7 +190,7 @@
 #pragma showMenu
 - (void)showMenu{
     POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(menuViewWidth+screenWidth/2, screenHeight/2)];
+    springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(menuViewWidth+ScreenWidth/2, ScreenHeight/2)];
     
     //弹性值
     springAnimation.springBounciness = 20.0;
@@ -208,7 +208,7 @@
 #pragma showmainNav
 - (void)showmainNav{
     POPSpringAnimation *springAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
-    springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(screenWidth/2, screenHeight/2)];
+    springAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(ScreenWidth/2, ScreenHeight/2)];
     
     //弹性值
     springAnimation.springBounciness = 5.0;

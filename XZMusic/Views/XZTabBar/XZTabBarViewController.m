@@ -54,12 +54,12 @@
 - (void)initTabBar{
     XZTabBarForHomeViewController *homeVC = [[XZTabBarForHomeViewController alloc] init];
     homeVC.backType = BackTypeNone;
-    homeVC.view.frame = CGRectMake(0, 0, screenWidth, screenHeight-50);
+    homeVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-50);
 //    UINavigationController *navHome = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
     XZTabBarForMeViewController *meVC = [[XZTabBarForMeViewController alloc] init];
     meVC.backType = BackTypeNone;
-    meVC.view.frame = CGRectMake(0, 0, screenWidth, screenHeight-50);
+    meVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-50);
 //    UINavigationController *navMeVC = [[UINavigationController alloc] initWithRootViewController:meVC];
     
     [self.tabVcArr addObject:homeVC];
@@ -70,7 +70,7 @@
     self.tabBarView = [[XZTabBarView alloc] init];
     [self.tabBarView initTabBarView:@[@"",@""] tabBarTitArr:@[@"XZ",@"ME"]];
     self.tabBarView.delegate = self;
-    self.tabBarView.frame = CGRectMake(0, screenHeight-50-64, screenWidth, 50);
+    self.tabBarView.frame = CGRectMake(0, ScreenHeight-50-64, ScreenWidth, 50);
     [self.view addSubview:self.tabBarView];
 }
 
