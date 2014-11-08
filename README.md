@@ -9,6 +9,7 @@
 7. 2014.10.29 调试url参数，service阶段
 8. 2013.11.2 调试XZNetWork Get请求成功。api请求告一段落
 9. add LKDBHelper，实现歌手列表搜索，需要设计搜索模块
+10. add search singerList ViewController
 
 
 
