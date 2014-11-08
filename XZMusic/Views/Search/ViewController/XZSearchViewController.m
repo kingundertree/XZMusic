@@ -135,6 +135,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (self.navigationController.view.frame.origin.x != 0) {
+        return;
+    }
+    
     [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = NO;
     
     XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
