@@ -7,7 +7,10 @@
 //
 
 #import "XZBaseViewController.h"
+#import "XZMusicSongModel.h"
 
 @interface XZMusicPlayViewController : XZBaseViewController
+
+@property(nonatomic, strong) XZMusicSongModel *songModel;
 
 @end

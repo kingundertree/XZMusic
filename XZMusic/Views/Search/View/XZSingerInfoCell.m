@@ -29,7 +29,7 @@
 
 - (UILabel *)singerNameLab{
     if (!_singerNameLab) {
-        _singerNameLab = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 150, 20)];
+        _singerNameLab = [[UILabel alloc] initWithFrame:CGRectMake(80, 10+3, 150, 20)];
         _singerNameLab.backgroundColor = [UIColor clearColor];
         _singerNameLab.font = [UIFont xzH2Font_B];
         _singerNameLab.textColor = [UIColor XZBlackColor];
@@ -39,7 +39,7 @@
 
 - (UILabel *)singerComLab{
     if (!_singerComLab) {
-        _singerComLab = [[UILabel alloc] initWithFrame:CGRectMake(80, 10+25, 150, 20)];
+        _singerComLab = [[UILabel alloc] initWithFrame:CGRectMake(80, 10+25+10, ScreenWidth-80-20, 20)];
         _singerComLab.backgroundColor = [UIColor clearColor];
         _singerComLab.font = [UIFont xzH3Font];
         _singerComLab.textColor = [UIColor XZMiddleGrayColor];

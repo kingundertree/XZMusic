@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleViewWithString:@"Music Playing"];
+    [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.songModel.author]];
     
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.

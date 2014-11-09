@@ -7,16 +7,20 @@
 //
 
 #import "XZSingerSongListViewController.h"
-#import "XZBaseTableForTurnPage.h"
+#import "XZTableForSingerSongsList.h"
 #import "XZMusicReuqestForSingerSongsManager.h"
 #import "XZMusicSongModel.h"
 #import "XZSingerSongsInfoConvertOb.h"
+#import "XZSingerSongsCell.h"
+#import "XZTableMoreCell.h"
+#import "XZMusicPlayViewController.h"
 
-@interface XZSingerSongListViewController () <UITableViewDataSource,UITableViewDelegate,XZBaseTableForTurnPageEventDelegate>
+@interface XZSingerSongListViewController () <XZBaseTableEventDelegate>
 @property(nonatomic, strong) XZMusicReuqestForSingerSongsManager *singerSongsRequest;
 @property(nonatomic, assign) BOOL isHaseNext;
 @property(nonatomic, assign) NSInteger songsNum;
-@property(nonatomic, strong) XZBaseTableForTurnPage *tableView;
+@property(nonatomic, assign) NSInteger totalSongsNum;
+@property(nonatomic, strong) XZTableForSingerSongsList *tableView;
 @property(nonatomic, strong) NSMutableArray *singerSongsArr;
 
 @end
@@ -44,78 +48,86 @@
 
 - (void)initData{
     self.singerSongsArr = [NSMutableArray array];
-    self.songsNum = 20;
+    self.totalSongsNum = self.singerInfoModel.songs_total;
+    
+    if (self.singerInfoModel.songs_total <= 20) {
+        self.songsNum = self.singerInfoModel.songs_total;
+    }else{
+        self.songsNum = 20;
+    }
 }
 
 - (void)initUI{
-    self.tableView = [[XZBaseTableForTurnPage alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.tableView = [[XZTableForSingerSongsList alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableView.isConMore = YES;
+    self.tableView.cellHeight = 80;
     self.tableView.eventDelegate = self;
+    [self.tableView addRefreshView];
     [self.view addSubview:self.tableView];
+    
+    self.tableView.cellHeight = 80.0;
     
     [self getSingerSongs];
 }
 
-
-#pragma mark -
-#pragma mark - UIDataSourceDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.singerSongsArr count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentify = @"cell";
-//    XZSingerInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
-//    if (!cell) {
-//        cell = [[XZSingerInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-//    }
-//    
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-//    
-//    XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
-//    
-//    [cell configCell:singerInfoMode];
-//    
-//    return cell;
-    return nil;
-}
-
-#pragma mark -
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+#pragma mark - UITableViewEventDelegate
+- (void)didSelect:(id)data indexPath:(NSIndexPath *)indexPath{
     if (self.navigationController.view.frame.origin.x != 0) {
         return;
     }
     
-    [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = NO;
-    
-//    XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
-//    XZSingerSongListViewController *singerSongListVC = [[XZSingerSongListViewController alloc] init];
-//    singerSongListVC.singerInfoModel = singerInfoMode;
-//    [self.navigationController pushViewController:singerSongListVC animated:YES];
+    XZMusicPlayViewController *playVC = [[XZMusicPlayViewController alloc] init];
+    XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
+    playVC.songModel = singerInfoMode;
+    [self.navigationController pushViewController:playVC animated:YES];
 }
 
+#pragma mark --XZBaseTableEventDelegate
+- (void)tableStatus:(enum XZBaseTableStatus)status{
+    if (status == XZBaseTableStatusLoadingNextPageData) {
+        [self getSingerSongs];
+    }else if (status == XZBaseTableStatusRefresh){
+        if (self.singerInfoModel.songs_total <= 20) {
+            self.songsNum = self.singerInfoModel.songs_total;
+        }else{
+            self.songsNum = 20;
+        }
+        [self getSingerSongs];
+    }
+}
+
+#pragma mark --Request
 - (void)getSingerSongs{
+    [self showLoading];
+    self.isLoading = YES;
+    self.tableView.isLoading = YES;
+    
     NSDictionary *params = @{@"tinguid":[NSString stringWithFormat:@"%lld",self.singerInfoModel.ting_uid], @"limits":[NSString stringWithFormat:@"%ld",(long)self.songsNum]};
     
     __weak XZSingerSongListViewController *this = self;
     [self.singerSongsRequest requestForSingerSongsBlock:params block:^(XZRequestResponse *response) {
+        [self hideLoading];
+        self.isLoading = NO;
+        self.tableView.isLoading = NO;
+
         if (response.status == XZNetWorkingResponseStatusSuccess) {
             if ([response.content isKindOfClass:[NSDictionary class]]) {
-                self.isHaseNext = YES ? NO : [response.content[@"havemore"] isEqualToString:@"1"];
                 NSArray *songsArr = [NSArray arrayWithArray:response.content[@"songlist"]];
                 self.singerSongsArr = [XZSingerSongsInfoConvertOb converSongsListToArr:songsArr];
+                if (self.singerSongsArr.count < self.totalSongsNum) {
+                    self.isHaseNext = YES;
+                }else{
+                    self.isHaseNext = NO;
+                }
+                
+                self.tableView.tableData = self.singerSongsArr;
+                self.tableView.isHasNextPage = self.isHaseNext;
                 
                 if (self.singerSongsArr.count > 0) {
+                    [self.tableView reloadData];
                     
+                    [self.tableView.refreshControl endRefreshing];
+                    self.songsNum += 20;
                 }
                 
             }

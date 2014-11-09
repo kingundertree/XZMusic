@@ -48,6 +48,9 @@
 		F8A7A3AB1A0E4A3C006587C8 /* XZMusicRequestForWeiboInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3AA1A0E4A3C006587C8 /* XZMusicRequestForWeiboInfoManager.m */; };
 		F8A7A3AE1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3AD1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m */; };
 		F8A7A3B11A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3B01A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.m */; };
+		F8A7A3B41A0EF742006587C8 /* XZSingerSongsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3B31A0EF742006587C8 /* XZSingerSongsCell.m */; };
+		F8A7A3B71A0F1C77006587C8 /* XZTableForSingerList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3B61A0F1C77006587C8 /* XZTableForSingerList.m */; };
+		F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3B91A0F21BA006587C8 /* XZTableForSingerSongsList.m */; };
 		F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */; };
 		F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B75E19D3CAEA0006B697 /* XZWBLoginInfo.m */; };
 		F8A9B82519D3CAEA0006B697 /* download@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B76119D3CAEA0006B697 /* download@2x.png */; };
@@ -183,7 +186,7 @@
 		F8D19D0B1A0DD2CD00F7D0FD /* XZMusicSingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D0A1A0DD2CD00F7D0FD /* XZMusicSingerModel.m */; };
 		F8D19D0E1A0DD2F200F7D0FD /* XZMusicDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D0D1A0DD2F200F7D0FD /* XZMusicDataCenter.m */; };
 		F8D19D121A0DD7F100F7D0FD /* XZBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D111A0DD7F100F7D0FD /* XZBaseTableViewCell.m */; };
-		F8D19D171A0DD8A100F7D0FD /* XZBaseTableForTurnPage.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D161A0DD8A100F7D0FD /* XZBaseTableForTurnPage.m */; };
+		F8D19D171A0DD8A100F7D0FD /* XZBaseTable.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D161A0DD8A100F7D0FD /* XZBaseTable.m */; };
 		F8D19D1A1A0DD9F800F7D0FD /* XZTableMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D191A0DD9F800F7D0FD /* XZTableMoreCell.m */; };
 		F8D19D1C1A0DEAB000F7D0FD /* music_seach_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D19D1B1A0DEAB000F7D0FD /* music_seach_icon@2x.png */; };
 		F8D19D211A0DF75600F7D0FD /* XZSingerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D201A0DF75600F7D0FD /* XZSingerInfoCell.m */; };
@@ -275,6 +278,12 @@
 		F8A7A3AD1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicReuqestForSingerSongsManager.m; sourceTree = "<group>"; };
 		F8A7A3AF1A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSingerSongsInfoConvertOb.h; sourceTree = "<group>"; };
 		F8A7A3B01A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSingerSongsInfoConvertOb.m; sourceTree = "<group>"; };
+		F8A7A3B21A0EF742006587C8 /* XZSingerSongsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSingerSongsCell.h; sourceTree = "<group>"; };
+		F8A7A3B31A0EF742006587C8 /* XZSingerSongsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSingerSongsCell.m; sourceTree = "<group>"; };
+		F8A7A3B51A0F1C77006587C8 /* XZTableForSingerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTableForSingerList.h; sourceTree = "<group>"; };
+		F8A7A3B61A0F1C77006587C8 /* XZTableForSingerList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTableForSingerList.m; sourceTree = "<group>"; };
+		F8A7A3B81A0F21BA006587C8 /* XZTableForSingerSongsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTableForSingerSongsList.h; sourceTree = "<group>"; };
+		F8A7A3B91A0F21BA006587C8 /* XZTableForSingerSongsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTableForSingerSongsList.m; sourceTree = "<group>"; };
 		F8A9B75919D3CAEA0006B697 /* XZWBLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginManager.h; sourceTree = "<group>"; };
 		F8A9B75A19D3CAEA0006B697 /* XZWBLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZWBLoginManager.m; sourceTree = "<group>"; };
 		F8A9B75D19D3CAEA0006B697 /* XZWBLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZWBLoginInfo.h; sourceTree = "<group>"; };
@@ -447,8 +456,8 @@
 		F8D19D0D1A0DD2F200F7D0FD /* XZMusicDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDataCenter.m; sourceTree = "<group>"; };
 		F8D19D101A0DD7F100F7D0FD /* XZBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZBaseTableViewCell.h; sourceTree = "<group>"; };
 		F8D19D111A0DD7F100F7D0FD /* XZBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZBaseTableViewCell.m; sourceTree = "<group>"; };
-		F8D19D151A0DD8A100F7D0FD /* XZBaseTableForTurnPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZBaseTableForTurnPage.h; sourceTree = "<group>"; };
-		F8D19D161A0DD8A100F7D0FD /* XZBaseTableForTurnPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZBaseTableForTurnPage.m; sourceTree = "<group>"; };
+		F8D19D151A0DD8A100F7D0FD /* XZBaseTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZBaseTable.h; sourceTree = "<group>"; };
+		F8D19D161A0DD8A100F7D0FD /* XZBaseTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZBaseTable.m; sourceTree = "<group>"; };
 		F8D19D181A0DD9F800F7D0FD /* XZTableMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTableMoreCell.h; sourceTree = "<group>"; };
 		F8D19D191A0DD9F800F7D0FD /* XZTableMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTableMoreCell.m; sourceTree = "<group>"; };
 		F8D19D1B1A0DEAB000F7D0FD /* music_seach_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_seach_icon@2x.png"; sourceTree = "<group>"; };
@@ -1191,8 +1200,8 @@
 		F8D19D141A0DD86D00F7D0FD /* XZBaseTable */ = {
 			isa = PBXGroup;
 			children = (
-				F8D19D151A0DD8A100F7D0FD /* XZBaseTableForTurnPage.h */,
-				F8D19D161A0DD8A100F7D0FD /* XZBaseTableForTurnPage.m */,
+				F8D19D151A0DD8A100F7D0FD /* XZBaseTable.h */,
+				F8D19D161A0DD8A100F7D0FD /* XZBaseTable.m */,
 				F8D19D181A0DD9F800F7D0FD /* XZTableMoreCell.h */,
 				F8D19D191A0DD9F800F7D0FD /* XZTableMoreCell.m */,
 			);
@@ -1213,6 +1222,12 @@
 			children = (
 				F8D19D1F1A0DF75600F7D0FD /* XZSingerInfoCell.h */,
 				F8D19D201A0DF75600F7D0FD /* XZSingerInfoCell.m */,
+				F8A7A3B21A0EF742006587C8 /* XZSingerSongsCell.h */,
+				F8A7A3B31A0EF742006587C8 /* XZSingerSongsCell.m */,
+				F8A7A3B51A0F1C77006587C8 /* XZTableForSingerList.h */,
+				F8A7A3B61A0F1C77006587C8 /* XZTableForSingerList.m */,
+				F8A7A3B81A0F21BA006587C8 /* XZTableForSingerSongsList.h */,
+				F8A7A3B91A0F21BA006587C8 /* XZTableForSingerSongsList.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1480,6 +1495,7 @@
 				F8A9B88519D3CAEA0006B697 /* XZBaseNaviViewController.m in Sources */,
 				F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */,
 				F8D19D121A0DD7F100F7D0FD /* XZBaseTableViewCell.m in Sources */,
+				F8A7A3B41A0EF742006587C8 /* XZSingerSongsCell.m in Sources */,
 				F8288EB219A77752008D5573 /* XZAppDelegate.m in Sources */,
 				F8A9B8A219D3CAEA0006B697 /* XZLeftMenu.m in Sources */,
 				F85E4F1119F6923600AA6DE1 /* UIDevice+XZIdentifierAddition.m in Sources */,
@@ -1511,6 +1527,7 @@
 				F8A9B8A319D3CAEA0006B697 /* XZMenuButton.m in Sources */,
 				F85E4EF019F6891600AA6DE1 /* XZMusicForBaidu.m in Sources */,
 				F8A9B89019D3CAEA0006B697 /* pushBackLock.m in Sources */,
+				F8A7A3B71A0F1C77006587C8 /* XZTableForSingerList.m in Sources */,
 				F8A9B88819D3CAEA0006B697 /* UIFont+XZ.m in Sources */,
 				F8D19D1A1A0DD9F800F7D0FD /* XZTableMoreCell.m in Sources */,
 				F8D19D0B1A0DD2CD00F7D0FD /* XZMusicSingerModel.m in Sources */,
@@ -1526,7 +1543,8 @@
 				F8D19D251A0E058D00F7D0FD /* XZSearchViewController.m in Sources */,
 				F8A9B88B19D3CAEA0006B697 /* XZBaseButton+CornerRadius.m in Sources */,
 				F8A9B89A19D3CAEA0006B697 /* XZLineView.m in Sources */,
-				F8D19D171A0DD8A100F7D0FD /* XZBaseTableForTurnPage.m in Sources */,
+				F8D19D171A0DD8A100F7D0FD /* XZBaseTable.m in Sources */,
+				F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
 				F85E4EED19F688F200AA6DE1 /* XZNetService.m in Sources */,
 			);

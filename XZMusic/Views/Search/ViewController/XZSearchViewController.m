@@ -9,14 +9,14 @@
 #import "XZSearchViewController.h"
 #import "XZMusicDataCenter.h"
 #import "XZMusicSingerModel.h"
-#import "XZBaseTableForTurnPage.h"
+#import "XZTableForSingerList.h"
 #import "XZSingerInfoCell.h"
 #import "XZSingerSongListViewController.h"
 
 
-@interface XZSearchViewController () <XZBaseTableForTurnPageEventDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface XZSearchViewController () <XZBaseTableEventDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 @property(nonatomic, strong) NSMutableArray *singerListArr;
-@property(nonatomic, strong) XZBaseTableForTurnPage *tableView;
+@property(nonatomic, strong) XZTableForSingerList *tableView;
 @property(nonatomic, strong) UISearchBar *searchBar;
 @end
 
@@ -53,6 +53,8 @@
     [self initData];
     [self initUI];
     [self addNotifycation];
+
+    [self getSingerData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -60,7 +62,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    [self getSingerData];
 }
 
 - (void)initData{
@@ -71,20 +72,17 @@
     self.navigationItem.titleView = self.searchBar;
     [self addRightButton:@"取消"];
     
-    self.tableView = [[XZBaseTableForTurnPage alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.tableView = [[XZTableForSingerList alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
+//    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
     self.tableView.eventDelegate = self;
     [self.view addSubview:self.tableView];
 }
 
-#pragma mark --XZBaseTableForTurnPageEventDelegate
-- (void)tableStatus:(enum XZBaseTableForTurnPageStatus)status{
+#pragma mark --XZBaseTableEventDelegate
+- (void)tableStatus:(enum XZBaseTableStatus)status{
 
 }
-- (void)tableViewDidSelect:(id)Data indexPath:(NSIndexPath *)indexPath{
-}
-
 
 #pragma mark
 #pragma leftButtonAction
@@ -95,54 +93,11 @@
 -(void)getSingerData{
     [self showLoading];
     self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周"];
+    self.tableView.tableData = self.singerListArr;
     [self.tableView reloadData];
     
     [self hideLoading];
     DLog(@"歌手列表--->>%lu/%@",(unsigned long)self.singerListArr.count,self.singerListArr)
-}
-
-#pragma mark -
-#pragma mark - UIDataSourceDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.singerListArr count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentify = @"cell";
-    XZSingerInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
-    if (!cell) {
-        cell = [[XZSingerInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-    }
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    
-    XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
-    
-    [cell configCell:singerInfoMode];
-    
-    return cell;
-}
-
-#pragma mark -
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (self.navigationController.view.frame.origin.x != 0) {
-        return;
-    }
-    
-    [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = NO;
-    
-    XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
-    XZSingerSongListViewController *singerSongListVC = [[XZSingerSongListViewController alloc] init];
-    singerSongListVC.singerInfoModel = singerInfoMode;
-    [self.navigationController pushViewController:singerSongListVC animated:YES];
 }
 
 #pragma mark - UISearchBarDelegate
@@ -162,6 +117,20 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - UITableViewEventDelegate
+- (void)didSelect:(id)data indexPath:(NSIndexPath *)indexPath{
+    if (self.navigationController.view.frame.origin.x != 0) {
+        return;
+    }
+
+    [XZAppDelegate sharedAppDelegate].menuMainVC.isOnFirstView = NO;
+
+    XZMusicSingerModel *singerInfoMode = (XZMusicSingerModel *)[self.singerListArr objectAtIndex:indexPath.row];
+    XZSingerSongListViewController *singerSongListVC = [[XZSingerSongListViewController alloc] init];
+    singerSongListVC.singerInfoModel = singerInfoMode;
+    [self.navigationController pushViewController:singerSongListVC animated:YES];
 }
 
 #pragma mark --method
