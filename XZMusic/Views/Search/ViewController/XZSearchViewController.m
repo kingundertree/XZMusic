@@ -54,7 +54,6 @@
     [self initUI];
     [self addNotifycation];
 
-    [self getSingerData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -62,6 +61,10 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        [self getSingerData];
+    });
 }
 
 - (void)initData{
@@ -91,13 +94,21 @@
 }
 
 -(void)getSingerData{
+    if (self.singerListArr.count > 0) {
+        return;
+    }
+    
     [self showLoading];
     self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周"];
-    self.tableView.tableData = self.singerListArr;
-    [self.tableView reloadData];
-    
-    [self hideLoading];
-    DLog(@"歌手列表--->>%lu/%@",(unsigned long)self.singerListArr.count,self.singerListArr)
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // 更新界面
+        self.tableView.tableData = self.singerListArr;
+        [self.tableView reloadData];
+        
+        [self hideLoading];
+        DLog(@"歌手列表--->>%lu/%@",(unsigned long)self.singerListArr.count,self.singerListArr)
+    });
 }
 
 #pragma mark - UISearchBarDelegate

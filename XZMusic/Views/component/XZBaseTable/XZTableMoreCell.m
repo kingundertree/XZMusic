@@ -31,7 +31,6 @@
 - (UIActivityIndicatorView *)activityIndicator{
     if (!_activityIndicator) {
         _activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        _activityIndicator.center = CGPointMake(100.0f, 20);
         _activityIndicator.frame = CGRectMake(80, 0, 40, 40);
         _activityIndicator.color = [UIColor lightGrayColor];
         
