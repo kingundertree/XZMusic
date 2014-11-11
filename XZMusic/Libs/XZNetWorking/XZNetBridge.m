@@ -20,6 +20,9 @@ NSString * const NXZMusicServiceRESTPost = @"NXZMusicServiceRESTPost";
 // weibo
 NSString * const NXZWeiboServiceGet = @"NXZWeiboServiceGet";
 
+// baidu music
+NSString * const NXZBaiduMusicServiceGet = @"NXZBaiduMusicServiceGet";
+
 
 @interface XZNetBridge ()
 @end
@@ -41,13 +44,15 @@ NSString * const NXZWeiboServiceGet = @"NXZWeiboServiceGet";
                              NXZMusicServicePost,
                              NXZMusicServiceRESTGet,
                              NXZMusicServiceRESTPost,
-                             NXZWeiboServiceGet];
+                             NXZWeiboServiceGet,
+                             NXZBaiduMusicServiceGet];
  
     XZMusicGetServiceID = RTServiceID;
     XZMusicPostServiceID = [self nextService];
     XZMusicRESTGetServiceID = [self nextService];
     XZMusicRESTPostServiceID = [self nextService];
     XZWeiboGetServiceID = [self nextService];
+    XZBaiduMusicGetServiceID = [self nextService];
 }
 
 + (NSString *)bridgeServiceWithId:(unsigned int)serviceId{

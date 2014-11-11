@@ -15,6 +15,8 @@ unsigned int XZMusicRESTPostServiceID;
 
 unsigned int XZWeiboGetServiceID;
 
+unsigned int XZBaiduMusicGetServiceID;
+
 
 @interface XZNetBridge : NSObject
 

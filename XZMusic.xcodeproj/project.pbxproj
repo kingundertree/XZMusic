@@ -20,6 +20,10 @@
 		F8288EBD19A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
 		F8288EC519A77752008D5573 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8288EC319A77752008D5573 /* InfoPlist.strings */; };
 		F8288EC719A77752008D5573 /* XZMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8288EC619A77752008D5573 /* XZMusicTests.m */; };
+		F82C130A1A123897005ABF55 /* XZSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C13091A123897005ABF55 /* XZSongModel.m */; };
+		F82C130D1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C130C1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m */; };
+		F82C13101A123EAD005ABF55 /* XZMusicForBaidu2.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C130F1A123EAD005ABF55 /* XZMusicForBaidu2.m */; };
+		F82C13141A1244F1005ABF55 /* XZMusicSongConvertToOb.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */; };
 		F85E4ECB19F687B900AA6DE1 /* NSArray+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB419F687B900AA6DE1 /* NSArray+XZNetMethod.m */; };
 		F85E4ECC19F687B900AA6DE1 /* NSDictionary+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB619F687B900AA6DE1 /* NSDictionary+XZNetMethod.m */; };
 		F85E4ECD19F687B900AA6DE1 /* NSString+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB819F687B900AA6DE1 /* NSString+XZNetMethod.m */; };
@@ -224,6 +228,14 @@
 		F8288EC219A77752008D5573 /* XZMusicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XZMusicTests-Info.plist"; sourceTree = "<group>"; };
 		F8288EC419A77752008D5573 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F8288EC619A77752008D5573 /* XZMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XZMusicTests.m; sourceTree = "<group>"; };
+		F82C13081A123897005ABF55 /* XZSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSongModel.h; sourceTree = "<group>"; };
+		F82C13091A123897005ABF55 /* XZSongModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSongModel.m; sourceTree = "<group>"; };
+		F82C130B1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicRequestForMisicSongInfoManager.h; sourceTree = "<group>"; };
+		F82C130C1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicRequestForMisicSongInfoManager.m; sourceTree = "<group>"; };
+		F82C130E1A123EAD005ABF55 /* XZMusicForBaidu2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicForBaidu2.h; sourceTree = "<group>"; };
+		F82C130F1A123EAD005ABF55 /* XZMusicForBaidu2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicForBaidu2.m; sourceTree = "<group>"; };
+		F82C13121A1244F1005ABF55 /* XZMusicSongConvertToOb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicSongConvertToOb.h; sourceTree = "<group>"; };
+		F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicSongConvertToOb.m; sourceTree = "<group>"; };
 		F85E4EB319F687B900AA6DE1 /* NSArray+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XZNetMethod.h"; sourceTree = "<group>"; };
 		F85E4EB419F687B900AA6DE1 /* NSArray+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XZNetMethod.m"; sourceTree = "<group>"; };
 		F85E4EB519F687B900AA6DE1 /* NSDictionary+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XZNetMethod.h"; sourceTree = "<group>"; };
@@ -583,6 +595,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F82C13111A1244C2005ABF55 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F82C13121A1244F1005ABF55 /* XZMusicSongConvertToOb.h */,
+				F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		F85E4EB219F687B900AA6DE1 /* XZNetWorking */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +687,8 @@
 				F85E4EEF19F6891600AA6DE1 /* XZMusicForBaidu.m */,
 				F8CD339919FD1ECB001A55C6 /* XZMusicForWeibo.h */,
 				F8CD339A19FD1ECB001A55C6 /* XZMusicForWeibo.m */,
+				F82C130E1A123EAD005ABF55 /* XZMusicForBaidu2.h */,
+				F82C130F1A123EAD005ABF55 /* XZMusicForBaidu2.m */,
 			);
 			name = XZMusicServive;
 			sourceTree = "<group>";
@@ -730,6 +753,8 @@
 				F8A7A3AA1A0E4A3C006587C8 /* XZMusicRequestForWeiboInfoManager.m */,
 				F8A7A3AC1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.h */,
 				F8A7A3AD1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m */,
+				F82C130B1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.h */,
+				F82C130C1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m */,
 			);
 			path = RequestManager;
 			sourceTree = "<group>";
@@ -1104,6 +1129,7 @@
 		F8A9B80C19D3CAEA0006B697 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				F82C13111A1244C2005ABF55 /* Manager */,
 				F8A9B80D19D3CAEA0006B697 /* XZMusicPlayViewController.h */,
 				F8A9B80E19D3CAEA0006B697 /* XZMusicPlayViewController.m */,
 			);
@@ -1184,6 +1210,8 @@
 				F8D19D0A1A0DD2CD00F7D0FD /* XZMusicSingerModel.m */,
 				F8A7A3A21A0E48F7006587C8 /* XZMusicSongModel.h */,
 				F8A7A3A31A0E48F7006587C8 /* XZMusicSongModel.m */,
+				F82C13081A123897005ABF55 /* XZSongModel.h */,
+				F82C13091A123897005ABF55 /* XZSongModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1501,6 +1529,7 @@
 				F85E4F1119F6923600AA6DE1 /* UIDevice+XZIdentifierAddition.m in Sources */,
 				F85E4F1A19F694F000AA6DE1 /* NSObject+XZNetMethod.m in Sources */,
 				F8A9B88419D3CAEA0006B697 /* UIBarButtonItem+NavItem.m in Sources */,
+				F82C13141A1244F1005ABF55 /* XZMusicSongConvertToOb.m in Sources */,
 				F8A9B8A619D3CAEA0006B697 /* XZTabBarForMeViewController.m in Sources */,
 				F85E4EF919F68BCD00AA6DE1 /* XZNetServiceFactory.m in Sources */,
 				F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */,
@@ -1515,6 +1544,7 @@
 				F8D19D0E1A0DD2F200F7D0FD /* XZMusicDataCenter.m in Sources */,
 				F8D19D211A0DF75600F7D0FD /* XZSingerInfoCell.m in Sources */,
 				F8BFA5521A07ADE600577C19 /* XZNetDebug.m in Sources */,
+				F82C13101A123EAD005ABF55 /* XZMusicForBaidu2.m in Sources */,
 				F8288EAE19A77752008D5573 /* main.m in Sources */,
 				F8A7A3AB1A0E4A3C006587C8 /* XZMusicRequestForWeiboInfoManager.m in Sources */,
 				F8A7A3B11A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.m in Sources */,
@@ -1531,6 +1561,7 @@
 				F8A9B88819D3CAEA0006B697 /* UIFont+XZ.m in Sources */,
 				F8D19D1A1A0DD9F800F7D0FD /* XZTableMoreCell.m in Sources */,
 				F8D19D0B1A0DD2CD00F7D0FD /* XZMusicSingerModel.m in Sources */,
+				F82C130D1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m in Sources */,
 				F8A9B8A419D3CAEA0006B697 /* XZMenuMainViewController.m in Sources */,
 				F85E4F0319F68EEC00AA6DE1 /* XZRequestGenerator.m in Sources */,
 				F8A9B88919D3CAEA0006B697 /* UIImage+XZ.m in Sources */,
@@ -1546,6 +1577,7 @@
 				F8D19D171A0DD8A100F7D0FD /* XZBaseTable.m in Sources */,
 				F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
+				F82C130A1A123897005ABF55 /* XZSongModel.m in Sources */,
 				F85E4EED19F688F200AA6DE1 /* XZNetService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

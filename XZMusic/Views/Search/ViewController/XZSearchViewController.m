@@ -54,6 +54,11 @@
     [self initUI];
     [self addNotifycation];
 
+    [self showLoading];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+        [self getSingerData];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -61,10 +66,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // 耗时的操作
-        [self getSingerData];
-    });
 }
 
 - (void)initData{
@@ -76,8 +77,6 @@
     [self addRightButton:@"取消"];
     
     self.tableView = [[XZTableForSingerList alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
-//    self.tableView.dataSource = self;
-//    self.tableView.delegate = self;
     self.tableView.eventDelegate = self;
     [self.view addSubview:self.tableView];
 }
@@ -98,7 +97,6 @@
         return;
     }
     
-    [self showLoading];
     self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周"];
 
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -118,6 +116,7 @@
     }else{
         self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:searchText];
     }
+    self.tableView.tableData = self.singerListArr;
     [self.tableView reloadData];
     
     if (!self.singerListArr || self.singerListArr.count == 0) {

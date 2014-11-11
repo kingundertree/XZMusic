@@ -8,9 +8,13 @@
 
 #import "XZBaseViewController.h"
 #import "XZMusicSongModel.h"
+#import "XZSongModel.h"
 
 @interface XZMusicPlayViewController : XZBaseViewController
 
-@property(nonatomic, strong) XZMusicSongModel *songModel;
+@property(nonatomic, strong) XZMusicSongModel *musicSongModel;
+
++ (XZMusicPlayViewController *)shareInstance;
+- (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel;
 
 @end
