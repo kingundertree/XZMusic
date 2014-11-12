@@ -9,10 +9,14 @@
 #import "XZBaseViewController.h"
 #import "XZMusicSongModel.h"
 #import "XZSongModel.h"
+#import "DOUAudioStreamer.h"
+#import "XZPlaySongModel.h"
 
 @interface XZMusicPlayViewController : XZBaseViewController
 
 @property(nonatomic, strong) XZMusicSongModel *musicSongModel;
+@property(nonatomic, strong) XZPlaySongModel *playSongModel;
+@property(nonatomic, strong) DOUAudioStreamer *audioPlayer;
 
 + (XZMusicPlayViewController *)shareInstance;
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel;

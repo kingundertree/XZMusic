@@ -76,7 +76,7 @@
         return;
     }
     
-    XZMusicPlayViewController *playVC = [[XZMusicPlayViewController alloc] init];
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
     XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
     playVC.musicSongModel = singerInfoMode;
     [self.navigationController pushViewController:playVC animated:YES];
