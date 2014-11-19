@@ -41,7 +41,6 @@
 		F82C130A1A123897005ABF55 /* XZSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C13091A123897005ABF55 /* XZSongModel.m */; };
 		F82C130D1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C130C1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m */; };
 		F82C13101A123EAD005ABF55 /* XZMusicForBaidu2.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C130F1A123EAD005ABF55 /* XZMusicForBaidu2.m */; };
-		F82C13141A1244F1005ABF55 /* XZMusicSongConvertToOb.m in Sources */ = {isa = PBXBuildFile; fileRef = F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */; };
 		F85E4ECB19F687B900AA6DE1 /* NSArray+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB419F687B900AA6DE1 /* NSArray+XZNetMethod.m */; };
 		F85E4ECC19F687B900AA6DE1 /* NSDictionary+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB619F687B900AA6DE1 /* NSDictionary+XZNetMethod.m */; };
 		F85E4ECD19F687B900AA6DE1 /* NSString+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4EB819F687B900AA6DE1 /* NSString+XZNetMethod.m */; };
@@ -63,6 +62,11 @@
 		F85E4F1D19F6958D00AA6DE1 /* XZDeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F1C19F6958D00AA6DE1 /* XZDeviceInfo.m */; };
 		F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */; };
 		F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */; };
+		F870C9981A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9901A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m */; };
+		F870C9991A1CD29400A3B7A7 /* XZCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9941A1CD29400A3B7A7 /* XZCircleProgress.m */; };
+		F870C99A1A1CD29400A3B7A7 /* XZMusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9971A1CD29400A3B7A7 /* XZMusicPlayViewController.m */; };
+		F870C99E1A1CD49E00A3B7A7 /* XZMusicDownOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C99D1A1CD49E00A3B7A7 /* XZMusicDownOperation.m */; };
+		F870C9A11A1CD4F900A3B7A7 /* XZMusicLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */; };
 		F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87143D01A05DCAF00CF0447 /* Launch Screen.xib */; };
 		F897C5001A0A41E200BE6AB4 /* FreeMusic.db in Resources */ = {isa = PBXBuildFile; fileRef = F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */; };
 		F8A7A3A41A0E48F7006587C8 /* XZMusicSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3A31A0E48F7006587C8 /* XZMusicSongModel.m */; };
@@ -190,7 +194,6 @@
 		F8A9B89C19D3CAEA0006B697 /* XZLoginForWBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B80219D3CAEA0006B697 /* XZLoginForWBViewController.m */; };
 		F8A9B89D19D3CAEA0006B697 /* XZLovingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B80519D3CAEA0006B697 /* XZLovingViewController.m */; };
 		F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B80B19D3CAEA0006B697 /* XZSettingViewController.m */; };
-		F8A9B8A019D3CAEA0006B697 /* XZMusicPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B80E19D3CAEA0006B697 /* XZMusicPlayViewController.m */; };
 		F8A9B8A119D3CAEA0006B697 /* XZHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81119D3CAEA0006B697 /* XZHeaderButton.m */; };
 		F8A9B8A219D3CAEA0006B697 /* XZLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81319D3CAEA0006B697 /* XZLeftMenu.m */; };
 		F8A9B8A319D3CAEA0006B697 /* XZMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81519D3CAEA0006B697 /* XZMenuButton.m */; };
@@ -293,8 +296,6 @@
 		F82C130C1A123DE3005ABF55 /* XZMusicRequestForMisicSongInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicRequestForMisicSongInfoManager.m; sourceTree = "<group>"; };
 		F82C130E1A123EAD005ABF55 /* XZMusicForBaidu2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicForBaidu2.h; sourceTree = "<group>"; };
 		F82C130F1A123EAD005ABF55 /* XZMusicForBaidu2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicForBaidu2.m; sourceTree = "<group>"; };
-		F82C13121A1244F1005ABF55 /* XZMusicSongConvertToOb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicSongConvertToOb.h; sourceTree = "<group>"; };
-		F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicSongConvertToOb.m; sourceTree = "<group>"; };
 		F85E4EB319F687B900AA6DE1 /* NSArray+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+XZNetMethod.h"; sourceTree = "<group>"; };
 		F85E4EB419F687B900AA6DE1 /* NSArray+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XZNetMethod.m"; sourceTree = "<group>"; };
 		F85E4EB519F687B900AA6DE1 /* NSDictionary+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XZNetMethod.h"; sourceTree = "<group>"; };
@@ -337,6 +338,16 @@
 		F85E4F1F19F6978800AA6DE1 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		F85E4F2119F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+XZNetMethod.h"; sourceTree = "<group>"; };
 		F85E4F2219F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+XZNetMethod.m"; sourceTree = "<group>"; };
+		F870C98F1A1CD29400A3B7A7 /* XZMusicSongConvertToOb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicSongConvertToOb.h; sourceTree = "<group>"; };
+		F870C9901A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicSongConvertToOb.m; sourceTree = "<group>"; };
+		F870C9931A1CD29400A3B7A7 /* XZCircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZCircleProgress.h; sourceTree = "<group>"; };
+		F870C9941A1CD29400A3B7A7 /* XZCircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZCircleProgress.m; sourceTree = "<group>"; };
+		F870C9961A1CD29400A3B7A7 /* XZMusicPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayViewController.h; sourceTree = "<group>"; };
+		F870C9971A1CD29400A3B7A7 /* XZMusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayViewController.m; sourceTree = "<group>"; };
+		F870C99C1A1CD49E00A3B7A7 /* XZMusicDownOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicDownOperation.h; sourceTree = "<group>"; };
+		F870C99D1A1CD49E00A3B7A7 /* XZMusicDownOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDownOperation.m; sourceTree = "<group>"; };
+		F870C99F1A1CD4F900A3B7A7 /* XZMusicLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicLrcView.h; sourceTree = "<group>"; };
+		F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicLrcView.m; sourceTree = "<group>"; };
 		F87143D01A05DCAF00CF0447 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreeMusic.db; sourceTree = "<group>"; };
 		F8A7A3A21A0E48F7006587C8 /* XZMusicSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicSongModel.h; sourceTree = "<group>"; };
@@ -492,8 +503,6 @@
 		F8A9B80519D3CAEA0006B697 /* XZLovingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZLovingViewController.m; sourceTree = "<group>"; };
 		F8A9B80A19D3CAEA0006B697 /* XZSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSettingViewController.h; sourceTree = "<group>"; };
 		F8A9B80B19D3CAEA0006B697 /* XZSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSettingViewController.m; sourceTree = "<group>"; };
-		F8A9B80D19D3CAEA0006B697 /* XZMusicPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayViewController.h; sourceTree = "<group>"; };
-		F8A9B80E19D3CAEA0006B697 /* XZMusicPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayViewController.m; sourceTree = "<group>"; };
 		F8A9B81019D3CAEA0006B697 /* XZHeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZHeaderButton.h; sourceTree = "<group>"; };
 		F8A9B81119D3CAEA0006B697 /* XZHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZHeaderButton.m; sourceTree = "<group>"; };
 		F8A9B81219D3CAEA0006B697 /* XZLeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZLeftMenu.h; sourceTree = "<group>"; };
@@ -703,15 +712,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F82C13111A1244C2005ABF55 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				F82C13121A1244F1005ABF55 /* XZMusicSongConvertToOb.h */,
-				F82C13131A1244F1005ABF55 /* XZMusicSongConvertToOb.m */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		F85E4EB219F687B900AA6DE1 /* XZNetWorking */ = {
 			isa = PBXGroup;
 			children = (
@@ -834,6 +834,62 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		F870C98D1A1CD29400A3B7A7 /* PlayingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F870C98E1A1CD29400A3B7A7 /* Manager */,
+				F870C9911A1CD29400A3B7A7 /* Model */,
+				F870C9921A1CD29400A3B7A7 /* View */,
+				F870C9951A1CD29400A3B7A7 /* ViewController */,
+				F870C9961A1CD29400A3B7A7 /* XZMusicPlayViewController.h */,
+				F870C9971A1CD29400A3B7A7 /* XZMusicPlayViewController.m */,
+			);
+			path = PlayingViewController;
+			sourceTree = "<group>";
+		};
+		F870C98E1A1CD29400A3B7A7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				F870C98F1A1CD29400A3B7A7 /* XZMusicSongConvertToOb.h */,
+				F870C9901A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		F870C9911A1CD29400A3B7A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F870C9921A1CD29400A3B7A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F870C9931A1CD29400A3B7A7 /* XZCircleProgress.h */,
+				F870C9941A1CD29400A3B7A7 /* XZCircleProgress.m */,
+				F870C99F1A1CD4F900A3B7A7 /* XZMusicLrcView.h */,
+				F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F870C9951A1CD29400A3B7A7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F870C99B1A1CD47900A3B7A7 /* MusicDownLoad */ = {
+			isa = PBXGroup;
+			children = (
+				F870C99C1A1CD49E00A3B7A7 /* XZMusicDownOperation.h */,
+				F870C99D1A1CD49E00A3B7A7 /* XZMusicDownOperation.m */,
+			);
+			path = MusicDownLoad;
+			sourceTree = "<group>";
+		};
 		F897C4FE1A0A41D600BE6AB4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -870,6 +926,7 @@
 		F8A9B75719D3CAEA0006B697 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F870C99B1A1CD47900A3B7A7 /* MusicDownLoad */,
 				F8A7A3A51A0E49E1006587C8 /* RequestManager */,
 				F8A9B75819D3CAEA0006B697 /* LoginManager */,
 			);
@@ -1237,9 +1294,7 @@
 		F8A9B80C19D3CAEA0006B697 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F82C13111A1244C2005ABF55 /* Manager */,
-				F8A9B80D19D3CAEA0006B697 /* XZMusicPlayViewController.h */,
-				F8A9B80E19D3CAEA0006B697 /* XZMusicPlayViewController.m */,
+				F870C98D1A1CD29400A3B7A7 /* PlayingViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1632,6 +1687,7 @@
 				F8A9B82319D3CAEA0006B697 /* XZWBLoginManager.m in Sources */,
 				F8BFA5581A07B05300577C19 /* NSMutableString+XZNetMethod.m in Sources */,
 				F85E4EDB19F6882600AA6DE1 /* XZNetBridge.m in Sources */,
+				F870C9991A1CD29400A3B7A7 /* XZCircleProgress.m in Sources */,
 				F80B0CD21A139567009F1785 /* DOUAudioDecoder.m in Sources */,
 				F8D19D281A0E05AD00F7D0FD /* XZSingerSongListViewController.m in Sources */,
 				F8A7A3A41A0E48F7006587C8 /* XZMusicSongModel.m in Sources */,
@@ -1646,11 +1702,9 @@
 				F8BCDB2F1A139C0400BEB86C /* XZPlaySongModel.m in Sources */,
 				F85E4F1A19F694F000AA6DE1 /* NSObject+XZNetMethod.m in Sources */,
 				F8A9B88419D3CAEA0006B697 /* UIBarButtonItem+NavItem.m in Sources */,
-				F82C13141A1244F1005ABF55 /* XZMusicSongConvertToOb.m in Sources */,
 				F8A9B8A619D3CAEA0006B697 /* XZTabBarForMeViewController.m in Sources */,
 				F85E4EF919F68BCD00AA6DE1 /* XZNetServiceFactory.m in Sources */,
 				F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */,
-				F8A9B8A019D3CAEA0006B697 /* XZMusicPlayViewController.m in Sources */,
 				F8A9B88C19D3CAEA0006B697 /* XZBaseButton+IconWithTitle.m in Sources */,
 				F8CD339B19FD1ECB001A55C6 /* XZMusicForWeibo.m in Sources */,
 				F8A9B89C19D3CAEA0006B697 /* XZLoginForWBViewController.m in Sources */,
@@ -1670,6 +1724,7 @@
 				F85E4F1719F693A000AA6DE1 /* XZKeychain.m in Sources */,
 				F8A9B8A719D3CAEA0006B697 /* XZTabBarView.m in Sources */,
 				F85E4F0E19F6911700AA6DE1 /* XZAppContext.m in Sources */,
+				F870C9981A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m in Sources */,
 				F85E4F0519F68EEC00AA6DE1 /* XZSignatureGenerator.m in Sources */,
 				F85E4ECC19F687B900AA6DE1 /* NSDictionary+XZNetMethod.m in Sources */,
 				F80B0CD31A139567009F1785 /* DOUAudioEventLoop.m in Sources */,
@@ -1690,6 +1745,8 @@
 				F80B0CE11A139567009F1785 /* NSData+DOUMappedFile.m in Sources */,
 				F80B0CE01A139567009F1785 /* DOUSimpleHTTPRequest.m in Sources */,
 				F80B0CD81A139567009F1785 /* DOUAudioPlaybackItem.m in Sources */,
+				F870C9A11A1CD4F900A3B7A7 /* XZMusicLrcView.m in Sources */,
+				F870C99E1A1CD49E00A3B7A7 /* XZMusicDownOperation.m in Sources */,
 				F80B0CD41A139567009F1785 /* DOUAudioFilePreprocessor.m in Sources */,
 				F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */,
 				F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */,
@@ -1708,6 +1765,7 @@
 				F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
 				F82C130A1A123897005ABF55 /* XZSongModel.m in Sources */,
+				F870C99A1A1CD29400A3B7A7 /* XZMusicPlayViewController.m in Sources */,
 				F85E4EED19F688F200AA6DE1 /* XZNetService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
