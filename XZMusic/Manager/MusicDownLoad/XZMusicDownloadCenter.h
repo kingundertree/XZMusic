@@ -21,7 +21,7 @@ NS_ENUM(NSInteger, XZMusicDownloadtype) {
 - (NSUInteger)currentCountOfOperations;
 - (void)cancleOperationWithIdentify:(NSString *)identify;
 
-- (void)downloadMusicWithMusicId:(NSString *)musicId musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify downloadType:(enum XZMusicDownloadtype)downloadType downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock;
+- (void)downloadMusicWithMusicId:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify downloadType:(enum XZMusicDownloadtype)downloadType downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock;
 
 
 @end

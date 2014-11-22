@@ -11,8 +11,8 @@
 9. add LKDBHelper，实现歌手列表搜索，需要设计搜索模块
 10. add search singerList ViewController
 11. add search singerSongs Request
-12. 11.23 add DOUAudioPlayer 实现播放歌曲功能
-
+12. 11.13 add DOUAudioPlayer 实现播放歌曲功能
+13. 11.22 实现本地音乐、歌词下载，以及本地播放功能
 
 
 

@@ -16,11 +16,17 @@ NS_ENUM(NSInteger, XZMusicDownloadStatus) {
 
 };
 
+NS_ENUM(NSInteger, XZMusicdownloadStyle){
+    XZMusicdownloadStyleForMusic = 1, // 音乐
+    XZMusicdownloadStyleForLrc = 2 // 歌词
+};
+
 @interface XZMusicDownloadResponse : NSObject
 
 @property(nonatomic, strong) NSDictionary *content;
 @property(nonatomic, strong) NSString *downloadIdentify;
 @property(nonatomic, assign) float progress;
 @property(nonatomic, assign) enum XZMusicDownloadStatus downloadStatus;
+@property(nonatomic, assign) enum XZMusicdownloadStyle downloadStyle;
 
 @end

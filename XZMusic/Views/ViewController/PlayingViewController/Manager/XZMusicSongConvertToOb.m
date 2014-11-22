@@ -27,6 +27,9 @@
             musicSongModel.lrcLink = [sub objectForKey:@"lrcLink"];
             musicSongModel.songPicBig = [sub objectForKey:@"songPicBig"];
             musicSongModel.time = [[sub objectForKey:@"time"] intValue];
+            musicSongModel.songId = [[sub objectForKey:@"songId"] intValue];
+            musicSongModel.lrcLink = [sub objectForKey:@"lrcLink"];
+            musicSongModel.format = [sub objectForKey:@"format"];
         }
     }
     

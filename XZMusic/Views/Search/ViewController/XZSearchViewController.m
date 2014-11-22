@@ -97,7 +97,7 @@
         return;
     }
     
-    self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周"];
+    self.singerListArr = [[XZMusicDataCenter shareInstance] searchMusicWithKeyword:@"周杰伦"];
 
     dispatch_async(dispatch_get_main_queue(), ^{
         // 更新界面

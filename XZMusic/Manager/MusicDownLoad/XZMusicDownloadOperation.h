@@ -12,6 +12,6 @@
 
 @interface XZMusicDownloadOperation : NSObject
 
-- (AFHTTPRequestOperation *)downloadMusic:(NSString *)musicId musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify isMusic:(BOOL)isMusic downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock;
+- (AFHTTPRequestOperation *)downloadMusic:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify isMusic:(BOOL)isMusic downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock;
 
 @end

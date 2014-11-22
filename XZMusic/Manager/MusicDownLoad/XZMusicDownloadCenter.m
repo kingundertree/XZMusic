@@ -67,7 +67,7 @@
     }
 }
 
-- (void)downloadMusicWithMusicId:(NSString *)musicId musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify downloadType:(enum XZMusicDownloadtype)downloadType downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock{
+- (void)downloadMusicWithMusicId:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify downloadType:(enum XZMusicDownloadtype)downloadType downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock{
     
     XZMusicDownloadDispatch *element = [[XZMusicDownloadDispatch alloc] init];
     element.downloadBlock = downloadBlock;
@@ -81,7 +81,7 @@
     XZMusicDownloadOperation *downloadOperation = [[XZMusicDownloadOperation alloc] init];
     __weak XZMusicDownloadCenter *this = self;
     
-    AFHTTPRequestOperation *operation = [downloadOperation downloadMusic:musicId musicUrlStr:musicUrlStr identify:identify isMusic:isMusic downloadBlock:^(XZMusicDownloadResponse *response) {
+    AFHTTPRequestOperation *operation = [downloadOperation downloadMusic:musicId format:format musicUrlStr:musicUrlStr identify:identify isMusic:isMusic downloadBlock:^(XZMusicDownloadResponse *response) {
         [this downloadMusic:response];
     }];
     

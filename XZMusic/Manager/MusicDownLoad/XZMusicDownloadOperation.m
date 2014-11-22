@@ -20,15 +20,16 @@
 
 @implementation XZMusicDownloadOperation
 
-- (AFHTTPRequestOperation *)downloadMusic:(NSString *)musicId musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify isMusic:(BOOL)isMusic downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock{
+- (AFHTTPRequestOperation *)downloadMusic:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr identify:(NSString *)identify isMusic:(BOOL)isMusic downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock{
     self.downloadBlock = downloadBlock;
     self.dowloadResponse = [[XZMusicDownloadResponse alloc] init];
     self.dowloadResponse.downloadStatus = XZMusicDownloadIng;
     self.dowloadResponse.downloadIdentify = identify;
+    self.dowloadResponse.downloadStyle = isMusic ? XZMusicdownloadStyleForMusic : XZMusicdownloadStyleForLrc;
     
     long long cacheLength;
 
-    self.cacheFile = [[self class] getMusicFile:musicId isMusic:isMusic];
+    self.cacheFile = [[self class] getMusicFile:musicId format:format isMusic:isMusic];
     cacheLength = [[self class] cacheFileWithCacheFile:self.cacheFile];
 
     //获取请求
@@ -46,13 +47,17 @@
     //重组进度block
     [self.requestOperation setDownloadProgressBlock:[self getNewProgressBlockWithCacheLength:cacheLength]];
 
+    __weak XZMusicDownloadOperation *this = self;
     [self.requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        DLog(@"downloadsuccess");
+        this.dowloadResponse.downloadStatus = XZMusicDownloadSuccess;
+        this.dowloadResponse.progress = 1.0;
+        
+        this.downloadBlock(this.dowloadResponse);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        DLog(@"downloadfail,error--->>%@",error.userInfo);
+        this.dowloadResponse.downloadStatus = XZMusicDownloadFail;
+        
+        this.downloadBlock(this.dowloadResponse);
     }];
-    
-//    [self.requestOperation start];
     
     return self.requestOperation;
 }
@@ -94,7 +99,7 @@
 }
 
 #pragma mark - 获取本地文件路径
-+ (NSString *)getMusicFile:(NSString *)musicId isMusic:(BOOL)isMusic{
++ (NSString *)getMusicFile:(NSString *)musicId format:(NSString *)format isMusic:(BOOL)isMusic{
     NSString *fileStr;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -111,12 +116,12 @@
             [fileManager createDirectoryAtPath:[myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",XZMusicFile,musicId]] withIntermediateDirectories:NO attributes:nil error:nil];
         }
         
-        fileStr = [myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/music",XZMusicFile,musicId]];
+        fileStr = [myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/%@.%@",XZMusicFile,musicId,musicId,format]];
     }else{
         if (![fileManager fileExistsAtPath:[myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",XZMusicFile,musicId]]]) {
             [fileManager createDirectoryAtPath:[myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@",XZMusicFile,musicId]] withIntermediateDirectories:NO attributes:nil error:nil];
         }
-        fileStr = [myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/lrc",XZMusicFile,musicId]];
+        fileStr = [myDocPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/%@.lrc",XZMusicFile,musicId,musicId]];
     }
     
     DLog(@"fileStr--->>%@",fileStr);
