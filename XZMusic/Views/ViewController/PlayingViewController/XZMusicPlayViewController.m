@@ -9,6 +9,7 @@
 #import "XZMusicPlayViewController.h"
 #import "XZMusicRequestForMisicSongInfoManager.h"
 #import "XZMusicSongConvertToOb.h"
+#import "XZMusicDownloadOperation.h"
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -18,6 +19,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
+
+@property(nonatomic, strong) XZMusicDownloadOperation *downloadOperation;
 @end
 
 @implementation XZMusicPlayViewController
@@ -65,6 +68,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self requestSongInfo];
     
     [self initData];
+    
+    self.downloadOperation = [[XZMusicDownloadOperation alloc] init];
+    [self.downloadOperation downloadMusic:@"50487351" musicUrlStr:@"http://file.qianqian.com/data2/music/50487351/50487351.mp3?xcode=0d577c2b18127bfd7f0f5f3868cf11dbe2fef199f45e9251" identify:@"xiazer" isMusic:YES downloadBlock:^(XZMusicDownloadResponse *response) {
+        DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
+    }];
 }
 
 - (void)initData{
@@ -108,7 +116,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)playMusic{
-    self.audioPlayer = [DOUAudioStreamer streamerWithAudioFile:self.playSongModel];
+//    self.audioPlayer = [DOUAudioStreamer streamerWithAudioFile:self.playSongModel];
     [self.audioPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
     [self.audioPlayer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
     [self.audioPlayer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
