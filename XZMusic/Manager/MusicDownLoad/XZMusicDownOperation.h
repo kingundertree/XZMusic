@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XZMusicDownloadResponse.h"
 
-@interface XZMusicDownOperation : NSObject
+NS_ENUM(NSInteger, XZMusicDownloadtype) {
+    XZMusicDownloadtypeForMusic = 1, // 音乐
+    XZMusicDownloadtypeForLrc = 2, // 歌词
+};
+
+@interface XZMusicDownloadOperation : NSObject
+
++ (XZMusicDownloadOperation *)shareInstance;
+
+
+- (void)downloadMusicWithMusicId:(NSString *)musicId identify:(NSString *)identify downloadType:(enum XZMusicDownloadtype)downloadType downloadBlock:(void(^)(XZMusicDownloadResponse *response))downloadBlock;
+
 
 @end
