@@ -10,4 +10,6 @@
 
 @interface XZMusicLrcView : UIView
 
+- (void)initLrcViewWithPath:(NSString *)lrcPath;
+- (void)moveLrcWithTime:(int)time;
 @end

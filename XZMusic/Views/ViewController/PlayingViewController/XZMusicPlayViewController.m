@@ -10,6 +10,7 @@
 #import "XZMusicRequestForMisicSongInfoManager.h"
 #import "XZMusicSongConvertToOb.h"
 #import "XZMusicDownloadCenter.h"
+#import "XZMusicLrcView.h"
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -19,7 +20,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
-
+@property(nonatomic, strong) XZMusicLrcView *lrcView;
+@property(nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation XZMusicPlayViewController
@@ -60,10 +62,16 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initData];
+    [self initLrcView];
 }
 
 - (void)initData{
     self.playSongModel = [[XZPlaySongModel alloc] init];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
+}
+
+- (void)initLrcView{
+    self.lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-300, ScreenWidth, 300)];
 }
 
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
@@ -85,6 +93,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 
                 if ([self initPlaySong]) {
                     [self playMusic];
+                    [self showLrc];
                 }
             }
         }else if (response.status == XZNetWorkingResponseStatusNetError){
@@ -99,20 +108,29 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self.playSongModel.artist = self.songModel.artistName;
     self.playSongModel.title = self.songModel.songName;
     
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
     NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *myDocPath = [myPaths objectAtIndex:0];
 
-    NSString *path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
+    NSString *musicPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
 
-    if ([fileManager fileExistsAtPath:path]) {
-        self.playSongModel.audioFileURL = [NSURL fileURLWithPath:path];
+    if ([self isHasMusicOrLrc:YES]) {
+        self.playSongModel.audioFileURL = [NSURL fileURLWithPath:musicPath];
     }else {
         self.playSongModel.audioFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.songModel.songLink]];
+        [self downloadMusic];
     }
 
     return YES;
+}
+
+- (void)downloadMusic{
+    // 下载歌曲
+    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format   musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
+}
+- (void)downloadLrc{
+    // 下载歌词
+    NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.songModel.lrcLink];
+    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format  musciUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
 }
 
 - (void)playMusic{
@@ -122,12 +140,40 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self.audioPlayer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
     
     [self.audioPlayer play];
+}
+
+- (void)showLrc{
+    if ([self isHasMusicOrLrc:NO]) {
+        NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *myDocPath = [myPaths objectAtIndex:0];
+
+        NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
+
+        [self.lrcView initLrcViewWithPath:lrcPath];
+        [self.view addSubview:self.lrcView];
+    }else {
+        [self downloadLrc];
+    }
+}
+
+- (BOOL)isHasMusicOrLrc:(BOOL)isMusic{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    // 下载歌词
-    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format   musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
-    // 下载歌曲
-    NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.songModel.lrcLink];
-    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format  musciUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
+    NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *myDocPath = [myPaths objectAtIndex:0];
+    
+    NSString *path;
+    if (isMusic) {
+        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
+    }else {
+        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
+    }
+    
+    if ([fileManager fileExistsAtPath:path]) {
+        return YES;
+    }else {
+        return NO;
+    }
 }
 
 - (void)downloadMusic:(NSString *)musicId format:(NSString *)format musciUrlStr:(NSString *)musciUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
@@ -157,6 +203,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             }
         }
     }];
+}
+
+- (void)musicPlaying{
+//    NSTimeInterval time = self.audioPlayer.currentTime;
+    DLog(@"musicTime---->>%fd/%fd",self.audioPlayer.currentTime,self.audioPlayer.duration);
+    int time = self.audioPlayer.currentTime;
+    [self.lrcView moveLrcWithTime:time];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
