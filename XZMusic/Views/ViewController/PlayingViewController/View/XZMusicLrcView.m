@@ -109,6 +109,10 @@
 }
 
 - (void)moveLrcWithTime:(int)time{
+    if (self.lrcLineConArr.count == 0) {
+        return;
+    }
+    
     NSString *timeStr = [self timeformatFromSeconds:time];
     
     NSInteger currentNum = 0;

@@ -36,6 +36,13 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     return shareInstance;
 }
 
+- (XZMusicLrcView *)lrcView{
+    if (!_lrcView) {
+        _lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-300, ScreenWidth, 300)];
+    }
+    return _lrcView;
+}
+
 - (XZMusicRequestForMisicSongInfoManager *)musicSongInfoRequest{
     if (!_musicSongInfoRequest) {
         _musicSongInfoRequest = [[XZMusicRequestForMisicSongInfoManager alloc] init];
@@ -62,16 +69,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initData];
-    [self initLrcView];
 }
 
 - (void)initData{
     self.playSongModel = [[XZPlaySongModel alloc] init];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
-}
-
-- (void)initLrcView{
-    self.lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-300, ScreenWidth, 300)];
 }
 
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
@@ -93,7 +95,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 
                 if ([self initPlaySong]) {
                     [self playMusic];
-                    [self showLrc];
+                    [self showLrcView];
                 }
             }
         }else if (response.status == XZNetWorkingResponseStatusNetError){
@@ -142,19 +144,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self.audioPlayer play];
 }
 
-- (void)showLrc{
-    if ([self isHasMusicOrLrc:NO]) {
-        NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *myDocPath = [myPaths objectAtIndex:0];
-
-        NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
-
-        [self.lrcView initLrcViewWithPath:lrcPath];
-        [self.view addSubview:self.lrcView];
-    }else {
-        [self downloadLrc];
-    }
-}
 
 - (BOOL)isHasMusicOrLrc:(BOOL)isMusic{
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -164,9 +153,9 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     
     NSString *path;
     if (isMusic) {
-        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
-    }else {
         path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
+    }else {
+        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
     }
     
     if ([fileManager fileExistsAtPath:path]) {
@@ -178,6 +167,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)downloadMusic:(NSString *)musicId format:(NSString *)format musciUrlStr:(NSString *)musciUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
+    __weak XZMusicPlayViewController *this =self;
     [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:musicId format:format musicUrlStr:musciUrlStr identify:identify downloadType:downloadType downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
         
@@ -194,6 +184,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         }else{
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"歌词下载=========下载成功");
+                [this showLrcView];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"歌词下载=========正在下载中...");
             }else if (response.downloadStatus == XZMusicDownloadFail) {
@@ -205,11 +196,31 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }];
 }
 
+- (void)showLrcView{
+    if (self.lrcView) {
+        [self.lrcView removeFromSuperview];
+    }
+    
+    if ([self isHasMusicOrLrc:NO]) {
+        NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *myDocPath = [myPaths objectAtIndex:0];
+        
+        NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
+        
+        [self.lrcView initLrcViewWithPath:lrcPath];
+        [self.view addSubview:self.lrcView];
+    }else {
+        [self downloadLrc];
+    }
+}
+
 - (void)musicPlaying{
-//    NSTimeInterval time = self.audioPlayer.currentTime;
-    DLog(@"musicTime---->>%fd/%fd",self.audioPlayer.currentTime,self.audioPlayer.duration);
-    int time = self.audioPlayer.currentTime;
-    [self.lrcView moveLrcWithTime:time];
+    if ([self isHasMusicOrLrc:NO]) {
+    //    NSTimeInterval time = self.audioPlayer.currentTime;
+        DLog(@"musicTime---->>%fd/%fd",self.audioPlayer.currentTime,self.audioPlayer.duration);
+        int time = self.audioPlayer.currentTime;
+        [self.lrcView moveLrcWithTime:time];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
