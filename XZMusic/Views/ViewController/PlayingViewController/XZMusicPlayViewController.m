@@ -10,17 +10,11 @@
 #import "XZMusicRequestForMisicSongInfoManager.h"
 #import "XZMusicSongConvertToOb.h"
 #import "XZMusicDownloadCenter.h"
-#import "XZMusicLrcView.h"
-
-static void *kStatusKVOKey = &kStatusKVOKey;
-static void *kDurationKVOKey = &kDurationKVOKey;
-static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
-@property(nonatomic, strong) XZMusicLrcView *lrcView;
 @property(nonatomic, strong) NSTimer *timer;
 @end
 
@@ -36,11 +30,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     return shareInstance;
 }
 
-- (XZMusicLrcView *)lrcView{
-    if (!_lrcView) {
-        _lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-300, ScreenWidth, 300)];
+- (XZMusicPlayingView *)musicPlayIngView{
+    if (!_musicPlayIngView) {
+        _musicPlayIngView = [[XZMusicPlayingView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64)];
     }
-    return _lrcView;
+    
+    return _musicPlayIngView;
 }
 
 - (XZMusicRequestForMisicSongInfoManager *)musicSongInfoRequest{
@@ -67,13 +62,18 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+
+    [self initUI];
     [self initData];
 }
 
 - (void)initData{
     self.playSongModel = [[XZPlaySongModel alloc] init];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
+}
+
+- (void)initUI{
+    [self.view addSubview:self.musicPlayIngView];
 }
 
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
@@ -94,8 +94,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 self.songModel = [XZMusicSongConvertToOb converMusicSong:response.content];
                 
                 if ([self initPlaySong]) {
-                    [self playMusic];
-                    [self showLrcView];
+                    [self createPlayView];
                 }
             }
         }else if (response.status == XZNetWorkingResponseStatusNetError){
@@ -104,6 +103,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             DLog(@"获取歌曲信息失败");
         };
     }];
+}
+
+- (void)createPlayView{
+    [self.musicPlayIngView playMusic:self.playSongModel];
+    [self.musicPlayIngView congfigPlaying:self.songModel];
+    [self initLrcView];
 }
 
 - (BOOL)initPlaySong{
@@ -125,6 +130,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     return YES;
 }
 
+
+
 - (void)downloadMusic{
     // 下载歌曲
     [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format   musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
@@ -133,15 +140,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     // 下载歌词
     NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.songModel.lrcLink];
     [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format  musciUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
-}
-
-- (void)playMusic{
-    self.audioPlayer = [DOUAudioStreamer streamerWithAudioFile:self.playSongModel];
-    [self.audioPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
-    [self.audioPlayer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
-    [self.audioPlayer addObserver:self forKeyPath:@"bufferingRatio" options:NSKeyValueObservingOptionNew context:kBufferingRatioKVOKey];
-    
-    [self.audioPlayer play];
 }
 
 
@@ -184,7 +182,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         }else{
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"歌词下载=========下载成功");
-                [this showLrcView];
+                [this initLrcView];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"歌词下载=========正在下载中...");
             }else if (response.downloadStatus == XZMusicDownloadFail) {
@@ -196,19 +194,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }];
 }
 
-- (void)showLrcView{
-    if (self.lrcView) {
-        [self.lrcView removeFromSuperview];
-    }
-    
+- (void)initLrcView{
     if ([self isHasMusicOrLrc:NO]) {
         NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *myDocPath = [myPaths objectAtIndex:0];
         
         NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
         
-        [self.lrcView initLrcViewWithPath:lrcPath];
-        [self.view addSubview:self.lrcView];
+        [self.musicPlayIngView showLrcWithPath:lrcPath];
     }else {
         [self downloadLrc];
     }
@@ -216,36 +209,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 - (void)musicPlaying{
     if ([self isHasMusicOrLrc:NO]) {
-    //    NSTimeInterval time = self.audioPlayer.currentTime;
-        DLog(@"musicTime---->>%fd/%fd",self.audioPlayer.currentTime,self.audioPlayer.duration);
-        int time = self.audioPlayer.currentTime;
-        [self.lrcView moveLrcWithTime:time];
+        int time = self.musicPlayIngView.audioPlayer.currentTime;
+        [self.musicPlayIngView showLrcWithTime:time];
     }
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//    if (context == kStatusKVOKey) {
-//        [self performSelector:@selector(_updateStatus)
-//                     onThread:[NSThread mainThread]
-//                   withObject:nil
-//                waitUntilDone:NO];
-//    }
-//    else if (context == kDurationKVOKey) {
-//        [self performSelector:@selector(_timerAction:)
-//                     onThread:[NSThread mainThread]
-//                   withObject:nil
-//                waitUntilDone:NO];
-//    }
-//    else if (context == kBufferingRatioKVOKey) {
-//        [self performSelector:@selector(_updateBufferingStatus)
-//                     onThread:[NSThread mainThread]
-//                   withObject:nil
-//                waitUntilDone:NO];
-//    }
-//    else {
-//        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-//    }
-}
+
 
 - (void)didReceiveMemoryWarning
 {

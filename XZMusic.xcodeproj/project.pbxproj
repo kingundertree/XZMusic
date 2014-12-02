@@ -207,6 +207,7 @@
 		F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B82019D3CAEA0006B697 /* XZTabBarViewController.m */; };
 		F8A9B8AF19D3CB7C0006B697 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */; };
 		F8A9B8B019D3CB7C0006B697 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */; };
+		F8B2CFB71A2DE1AF00B8F16F /* XZPlayingRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B2CFB61A2DE1AF00B8F16F /* XZPlayingRollView.m */; };
 		F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */; };
 		F8BCDB2F1A139C0400BEB86C /* XZPlaySongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDB2E1A139C0400BEB86C /* XZPlaySongModel.m */; };
 		F8BFA5521A07ADE600577C19 /* XZNetDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFA5511A07ADE600577C19 /* XZNetDebug.m */; };
@@ -221,6 +222,8 @@
 		F8D19D211A0DF75600F7D0FD /* XZSingerInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D201A0DF75600F7D0FD /* XZSingerInfoCell.m */; };
 		F8D19D251A0E058D00F7D0FD /* XZSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D241A0E058D00F7D0FD /* XZSearchViewController.m */; };
 		F8D19D281A0E05AD00F7D0FD /* XZSingerSongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D271A0E05AD00F7D0FD /* XZSingerSongListViewController.m */; };
+		F8E730261A2C970000FCAC13 /* XZMusicPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E730251A2C970000FCAC13 /* XZMusicPlayingView.m */; };
+		F8E730291A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,6 +534,8 @@
 		F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		F8A9B8AD19D3CB7C0006B697 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		F8B2CFB51A2DE1AF00B8F16F /* XZPlayingRollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZPlayingRollView.h; sourceTree = "<group>"; };
+		F8B2CFB61A2DE1AF00B8F16F /* XZPlayingRollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZPlayingRollView.m; sourceTree = "<group>"; };
 		F8B5AD3C19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XZRequestResponse+XZNetMethod.h"; sourceTree = "<group>"; };
 		F8B5AD3D19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XZRequestResponse+XZNetMethod.m"; sourceTree = "<group>"; };
 		F8BCDB2D1A139C0400BEB86C /* XZPlaySongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZPlaySongModel.h; sourceTree = "<group>"; };
@@ -558,6 +563,10 @@
 		F8D19D241A0E058D00F7D0FD /* XZSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSearchViewController.m; sourceTree = "<group>"; };
 		F8D19D261A0E05AD00F7D0FD /* XZSingerSongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZSingerSongListViewController.h; sourceTree = "<group>"; };
 		F8D19D271A0E05AD00F7D0FD /* XZSingerSongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZSingerSongListViewController.m; sourceTree = "<group>"; };
+		F8E730241A2C970000FCAC13 /* XZMusicPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayingView.h; sourceTree = "<group>"; };
+		F8E730251A2C970000FCAC13 /* XZMusicPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayingView.m; sourceTree = "<group>"; };
+		F8E730271A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayingTimeProgress.h; sourceTree = "<group>"; };
+		F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayingTimeProgress.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -875,10 +884,16 @@
 		F870C9921A1CD29400A3B7A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F8E730241A2C970000FCAC13 /* XZMusicPlayingView.h */,
+				F8E730251A2C970000FCAC13 /* XZMusicPlayingView.m */,
 				F870C9931A1CD29400A3B7A7 /* XZCircleProgress.h */,
 				F870C9941A1CD29400A3B7A7 /* XZCircleProgress.m */,
 				F870C99F1A1CD4F900A3B7A7 /* XZMusicLrcView.h */,
 				F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */,
+				F8E730271A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.h */,
+				F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */,
+				F8B2CFB51A2DE1AF00B8F16F /* XZPlayingRollView.h */,
+				F8B2CFB61A2DE1AF00B8F16F /* XZPlayingRollView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1705,6 +1720,7 @@
 				F85E4EDB19F6882600AA6DE1 /* XZNetBridge.m in Sources */,
 				F870C9991A1CD29400A3B7A7 /* XZCircleProgress.m in Sources */,
 				F80B0CD21A139567009F1785 /* DOUAudioDecoder.m in Sources */,
+				F8E730291A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m in Sources */,
 				F8D19D281A0E05AD00F7D0FD /* XZSingerSongListViewController.m in Sources */,
 				F8A7A3A41A0E48F7006587C8 /* XZMusicSongModel.m in Sources */,
 				F8A9B88519D3CAEA0006B697 /* XZBaseNaviViewController.m in Sources */,
@@ -1743,6 +1759,7 @@
 				F870C9981A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m in Sources */,
 				F85E4F0519F68EEC00AA6DE1 /* XZSignatureGenerator.m in Sources */,
 				F85E4ECC19F687B900AA6DE1 /* NSDictionary+XZNetMethod.m in Sources */,
+				F8E730261A2C970000FCAC13 /* XZMusicPlayingView.m in Sources */,
 				F80B0CD31A139567009F1785 /* DOUAudioEventLoop.m in Sources */,
 				F85E4F0419F68EEC00AA6DE1 /* XZRequestManager.m in Sources */,
 				F8A9B8A319D3CAEA0006B697 /* XZMenuButton.m in Sources */,
@@ -1778,6 +1795,7 @@
 				F80B0CD91A139567009F1785 /* DOUAudioRenderer.m in Sources */,
 				F80B0CD11A139567009F1785 /* DOUAudioAnalyzer.m in Sources */,
 				F8A9B89A19D3CAEA0006B697 /* XZLineView.m in Sources */,
+				F8B2CFB71A2DE1AF00B8F16F /* XZPlayingRollView.m in Sources */,
 				F8D19D171A0DD8A100F7D0FD /* XZBaseTable.m in Sources */,
 				F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
