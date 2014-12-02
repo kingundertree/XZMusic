@@ -19,13 +19,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @implementation XZMusicPlayingView
 
-- (XZMusicLrcView *)lrcView{
-    if (!_lrcView) {
-        _lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, 50 + 300, ScreenWidth, 100)];
-    }
-    return _lrcView;
-}
-
 - (XZMusicPlayingTimeProgress *)timeProgress{
     if (!_timeProgress) {
         _timeProgress = [[XZMusicPlayingTimeProgress alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 100)];
@@ -39,6 +32,19 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         _playingRollView.rollViewDelegate = self;
     }
     return _playingRollView;
+}
+- (XZMusicLrcView *)lrcView{
+    if (!_lrcView) {
+        _lrcView = [[XZMusicLrcView alloc] initWithFrame:CGRectMake(0, 50 + 300, ScreenWidth, ScreenHeight-64-50-300-80)];
+    }
+    return _lrcView;
+}
+- (XZPlayMoreFuncView *)playingMoreView{
+    if (!_playingMoreView) {
+        _playingMoreView = [[XZPlayMoreFuncView alloc] initWithFrame:CGRectMake(0, ScreenHeight-64-80, ScreenWidth, 80)];
+        _playingMoreView.funcViewDelegate = self;
+    }
+    return _playingMoreView;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -60,6 +66,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self addSubview:self.timeProgress];
     [self addSubview:self.lrcView];
     [self addSubview:self.playingRollView];
+    [self addSubview:self.playingMoreView];
 }
 
 #pragma mark - method

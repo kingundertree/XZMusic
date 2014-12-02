@@ -10,7 +10,7 @@
 #import "XZMusicRequestForMisicSongInfoManager.h"
 #import "XZMusicSongConvertToOb.h"
 #import "XZMusicDownloadCenter.h"
-
+#import "XZPlayingListViewController.h"
 
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
@@ -60,6 +60,7 @@
 {
     [super viewDidLoad];
     [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
+    [self addRightButton:@"列表"];
     
     self.view.backgroundColor = [UIColor whiteColor];
 
@@ -212,6 +213,13 @@
         int time = self.musicPlayIngView.audioPlayer.currentTime;
         [self.musicPlayIngView showLrcWithTime:time];
     }
+}
+
+- (void)rightButtonAction:(id)sender{
+    XZPlayingListViewController *playingListVC = [[XZPlayingListViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:playingListVC];
+    [self.navigationController presentViewController:nav animated:YES completion:^{
+    }];
 }
 
 

@@ -14,18 +14,21 @@
 #import "XZMusicPlayingTimeProgress.h"
 #import "XZSongModel.h"
 #import "XZPlayingRollView.h"
+#import "XZPlayMoreFuncView.h"
 
 @protocol XZMusicPlayingViewDelegate <NSObject>
 
 @end
 
-@interface XZMusicPlayingView : UIView <XZPlayingRollViewDelegate>
+@interface XZMusicPlayingView : UIView <XZPlayingRollViewDelegate,XZPlayMoreFuncViewDelegate>
 
 @property(nonatomic, assign) id<XZMusicPlayingViewDelegate> playIngDelegateView;
 @property(nonatomic, strong) DOUAudioStreamer *audioPlayer;
 @property(nonatomic, strong) XZPlaySongModel *playSongModel;
 @property(nonatomic, strong) XZMusicPlayingTimeProgress *timeProgress;
 @property(nonatomic, strong) XZPlayingRollView *playingRollView;
+@property(nonatomic, strong) XZPlayMoreFuncView *playingMoreView;
+
 
 // 歌词显示
 - (void)showLrcWithPath:(NSString *)lrcPath;
