@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIButton *redBtn;
 @property (nonatomic, strong) UIButton *downBtn;
 @property (nonatomic, strong) XZCircleProgress *downProgress;
+@property (nonatomic, assign) float progress;
 @end
 
 @implementation XZPlayMoreFuncView
@@ -48,7 +49,7 @@
     self.redBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.redBtn.frame = CGRectMake(ScreenWidth/2-80, self.frame.size.height/2-20, 60, 40);
     self.redBtn.backgroundColor = [UIColor clearColor];
-    [self.redBtn setTitle:@"点赞" forState:UIControlStateNormal];
+    [self.redBtn setTitle:@"赞" forState:UIControlStateNormal];
     [self.redBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.redBtn addTarget:self action:@selector(addCount:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.redBtn];
@@ -74,20 +75,43 @@
 }
 
 - (void)preMusic:(id)sender {
-
+    if (self.funcViewDelegate && [self.funcViewDelegate respondsToSelector:@selector(funcViewAction:)]) {
+        [self.funcViewDelegate funcViewAction:XZPlayMoreFuncViewActionTypeForPre];
+    }
 }
 
 - (void)nextMusic:(id)sender {
-    
+    if (self.funcViewDelegate && [self.funcViewDelegate respondsToSelector:@selector(funcViewAction:)]) {
+        [self.funcViewDelegate funcViewAction:XZPlayMoreFuncViewActionTypeForNext];
+    }
 }
 
 - (void)addCount:(id)sender {
-    
+    [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    if (self.funcViewDelegate && [self.funcViewDelegate respondsToSelector:@selector(funcViewAction:)]) {
+        [self.funcViewDelegate funcViewAction:XZPlayMoreFuncViewActionTypeForAddPraise];
+    }
 }
 
 - (void)downMusic:(id)sender {
+    if (self.progress != 0 && [XZGlobalManager shareInstance].isNeedDown) {
+        return;
+    }
     
+    if (self.funcViewDelegate && [self.funcViewDelegate respondsToSelector:@selector(funcViewAction:)]) {
+        [self.funcViewDelegate funcViewAction:XZPlayMoreFuncViewActionTypeForDown];
+    }
 }
 
+- (void)showCircleProgress:(float)progress {
+    self.progress = progress;
+    
+    if (progress >= 1.0) {
+        [self.downBtn setTitle:@"完成" forState:UIControlStateNormal];
+    }else {
+        [self.downBtn setTitle:@"下载..." forState:UIControlStateNormal];
+    }
+    self.downProgress.progressV = progress;
+}
 
 @end

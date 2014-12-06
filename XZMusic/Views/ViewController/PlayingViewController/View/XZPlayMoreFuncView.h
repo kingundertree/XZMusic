@@ -23,4 +23,6 @@ NS_ENUM(NSInteger, XZPlayMoreFuncViewActionType){
 
 @interface XZPlayMoreFuncView : UIView
 @property (nonatomic, assign) id<XZPlayMoreFuncViewDelegate> funcViewDelegate;
+
+- (void)showCircleProgress:(float)progress;
 @end

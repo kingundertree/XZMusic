@@ -7,6 +7,9 @@
 //
 
 #import "XZMusicPlayingView.h"
+#import "XZGlobalManager.h"
+#import "XZMusicDownloadCenter.h"
+
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
 static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
@@ -125,6 +128,30 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     //    }
 }
 
+- (void)downloadMusic {
+    NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
+    __weak XZMusicPlayingView *this =self;
+    
+    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format musicUrlStr:self.songModel.songLink identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
+        DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
+        
+        if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
+            if (response.downloadStatus == XZMusicDownloadSuccess) {
+                DLog(@"music下载=========下载成功");
+                [this.playingMoreView showCircleProgress:1.0];
+            }else if (response.downloadStatus == XZMusicDownloadIng) {
+                DLog(@"music下载=========正在下载中...");
+                DLog(@"response.progress --->>%f",response.progress);
+                [this.playingMoreView showCircleProgress:response.progress];
+            }else if (response.downloadStatus == XZMusicDownloadFail) {
+                DLog(@"music下载=========下载失败");
+            }else if (response.downloadStatus == XZMusicDownloadNetError) {
+                DLog("music下载=========网络错误");
+            }
+        }
+    }];
+}
+
 #pragma mark - XZPlayingRollViewDelegate
 - (void)playingRollViewAction:(enum XZPlayingRollViewActionType)actionType{
     if (actionType == XZPlayingRollViewActionTypeForPlaying) {
@@ -133,6 +160,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     }else {
         [self.audioPlayer pause];
         [self.playingRollView setRollPlayingPlayStatus:XZPlayingRollViewActionTypeForPause];
+    }
+}
+
+#pragma mark - XZPlayMoreFuncViewDelegate
+- (void)funcViewAction:(enum XZPlayMoreFuncViewActionType)actionType {
+    DLog(@"actionType--->>%ld",actionType);
+    if (actionType == XZPlayMoreFuncViewActionTypeForDown) {
+        [self downloadMusic];
     }
 }
 

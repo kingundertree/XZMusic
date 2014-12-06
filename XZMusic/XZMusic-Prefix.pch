@@ -51,5 +51,6 @@ do { \
     #import "MBProgressHUD.h"
     #import "XZBaseViewController+TipsView.h"
     #import "UIImageView+AFNetworking.h"
+    #import "XZGlobalManager.h"
 
 #endif

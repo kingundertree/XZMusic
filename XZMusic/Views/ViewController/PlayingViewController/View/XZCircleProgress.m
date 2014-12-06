@@ -63,7 +63,7 @@
 - (void)setProgressV:(float)progressV{
     NSLog(@"progressV--->>%f",progressV);
     _progressV = progressV;
-    if (_progressV >= 0) {
+    if (_progressV >= 1.0) {
         _progressV = 1.0;
     }
     [self setNeedsDisplay];

@@ -11,6 +11,8 @@
 #import "XZMusicSongConvertToOb.h"
 #import "XZMusicDownloadCenter.h"
 #import "XZPlayingListViewController.h"
+#import "XZGlobalManager.h"
+#import "XZMusicFileManager.h"
 
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
@@ -116,52 +118,26 @@
     self.playSongModel.artist = self.songModel.artistName;
     self.playSongModel.title = self.songModel.songName;
     
-    NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *myDocPath = [myPaths objectAtIndex:0];
-
-    NSString *musicPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
-
-    if ([self isHasMusicOrLrc:YES]) {
+   NSString *musicPath = [XZMusicFileManager getMusicPath:self.songModel];
+    if ([XZMusicFileManager isHasMusicOrLrc:YES songModel:self.songModel]) {
         self.playSongModel.audioFileURL = [NSURL fileURLWithPath:musicPath];
+        [XZGlobalManager shareInstance].isNeedDown = NO;
     }else {
         self.playSongModel.audioFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.songModel.songLink]];
-        [self downloadMusic];
+        [XZGlobalManager shareInstance].isNeedDown = YES;
     }
 
     return YES;
 }
 
-
-
 - (void)downloadMusic{
     // 下载歌曲
-    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format   musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
+    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
 }
 - (void)downloadLrc{
     // 下载歌词
     NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.songModel.lrcLink];
     [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format  musciUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
-}
-
-
-- (BOOL)isHasMusicOrLrc:(BOOL)isMusic{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *myDocPath = [myPaths objectAtIndex:0];
-    
-    NSString *path;
-    if (isMusic) {
-        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",self.songModel.songId,self.songModel.songId,self.songModel.format]];
-    }else {
-        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
-    }
-    
-    if ([fileManager fileExistsAtPath:path]) {
-        return YES;
-    }else {
-        return NO;
-    }
 }
 
 - (void)downloadMusic:(NSString *)musicId format:(NSString *)format musciUrlStr:(NSString *)musciUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
@@ -196,11 +172,8 @@
 }
 
 - (void)initLrcView{
-    if ([self isHasMusicOrLrc:NO]) {
-        NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *myDocPath = [myPaths objectAtIndex:0];
-        
-        NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",self.songModel.songId,self.songModel.songId]];
+    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
+        NSString *lrcPath = [XZMusicFileManager getMusicLrcPath:self.songModel];
         
         [self.musicPlayIngView showLrcWithPath:lrcPath];
     }else {
@@ -209,7 +182,7 @@
 }
 
 - (void)musicPlaying{
-    if ([self isHasMusicOrLrc:NO]) {
+    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
         int time = self.musicPlayIngView.audioPlayer.currentTime;
         [self.musicPlayIngView showLrcWithTime:time];
     }
@@ -221,8 +194,6 @@
     [self.navigationController presentViewController:nav animated:YES completion:^{
     }];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {

@@ -26,6 +26,8 @@
 		F80B0CDF1A139567009F1785 /* DOUMPMediaLibraryAssetLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCB1A139567009F1785 /* DOUMPMediaLibraryAssetLoader.m */; };
 		F80B0CE01A139567009F1785 /* DOUSimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCD1A139567009F1785 /* DOUSimpleHTTPRequest.m */; };
 		F80B0CE11A139567009F1785 /* NSData+DOUMappedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCF1A139567009F1785 /* NSData+DOUMappedFile.m */; };
+		F823D9241A32E050009F5618 /* XZGlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F823D9231A32E050009F5618 /* XZGlobalManager.m */; };
+		F823D9271A332716009F5618 /* XZMusicFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F823D9261A332716009F5618 /* XZMusicFileManager.m */; };
 		F8288EA219A77752008D5573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA119A77752008D5573 /* Foundation.framework */; };
 		F8288EA419A77752008D5573 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA319A77752008D5573 /* CoreGraphics.framework */; };
 		F8288EA619A77752008D5573 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA519A77752008D5573 /* UIKit.framework */; };
@@ -282,6 +284,10 @@
 		F80B0CCD1A139567009F1785 /* DOUSimpleHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSimpleHTTPRequest.m; sourceTree = "<group>"; };
 		F80B0CCE1A139567009F1785 /* NSData+DOUMappedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DOUMappedFile.h"; sourceTree = "<group>"; };
 		F80B0CCF1A139567009F1785 /* NSData+DOUMappedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DOUMappedFile.m"; sourceTree = "<group>"; };
+		F823D9221A32E050009F5618 /* XZGlobalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZGlobalManager.h; sourceTree = "<group>"; };
+		F823D9231A32E050009F5618 /* XZGlobalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZGlobalManager.m; sourceTree = "<group>"; };
+		F823D9251A332716009F5618 /* XZMusicFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicFileManager.h; sourceTree = "<group>"; };
+		F823D9261A332716009F5618 /* XZMusicFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicFileManager.m; sourceTree = "<group>"; };
 		F8288E9E19A77752008D5573 /* XZMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XZMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8288EA119A77752008D5573 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F8288EA319A77752008D5573 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -657,6 +663,15 @@
 			path = DOUAudio;
 			sourceTree = "<group>";
 		};
+		F823D9211A32DFFD009F5618 /* GlobalManager */ = {
+			isa = PBXGroup;
+			children = (
+				F823D9221A32E050009F5618 /* XZGlobalManager.h */,
+				F823D9231A32E050009F5618 /* XZGlobalManager.m */,
+			);
+			path = GlobalManager;
+			sourceTree = "<group>";
+		};
 		F8288E9519A77752008D5573 = {
 			isa = PBXGroup;
 			children = (
@@ -878,6 +893,8 @@
 			children = (
 				F870C98F1A1CD29400A3B7A7 /* XZMusicSongConvertToOb.h */,
 				F870C9901A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m */,
+				F823D9251A332716009F5618 /* XZMusicFileManager.h */,
+				F823D9261A332716009F5618 /* XZMusicFileManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -966,6 +983,7 @@
 		F8A9B75719D3CAEA0006B697 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F823D9211A32DFFD009F5618 /* GlobalManager */,
 				F870C99B1A1CD47900A3B7A7 /* MusicDownLoad */,
 				F8A7A3A51A0E49E1006587C8 /* RequestManager */,
 				F8A9B75819D3CAEA0006B697 /* LoginManager */,
@@ -1802,12 +1820,14 @@
 				F8A9B89119D3CAEA0006B697 /* PushBackNavigationController.m in Sources */,
 				F80B0CDE1A139567009F1785 /* DOUEAGLView.m in Sources */,
 				F80B0CDD1A139567009F1785 /* DOUAudioVisualizer.m in Sources */,
+				F823D9271A332716009F5618 /* XZMusicFileManager.m in Sources */,
 				F8D19D251A0E058D00F7D0FD /* XZSearchViewController.m in Sources */,
 				F8A9B88B19D3CAEA0006B697 /* XZBaseButton+CornerRadius.m in Sources */,
 				F80B0CD91A139567009F1785 /* DOUAudioRenderer.m in Sources */,
 				F80B0CD11A139567009F1785 /* DOUAudioAnalyzer.m in Sources */,
 				F8A9B89A19D3CAEA0006B697 /* XZLineView.m in Sources */,
 				F8B2CFB71A2DE1AF00B8F16F /* XZPlayingRollView.m in Sources */,
+				F823D9241A32E050009F5618 /* XZGlobalManager.m in Sources */,
 				F8D19D171A0DD8A100F7D0FD /* XZBaseTable.m in Sources */,
 				F8A7A3BA1A0F21BA006587C8 /* XZTableForSingerSongsList.m in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
