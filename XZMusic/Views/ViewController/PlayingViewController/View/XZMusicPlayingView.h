@@ -32,7 +32,6 @@
 
 // 歌词显示
 - (void)showLrcWithPath:(NSString *)lrcPath;
-- (void)showLrcWithTime:(int)time;
 
 // 播放歌曲
 - (void)playMusic:(XZPlaySongModel *)songMode;

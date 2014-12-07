@@ -17,7 +17,6 @@
 @interface XZMusicPlayViewController ()
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
-@property(nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation XZMusicPlayViewController
@@ -61,7 +60,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
     [self addRightButton:@"列表"];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -72,7 +70,6 @@
 
 - (void)initData{
     self.playSongModel = [[XZPlaySongModel alloc] init];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
 }
 
 - (void)initUI{
@@ -81,6 +78,7 @@
 
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
     self.musicSongModel = musicSongModel;
+    [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
     [self requestSongInfo];
 }
 
@@ -178,13 +176,6 @@
         [self.musicPlayIngView showLrcWithPath:lrcPath];
     }else {
         [self downloadLrc];
-    }
-}
-
-- (void)musicPlaying{
-    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
-        int time = self.musicPlayIngView.audioPlayer.currentTime;
-        [self.musicPlayIngView showLrcWithTime:time];
     }
 }
 

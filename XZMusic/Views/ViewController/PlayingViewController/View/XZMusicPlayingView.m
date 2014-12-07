@@ -9,6 +9,7 @@
 #import "XZMusicPlayingView.h"
 #import "XZGlobalManager.h"
 #import "XZMusicDownloadCenter.h"
+#import "XZMusicFileManager.h"
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -18,6 +19,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 @interface XZMusicPlayingView ()
 @property(nonatomic, strong) XZMusicLrcView *lrcView;
 @property(nonatomic, strong) XZSongModel *songModel;
+@property(nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation XZMusicPlayingView
@@ -70,10 +72,22 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self addSubview:self.lrcView];
     [self addSubview:self.playingRollView];
     [self addSubview:self.playingMoreView];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
+}
+
+- (void)musicPlaying{
+    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
+        int time = self.audioPlayer.currentTime;
+        [self.lrcView moveLrcWithTime:time];
+        [self updateProgress:time];
+    }
 }
 
 #pragma mark - method
 - (void)playMusic:(XZPlaySongModel *)songMode{
+    [self emptyAudio];
+    
     self.audioPlayer = [DOUAudioStreamer streamerWithAudioFile:songMode];
     [self.audioPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
     [self.audioPlayer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
@@ -83,14 +97,20 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self.playingRollView setRollPlayingPlayStatus:XZPlayingRollViewActionTypeForPlaying];
 }
 
+- (void)emptyAudio {
+    if (self.audioPlayer) {
+        [self.audioPlayer pause];
+        [self.audioPlayer removeObserver:self forKeyPath:@"status"];
+        [self.audioPlayer removeObserver:self forKeyPath:@"duration"];
+        [self.audioPlayer removeObserver:self forKeyPath:@"bufferingRatio"];
+        self.audioPlayer = nil;
+    }
+}
+
 - (void)showLrcWithPath:(NSString *)lrcPath{
     [self.lrcView initLrcViewWithPath:lrcPath];
 }
 
-- (void)showLrcWithTime:(int)time{
-    [self updateProgress:time];
-    [self.lrcView moveLrcWithTime:time];
-}
 
 - (void)updateProgress:(int)playingTime{
     [self.timeProgress updatePlayingTime:playingTime];
@@ -105,27 +125,27 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    //    if (context == kStatusKVOKey) {
-    //        [self performSelector:@selector(_updateStatus)
-    //                     onThread:[NSThread mainThread]
-    //                   withObject:nil
-    //                waitUntilDone:NO];
-    //    }
-    //    else if (context == kDurationKVOKey) {
-    //        [self performSelector:@selector(_timerAction:)
-    //                     onThread:[NSThread mainThread]
-    //                   withObject:nil
-    //                waitUntilDone:NO];
-    //    }
-    //    else if (context == kBufferingRatioKVOKey) {
-    //        [self performSelector:@selector(_updateBufferingStatus)
-    //                     onThread:[NSThread mainThread]
-    //                   withObject:nil
-    //                waitUntilDone:NO];
-    //    }
-    //    else {
-    //        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    //    }
+        if (context == kStatusKVOKey) {
+            [self performSelector:@selector(updatePlayingStatus)
+                         onThread:[NSThread mainThread]
+                       withObject:nil
+                    waitUntilDone:NO];
+        }
+        else if (context == kDurationKVOKey) {
+            [self performSelector:@selector(musicPlaying)
+                         onThread:[NSThread mainThread]
+                       withObject:nil
+                    waitUntilDone:NO];
+        }
+        else if (context == kBufferingRatioKVOKey) {
+            [self performSelector:@selector(updateBufferingStatus)
+                         onThread:[NSThread mainThread]
+                       withObject:nil
+                    waitUntilDone:NO];
+        }
+        else {
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
 }
 
 - (void)downloadMusic {
@@ -150,6 +170,37 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             }
         }
     }];
+}
+
+#pragma mark - playingKVO
+- (void)updatePlayingStatus {
+    switch ([self.audioPlayer status]) {
+        case DOUAudioStreamerPlaying:
+            
+            break;
+        case DOUAudioStreamerPaused:
+            
+            break;
+        case DOUAudioStreamerIdle:
+            
+            break;
+        case DOUAudioStreamerFinished:
+            
+            break;
+        case DOUAudioStreamerBuffering:
+            
+            break;
+        case DOUAudioStreamerError:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)updateBufferingStatus {
+    
 }
 
 #pragma mark - XZPlayingRollViewDelegate
