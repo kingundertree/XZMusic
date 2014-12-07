@@ -22,7 +22,6 @@
 @property(nonatomic, assign) NSInteger totalSongsNum;
 @property(nonatomic, strong) XZTableForSingerSongsList *tableView;
 @property(nonatomic, strong) NSMutableArray *singerSongsArr;
-
 @end
 
 @implementation XZSingerSongListViewController
@@ -75,14 +74,22 @@
     if (self.navigationController.view.frame.origin.x != 0) {
         return;
     }
-    
+
     XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
-    XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
-    [playVC playingMusicWithSong:singerInfoMode];
-    [self.navigationController pushViewController:playVC animated:YES];
+    if ([XZGlobalManager shareInstance].playIndex == indexPath.row && [XZGlobalManager shareInstance].isPlaying) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    } else {
+        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
+        [playVC playingMusicWithSong:singerInfoMode];
+        [XZGlobalManager shareInstance].isPlaying = YES;
+        // 设置全局播放数据
+        [XZGlobalManager shareInstance].musicArr = self.singerSongsArr;
+        [XZGlobalManager shareInstance].playIndex = indexPath.row;
+        
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
 }
 
-#pragma mark --XZBaseTableEventDelegate
 - (void)tableStatus:(enum XZBaseTableStatus)status{
     if (status == XZBaseTableStatusLoadingNextPageData) {
         [self getSingerSongs];

@@ -14,7 +14,7 @@
 #import "XZGlobalManager.h"
 #import "XZMusicFileManager.h"
 
-@interface XZMusicPlayViewController ()
+@interface XZMusicPlayViewController () 
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
 @end
@@ -66,6 +66,13 @@
 
     [self initUI];
     [self initData];
+}
+
+- (void)doBack:(id)sender {
+    [super doBack:sender];
+    if ([self.musicPlayIngView.audioPlayer status] == DOUAudioStreamerPaused || [self.musicPlayIngView.audioPlayer status] == DOUAudioStreamerFinished) {
+        [XZGlobalManager shareInstance].isPlaying = NO;
+    }
 }
 
 - (void)initData{

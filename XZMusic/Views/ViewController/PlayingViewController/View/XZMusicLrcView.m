@@ -41,6 +41,8 @@
 }
 
 - (void)initLrcViewWithPath:(NSString *)lrcPath{
+    self.scrollView.contentOffset = CGPointMake(0, 0);
+    
     if (self.lrcLineConArr.count != 0) {
         [self.lrcLineConArr removeAllObjects];
     }

@@ -10,6 +10,8 @@
 #import "XZGlobalManager.h"
 #import "XZMusicDownloadCenter.h"
 #import "XZMusicFileManager.h"
+#import "XZMusicPlayViewController.h"
+#import "XZMusicSongModel.h"
 
 static void *kStatusKVOKey = &kStatusKVOKey;
 static void *kDurationKVOKey = &kDurationKVOKey;
@@ -52,6 +54,15 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     return _playingMoreView;
 }
 
+- (NSTimer *)timer {
+    if (_timer) {
+        [_timer invalidate];
+    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
+
+    return _timer;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -65,6 +76,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)initData{
+    [self.timer fire];
 }
 
 - (void)initUI{
@@ -72,8 +84,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self addSubview:self.lrcView];
     [self addSubview:self.playingRollView];
     [self addSubview:self.playingMoreView];
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(musicPlaying) userInfo:nil repeats:YES];
 }
 
 - (void)musicPlaying{
@@ -185,7 +195,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
             break;
         case DOUAudioStreamerFinished:
-            
+            [self getNextMusic];
             break;
         case DOUAudioStreamerBuffering:
             
@@ -206,9 +216,11 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 #pragma mark - XZPlayingRollViewDelegate
 - (void)playingRollViewAction:(enum XZPlayingRollViewActionType)actionType{
     if (actionType == XZPlayingRollViewActionTypeForPlaying) {
+        [self.timer fire];
         [self.audioPlayer play];
         [self.playingRollView setRollPlayingPlayStatus:XZPlayingRollViewActionTypeForPlaying];
     }else {
+        [self.timer invalidate];
         [self.audioPlayer pause];
         [self.playingRollView setRollPlayingPlayStatus:XZPlayingRollViewActionTypeForPause];
     }
@@ -219,6 +231,45 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     DLog(@"actionType--->>%ld",actionType);
     if (actionType == XZPlayMoreFuncViewActionTypeForDown) {
         [self downloadMusic];
+    } else if (actionType == XZPlayMoreFuncViewActionTypeForPre) {
+        [self getPreMusic];
+    } else if (actionType == XZPlayMoreFuncViewActionTypeForNext) {
+        [self getNextMusic];
+    }
+}
+
+- (void)getPreMusic {
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+    
+    if ([XZGlobalManager shareInstance].playIndex == 0) {
+        DLog(@"已经是第一首了");
+        [XZGlobalManager shareInstance].playIndex -= [XZGlobalManager shareInstance].musicArr.count-1;
+        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
+        
+        [playVC playingMusicWithSong:singerInfoMode];
+    } else {
+        [XZGlobalManager shareInstance].playIndex -= 1;
+        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
+        
+        [playVC playingMusicWithSong:singerInfoMode];
+    }
+}
+
+- (void)getNextMusic {
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+    
+    if ([XZGlobalManager shareInstance].playIndex == [XZGlobalManager shareInstance].musicArr.count-1) {
+        DLog(@"已经是最后一首了");
+
+        [XZGlobalManager shareInstance].playIndex = 0;
+        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
+        
+        [playVC playingMusicWithSong:singerInfoMode];
+    } else {
+        [XZGlobalManager shareInstance].playIndex += 1;
+        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
+        
+        [playVC playingMusicWithSong:singerInfoMode];
     }
 }
 

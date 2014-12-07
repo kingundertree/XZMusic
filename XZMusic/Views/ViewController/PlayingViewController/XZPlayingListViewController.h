@@ -9,5 +9,4 @@
 #import "XZBaseViewController.h"
 
 @interface XZPlayingListViewController : XZBaseViewController
-
 @end

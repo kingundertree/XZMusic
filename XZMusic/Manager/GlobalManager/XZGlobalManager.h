@@ -12,7 +12,7 @@
 
 + (XZGlobalManager *)shareInstance;
 
-@property (nonatomic, assign) BOOL isPalying;
+@property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, assign) BOOL isNeedDown;
 @property (nonatomic, assign) NSInteger playIndex;
 @property (nonatomic, strong) NSMutableArray *musicArr;

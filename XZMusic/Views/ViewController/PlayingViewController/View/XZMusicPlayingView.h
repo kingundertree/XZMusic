@@ -16,19 +16,19 @@
 #import "XZPlayingRollView.h"
 #import "XZPlayMoreFuncView.h"
 
-@protocol XZMusicPlayingViewDelegate <NSObject>
-
-@end
+NS_ENUM(NSInteger, XZMusicPlayingStyle) {
+    XZMusicPlayingStyleForRecycle = 1, // 循环
+    XZMusicPlayingStyleForOneByOne = 2, // 循序渐进
+};
 
 @interface XZMusicPlayingView : UIView <XZPlayingRollViewDelegate,XZPlayMoreFuncViewDelegate>
 
-@property(nonatomic, assign) id<XZMusicPlayingViewDelegate> playIngDelegateView;
-@property(nonatomic, strong) DOUAudioStreamer *audioPlayer;
-@property(nonatomic, strong) XZPlaySongModel *playSongModel;
-@property(nonatomic, strong) XZMusicPlayingTimeProgress *timeProgress;
-@property(nonatomic, strong) XZPlayingRollView *playingRollView;
-@property(nonatomic, strong) XZPlayMoreFuncView *playingMoreView;
-
+@property (nonatomic, strong) DOUAudioStreamer *audioPlayer;
+@property (nonatomic, strong) XZPlaySongModel *playSongModel;
+@property (nonatomic, strong) XZMusicPlayingTimeProgress *timeProgress;
+@property (nonatomic, strong) XZPlayingRollView *playingRollView;
+@property (nonatomic, strong) XZPlayMoreFuncView *playingMoreView;
+@property (nonatomic, assign) enum XZMusicPlayingStyle playingStyle;
 
 // 歌词显示
 - (void)showLrcWithPath:(NSString *)lrcPath;
