@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="XZMusicInfo" representedClassName="XZMusicInfo" isAbstract="YES" syncable="YES">
+        <attribute name="musicAddPraiseTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="musicAlbum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicDetailInfoString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicIsDown" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="musicLrcIsDown" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="musicLrcString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicPlayedTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="musicPlayTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="musicSonger" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="musicTime" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="XZUserInfo" representedClassName="XZUserInfo" isAbstract="YES" syncable="YES">
+        <attribute name="userIsLogin" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="userWeiboHeaderImg" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userWeiboID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userWeiboNick" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="XZUserInfo" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="XZMusicInfo" positionX="-54" positionY="18" width="128" height="223"/>
+    </elements>
+</model>
