@@ -72,6 +72,18 @@
         [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor blueColor]] forState:UIControlStateHighlighted];
         [self.scrollView addSubview:btn];
     }
+    
+    [self initLoginInfo];
+}
+
+- (void)initLoginInfo
+{
+    XZUserInfo *loginUserInfo = [[XZMusicCoreDataCenter shareInstance] fetchLoginUserInfo];
+    if (loginUserInfo) {
+        [XZGlobalManager shareInstance].userWeiboId = loginUserInfo.userWeiboID;
+        [self.headerImgButton setimageWithUrl:loginUserInfo.userWeiboHeaderImg];
+        [self.headerImgButton setTitle:@"" forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark
@@ -149,6 +161,9 @@
         [self.headerImgButton WBLooginQuite];
         
         [(XZBaseViewController *)[XZAppDelegate sharedAppDelegate].menuMainVC showTips:@"退出登录成功"];
+    
+        NSString *userId = [XZGlobalManager shareInstance].userWeiboId;
+        [[XZMusicCoreDataCenter shareInstance] updateUserLoginInfo:userId isLogin:NO];
     }else{
         [[XZAppDelegate sharedAppDelegate].menuMainVC WBLogin];    
     }
@@ -160,7 +175,21 @@
     [self.headerImgButton setTitle:@"" forState:UIControlStateNormal];
     [self.headerImgButton setimageWithUrl:userInfoDic[@"avatar_hd"]];
 
+    [self saveUserInfo:userInfoDic];
     [(XZBaseViewController *)[XZAppDelegate sharedAppDelegate].menuMainVC showTips:@"微博登录成功"];
+}
+
+- (void)saveUserInfo:(NSDictionary *)userInfo
+{
+    NSString *idStr = [userInfo[@"profile_image_url"] substringWithRange:NSMakeRange(22, 10)];
+    [XZGlobalManager shareInstance].userWeiboId = idStr;
+
+    if ([[XZMusicCoreDataCenter shareInstance] isUserExit:idStr]) {
+        [[XZMusicCoreDataCenter shareInstance] updateUserLoginInfo:idStr isLogin:YES];
+    } else
+    {        
+        [[XZMusicCoreDataCenter shareInstance] saveNewUserInfo:userInfo];
+    }
 }
 
 @end

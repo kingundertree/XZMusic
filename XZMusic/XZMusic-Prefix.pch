@@ -52,5 +52,9 @@ do { \
     #import "XZBaseViewController+TipsView.h"
     #import "UIImageView+AFNetworking.h"
     #import "XZGlobalManager.h"
+    #import "XZMusicDataCenter.h"
+    #import "XZMusicCoreDataCenter.h"
+    #import "XZUserInfo.h"
+    #import "XZMusicInfo.h"
 
 #endif

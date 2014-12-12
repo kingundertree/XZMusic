@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XZWBLoginManager.h"
+
 
 typedef enum : NSUInteger {
     WBLoginResultForNone,
@@ -23,4 +25,6 @@ typedef void (^WBLoginBack)(WBLoginResult result, id callBackValue);
 + (id)sharedInstance;
 - (void)WBLoginWithFinishBlock:(WBLoginBack)block;
 - (BOOL)WbHandUrl:(NSURL *)url;
+
+
 @end

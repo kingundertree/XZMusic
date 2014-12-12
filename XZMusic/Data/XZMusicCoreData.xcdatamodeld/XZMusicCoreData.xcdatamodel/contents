@@ -21,7 +21,7 @@
         <attribute name="userWeiboNick" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="XZUserInfo" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="XZMusicInfo" positionX="-54" positionY="18" width="128" height="223"/>
+        <element name="XZUserInfo" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

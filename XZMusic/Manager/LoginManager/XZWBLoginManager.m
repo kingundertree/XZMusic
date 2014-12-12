@@ -19,7 +19,6 @@
 @interface XZWBLoginManager ()<WBLoginWithControllerDelegate,WeiboSDKDelegate>
 @property (nonatomic, strong) WBLoginBack block;
 @property (nonatomic, strong) XZWBLoginInfo *wbLoginInfo;
-
 @end
 
 @implementation XZWBLoginManager

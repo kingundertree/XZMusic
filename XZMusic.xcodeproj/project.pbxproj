@@ -216,7 +216,7 @@
 		F8BCDB2F1A139C0400BEB86C /* XZPlaySongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BCDB2E1A139C0400BEB86C /* XZPlaySongModel.m */; };
 		F8BFA5521A07ADE600577C19 /* XZNetDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFA5511A07ADE600577C19 /* XZNetDebug.m */; };
 		F8BFA5581A07B05300577C19 /* NSMutableString+XZNetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BFA5571A07B05300577C19 /* NSMutableString+XZNetMethod.m */; };
-		F8C4652F1A3875A100E47B33 /* XZMusicDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C4652E1A3875A100E47B33 /* XZMusicDataCenter.m */; };
+		F8C4652F1A3875A100E47B33 /* XZMusicCoreDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C4652E1A3875A100E47B33 /* XZMusicCoreDataCenter.m */; };
 		F8CD339B19FD1ECB001A55C6 /* XZMusicForWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8CD339A19FD1ECB001A55C6 /* XZMusicForWeibo.m */; };
 		F8D19D0B1A0DD2CD00F7D0FD /* XZMusicSingerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D0A1A0DD2CD00F7D0FD /* XZMusicSingerModel.m */; };
 		F8D19D0E1A0DD2F200F7D0FD /* XZMusicDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D19D0D1A0DD2F200F7D0FD /* XZMusicDataCenter.m */; };
@@ -560,8 +560,8 @@
 		F8BFA5511A07ADE600577C19 /* XZNetDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZNetDebug.m; sourceTree = "<group>"; };
 		F8BFA5561A07B05300577C19 /* NSMutableString+XZNetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+XZNetMethod.h"; sourceTree = "<group>"; };
 		F8BFA5571A07B05300577C19 /* NSMutableString+XZNetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+XZNetMethod.m"; sourceTree = "<group>"; };
-		F8C4652D1A3875A100E47B33 /* XZMusicDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicDataCenter.h; sourceTree = "<group>"; };
-		F8C4652E1A3875A100E47B33 /* XZMusicDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDataCenter.m; sourceTree = "<group>"; };
+		F8C4652D1A3875A100E47B33 /* XZMusicCoreDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicCoreDataCenter.h; sourceTree = "<group>"; };
+		F8C4652E1A3875A100E47B33 /* XZMusicCoreDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicCoreDataCenter.m; sourceTree = "<group>"; };
 		F8CD339919FD1ECB001A55C6 /* XZMusicForWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicForWeibo.h; sourceTree = "<group>"; };
 		F8CD339A19FD1ECB001A55C6 /* XZMusicForWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicForWeibo.m; sourceTree = "<group>"; };
 		F8D19D091A0DD2CD00F7D0FD /* XZMusicSingerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicSingerModel.h; sourceTree = "<group>"; };
@@ -1432,8 +1432,8 @@
 		F8C4652C1A38757600E47B33 /* XZMusicDataCenter */ = {
 			isa = PBXGroup;
 			children = (
-				F8C4652D1A3875A100E47B33 /* XZMusicDataCenter.h */,
-				F8C4652E1A3875A100E47B33 /* XZMusicDataCenter.m */,
+				F8C4652D1A3875A100E47B33 /* XZMusicCoreDataCenter.h */,
+				F8C4652E1A3875A100E47B33 /* XZMusicCoreDataCenter.m */,
 			);
 			path = XZMusicDataCenter;
 			sourceTree = "<group>";
@@ -1845,7 +1845,7 @@
 				F8A7A3AE1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m in Sources */,
 				F882FDAA1A1E1AD2000F7C7B /* XZMusicDownloadResponse.m in Sources */,
 				F8A9B89119D3CAEA0006B697 /* PushBackNavigationController.m in Sources */,
-				F8C4652F1A3875A100E47B33 /* XZMusicDataCenter.m in Sources */,
+				F8C4652F1A3875A100E47B33 /* XZMusicCoreDataCenter.m in Sources */,
 				F80B0CDE1A139567009F1785 /* DOUEAGLView.m in Sources */,
 				F80B0CDD1A139567009F1785 /* DOUAudioVisualizer.m in Sources */,
 				F823D9271A332716009F5618 /* XZMusicFileManager.m in Sources */,
