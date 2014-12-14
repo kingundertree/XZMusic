@@ -40,7 +40,7 @@
     [super viewDidLoad];
     [self setTitleViewWithString:@"XZ Music"];
     
-    [self addRightButton:@"+"];
+    [self addRightButton:@"Play"];
     // Do any additional setup after loading the view.
 }
 

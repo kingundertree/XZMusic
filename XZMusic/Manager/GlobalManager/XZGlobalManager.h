@@ -14,8 +14,11 @@
 
 @property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, assign) BOOL isNeedDown;
+@property (nonatomic, strong) NSString *playMusicId;
 @property (nonatomic, assign) NSInteger playIndex;
 @property (nonatomic, strong) NSMutableArray *musicArr;
+
+
 @property (nonatomic, strong) NSString *userWeiboId;
 
 @end

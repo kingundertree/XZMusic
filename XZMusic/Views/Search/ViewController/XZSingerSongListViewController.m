@@ -40,6 +40,16 @@
     [self initUI];
     
     [self setTitleViewWithString:self.singerInfoModel.name];
+    
+    [self addRightButton:@"Play"];
+}
+
+
+- (void)rightButtonAction:(id)sender
+{
+    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
+    musicPlayVC.backType = BackTypePopBack;
+    [self.navigationController pushViewController:musicPlayVC animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{

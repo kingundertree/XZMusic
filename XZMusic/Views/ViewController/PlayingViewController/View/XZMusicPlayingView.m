@@ -20,7 +20,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @interface XZMusicPlayingView ()
 @property(nonatomic, strong) XZMusicLrcView *lrcView;
-@property(nonatomic, strong) XZSongModel *songModel;
+@property(nonatomic, strong) XZMusicInfo *songModel;
 @property(nonatomic, strong) NSTimer *timer;
 @end
 
@@ -127,11 +127,12 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [self.timeProgress updateProgress:playingTime];
 }
 
-- (void)congfigPlaying:(XZSongModel *)songModel{
+- (void)congfigPlaying:(XZMusicInfo *)songModel{
     self.songModel = songModel;
     
-    [self.timeProgress initTimeProgressData:songModel.time];
-    [self.playingRollView configRooViewData:songModel.songPicBig];
+    [self.timeProgress initTimeProgressData:[self.songModel.musicTime intValue]];
+    [self.playingRollView configRooViewData:self.songModel.musicBigImgUrl];
+    [self.playingMoreView configData];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -162,7 +163,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayingView *this =self;
     
-    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format musicUrlStr:self.songModel.songLink identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
+    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%@",self.songModel.musicId] format:self.songModel.musicFormat musicUrlStr:self.songModel.musicSongUrl identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
@@ -195,6 +196,8 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
             break;
         case DOUAudioStreamerFinished:
+            [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayedCount:self.songModel.musicId];
+
             [self getNextMusic];
             break;
         case DOUAudioStreamerBuffering:

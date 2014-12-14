@@ -89,7 +89,7 @@
 #pragma tabBarRightButtonAction
 - (void)tabBarRightButtonAction{
     self.isOnFirstView = NO;
-    XZMusicPlayViewController *musicPlayVC = [[XZMusicPlayViewController alloc] init];
+    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
     musicPlayVC.backType = BackTypePopBack;
     [self.mainNav pushViewController:musicPlayVC animated:YES];
 }

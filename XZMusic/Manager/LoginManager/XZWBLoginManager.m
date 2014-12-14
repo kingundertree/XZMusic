@@ -47,10 +47,7 @@
         WBAuthorizeRequest *request = [WBAuthorizeRequest request];
         request.redirectURI = SINAAPPRedirectURI;
         request.scope = @"all";
-        [WeiboSDK sendRequest:request];
-        
-//        XZLoginForWBViewController *WBloginVC = [[XZLoginForWBViewController alloc] initWithAppID:SINAAPPID redirectURI:@"http://www.xiazer.com/" delegate:self];
-//        self.block(WBLoginResultForNone,WBloginVC);
+        [WeiboSDK sendRequest:request];        
     }
 }
 

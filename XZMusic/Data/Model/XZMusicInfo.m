@@ -13,15 +13,19 @@
 
 @dynamic musicId;
 @dynamic musicName;
+@dynamic musicSongUrl;
 @dynamic musicIsDown;
 @dynamic musicLrcIsDown;
 @dynamic musicDetailInfoString;
 @dynamic musicPlayTime;
 @dynamic musicPlayedTime;
-@dynamic musicAddPraiseTime;
+@dynamic musicIsPraised;
 @dynamic musicAlbum;
+@dynamic musicAlbumId;
 @dynamic musicSonger;
 @dynamic musicTime;
 @dynamic musicLrcString;
-
+@dynamic musicLrcUrl;
+@dynamic musicFormat;
+@dynamic musicBigImgUrl;
 @end

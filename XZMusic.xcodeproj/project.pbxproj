@@ -232,6 +232,8 @@
 		F8DB5B591A37311A00A71898 /* XZUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F8DB5B581A37311A00A71898 /* XZUserInfo.m */; };
 		F8E730261A2C970000FCAC13 /* XZMusicPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E730251A2C970000FCAC13 /* XZMusicPlayingView.m */; };
 		F8E730291A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */; };
+		F8EE56591A3D5D2600F2CD25 /* NSDictionary+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EE56581A3D5D2600F2CD25 /* NSDictionary+XZ.m */; };
+		F8EE565C1A3D5D3500F2CD25 /* NSString+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EE565B1A3D5D3500F2CD25 /* NSString+XZ.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -590,6 +592,10 @@
 		F8E730251A2C970000FCAC13 /* XZMusicPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayingView.m; sourceTree = "<group>"; };
 		F8E730271A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicPlayingTimeProgress.h; sourceTree = "<group>"; };
 		F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicPlayingTimeProgress.m; sourceTree = "<group>"; };
+		F8EE56571A3D5D2600F2CD25 /* NSDictionary+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XZ.h"; sourceTree = "<group>"; };
+		F8EE56581A3D5D2600F2CD25 /* NSDictionary+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XZ.m"; sourceTree = "<group>"; };
+		F8EE565A1A3D5D3500F2CD25 /* NSString+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XZ.h"; sourceTree = "<group>"; };
+		F8EE565B1A3D5D3500F2CD25 /* NSString+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XZ.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1299,6 +1305,10 @@
 				F8A9B7E119D3CAEA0006B697 /* XZBaseButton+IconWithTitle.m */,
 				F8A9B7E219D3CAEA0006B697 /* XZBaseViewController+TipsView.h */,
 				F8A9B7E319D3CAEA0006B697 /* XZBaseViewController+TipsView.m */,
+				F8EE56571A3D5D2600F2CD25 /* NSDictionary+XZ.h */,
+				F8EE56581A3D5D2600F2CD25 /* NSDictionary+XZ.m */,
+				F8EE565A1A3D5D3500F2CD25 /* NSString+XZ.h */,
+				F8EE565B1A3D5D3500F2CD25 /* NSString+XZ.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1832,6 +1842,7 @@
 				F8A9B88919D3CAEA0006B697 /* UIImage+XZ.m in Sources */,
 				F85E4F1D19F6958D00AA6DE1 /* XZDeviceInfo.m in Sources */,
 				F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */,
+				F8EE565C1A3D5D3500F2CD25 /* NSString+XZ.m in Sources */,
 				F80B0CE11A139567009F1785 /* NSData+DOUMappedFile.m in Sources */,
 				F80B0CE01A139567009F1785 /* DOUSimpleHTTPRequest.m in Sources */,
 				F80B0CD81A139567009F1785 /* DOUAudioPlaybackItem.m in Sources */,
@@ -1861,6 +1872,7 @@
 				F8DB5B531A3729C600A71898 /* XZMusicCoreData.xcdatamodeld in Sources */,
 				F8A9B89F19D3CAEA0006B697 /* XZSettingViewController.m in Sources */,
 				F82C130A1A123897005ABF55 /* XZSongModel.m in Sources */,
+				F8EE56591A3D5D2600F2CD25 /* NSDictionary+XZ.m in Sources */,
 				F8A0FDE91A203FDF007CCB8F /* XZMusicDownloadOperation.m in Sources */,
 				F8DB5B561A37311A00A71898 /* XZMusicInfo.m in Sources */,
 				F870C99A1A1CD29400A3B7A7 /* XZMusicPlayViewController.m in Sources */,

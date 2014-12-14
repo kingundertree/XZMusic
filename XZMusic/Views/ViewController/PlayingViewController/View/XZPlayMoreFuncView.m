@@ -8,6 +8,7 @@
 
 #import "XZPlayMoreFuncView.h"
 #import "XZCircleProgress.h"
+#import "XZMusicInfo.h"
 
 @interface XZPlayMoreFuncView ()
 @property (nonatomic, strong) UIButton *redBtn;
@@ -50,7 +51,6 @@
     self.redBtn.frame = CGRectMake(ScreenWidth/2-80, self.frame.size.height/2-20, 60, 40);
     self.redBtn.backgroundColor = [UIColor clearColor];
     [self.redBtn setTitle:@"赞" forState:UIControlStateNormal];
-    [self.redBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.redBtn addTarget:self action:@selector(addCount:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.redBtn];
 
@@ -63,6 +63,17 @@
     [self.downBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.downBtn addTarget:self action:@selector(downMusic:) forControlEvents:UIControlEventTouchUpInside];
     [self.downProgress addSubview:self.downBtn];
+
+}
+
+- (void)configData
+{
+    XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
+    if ([musicInfo.musicIsPraised boolValue]) {
+        [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    } else {
+        [self.redBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 }
 
 - (XZCircleProgress *)downProgress{
@@ -87,7 +98,15 @@
 }
 
 - (void)addCount:(id)sender {
-    [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
+    if ([musicInfo.musicIsPraised boolValue]) {
+        [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[XZGlobalManager shareInstance].playMusicId isAddPraise:NO];
+        [self.redBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    } else {
+        [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[XZGlobalManager shareInstance].playMusicId isAddPraise:YES];
+        [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+
     if (self.funcViewDelegate && [self.funcViewDelegate respondsToSelector:@selector(funcViewAction:)]) {
         [self.funcViewDelegate funcViewAction:XZPlayMoreFuncViewActionTypeForAddPraise];
     }

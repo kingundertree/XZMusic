@@ -12,7 +12,7 @@
 #import "DOUAudioStreamer.h"
 #import "XZPlaySongModel.h"
 #import "XZMusicPlayingTimeProgress.h"
-#import "XZSongModel.h"
+#import "XZMusicInfo.h"
 #import "XZPlayingRollView.h"
 #import "XZPlayMoreFuncView.h"
 
@@ -40,5 +40,5 @@ NS_ENUM(NSInteger, XZMusicPlayingStyle) {
 - (void)updateProgress:(int)playingTime;
 
 // 歌曲内容控制
-- (void)congfigPlaying:(XZSongModel *)songModel;
+- (void)congfigPlaying:(XZMusicInfo *)songModel;
 @end

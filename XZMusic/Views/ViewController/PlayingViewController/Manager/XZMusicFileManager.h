@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XZSongModel.h"
+#import "XZMusicInfo.h"
 
 @interface XZMusicFileManager : NSObject
 
-+ (BOOL)isHasMusicOrLrc:(BOOL)isMusic songModel:(XZSongModel *)songModel;
-+ (NSString *)getMusicPath:(XZSongModel *)songModel;
-+ (NSString *)getMusicLrcPath:(XZSongModel *)songModel;
++ (BOOL)isHasMusicOrLrc:(BOOL)isMusic songModel:(XZMusicInfo *)songModel;
++ (NSString *)getMusicPath:(XZMusicInfo *)songModel;
++ (NSString *)getMusicLrcPath:(XZMusicInfo *)songModel;
 @end

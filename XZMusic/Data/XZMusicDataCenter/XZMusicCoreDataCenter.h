@@ -29,4 +29,16 @@
 - (XZUserInfo *)fetchLoginUserInfo;
 
 
+- (BOOL)isMusicExit:(NSString *)musicId;
+- (BOOL)isMusicDownload:(NSString *)musicId;
+- (BOOL)isMusicLrcDownload:(NSString *)musicId;
+- (XZMusicInfo *)fetchMusicInfo:(NSString *)musicId;
+- (XZMusicInfo *)saveNewMusicInfo:(NSDictionary *)musicInfo;
+- (BOOL)updateMusicInfo:(NSString *)musicId isMusicDown:(BOOL)isMusicDown;
+- (BOOL)updateMusicInfo:(NSString *)musicId isMusicLrcDown:(BOOL)isMusicLrcDown;
+- (BOOL)updateMusicInfo:(NSString *)musicId isAddPraise:(BOOL)isAddPraise;
+- (BOOL)updateMusicInfoForPlayCount:(NSString *)musicId;
+- (BOOL)updateMusicInfoForPlayedCount:(NSString *)musicId;
+- (BOOL)deleteMusicInfo:(NSString *)musicId;
+
 @end

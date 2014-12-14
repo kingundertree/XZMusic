@@ -13,10 +13,12 @@
 #import "XZPlayingListViewController.h"
 #import "XZGlobalManager.h"
 #import "XZMusicFileManager.h"
+#import "XZMusicInfo.h"
 
 @interface XZMusicPlayViewController () 
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
 @property(nonatomic, strong) XZSongModel *songModel;
+@property(nonatomic, strong) XZMusicInfo *musicInfo;
 @end
 
 @implementation XZMusicPlayViewController
@@ -86,7 +88,15 @@
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
     self.musicSongModel = musicSongModel;
     [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
-    [self requestSongInfo];
+    if ([[XZMusicCoreDataCenter shareInstance] isMusicExit:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]]) {
+        [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]];
+        self.musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]];
+        if ([self initPlaySong]) {
+            [self createPlayView];
+        }
+    } else {
+        [self requestSongInfo];
+    }
 }
 
 - (void)requestSongInfo{
@@ -99,7 +109,8 @@
         [self hideLoading];
         if (response.status == XZNetWorkingResponseStatusSuccess) {
             if ([response.content isKindOfClass:[NSDictionary class]]) {
-                self.songModel = [XZMusicSongConvertToOb converMusicSong:response.content];
+                DLog(@"response.content---->>%@",response.content);
+                self.musicInfo = [[XZMusicCoreDataCenter shareInstance] saveNewMusicInfo:response.content];
                 
                 if ([self initPlaySong]) {
                     [self createPlayView];
@@ -107,28 +118,30 @@
             }
         }else if (response.status == XZNetWorkingResponseStatusNetError){
             [this showTips:@"请检查网络"];
-        }else{
+        } else {
             DLog(@"获取歌曲信息失败");
         };
     }];
 }
 
 - (void)createPlayView{
+    [XZGlobalManager shareInstance].playMusicId = self.musicInfo.musicId;
+
     [self.musicPlayIngView playMusic:self.playSongModel];
-    [self.musicPlayIngView congfigPlaying:self.songModel];
+    [self.musicPlayIngView congfigPlaying:self.musicInfo];
     [self initLrcView];
 }
 
 - (BOOL)initPlaySong{
-    self.playSongModel.artist = self.songModel.artistName;
-    self.playSongModel.title = self.songModel.songName;
+    self.playSongModel.artist = self.musicInfo.musicSonger;
+    self.playSongModel.title = self.musicInfo.musicName;
     
-   NSString *musicPath = [XZMusicFileManager getMusicPath:self.songModel];
-    if ([XZMusicFileManager isHasMusicOrLrc:YES songModel:self.songModel]) {
+   NSString *musicPath = [XZMusicFileManager getMusicPath:self.musicInfo];
+    if ([[XZMusicCoreDataCenter shareInstance] isMusicDownload:self.musicInfo.musicId]) {
         self.playSongModel.audioFileURL = [NSURL fileURLWithPath:musicPath];
         [XZGlobalManager shareInstance].isNeedDown = NO;
     }else {
-        self.playSongModel.audioFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.songModel.songLink]];
+        self.playSongModel.audioFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.musicInfo.musicSongUrl]];
         [XZGlobalManager shareInstance].isNeedDown = YES;
     }
 
@@ -137,22 +150,30 @@
 
 - (void)downloadMusic{
     // 下载歌曲
-    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format musciUrlStr:self.songModel.songLink downloadType:XZMusicDownloadtypeForMusic];
+    [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl downloadType:XZMusicDownloadtypeForMusic];
 }
 - (void)downloadLrc{
     // 下载歌词
-    NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.songModel.lrcLink];
-    [self downloadMusic:[NSString stringWithFormat:@"%lld",self.songModel.songId] format:self.songModel.format  musciUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
+    if (!self.musicInfo.musicLrcUrl || self.musicInfo.musicLrcUrl.length == 0) {
+        [self showTips:@"暂无歌词"];
+        
+        return;
+    }
+    NSString *lrcUrl = [NSString stringWithFormat:@"http://ting.baidu.com%@",self.musicInfo.musicLrcUrl];
+    
+    DLog(@"lrcUrl--->%@",lrcUrl);
+    [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
 }
 
-- (void)downloadMusic:(NSString *)musicId format:(NSString *)format musciUrlStr:(NSString *)musciUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
+- (void)downloadMusic:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayViewController *this =self;
-    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:musicId format:format musicUrlStr:musciUrlStr identify:identify downloadType:downloadType downloadBlock:^(XZMusicDownloadResponse *response) {
+    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:musicId format:format musicUrlStr:musicUrlStr identify:identify downloadType:downloadType downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
+                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:self.musicInfo.musicId isMusicDown:YES];
                 DLog(@"music下载=========下载成功");
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"music下载=========正在下载中...");
@@ -164,6 +185,7 @@
         }else{
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"歌词下载=========下载成功");
+                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:self.musicInfo.musicId isMusicLrcDown:YES];
                 [this initLrcView];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"歌词下载=========正在下载中...");
@@ -177,8 +199,8 @@
 }
 
 - (void)initLrcView{
-    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
-        NSString *lrcPath = [XZMusicFileManager getMusicLrcPath:self.songModel];
+    if ([[XZMusicCoreDataCenter shareInstance] isMusicLrcDownload:self.musicInfo.musicId]) {
+        NSString *lrcPath = [XZMusicFileManager getMusicLrcPath:self.musicInfo];
         
         [self.musicPlayIngView showLrcWithPath:lrcPath];
     }else {

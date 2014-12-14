@@ -10,7 +10,7 @@
 
 @implementation XZMusicFileManager
 
-+ (BOOL)isHasMusicOrLrc:(BOOL)isMusic songModel:(XZSongModel *)songModel {
++ (BOOL)isHasMusicOrLrc:(BOOL)isMusic songModel:(XZMusicInfo *)songModel {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -18,9 +18,9 @@
     
     NSString *path;
     if (isMusic) {
-        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",songModel.songId,songModel.songId,songModel.format]];
+        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%@/%@.%@",songModel.musicId,songModel.musicId,songModel.musicFormat]];
     }else {
-        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",songModel.songId,songModel.songId]];
+        path = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%@/%@.lrc",songModel.musicId,songModel.musicId]];
     }
     
     if ([fileManager fileExistsAtPath:path]) {
@@ -30,20 +30,20 @@
     }
 }
 
-+ (NSString *)getMusicPath:(XZSongModel *)songModel {
++ (NSString *)getMusicPath:(XZMusicInfo *)songModel {
     NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *myDocPath = [myPaths objectAtIndex:0];
     
-    NSString *musicPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.%@",songModel.songId,songModel.songId,songModel.format]];
+    NSString *musicPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%@/%@.%@",songModel.musicId,songModel.musicId,songModel.musicFormat]];
     
     return musicPath;
 }
 
-+ (NSString *)getMusicLrcPath:(XZSongModel *)songModel {
++ (NSString *)getMusicLrcPath:(XZMusicInfo *)songModel {
     NSArray *myPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *myDocPath = [myPaths objectAtIndex:0];
     
-    NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%lld/%lld.lrc",songModel.songId,songModel.songId]];
+    NSString *lrcPath = [myDocPath stringByAppendingString:[NSString stringWithFormat:@"/music/%@/%@.lrc",songModel.musicId,songModel.musicId]];
 
     return lrcPath;
 }

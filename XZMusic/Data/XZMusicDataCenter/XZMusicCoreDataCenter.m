@@ -7,6 +7,7 @@
 //
 
 #import "XZMusicCoreDataCenter.h"
+#import "NSDictionary+XZ.h"
 
 @interface XZMusicCoreDataCenter ()
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
@@ -105,12 +106,16 @@
 - (BOOL)updateUserLoginInfo:(NSString *)userWeiboId isLogin:(BOOL)isLogin
 {
     XZUserInfo *userInfo = [self fetchUserInfo:userWeiboId];
-    userInfo.userIsLogin = [NSNumber numberWithBool:isLogin];
+    if (userInfo) {
+        userInfo.userIsLogin = [NSNumber numberWithBool:isLogin];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
     
-    __autoreleasing NSError *error;
-    [self.managedObjectContext save:&error];
-    
-    return YES;
+    return NO;
 }
 
 - (XZUserInfo *)fetchLoginUserInfo
@@ -128,6 +133,187 @@
     
     return nil;
 }
+
+- (BOOL)isMusicExit:(NSString *)musicId
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"musicId = %@",musicId];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    if (resut.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)isMusicDownload:(NSString *)musicId
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"musicId = %@ AND musicLrcIsDown = %@",musicId,[NSNumber numberWithBool:YES]];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    if (resut.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)isMusicLrcDownload:(NSString *)musicId
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"musicId = %@ AND musicLrcIsDown = %@",musicId,[NSNumber numberWithBool:YES]];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    if (resut.count > 0) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (XZMusicInfo *)fetchMusicInfo:(NSString *)musicId
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"musicId = %@",musicId];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    if (resut.count > 0) {
+        return resut.firstObject;
+    }
+    
+    return nil;
+}
+
+- (XZMusicInfo *)saveNewMusicInfo:(NSDictionary *)musicInfo
+{
+    XZMusicInfo *insertMusicInfo = [NSEntityDescription insertNewObjectForEntityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+
+    if ([[musicInfo allKeys] count]>1) {
+        NSDictionary * data = [musicInfo objectForKey:@"data"];
+        NSArray *songList = [data objectForKey:@"songList"];
+        for (NSDictionary *sub in songList) {
+            insertMusicInfo.musicSongUrl = [sub objectForKey:@"songLink"];
+            NSRange range = [insertMusicInfo.musicSongUrl rangeOfString:@"src"];
+            if (range.location != 2147483647 && range.length != 0) {
+                NSString * temp = [insertMusicInfo.musicSongUrl substringToIndex:range.location-1];
+                insertMusicInfo.musicSongUrl = temp;
+            }
+            insertMusicInfo.musicId = [NSString stringWithFormat:@"%d",[[sub objectForKey:@"songId"] intValue]];
+            
+            insertMusicInfo.musicName = [sub objectForKey:@"songName"];
+            insertMusicInfo.musicIsDown = [NSNumber numberWithBool:NO];
+            insertMusicInfo.musicLrcIsDown = [NSNumber numberWithBool:NO];
+            insertMusicInfo.musicTime = [NSNumber numberWithInt:[[sub objectForKey:@"time"] intValue]];
+            insertMusicInfo.musicPlayTime = [NSNumber numberWithInt:1];
+            insertMusicInfo.musicPlayedTime = [NSNumber numberWithInt:0];
+            insertMusicInfo.musicIsPraised = [NSNumber numberWithBool:NO];
+            insertMusicInfo.musicAlbumId = [NSString stringWithFormat:@"%d",[[sub objectForKey:@"albumId"] intValue]];
+            insertMusicInfo.musicAlbum = [sub objectForKey:@"albumName"];
+            insertMusicInfo.musicSonger = [sub objectForKey:@"artistName"];
+            insertMusicInfo.musicDetailInfoString = [sub dataTransformToString];
+            insertMusicInfo.musicLrcUrl = [sub objectForKey:@"lrcLink"];
+            insertMusicInfo.musicFormat = [sub objectForKey:@"format"];
+            insertMusicInfo.musicBigImgUrl = [sub objectForKey:@"songPicBig"];
+        }
+    }
+    __autoreleasing NSError *error;
+    [self.managedObjectContext save:&error];
+    
+    return insertMusicInfo;
+}
+
+- (BOOL)updateMusicInfo:(NSString *)musicId isMusicDown:(BOOL)isMusicDown
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        musicInfo.musicIsDown = [NSNumber numberWithBool:isMusicDown];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)updateMusicInfo:(NSString *)musicId isMusicLrcDown:(BOOL)isMusicLrcDown
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        musicInfo.musicLrcIsDown = [NSNumber numberWithBool:isMusicLrcDown];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)updateMusicInfo:(NSString *)musicId isAddPraise:(BOOL)isAddPraise
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        musicInfo.musicIsPraised = [NSNumber numberWithBool:isAddPraise];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)updateMusicInfoForPlayCount:(NSString *)musicId
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        musicInfo.musicPlayTime = [NSNumber numberWithBool:[musicInfo.musicPlayTime integerValue]+1];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)updateMusicInfoForPlayedCount:(NSString *)musicId
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        musicInfo.musicPlayedTime = [NSNumber numberWithBool:[musicInfo.musicPlayedTime integerValue]+1];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)deleteMusicInfo:(NSString *)musicId
+{
+    XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
+    if (musicInfo) {
+        [self.managedObjectContext deleteObject:musicInfo];
+        
+        __autoreleasing NSError *error;
+        [self.managedObjectContext save:&error];
+        return YES;
+    }
+    return NO;
+}
+
 
 - (void)dealloc
 {
