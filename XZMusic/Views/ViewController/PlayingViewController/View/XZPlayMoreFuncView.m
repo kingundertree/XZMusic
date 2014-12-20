@@ -68,6 +68,9 @@
 
 - (void)configData
 {
+    self.progress = 0.0;
+    [self showCircleProgress:0.0];
+
     XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
     if ([musicInfo.musicIsPraised boolValue]) {
         [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -127,6 +130,8 @@
     
     if (progress >= 1.0) {
         [self.downBtn setTitle:@"完成" forState:UIControlStateNormal];
+    }else if (progress == 0.0){
+        [self.downBtn setTitle:@"下载" forState:UIControlStateNormal];
     }else {
         [self.downBtn setTitle:@"下载..." forState:UIControlStateNormal];
     }

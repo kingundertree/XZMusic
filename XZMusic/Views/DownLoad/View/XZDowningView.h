@@ -10,4 +10,6 @@
 
 @interface XZDowningView : UIView
 
+- (void)initData;
+
 @end

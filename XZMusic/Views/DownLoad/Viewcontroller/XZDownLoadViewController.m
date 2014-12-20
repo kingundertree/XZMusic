@@ -11,10 +11,11 @@
 #import "XZDownOverView.h"
 #import "XZDowningView.h"
 
-@interface XZDownLoadViewController ()<UIScrollViewDelegate>
+@interface XZDownLoadViewController ()<UIScrollViewDelegate,XZDownOverViewDelegate>
 @property (nonatomic, strong) XZLineView *line;
 @property (nonatomic, strong) UIButton *downOverBtn;
 @property (nonatomic, strong) UIButton *downIngBtn;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) XZDownOverView *downOverView;
 @property (nonatomic, strong) XZDowningView *downIngView;
 @end
@@ -39,6 +40,39 @@
     return _line;
 }
 
+- (UIScrollView *)scrollView{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40)];
+        _scrollView.delegate = self;
+        _scrollView.pagingEnabled = YES;
+        _scrollView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight-64-40);
+    }
+    return _scrollView;
+}
+
+- (XZDownOverView *)downOverView
+{
+    if (!_downOverView) {
+        _downOverView = [[XZDownOverView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-64-40)];
+        _downOverView.downOverDelegate = self;
+    }
+    return _downOverView;
+}
+
+- (XZDowningView *)downIngView
+{
+    if (!_downIngView) {
+        _downIngView = [[XZDowningView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight-64-40)];
+    }
+    
+    return _downIngView;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.downOverView initData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -51,17 +85,16 @@
 
 - (void)initData
 {
-    self.downOverView = [[XZDownOverView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40)];
-    self.downIngView = [[XZDowningView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight-64-40)];
-    self.downIngView.hidden = YES;
 }
 
 - (void)initUI
 {
     [self addDownActionView];
     
-    [self.view addSubview:self.downOverView];
-    [self.view addSubview:self.downIngView];
+    [self.scrollView addSubview:self.downOverView];
+    [self.scrollView addSubview:self.downIngView];
+    
+    [self.view addSubview:self.scrollView];
 }
 
 - (void)addDownActionView
@@ -90,9 +123,8 @@
 #pragma mark - method
 - (void)downOverAction:(id)sender
 {
-    if (self.downOverView.hidden) {
-        self.downOverView.hidden = NO;
-        self.downIngView.hidden = YES;
+    if (self.scrollView.contentOffset.x != 0) {
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         
         CGRect frame = self.line.frame;
         frame.origin.x = 0;
@@ -104,9 +136,8 @@
 
 - (void)downIngAction:(id)sender
 {
-    if (!self.downOverView.hidden) {
-        self.downOverView.hidden = YES;
-        self.downIngView.hidden = NO;
+    if (self.scrollView.contentOffset.x == 0) {
+        [self.scrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
 
         CGRect frame = self.line.frame;
         frame.origin.x = ScreenWidth/2;
@@ -121,6 +152,17 @@
 - (void)doBack:(id)sender{
     [[XZAppDelegate sharedAppDelegate].menuMainVC mainVCLeftMenuAction];
 }
+
+#pragma mark - XZDownOverViewDelegate
+- (void)downOverMusicNum:(NSInteger)num
+{
+    if (num > 0) {
+        [self.downOverBtn setTitle:[NSString stringWithFormat:@"下载结束(%ld)",num] forState:UIControlStateNormal];
+    } else {
+        [self.downOverBtn setTitle:@"下载结束" forState:UIControlStateNormal];
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning

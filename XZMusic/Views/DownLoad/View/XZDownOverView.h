@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol XZDownOverViewDelegate <NSObject>
+
+- (void)downOverMusicNum:(NSInteger)num;
+
+@end
+
 @interface XZDownOverView : UIView
+@property (nonatomic, assign) id<XZDownOverViewDelegate> downOverDelegate;
+
+- (void)initData;
 
 @end

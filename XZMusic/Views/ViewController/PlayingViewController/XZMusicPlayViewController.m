@@ -148,10 +148,10 @@
     return YES;
 }
 
-- (void)downloadMusic{
-    // 下载歌曲
-    [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl downloadType:XZMusicDownloadtypeForMusic];
-}
+//- (void)downloadMusic{
+//    // 下载歌曲
+//    [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl downloadType:XZMusicDownloadtypeForMusic];
+//}
 - (void)downloadLrc{
     // 下载歌词
     if (!self.musicInfo.musicLrcUrl || self.musicInfo.musicLrcUrl.length == 0) {
@@ -164,7 +164,7 @@
     DLog(@"lrcUrl--->%@",lrcUrl);
     [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
 }
-
+//
 - (void)downloadMusic:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayViewController *this =self;

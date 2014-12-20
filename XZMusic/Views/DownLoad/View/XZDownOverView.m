@@ -7,9 +7,11 @@
 //
 
 #import "XZDownOverView.h"
+#import "XZSingerSongsCell.h"
 
 @interface XZDownOverView () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *downloadMusicArray;
 @end
 
 @implementation XZDownOverView
@@ -17,41 +19,66 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor blueColor];
+        [self initData];
         [self initUI];
     }
     return self;
 }
 
+- (void)initData
+{
+    self.downloadMusicArray = [NSMutableArray new];
+    self.downloadMusicArray = [NSMutableArray arrayWithArray:[[XZMusicCoreDataCenter shareInstance] fetchAllMusic]];
+
+    if (self.downOverDelegate && [self.downOverDelegate respondsToSelector:@selector(downOverMusicNum:)]) {
+        [self.downOverDelegate downOverMusicNum:self.downloadMusicArray.count];
+    }
+    [self.tableView reloadData];
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        self.tableView = [[UITableView alloc] initWithFrame:self.bounds];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+
+        [self addSubview:self.tableView];
+    }
+    
+    return _tableView;
+}
 
 - (void)initUI
-{    
-    self.tableView = [[UITableView alloc] initWithFrame:self.bounds];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    [self addSubview:self.tableView];
+{
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.downloadMusicArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identify = @"cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    static NSString *cellIdentify = @"cell";
+    XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"--->>%ld",indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    
+    XZMusicInfo *singerInfoMode = (XZMusicInfo *)[self.downloadMusicArray objectAtIndex:indexPath.row];
+    
+    [cell configCell:singerInfoMode];
+    
     return cell;
 }
 

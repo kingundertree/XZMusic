@@ -228,6 +228,7 @@
             insertMusicInfo.musicLrcUrl = [sub objectForKey:@"lrcLink"];
             insertMusicInfo.musicFormat = [sub objectForKey:@"format"];
             insertMusicInfo.musicBigImgUrl = [sub objectForKey:@"songPicBig"];
+            insertMusicInfo.userWeiboId = [XZGlobalManager shareInstance].userWeiboId;
         }
     }
     __autoreleasing NSError *error;
@@ -312,6 +313,18 @@
         return YES;
     }
     return NO;
+}
+
+- (NSArray *)fetchAllMusic
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userWeiboId = %@ AND musicIsDown = %@",[XZGlobalManager shareInstance].userWeiboId,[NSNumber numberWithBool:YES]];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    return resut;
 }
 
 

@@ -28,4 +28,5 @@
 @dynamic musicLrcUrl;
 @dynamic musicFormat;
 @dynamic musicBigImgUrl;
+@dynamic userWeiboId;
 @end

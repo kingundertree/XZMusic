@@ -29,4 +29,5 @@
 @property (nonatomic, retain) NSString * musicLrcUrl;
 @property (nonatomic, retain) NSString * musicFormat;
 @property (nonatomic, retain) NSString * musicBigImgUrl;
+@property (nonatomic, retain) NSString * userWeiboId;
 @end

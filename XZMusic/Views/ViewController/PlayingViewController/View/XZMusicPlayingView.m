@@ -170,6 +170,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"music下载=========下载成功");
                 [this.playingMoreView showCircleProgress:1.0];
+                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[NSString stringWithFormat:@"%@",self.songModel.musicId] isMusicDown:YES];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"music下载=========正在下载中...");
                 DLog(@"response.progress --->>%f",response.progress);

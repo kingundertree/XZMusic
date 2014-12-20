@@ -8,6 +8,7 @@
 
 #import "XZSingerSongsCell.h"
 #import "XZMusicSongModel.h"
+#import "XZMusicInfo.h"
 
 @interface XZSingerSongsCell ()
 @property(nonatomic, strong) UILabel *songNameLab;
@@ -73,6 +74,12 @@
         self.songNameLab.text = songModel.title;
         self.songInfoLab.text = [NSString stringWithFormat:@"%@•%@",songModel.author,songModel.album_title];
         self.songTimeLab.text = [self TimeformatFromSeconds:songModel.file_duration];
+    } else if ([data isKindOfClass:[XZMusicInfo class]]) {
+        XZMusicInfo *musicInfo = (XZMusicInfo *)data;
+
+        self.songNameLab.text = musicInfo.musicName;
+        self.songInfoLab.text = [NSString stringWithFormat:@"%@•%@",musicInfo.musicSonger,musicInfo.musicAlbum];
+        self.songTimeLab.text = [self TimeformatFromSeconds:[musicInfo.musicTime intValue]];
     }
 }
 
