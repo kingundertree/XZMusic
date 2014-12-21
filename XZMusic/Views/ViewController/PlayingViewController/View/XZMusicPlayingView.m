@@ -20,7 +20,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 @interface XZMusicPlayingView ()
 @property(nonatomic, strong) XZMusicLrcView *lrcView;
-@property(nonatomic, strong) XZMusicInfo *songModel;
+@property(nonatomic, strong) XZMusicInfo *musicInfo;
 @property(nonatomic, strong) NSTimer *timer;
 @end
 
@@ -87,7 +87,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)musicPlaying{
-    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.songModel]) {
+    if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.musicInfo]) {
         int time = self.audioPlayer.currentTime;
         [self.lrcView moveLrcWithTime:time];
         [self updateProgress:time];
@@ -128,10 +128,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)congfigPlaying:(XZMusicInfo *)songModel{
-    self.songModel = songModel;
+    self.musicInfo = songModel;
     
-    [self.timeProgress initTimeProgressData:[self.songModel.musicTime intValue]];
-    [self.playingRollView configRooViewData:self.songModel.musicBigImgUrl];
+    [self.timeProgress initTimeProgressData:[self.musicInfo.musicTime intValue]];
+    [self.playingRollView configRooViewData:self.musicInfo.musicBigImgUrl];
     [self.playingMoreView configData];
 }
 
@@ -163,22 +163,39 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayingView *this =self;
     
-    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%@",self.songModel.musicId] format:self.songModel.musicFormat musicUrlStr:self.songModel.musicSongUrl identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
+    [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+    [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
+
+    [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"music下载=========下载成功");
                 [this.playingMoreView showCircleProgress:1.0];
-                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[NSString stringWithFormat:@"%@",self.songModel.musicId] isMusicDown:YES];
+                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] isMusicDown:YES];
+           
+                self.musicInfo.downProgress = 1.0;
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"music下载=========正在下载中...");
                 DLog(@"response.progress --->>%f",response.progress);
                 [this.playingMoreView showCircleProgress:response.progress];
+                
+                self.musicInfo.downProgress = response.progress;
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadFail) {
                 DLog(@"music下载=========下载失败");
+                self.musicInfo.downProgress = -1.0;
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadNetError) {
                 DLog("music下载=========网络错误");
+                self.musicInfo.downProgress = -2.0;
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }
         }
     }];
@@ -197,7 +214,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
             
             break;
         case DOUAudioStreamerFinished:
-            [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayedCount:self.songModel.musicId];
+            [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayedCount:self.musicInfo.musicId];
 
             [self getNextMusic];
             break;

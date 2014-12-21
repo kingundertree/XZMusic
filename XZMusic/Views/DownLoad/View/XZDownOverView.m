@@ -86,6 +86,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if (self.downOverDelegate && [self.downOverDelegate respondsToSelector:@selector(downOverMusicNum:)]) {
+        [self.downOverDelegate didSelectMusicInfo:indexPath.row musicInfo:[self.downloadMusicArray objectAtIndex:indexPath.row]];
+    }
 }
 
 @end

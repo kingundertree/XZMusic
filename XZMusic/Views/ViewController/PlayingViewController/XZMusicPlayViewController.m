@@ -13,7 +13,6 @@
 #import "XZPlayingListViewController.h"
 #import "XZGlobalManager.h"
 #import "XZMusicFileManager.h"
-#import "XZMusicInfo.h"
 
 @interface XZMusicPlayViewController () 
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
@@ -87,15 +86,23 @@
 
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel{
     self.musicSongModel = musicSongModel;
-    [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicSongModel.title]];
     if ([[XZMusicCoreDataCenter shareInstance] isMusicExit:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]]) {
-        [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]];
         self.musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]];
+        [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%@",self.musicInfo.musicId]];
         if ([self initPlaySong]) {
             [self createPlayView];
         }
     } else {
         [self requestSongInfo];
+    }
+}
+
+- (void)playingMusicWithExistSong:(XZMusicInfo *)musicInfo
+{
+    self.musicInfo = musicInfo;
+    [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%@",self.musicInfo.musicId]];
+    if ([self initPlaySong]) {
+        [self createPlayView];
     }
 }
 
@@ -126,6 +133,7 @@
 
 - (void)createPlayView{
     [XZGlobalManager shareInstance].playMusicId = self.musicInfo.musicId;
+    [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicInfo.musicName]];
 
     [self.musicPlayIngView playMusic:self.playSongModel];
     [self.musicPlayIngView congfigPlaying:self.musicInfo];
@@ -148,10 +156,6 @@
     return YES;
 }
 
-//- (void)downloadMusic{
-//    // 下载歌曲
-//    [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl downloadType:XZMusicDownloadtypeForMusic];
-//}
 - (void)downloadLrc{
     // 下载歌词
     if (!self.musicInfo.musicLrcUrl || self.musicInfo.musicLrcUrl.length == 0) {
@@ -164,25 +168,14 @@
     DLog(@"lrcUrl--->%@",lrcUrl);
     [self downloadMusic:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:lrcUrl downloadType:XZMusicDownloadtypeForLrc];
 }
-//
+
 - (void)downloadMusic:(NSString *)musicId format:(NSString *)format musicUrlStr:(NSString *)musicUrlStr downloadType:(enum XZMusicDownloadtype)downloadType {
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayViewController *this =self;
     [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:musicId format:format musicUrlStr:musicUrlStr identify:identify downloadType:downloadType downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
         
-        if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
-            if (response.downloadStatus == XZMusicDownloadSuccess) {
-                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:self.musicInfo.musicId isMusicDown:YES];
-                DLog(@"music下载=========下载成功");
-            }else if (response.downloadStatus == XZMusicDownloadIng) {
-                DLog(@"music下载=========正在下载中...");
-            }else if (response.downloadStatus == XZMusicDownloadFail) {
-                DLog(@"music下载=========下载失败");
-            }else if (response.downloadStatus == XZMusicDownloadNetError) {
-                DLog("music下载=========网络错误");
-            }
-        }else{
+        if (response.downloadStyle == XZMusicdownloadStyleForLrc) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"歌词下载=========下载成功");
                 [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:self.musicInfo.musicId isMusicLrcDown:YES];

@@ -26,6 +26,7 @@
 {
     // XZNet 初始化
     [XZRequestManager initServieId];
+    [XZGlobalManager shareInstance];
     
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     NSString *dbPath = [DocumentsPath stringByAppendingPathComponent:@"FreeMusic.db"];

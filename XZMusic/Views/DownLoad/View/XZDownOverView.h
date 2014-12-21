@@ -11,7 +11,7 @@
 @protocol XZDownOverViewDelegate <NSObject>
 
 - (void)downOverMusicNum:(NSInteger)num;
-
+- (void)didSelectMusicInfo:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo;
 @end
 
 @interface XZDownOverView : UIView

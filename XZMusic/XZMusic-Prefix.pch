@@ -56,5 +56,6 @@ do { \
     #import "XZMusicCoreDataCenter.h"
     #import "XZUserInfo.h"
     #import "XZMusicInfo.h"
+    #import "XZMusicPlayViewController.h"
 
 #endif

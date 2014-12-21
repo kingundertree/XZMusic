@@ -11,6 +11,7 @@
 #import "XZSongModel.h"
 #import "XZPlaySongModel.h"
 #import "XZMusicPlayingView.h"
+#import "XZMusicInfo.h"
 
 @interface XZMusicPlayViewController : XZBaseViewController
 
@@ -20,5 +21,6 @@
 
 + (XZMusicPlayViewController *)shareInstance;
 - (void)playingMusicWithSong:(XZMusicSongModel *)musicSongModel;
+- (void)playingMusicWithExistSong:(XZMusicInfo *)musicInfo;
 
 @end

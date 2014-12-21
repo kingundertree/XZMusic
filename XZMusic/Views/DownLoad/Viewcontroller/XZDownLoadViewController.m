@@ -76,11 +76,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self addRightButton:@"play"];
     [self setTitleViewWithString:@"下载"];
     
     [self initData];
     [self initUI];
+    
+    [self addNotification];
 }
 
 - (void)initData
@@ -95,6 +97,26 @@
     [self.scrollView addSubview:self.downIngView];
     
     [self.view addSubview:self.scrollView];
+    
+    XZGlobalManager *globalManager = [XZGlobalManager shareInstance];
+    [globalManager addObserver:self forKeyPath:@"musicDownArr" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"musicDownArr"])
+    {
+        [self refreshDownMusic];
+    }
+}
+
+- (void)refreshDownMusic
+{
+    [self.downOverView initData];
+    [self.downIngView initData];
+    
+    DLog(@"refreshDownMusic-->>%@",[XZGlobalManager shareInstance].musicDownArr);
 }
 
 - (void)addDownActionView
@@ -121,6 +143,13 @@
 }
 
 #pragma mark - method
+- (void)rightButtonAction:(id)sender
+{
+    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
+    musicPlayVC.backType = BackTypePopBack;
+    [self.navigationController pushViewController:musicPlayVC animated:YES];
+}
+
 - (void)downOverAction:(id)sender
 {
     if (self.scrollView.contentOffset.x != 0) {
@@ -163,7 +192,17 @@
     }
 }
 
+- (void)didSelectMusicInfo:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo
+{
+    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
+    musicPlayVC.backType = BackTypePopBack;
+    [musicPlayVC playingMusicWithExistSong:musicInfo];
+    [self.navigationController pushViewController:musicPlayVC animated:YES];
+}
 
+- (void)dealloc{
+    [self removeObserver:self forKeyPath:@"musicDownArr"];
+}
 
 - (void)didReceiveMemoryWarning
 {

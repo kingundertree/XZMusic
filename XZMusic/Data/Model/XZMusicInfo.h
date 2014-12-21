@@ -30,4 +30,5 @@
 @property (nonatomic, retain) NSString * musicFormat;
 @property (nonatomic, retain) NSString * musicBigImgUrl;
 @property (nonatomic, retain) NSString * userWeiboId;
+@property (nonatomic, assign) float  downProgress;
 @end

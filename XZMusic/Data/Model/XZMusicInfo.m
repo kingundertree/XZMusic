@@ -29,4 +29,5 @@
 @dynamic musicFormat;
 @dynamic musicBigImgUrl;
 @dynamic userWeiboId;
+@dynamic downProgress;
 @end

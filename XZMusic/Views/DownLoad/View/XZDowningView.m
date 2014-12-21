@@ -32,6 +32,11 @@
     [self addSubview:self.tableView];
 }
 
+- (void)initData
+{
+    
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
