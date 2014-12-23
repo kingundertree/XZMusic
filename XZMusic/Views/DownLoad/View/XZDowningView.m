@@ -73,6 +73,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (self.downingViewDelegate && [self.downingViewDelegate respondsToSelector:@selector(didSelectMusicInfoForDowning:musicInfo:)]) {
+        [self.downingViewDelegate didSelectMusicInfoForDowning:indexPath.row musicInfo:[self.tableData objectAtIndex:indexPath.row]];
+    }
 }
 
 @end

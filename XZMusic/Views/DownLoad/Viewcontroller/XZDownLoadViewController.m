@@ -11,7 +11,7 @@
 #import "XZDownOverView.h"
 #import "XZDowningView.h"
 
-@interface XZDownLoadViewController ()<UIScrollViewDelegate,XZDownOverViewDelegate>
+@interface XZDownLoadViewController ()<UIScrollViewDelegate,XZDownOverViewDelegate,XZDowningViewDelegate>
 @property (nonatomic, strong) XZLineView *line;
 @property (nonatomic, strong) UIButton *downOverBtn;
 @property (nonatomic, strong) UIButton *downIngBtn;
@@ -63,6 +63,7 @@
 {
     if (!_downIngView) {
         _downIngView = [[XZDowningView alloc] initWithFrame:CGRectMake(ScreenWidth, 0, ScreenWidth, ScreenHeight-64-40)];
+        _downIngView.downingViewDelegate = self;
     }
     
     return _downIngView;
@@ -71,7 +72,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [XZGlobalManager shareInstance].isOnLoadingPage = YES;
-    [self.downOverView initData];
+    [self refreshTable:nil];
     
     if (self.line.frame.origin.x != 0) {
         [self.scrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
@@ -210,6 +211,17 @@
     [musicPlayVC playingMusicWithExistSong:musicInfo];
     [self.navigationController pushViewController:musicPlayVC animated:YES];
 }
+
+#pragma mark - XZDowningViewDelegate
+
+- (void)didSelectMusicInfoForDowning:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo
+{
+    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
+    musicPlayVC.backType = BackTypePopBack;
+    [musicPlayVC playingMusicWithExistSong:musicInfo];
+    [self.navigationController pushViewController:musicPlayVC animated:YES];
+}
+
 
 - (void)dealloc{
     [self removeObserver:self forKeyPath:@"musicDownArr"];
