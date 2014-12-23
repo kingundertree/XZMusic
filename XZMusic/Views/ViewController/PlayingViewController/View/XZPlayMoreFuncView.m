@@ -68,9 +68,14 @@
 
 - (void)configData
 {
-    self.progress = 0.0;
-    [self showCircleProgress:0.0];
-
+    if ([XZGlobalManager shareInstance].isNeedDown) {
+        self.progress = 0.0;
+        [self showCircleProgress:0.0];
+    } else {
+        self.progress = 1.0;
+        [self showCircleProgress:1.0];
+    }
+    
     XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
     if ([musicInfo.musicIsPraised boolValue]) {
         [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];

@@ -32,15 +32,34 @@
 - (void)updateMusicDownInfo:(XZMusicInfo *)musicInfo
 {
     float progress = musicInfo.downProgress;
-    
-    if (progress == -2.0) {
-        // 网络错误
-    } else if (progress == -1.0) {
-        // 下载失败
-    } else if (progress == 1.0) {
-        // 下载成功
-    } else if (progress >= 0 && progress < 1.0) {
-        // 下载中
+
+    if (self.musicDownArr.count == 0 && progress != 1.0) {
+        [self.musicDownArr addObject:musicInfo];
+    } else {
+        BOOL isHasMusicInfo = NO;
+        for (NSInteger i = 0; i < self.musicDownArr.count; i++) {
+            XZMusicInfo *info = [self.musicDownArr objectAtIndex:i];
+            
+            if ([info.musicId isEqualToString:musicInfo.musicId]) {
+                isHasMusicInfo = YES;
+                
+                if (progress == 1.0) {
+//                    [self.musicDownArr removeObjectAtIndex:i];
+                } else {
+                    [self.musicDownArr replaceObjectAtIndex:i withObject:musicInfo];
+                }
+            }
+        }
+        
+        if (!isHasMusicInfo) {
+            if (progress == 1.0) {
+                return;
+            } else {
+                [self.musicDownArr addObject:musicInfo];
+            }
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"musicDownloadNotification" object:nil userInfo:nil];
     }
 }
 

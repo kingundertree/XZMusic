@@ -75,6 +75,7 @@
 		F870C9A11A1CD4F900A3B7A7 /* XZMusicLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */; };
 		F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87143D01A05DCAF00CF0447 /* Launch Screen.xib */; };
 		F882FDAA1A1E1AD2000F7C7B /* XZMusicDownloadResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F882FDA91A1E1AD2000F7C7B /* XZMusicDownloadResponse.m */; };
+		F8876A2E1A4997B20081841E /* XZDownloadIngCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8876A2D1A4997B20081841E /* XZDownloadIngCell.m */; };
 		F897C5001A0A41E200BE6AB4 /* FreeMusic.db in Resources */ = {isa = PBXBuildFile; fileRef = F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */; };
 		F8A0FDE91A203FDF007CCB8F /* XZMusicDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A0FDE81A203FDF007CCB8F /* XZMusicDownloadOperation.m */; };
 		F8A7A3A41A0E48F7006587C8 /* XZMusicSongModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A7A3A31A0E48F7006587C8 /* XZMusicSongModel.m */; };
@@ -381,6 +382,8 @@
 		F87143D01A05DCAF00CF0447 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		F882FDA81A1E1AD2000F7C7B /* XZMusicDownloadResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicDownloadResponse.h; sourceTree = "<group>"; };
 		F882FDA91A1E1AD2000F7C7B /* XZMusicDownloadResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDownloadResponse.m; sourceTree = "<group>"; };
+		F8876A2C1A4997B20081841E /* XZDownloadIngCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZDownloadIngCell.h; sourceTree = "<group>"; };
+		F8876A2D1A4997B20081841E /* XZDownloadIngCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZDownloadIngCell.m; sourceTree = "<group>"; };
 		F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreeMusic.db; sourceTree = "<group>"; };
 		F8A0FDE71A203FDF007CCB8F /* XZMusicDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicDownloadOperation.h; sourceTree = "<group>"; };
 		F8A0FDE81A203FDF007CCB8F /* XZMusicDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDownloadOperation.m; sourceTree = "<group>"; };
@@ -910,6 +913,8 @@
 				F86968E41A41B197004D5210 /* XZDownOverView.m */,
 				F86968E61A41B1AA004D5210 /* XZDowningView.h */,
 				F86968E71A41B1AA004D5210 /* XZDowningView.m */,
+				F8876A2C1A4997B20081841E /* XZDownloadIngCell.h */,
+				F8876A2D1A4997B20081841E /* XZDownloadIngCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1860,6 +1865,7 @@
 				F870C9981A1CD29400A3B7A7 /* XZMusicSongConvertToOb.m in Sources */,
 				F85E4F0519F68EEC00AA6DE1 /* XZSignatureGenerator.m in Sources */,
 				F85E4ECC19F687B900AA6DE1 /* NSDictionary+XZNetMethod.m in Sources */,
+				F8876A2E1A4997B20081841E /* XZDownloadIngCell.m in Sources */,
 				F8E730261A2C970000FCAC13 /* XZMusicPlayingView.m in Sources */,
 				F80B0CD31A139567009F1785 /* DOUAudioEventLoop.m in Sources */,
 				F85E4F0419F68EEC00AA6DE1 /* XZRequestManager.m in Sources */,

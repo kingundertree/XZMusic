@@ -70,7 +70,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [XZGlobalManager shareInstance].isOnLoadingPage = YES;
     [self.downOverView initData];
+    
+    if (self.line.frame.origin.x != 0) {
+        [self.scrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
+    }
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [XZGlobalManager shareInstance].isOnLoadingPage = NO;
+    DLog(@"viewDidDisappear");
 }
 
 - (void)viewDidLoad
@@ -81,8 +91,23 @@
     
     [self initData];
     [self initUI];
-    
-    [self addNotification];
+    [self addnotification];
+}
+
+- (void)addnotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:@"musicDownloadNotification" object:nil];
+}
+
+- (void)refreshTable:(NSNotification *)info
+{
+    if ([XZGlobalManager shareInstance].isOnLoadingPage) {
+        if (self.line.frame.origin.x != 0) {
+            [self.downIngView initData];
+        } else {
+            [self.downOverView initData];
+        }
+    }
 }
 
 - (void)initData
@@ -97,26 +122,12 @@
     [self.scrollView addSubview:self.downIngView];
     
     [self.view addSubview:self.scrollView];
-    
-    XZGlobalManager *globalManager = [XZGlobalManager shareInstance];
-    [globalManager addObserver:self forKeyPath:@"musicDownArr" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-}
-
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if([keyPath isEqualToString:@"musicDownArr"])
-    {
-        [self refreshDownMusic];
-    }
 }
 
 - (void)refreshDownMusic
 {
     [self.downOverView initData];
     [self.downIngView initData];
-    
-    DLog(@"refreshDownMusic-->>%@",[XZGlobalManager shareInstance].musicDownArr);
 }
 
 - (void)addDownActionView

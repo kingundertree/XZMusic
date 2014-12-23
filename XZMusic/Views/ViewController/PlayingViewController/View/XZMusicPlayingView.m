@@ -177,7 +177,6 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
            
                 self.musicInfo.downProgress = 1.0;
                 [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
-                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"music下载=========正在下载中...");
                 DLog(@"response.progress --->>%f",response.progress);
@@ -185,17 +184,14 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
                 
                 self.musicInfo.downProgress = response.progress;
                 [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
-                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadFail) {
                 DLog(@"music下载=========下载失败");
                 self.musicInfo.downProgress = -1.0;
                 [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
-                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }else if (response.downloadStatus == XZMusicDownloadNetError) {
                 DLog("music下载=========网络错误");
                 self.musicInfo.downProgress = -2.0;
                 [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
-                [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
             }
         }
     }];

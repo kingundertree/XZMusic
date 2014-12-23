@@ -7,9 +7,11 @@
 //
 
 #import "XZDowningView.h"
+#import "XZDownloadIngCell.h"
 
 @interface XZDowningView () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *tableData;
 @end
 
 @implementation XZDowningView
@@ -19,6 +21,7 @@
     if (self) {
         self.backgroundColor = [UIColor greenColor];
         [self initUI];
+        [self initData];
     }
     return self;
 }
@@ -34,32 +37,37 @@
 
 - (void)initData
 {
-    
+    self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.tableData.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 45;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identify = @"cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    static NSString *cellIdentify = @"cell";
+    XZDownloadIngCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        cell = [[XZDownloadIngCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"<<--->>%ld",indexPath.row];
-    return cell;
-}
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    
+    XZMusicInfo *musicInfo = (XZMusicInfo *)[self.tableData objectAtIndex:indexPath.row];
+    
+    [cell configCell:musicInfo];
+    
+    return cell;}
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

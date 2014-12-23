@@ -15,6 +15,7 @@
 
 @property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, assign) BOOL isNeedDown;
+@property (nonatomic, assign) BOOL isOnLoadingPage;
 @property (nonatomic, strong) NSString *playMusicId;
 @property (nonatomic, assign) NSInteger playIndex;
 @property (nonatomic, strong) NSMutableArray *musicArr;
