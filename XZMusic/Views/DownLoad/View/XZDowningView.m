@@ -21,7 +21,6 @@
     if (self) {
         self.backgroundColor = [UIColor greenColor];
         [self initUI];
-        [self initData];
     }
     return self;
 }
@@ -40,6 +39,46 @@
     self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
     [self.tableView reloadData];
 }
+
+- (void)updateTable
+{
+    NSMutableArray *updateMusicArr = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
+    NSMutableArray *addNewMusicInfo = [NSMutableArray new];
+    
+    if (updateMusicArr.count > 0) {
+        if (self.tableData.count > 0) {
+            for (NSInteger i = 0; i < updateMusicArr.count; i++) {
+                XZMusicInfo *musicInfo = [updateMusicArr objectAtIndex:i];
+                
+                for (NSInteger j = 0; j < self.tableData.count; j++) {
+                    XZMusicInfo *musicInfoMore  = [self.tableData objectAtIndex:j];
+                    
+                    if ([musicInfo.musicId isEqualToString:musicInfoMore.musicId]) {
+                        NSIndexPath *path = [NSIndexPath indexPathForRow:j inSection:0];
+                        XZDownloadIngCell *cell = (XZDownloadIngCell *)[self.tableView cellForRowAtIndexPath:path];
+                        [cell updateDownProgress:musicInfo];
+
+                        [self.tableData replaceObjectAtIndex:j withObject:musicInfo];
+                    } else {
+                        [addNewMusicInfo addObject:musicInfo];
+                    }
+                }
+            }            
+        }
+    }
+    
+    if (addNewMusicInfo.count > 0) {
+        for (NSInteger k = 0; k < addNewMusicInfo.count; k++) {
+            NSIndexPath *path = [NSIndexPath indexPathForItem:0 inSection:0];
+            [self.tableData insertObject:[addNewMusicInfo objectAtIndex:k] atIndex:0];
+            [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationMiddle];
+        }
+    }
+    
+    self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

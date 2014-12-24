@@ -102,6 +102,27 @@
     }
 }
 
+- (void)updateDownProgress:(id)data
+{
+    if ([data isKindOfClass:[XZMusicInfo class]]) {
+        XZMusicInfo *musicInfo = (XZMusicInfo *)data;
+        
+        if (musicInfo.downProgress == -2.0) {
+            // 网络错误
+            self.downStatusLab.text = @"网络错误";
+        } else if (musicInfo.downProgress == -1.0) {
+            // 下载失败
+            self.downStatusLab.text = @"下载失败";
+        } else if (musicInfo.downProgress == 1.0) {
+            // 下载成功
+            self.downStatusLab.text = @"下载成功";
+        } else if (musicInfo.downProgress >= 0 && musicInfo.downProgress < 1.0) {
+            // 下载中
+            self.downStatusLab.text = [NSString stringWithFormat:@"%.2f%@",musicInfo.downProgress*100,@"%"];
+        }
+    }
+}
+
 -(NSString*)TimeformatFromSeconds:(int)seconds
 {
     int totalm = seconds/(60);

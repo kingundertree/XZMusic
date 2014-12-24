@@ -10,4 +10,5 @@
 
 @interface XZDownloadIngCell : XZBaseTableViewCell
 
+- (void)updateDownProgress:(id)data;
 @end

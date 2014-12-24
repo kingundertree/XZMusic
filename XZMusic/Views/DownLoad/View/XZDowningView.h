@@ -16,5 +16,6 @@
 
 @property (nonatomic, assign) id<XZDowningViewDelegate> downingViewDelegate;
 - (void)initData;
+- (void)updateTable;
 
 @end

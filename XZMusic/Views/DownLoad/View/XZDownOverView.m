@@ -20,7 +20,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor blueColor];
-        [self initData];
         [self initUI];
     }
     return self;
@@ -28,13 +27,51 @@
 
 - (void)initData
 {
-    self.downloadMusicArray = [NSMutableArray new];
     self.downloadMusicArray = [NSMutableArray arrayWithArray:[[XZMusicCoreDataCenter shareInstance] fetchAllMusic]];
-
+    [self.tableView reloadData];
+    
     if (self.downOverDelegate && [self.downOverDelegate respondsToSelector:@selector(downOverMusicNum:)]) {
         [self.downOverDelegate downOverMusicNum:self.downloadMusicArray.count];
     }
-    [self.tableView reloadData];
+}
+
+- (void)updateTable
+{
+    NSArray *updatedMusicArr = [NSMutableArray arrayWithArray:[XZGlobalManager shareInstance].musicDownArr];
+    NSMutableArray *allDownedMusicArr = [NSMutableArray new];
+    BOOL isNeedUpdataTable = NO;
+    if (updatedMusicArr.count > 0) {
+        for (NSInteger i = 0; i < updatedMusicArr.count; i++) {
+            XZMusicInfo *musicInfo = [updatedMusicArr objectAtIndex:i];
+            if (musicInfo.downProgress >= 1.0) {
+                [allDownedMusicArr addObject:musicInfo];
+            }
+        }
+        
+        if (allDownedMusicArr.count > 0) {
+            if (self.downloadMusicArray.count > 0) {
+
+                for (NSInteger j = 0; j < allDownedMusicArr.count; j++) {
+                    XZMusicInfo *infoMore = [allDownedMusicArr objectAtIndex:j];
+                    for (NSInteger k = 0; k < self.downloadMusicArray.count; k++) {
+                        XZMusicInfo *info = [self.downloadMusicArray objectAtIndex:j];
+                    
+                        if (![info.musicId isEqualToString:infoMore.musicId]) {
+                            isNeedUpdataTable = YES;
+                            
+                            break;
+                        }
+                    }
+                }
+            } else {
+                isNeedUpdataTable = YES;
+            }
+        }
+    }
+    
+    if (isNeedUpdataTable) {
+        [self initData];
+    }
 }
 
 - (UITableView *)tableView{

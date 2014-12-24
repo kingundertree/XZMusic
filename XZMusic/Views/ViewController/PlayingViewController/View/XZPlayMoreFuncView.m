@@ -68,15 +68,35 @@
 
 - (void)configData
 {
+    XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
+
     if ([XZGlobalManager shareInstance].isNeedDown) {
-        self.progress = 0.0;
-        [self showCircleProgress:0.0];
+        NSArray *downMusicArr = [NSArray arrayWithArray:[XZGlobalManager shareInstance].musicDownArr];
+        BOOL isDonging = NO;
+        XZMusicInfo *info;
+        if (downMusicArr.count > 0) {
+            for (NSInteger i = 0; i < downMusicArr.count; i++) {
+                info = [downMusicArr objectAtIndex:i];
+                if ([musicInfo.musicId isEqualToString:info.musicId]) {
+                    isDonging = YES;
+                    
+                    break;
+                }
+            }
+        }
+        
+        if (isDonging) {
+            self.progress = info.downProgress;
+            [self showCircleProgress:info.downProgress];
+        } else {
+            self.progress = 0.0;
+            [self showCircleProgress:0.0];
+        }
     } else {
         self.progress = 1.0;
         [self showCircleProgress:1.0];
     }
     
-    XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[XZGlobalManager shareInstance].playMusicId];
     if ([musicInfo.musicIsPraised boolValue]) {
         [self.redBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     } else {

@@ -18,5 +18,6 @@
 @property (nonatomic, assign) id<XZDownOverViewDelegate> downOverDelegate;
 
 - (void)initData;
+- (void)updateTable;
 
 @end

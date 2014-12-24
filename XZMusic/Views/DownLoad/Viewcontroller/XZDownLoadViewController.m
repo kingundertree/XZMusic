@@ -72,7 +72,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [XZGlobalManager shareInstance].isOnLoadingPage = YES;
-    [self refreshTable:nil];
+    [self initTable];
     
     if (self.line.frame.origin.x != 0) {
         [self.scrollView setContentOffset:CGPointMake(ScreenWidth, 0) animated:YES];
@@ -103,12 +103,15 @@
 - (void)refreshTable:(NSNotification *)info
 {
     if ([XZGlobalManager shareInstance].isOnLoadingPage) {
-        if (self.line.frame.origin.x != 0) {
-            [self.downIngView initData];
-        } else {
-            [self.downOverView initData];
-        }
+        [self.downIngView updateTable];
+        [self.downOverView updateTable];
     }
+}
+
+- (void)initTable
+{
+    [self.downIngView initData];
+    [self.downOverView initData];
 }
 
 - (void)initData
@@ -198,7 +201,7 @@
 - (void)downOverMusicNum:(NSInteger)num
 {
     if (num > 0) {
-        [self.downOverBtn setTitle:[NSString stringWithFormat:@"下载结束(%ld)",num] forState:UIControlStateNormal];
+        [self.downOverBtn setTitle:[NSString stringWithFormat:@"下载结束(%ld)",(long)num] forState:UIControlStateNormal];
     } else {
         [self.downOverBtn setTitle:@"下载结束" forState:UIControlStateNormal];
     }

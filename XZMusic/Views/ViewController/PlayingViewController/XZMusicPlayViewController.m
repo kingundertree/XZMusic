@@ -145,7 +145,7 @@
     self.playSongModel.title = self.musicInfo.musicName;
     
    NSString *musicPath = [XZMusicFileManager getMusicPath:self.musicInfo];
-    if ([[XZMusicCoreDataCenter shareInstance] isMusicDownload:self.musicInfo.musicId]) {
+    if ([self.musicInfo.musicIsDown boolValue]) {
         self.playSongModel.audioFileURL = [NSURL fileURLWithPath:musicPath];
         [XZGlobalManager shareInstance].isNeedDown = NO;
     }else {
@@ -173,7 +173,7 @@
     NSString *identify = [[NSProcessInfo processInfo] globallyUniqueString];
     __weak XZMusicPlayViewController *this =self;
     [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:musicId format:format musicUrlStr:musicUrlStr identify:identify downloadType:downloadType downloadBlock:^(XZMusicDownloadResponse *response) {
-        DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
+        DLog(@"response---->>%ld/%f/%@",(long)response.downloadStatus,response.progress,response.downloadIdentify);
         
         if (response.downloadStyle == XZMusicdownloadStyleForLrc) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {

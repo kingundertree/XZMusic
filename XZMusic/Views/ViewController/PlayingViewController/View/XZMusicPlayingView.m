@@ -167,7 +167,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
     [[XZGlobalManager shareInstance] setValue:[XZGlobalManager shareInstance].musicDownArr forKey:@"musicDownArr"];
 
     [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
-        DLog(@"response---->>%ld/%f/%@",response.downloadStatus,response.progress,response.downloadIdentify);
+        DLog(@"response---->>%ld/%f/%@",(long)response.downloadStatus,response.progress,response.downloadIdentify);
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
@@ -245,9 +245,10 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
 #pragma mark - XZPlayMoreFuncViewDelegate
 - (void)funcViewAction:(enum XZPlayMoreFuncViewActionType)actionType {
-    DLog(@"actionType--->>%ld",actionType);
     if (actionType == XZPlayMoreFuncViewActionTypeForDown) {
-        [self downloadMusic];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self downloadMusic];
+        });
     } else if (actionType == XZPlayMoreFuncViewActionTypeForPre) {
         [self getPreMusic];
     } else if (actionType == XZPlayMoreFuncViewActionTypeForNext) {
