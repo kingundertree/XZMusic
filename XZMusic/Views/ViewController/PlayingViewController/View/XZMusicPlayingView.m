@@ -168,30 +168,50 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 
     [[XZMusicDownloadCenter shareInstance] downloadMusicWithMusicId:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] format:self.musicInfo.musicFormat musicUrlStr:self.musicInfo.musicSongUrl identify:identify downloadType:XZMusicDownloadtypeForMusic downloadBlock:^(XZMusicDownloadResponse *response) {
         DLog(@"response---->>%ld/%f/%@",(long)response.downloadStatus,response.progress,response.downloadIdentify);
+        XZMusicInfo *musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:response.musicId];
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
                 DLog(@"music下载=========下载成功");
-                [this.playingMoreView showCircleProgress:1.0];
-                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:[NSString stringWithFormat:@"%@",self.musicInfo.musicId] isMusicDown:YES];
+                if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
+                    [this.playingMoreView showCircleProgress:1.0];
+                    self.musicInfo.downProgress = 1.0;
+                } else {
+                    musicInfo.downProgress = 1.0;
+                }
+
+                [[XZMusicCoreDataCenter shareInstance] updateMusicInfo:response.musicId isMusicDown:YES];
            
-                self.musicInfo.downProgress = 1.0;
-                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:musicInfo];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
                 DLog(@"music下载=========正在下载中...");
                 DLog(@"response.progress --->>%f",response.progress);
-                [this.playingMoreView showCircleProgress:response.progress];
+                if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
+                    [this.playingMoreView showCircleProgress:response.progress];
+                    self.musicInfo.downProgress = response.progress;
+                } else {
+                    musicInfo.downProgress = response.progress;
+                }
                 
-                self.musicInfo.downProgress = response.progress;
-                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:musicInfo];
             }else if (response.downloadStatus == XZMusicDownloadFail) {
                 DLog(@"music下载=========下载失败");
-                self.musicInfo.downProgress = -1.0;
-                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
+                    self.musicInfo.downProgress = -1.0;
+                } else {
+                    musicInfo.downProgress = -1.0;
+                }
+
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:musicInfo];
             }else if (response.downloadStatus == XZMusicDownloadNetError) {
                 DLog("music下载=========网络错误");
-                self.musicInfo.downProgress = -2.0;
-                [[XZGlobalManager shareInstance] updateMusicDownInfo:self.musicInfo];
+                if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
+                    self.musicInfo.downProgress = -2.0;
+                } else {
+                    musicInfo.downProgress = -2.0;
+                }
+
+                [[XZGlobalManager shareInstance] updateMusicDownInfo:musicInfo];
             }
         }
     }];

@@ -25,6 +25,7 @@
     self.dowloadResponse = [[XZMusicDownloadResponse alloc] init];
     self.dowloadResponse.downloadStatus = XZMusicDownloadIng;
     self.dowloadResponse.downloadIdentify = identify;
+    self.dowloadResponse.musicId = musicId;
     self.dowloadResponse.downloadStyle = isMusic ? XZMusicdownloadStyleForMusic : XZMusicdownloadStyleForLrc;
     
     long long cacheLength;

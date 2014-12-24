@@ -25,6 +25,7 @@ NS_ENUM(NSInteger, XZMusicdownloadStyle){
 
 @property(nonatomic, strong) NSDictionary *content;
 @property(nonatomic, strong) NSString *downloadIdentify;
+@property(nonatomic, strong) NSString *musicId;
 @property(nonatomic, assign) float progress;
 @property(nonatomic, assign) enum XZMusicDownloadStatus downloadStatus;
 @property(nonatomic, assign) enum XZMusicdownloadStyle downloadStyle;
