@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol XZDowningViewDelegate <NSObject>
+- (void)downingMusicNum:(NSInteger)num;
 - (void)didSelectMusicInfoForDowning:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo;
 @end
 

@@ -216,7 +216,6 @@
 }
 
 #pragma mark - XZDowningViewDelegate
-
 - (void)didSelectMusicInfoForDowning:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo
 {
     XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
@@ -225,6 +224,14 @@
     [self.navigationController pushViewController:musicPlayVC animated:YES];
 }
 
+- (void)downingMusicNum:(NSInteger)num
+{
+    if (num > 0) {
+        [self.downIngBtn setTitle:[NSString stringWithFormat:@"下载中(%ld)",(long)num] forState:UIControlStateNormal];
+    } else {
+        [self.downIngBtn setTitle:@"下载中" forState:UIControlStateNormal];
+    }
+}
 
 - (void)dealloc{
     [self removeObserver:self forKeyPath:@"musicDownArr"];

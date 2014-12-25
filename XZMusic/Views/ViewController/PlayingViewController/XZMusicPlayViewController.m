@@ -56,6 +56,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [self initLrcView];
 }
 
 - (void)viewDidLoad
@@ -137,7 +138,6 @@
 
     [self.musicPlayIngView playMusic:self.playSongModel];
     [self.musicPlayIngView congfigPlaying:self.musicInfo];
-    [self initLrcView];
 }
 
 - (BOOL)initPlaySong{

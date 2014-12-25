@@ -12,6 +12,7 @@
 @interface XZDowningView () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableData;
+@property (nonatomic, assign) BOOL isUpdateing;
 @end
 
 @implementation XZDowningView
@@ -38,10 +39,15 @@
 {
     self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
     [self.tableView reloadData];
+    [self updateTabTitle];
 }
 
 - (void)updateTable
 {
+    if (self.isUpdateing) {
+        return;
+    }
+    self.isUpdateing = YES;
     NSMutableArray *updateMusicArr = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
     NSMutableArray *addNewMusicInfo = [NSMutableArray new];
     
@@ -49,21 +55,26 @@
         if (self.tableData.count > 0) {
             for (NSInteger i = 0; i < updateMusicArr.count; i++) {
                 XZMusicInfo *musicInfo = [updateMusicArr objectAtIndex:i];
-                
-                for (NSInteger j = 0; j < self.tableData.count; j++) {
-                    XZMusicInfo *musicInfoMore  = [self.tableData objectAtIndex:j];
-                    
-                    if ([musicInfo.musicId isEqualToString:musicInfoMore.musicId]) {
-                        NSIndexPath *path = [NSIndexPath indexPathForRow:j inSection:0];
-                        XZDownloadIngCell *cell = (XZDownloadIngCell *)[self.tableView cellForRowAtIndexPath:path];
-                        [cell updateDownProgress:musicInfo];
 
-                        [self.tableData replaceObjectAtIndex:j withObject:musicInfo];
-                    } else {
+                NSInteger indexNum = [self isConMusic:self.tableData musicInfo:musicInfo];
+                if (indexNum >= 0) {
+                    NSIndexPath *path = [NSIndexPath indexPathForRow:indexNum inSection:0];
+                    XZDownloadIngCell *cell = (XZDownloadIngCell *)[self.tableView cellForRowAtIndexPath:path];
+                    [cell updateDownProgress:musicInfo];
+                    DLog(@"updatedProgress--->>%f",musicInfo.downProgress);
+                    
+                    [self.tableData replaceObjectAtIndex:indexNum withObject:musicInfo];
+                } else {
+                    NSInteger addIndexNum = [self isConMusic:addNewMusicInfo musicInfo:musicInfo];
+                    if (addIndexNum < 0) {
                         [addNewMusicInfo addObject:musicInfo];
                     }
                 }
-            }            
+            }
+        } else {
+            self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
+            [self.tableView reloadData];
+            [self updateTabTitle];
         }
     }
     
@@ -75,10 +86,34 @@
         }
     }
     
-    self.tableData = [[NSMutableArray alloc] initWithArray:[XZGlobalManager shareInstance].musicDownArr];
-    [self.tableView reloadData];
+    self.isUpdateing = NO;
 }
 
+
+- (void)updateTabTitle
+{
+    if (self.downingViewDelegate && [self.downingViewDelegate respondsToSelector:@selector(downingMusicNum:)]) {
+        [self.downingViewDelegate downingMusicNum:self.tableData.count];
+    }
+}
+
+- (NSInteger)isConMusic:(NSArray *)musicArr musicInfo:(XZMusicInfo *)musicInfo
+{
+    NSInteger indexNum = -100;
+    if (musicArr.count > 0) {
+        for (NSInteger i = 0; i < musicArr.count; i++) {
+            XZMusicInfo *musicInfoOne = (XZMusicInfo *)[musicArr objectAtIndex:i];
+            if ([musicInfo.musicId isEqualToString:musicInfoOne.musicId]) {
+                indexNum = i;
+                break;
+            }
+        }
+    } else {
+        indexNum = -100;
+    }
+    
+    return indexNum;
+}
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

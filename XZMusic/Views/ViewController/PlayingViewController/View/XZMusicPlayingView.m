@@ -172,7 +172,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
         
         if (response.downloadStyle == XZMusicdownloadStyleForMusic) {
             if (response.downloadStatus == XZMusicDownloadSuccess) {
-                DLog(@"music下载=========下载成功");
+                DLog(@"music下载=========下载成功,%@",response.musicId);
                 if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
                     [this.playingMoreView showCircleProgress:1.0];
                     self.musicInfo.downProgress = 1.0;
@@ -184,7 +184,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
            
                 [[XZGlobalManager shareInstance] updateMusicDownInfo:musicInfo];
             }else if (response.downloadStatus == XZMusicDownloadIng) {
-                DLog(@"music下载=========正在下载中...");
+                DLog(@"music下载=========正在下载中...,%@",response.musicId);
                 DLog(@"response.progress --->>%f",response.progress);
                 if ([response.musicId isEqualToString:self.musicInfo.musicId]) {
                     [this.playingMoreView showCircleProgress:response.progress];
