@@ -56,7 +56,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self initLrcView];
 }
 
 - (void)viewDidLoad
@@ -138,9 +137,11 @@
 
     [self.musicPlayIngView playMusic:self.playSongModel];
     [self.musicPlayIngView congfigPlaying:self.musicInfo];
+    [self initLrcView];
 }
 
 - (BOOL)initPlaySong{
+    [self initLrcView];
     self.playSongModel.artist = self.musicInfo.musicSonger;
     self.playSongModel.title = self.musicInfo.musicName;
     
