@@ -51,6 +51,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.playSongModel = [[XZPlaySongModel alloc] init];
     }
     return self;
 }
@@ -77,7 +78,7 @@
 }
 
 - (void)initData{
-    self.playSongModel = [[XZPlaySongModel alloc] init];
+//    self.playSongModel = [[XZPlaySongModel alloc] init];
 }
 
 - (void)initUI{
@@ -88,7 +89,6 @@
     self.musicSongModel = musicSongModel;
     if ([[XZMusicCoreDataCenter shareInstance] isMusicExit:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]]) {
         self.musicInfo = [[XZMusicCoreDataCenter shareInstance] fetchMusicInfo:[NSString stringWithFormat:@"%lld",self.musicSongModel.song_id]];
-        [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%@",self.musicInfo.musicId]];
         if ([self initPlaySong]) {
             [self createPlayView];
         }
@@ -100,7 +100,6 @@
 - (void)playingMusicWithExistSong:(XZMusicInfo *)musicInfo
 {
     self.musicInfo = musicInfo;
-    [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%@",self.musicInfo.musicId]];
     if ([self initPlaySong]) {
         [self createPlayView];
     }
@@ -132,6 +131,8 @@
 }
 
 - (void)createPlayView{
+    [[XZMusicCoreDataCenter shareInstance] updateMusicInfoForPlayCount:[NSString stringWithFormat:@"%@",self.musicInfo.musicId]];
+
     [XZGlobalManager shareInstance].playMusicId = self.musicInfo.musicId;
     [self setTitleViewWithString:[NSString stringWithFormat:@"%@-playing",self.musicInfo.musicName]];
 
@@ -141,7 +142,6 @@
 }
 
 - (BOOL)initPlaySong{
-    [self initLrcView];
     self.playSongModel.artist = self.musicInfo.musicSonger;
     self.playSongModel.title = self.musicInfo.musicName;
     
@@ -150,7 +150,7 @@
         self.playSongModel.audioFileURL = [NSURL fileURLWithPath:musicPath];
         [XZGlobalManager shareInstance].isNeedDown = NO;
     }else {
-        self.playSongModel.audioFileURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.musicInfo.musicSongUrl]];
+        self.playSongModel.audioFileURL = [NSURL URLWithString:self.musicInfo.musicSongUrl];
         [XZGlobalManager shareInstance].isNeedDown = YES;
     }
 

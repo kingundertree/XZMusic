@@ -8,6 +8,12 @@
 
 #import "XZBaseTableViewCell.h"
 
-@interface XZSingerSongsCell : XZBaseTableViewCell
+typedef NS_ENUM(NSInteger, CellType){
+    CellTypeForNormal = 1,
+    CellTypeForDowning = 2,
+    CellTypeForLoving = 3,
+};
 
+@interface XZSingerSongsCell : XZBaseTableViewCell
+@property (nonatomic, assign) CellType cellType;
 @end

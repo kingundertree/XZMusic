@@ -27,7 +27,7 @@
 
 - (void)initData
 {
-    self.downloadMusicArray = [NSMutableArray arrayWithArray:[[XZMusicCoreDataCenter shareInstance] fetchAllMusic]];
+    self.downloadMusicArray = [NSMutableArray arrayWithArray:[[XZMusicCoreDataCenter shareInstance] fetchAllDownedMusic]];
     [self.tableView reloadData];
     
     if (self.downOverDelegate && [self.downOverDelegate respondsToSelector:@selector(downOverMusicNum:)]) {
@@ -50,17 +50,14 @@
         
         if (allDownedMusicArr.count > 0) {
             if (self.downloadMusicArray.count > 0) {
-
                 for (NSInteger j = 0; j < allDownedMusicArr.count; j++) {
                     XZMusicInfo *infoMore = [allDownedMusicArr objectAtIndex:j];
-                    for (NSInteger k = 0; k < self.downloadMusicArray.count; k++) {
-                        XZMusicInfo *info = [self.downloadMusicArray objectAtIndex:j];
                     
-                        if (![info.musicId isEqualToString:infoMore.musicId]) {
-                            isNeedUpdataTable = YES;
-                            
-                            break;
-                        }
+                    NSInteger indexNum = [self isConMusic:allDownedMusicArr musicInfo:infoMore];
+                    if (indexNum >= 0) {
+                        isNeedUpdataTable = YES;
+                        
+                        break;
                     }
                 }
             } else {
@@ -72,6 +69,24 @@
     if (isNeedUpdataTable) {
         [self initData];
     }
+}
+
+- (NSInteger)isConMusic:(NSArray *)musicArr musicInfo:(XZMusicInfo *)musicInfo
+{
+    NSInteger indexNum = -100;
+    if (musicArr.count > 0) {
+        for (NSInteger i = 0; i < musicArr.count; i++) {
+            XZMusicInfo *musicInfoOne = (XZMusicInfo *)[musicArr objectAtIndex:i];
+            if ([musicInfo.musicId isEqualToString:musicInfoOne.musicId]) {
+                indexNum = i;
+                break;
+            }
+        }
+    } else {
+        indexNum = -100;
+    }
+    
+    return indexNum;
 }
 
 - (UITableView *)tableView{
@@ -107,6 +122,7 @@
     XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell.cellType = CellTypeForNormal;
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

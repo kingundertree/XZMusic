@@ -87,8 +87,9 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)musicPlaying{
+    DLog(@"musicPlaying--->>");
     if ([XZMusicFileManager isHasMusicOrLrc:NO songModel:self.musicInfo]) {
-        int time = self.audioPlayer.currentTime;
+        NSInteger time = self.audioPlayer.currentTime;
         [self.lrcView moveLrcWithTime:time];
         [self updateProgress:time];
     }
@@ -98,6 +99,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 - (void)playMusic:(XZPlaySongModel *)songMode{
     [self emptyAudio];
     
+    [self.timer fire];
     self.audioPlayer = [DOUAudioStreamer streamerWithAudioFile:songMode];
     [self.audioPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:kStatusKVOKey];
     [self.audioPlayer addObserver:self forKeyPath:@"duration" options:NSKeyValueObservingOptionNew context:kDurationKVOKey];
@@ -122,7 +124,7 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 
-- (void)updateProgress:(int)playingTime{
+- (void)updateProgress:(NSInteger)playingTime{
     [self.timeProgress updatePlayingTime:playingTime];
     [self.timeProgress updateProgress:playingTime];
 }

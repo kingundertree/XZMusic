@@ -13,8 +13,8 @@
 @property(nonatomic, strong) UILabel *playingTime;
 @property(nonatomic, strong) UILabel *totalTime;
 
-- (void)initTimeProgressData:(int)time;
-- (void)updatePlayingTime:(int)time;
-- (void)updateProgress:(int)playTime;
+- (void)initTimeProgressData:(NSInteger)time;
+- (void)updatePlayingTime:(NSInteger)time;
+- (void)updateProgress:(NSInteger)playTime;
 
 @end

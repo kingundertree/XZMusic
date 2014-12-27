@@ -14,6 +14,7 @@
 @property(nonatomic, strong) UILabel *songNameLab;
 @property(nonatomic, strong) UILabel *songInfoLab;
 @property(nonatomic, strong) UILabel *songTimeLab;
+@property(nonatomic, strong) UILabel *songPlayedLab;
 @end
 
 @implementation XZSingerSongsCell
@@ -40,7 +41,7 @@
 
 - (UILabel *)songTimeLab{
     if (!_songTimeLab) {
-        _songTimeLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-90, 30, 60, 20)];
+        _songTimeLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-90, 10, 60, 20)];
         _songTimeLab.backgroundColor = [UIColor clearColor];
         _songTimeLab.textAlignment = NSTextAlignmentRight;
         _songTimeLab.font = [UIFont xzH3Font];
@@ -49,6 +50,16 @@
     return _songTimeLab;
 }
 
+- (UILabel *)songPlayedLab{
+    if (!_songPlayedLab) {
+        _songPlayedLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-90, 40, 60, 20)];
+        _songPlayedLab.backgroundColor = [UIColor clearColor];
+        _songPlayedLab.textAlignment = NSTextAlignmentRight;
+        _songPlayedLab.font = [UIFont xzH3Font];
+        _songPlayedLab.textColor = [UIColor XZMiddleGrayColor];
+    }
+    return _songPlayedLab;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -57,12 +68,26 @@
     return self;
 }
 
+- (void)setCellType:(CellType)cellType
+{
+    _cellType = cellType;
+    
+    [self addUI];
+}
+
 - (void)initUI{
     [super initUI];
-    
+}
+
+- (void)addUI
+{
     [self.contentView addSubview:self.songNameLab];
     [self.contentView addSubview:self.songInfoLab];
     [self.contentView addSubview:self.songTimeLab];
+
+    if (_cellType == CellTypeForLoving) {
+        [self.contentView addSubview:self.songPlayedLab];
+    }
 }
 
 - (void)configCell:(id)data{
@@ -80,6 +105,10 @@
         self.songNameLab.text = musicInfo.musicName;
         self.songInfoLab.text = [NSString stringWithFormat:@"%@•%@",musicInfo.musicSonger,musicInfo.musicAlbum];
         self.songTimeLab.text = [self TimeformatFromSeconds:[musicInfo.musicTime intValue]];
+    
+        if (_cellType == CellTypeForLoving) {
+            self.songPlayedLab.text = [NSString stringWithFormat:@"播放：%ld",(long)[musicInfo.musicPlayTime integerValue]];
+        }
     }
 }
 

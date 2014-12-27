@@ -41,6 +41,10 @@
 - (BOOL)updateMusicInfoForPlayedCount:(NSString *)musicId;
 - (BOOL)deleteMusicInfo:(NSString *)musicId;
 
-- (NSArray *)fetchAllMusic;
+
+- (NSArray *)fetchAllDownedMusic;
+
+- (NSArray *)fetchAllMusicByPlayedTimeRank;
+- (NSArray *)fetchAllMusicByPraisedTimeRank;
 
 @end

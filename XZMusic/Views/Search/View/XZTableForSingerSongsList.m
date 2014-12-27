@@ -34,6 +34,7 @@
         XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
         if (!cell) {
             cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            cell.cellType = CellTypeForNormal;
         }
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

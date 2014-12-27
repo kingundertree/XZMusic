@@ -280,7 +280,7 @@
 {
     XZMusicInfo *musicInfo = [self fetchMusicInfo:musicId];
     if (musicInfo) {
-        musicInfo.musicPlayTime = [NSNumber numberWithBool:[musicInfo.musicPlayTime integerValue]+1];
+        musicInfo.musicPlayTime = [NSNumber numberWithInteger:[musicInfo.musicPlayTime integerValue]+1];
         
         __autoreleasing NSError *error;
         [self.managedObjectContext save:&error];
@@ -315,12 +315,42 @@
     return NO;
 }
 
-- (NSArray *)fetchAllMusic
+- (NSArray *)fetchAllDownedMusic
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
     fetchRequest.entity = entity;
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userWeiboId = %@ AND musicIsDown = %@",[XZGlobalManager shareInstance].userWeiboId,[NSNumber numberWithBool:YES]];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    return resut;
+}
+
+- (NSArray *)fetchAllMusicByPlayedTimeRank
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userWeiboId = %@",[XZGlobalManager shareInstance].userWeiboId];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"musicPlayTime" ascending:NO]];
+    fetchRequest.fetchLimit = 100;
+
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    return resut;
+}
+
+- (NSArray *)fetchAllMusicByPraisedTimeRank
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userWeiboId = %@",[XZGlobalManager shareInstance].userWeiboId];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"musicPlayTime" ascending:NO]];
+    fetchRequest.fetchLimit = 100;
+    
     
     NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
     

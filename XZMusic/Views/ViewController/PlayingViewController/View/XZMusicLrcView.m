@@ -110,7 +110,7 @@
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height - 25 + 25*self.lrcLineConArr.count);
 }
 
-- (void)moveLrcWithTime:(int)time{
+- (void)moveLrcWithTime:(NSInteger)time{
     if (self.lrcLineConArr.count == 0) {
         return;
     }
@@ -143,17 +143,15 @@
     }
 }
 
--(NSString*)timeformatFromSeconds:(int)seconds {
-    int totalm = seconds/(60);
-    int h = totalm/(60);
-    int m = totalm%(60);
-    int s = seconds%(60);
+-(NSString *)timeformatFromSeconds:(NSInteger)seconds {
+    NSInteger totalm = seconds/(60);
+    NSInteger h = totalm/(60);
+    NSInteger m = totalm%(60);
+    NSInteger s = seconds%(60);
     if (h==0) {
-        return  [NSString stringWithFormat:@"%02d:%02d", m, s];
+        return  [NSString stringWithFormat:@"%02ld:%02ld", (long)m, (long)s];
     }
-    return [NSString stringWithFormat:@"%02d:%02d:%02d", h, m, s];
+    return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", h, m, s];
 }
-
-
 
 @end

@@ -40,26 +40,26 @@
     [self addSubview:self.timeSlider];
 }
 
-- (void)initTimeProgressData:(int)time{
+- (void)initTimeProgressData:(NSInteger)time{
     self.timeSlider.maximumValue = time;
     self.timeSlider.minimumValue = 0.0;
     self.totalTime.text = [self getplayTime:time];
 }
 
-- (void)updatePlayingTime:(int)time{
+- (void)updatePlayingTime:(NSInteger)time{
     self.playingTime.text = [self getplayTime:time];
 }
 
-- (void)updateProgress:(int)playTime{
+- (void)updateProgress:(NSInteger)playTime{
     [self.timeSlider setValue:playTime animated:YES];
 }
 
-- (NSString *)getplayTime:(int)time{
-    int num1 = time/60;
-    int num2 = time-60*num1;
+- (NSString *)getplayTime:(NSInteger)time{
+    NSInteger num1 = time/60;
+    NSInteger num2 = time-60*num1;
     
-    NSString *str1 = num1 >= 10 ? [NSString stringWithFormat:@"%d",num1] : [NSString stringWithFormat:@"0%d",num1];
-    NSString *str2 = num2 >= 10 ? [NSString stringWithFormat:@"%d",num2] : [NSString stringWithFormat:@"0%d",num2];
+    NSString *str1 = num1 >= 10 ? [NSString stringWithFormat:@"%ld",(long)num1] : [NSString stringWithFormat:@"0%ld",(long)num1];
+    NSString *str2 = num2 >= 10 ? [NSString stringWithFormat:@"%ld",(long)num2] : [NSString stringWithFormat:@"0%ld",(long)num2];
 
     
     return [NSString stringWithFormat:@"%@:%@",str1,str2];

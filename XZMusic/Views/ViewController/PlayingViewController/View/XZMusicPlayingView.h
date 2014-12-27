@@ -37,7 +37,7 @@ NS_ENUM(NSInteger, XZMusicPlayingStyle) {
 - (void)playMusic:(XZPlaySongModel *)songMode;
 
 // 控制播放进度显示
-- (void)updateProgress:(int)playingTime;
+- (void)updateProgress:(NSInteger)playingTime;
 
 // 歌曲内容控制
 - (void)congfigPlaying:(XZMusicInfo *)songModel;
