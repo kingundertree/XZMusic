@@ -11,8 +11,9 @@
 #import "XZTableForSingerSongsList.h"
 #import "XZMusicPlayViewController.h"
 
-@interface XZPlayingListViewController () <XZBaseTableEventDelegate>
-@property(nonatomic, strong) XZTableForSingerSongsList *tableView;
+@interface XZPlayingListViewController () <UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic, strong) UITableView *tableView;
+@property(nonatomic, strong) NSMutableArray *tableData;
 @end
 
 @implementation XZPlayingListViewController
@@ -26,32 +27,82 @@
 }
 
 - (void)initUI{
-    self.tableView = [[XZTableForSingerSongsList alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
-    self.tableView.isConMore = YES;
-    self.tableView.cellHeight = 80;
-    self.tableView.eventDelegate = self;
-    [self.tableView addRefreshView];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     
-    self.tableView.tableData = [XZGlobalManager shareInstance].musicArr;
+    self.tableData = [XZGlobalManager shareInstance].musicArr;
     [self.tableView reloadData];
 }
 
-#pragma mark - UITableViewEventDelegate
-- (void)didSelect:(id)data indexPath:(NSIndexPath *)indexPath{
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (indexPath.row != [XZGlobalManager shareInstance].playIndex) {
-            XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
-            XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.tableView.tableData objectAtIndex:indexPath.row];
-            [playVC playingMusicWithSong:singerInfoMode];
-
-            // 设置全局播放数据
-            [XZGlobalManager shareInstance].playIndex = indexPath.row;
-        }
-    }];
+- (void)setSongListType:(SongListType)songListType
+{
+    _songListType = songListType;
 }
 
-- (void)tableStatus:(enum XZBaseTableStatus)status{
+#pragma mark -
+#pragma mark - UIDataSourceDelegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.tableData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentify = @"cell";
+    XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    if (!cell) {
+        cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell.cellType = CellTypeForNormal;
+    }
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    
+    id data = [self.tableData objectAtIndex:indexPath.row];
+    
+    [cell configCell:data];
+    
+    return cell;
+}
+
+#pragma mark -
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    id data = [self.tableData objectAtIndex:indexPath.row];
+
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([data isKindOfClass:[XZMusicSongModel class]]) {
+            XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)data;
+            
+            if (![[XZGlobalManager shareInstance].playMusicId isEqualToString:[NSString stringWithFormat:@"%lld",singerInfoMode.song_id]]) {
+                XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+                [playVC playingMusicWithSong:singerInfoMode];
+                
+                // 设置全局播放数据
+                [XZGlobalManager shareInstance].isPlaying = YES;
+                [XZGlobalManager shareInstance].playIndex = indexPath.row;
+                [XZGlobalManager shareInstance].playMusicId = [NSString stringWithFormat:@"%lld",singerInfoMode.song_id];
+            }
+        } else if ([data isKindOfClass:[XZMusicInfo class]]) {
+            XZMusicInfo *musicInfo = (XZMusicInfo *)data;
+            
+            if (![[XZGlobalManager shareInstance].playMusicId isEqualToString:musicInfo.musicId]) {
+                XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+                [playVC playingMusicWithExistSong:musicInfo];
+                
+                // 设置全局播放数据
+                [XZGlobalManager shareInstance].isPlaying = YES;
+                [XZGlobalManager shareInstance].playIndex = indexPath.row;
+                [XZGlobalManager shareInstance].playMusicId = musicInfo.musicId;
+            }
+        }
+    }];
 }
 
 - (void)doBack:(id)sender{

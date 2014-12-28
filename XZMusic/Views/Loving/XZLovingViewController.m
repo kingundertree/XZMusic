@@ -102,6 +102,13 @@
     XZMusicInfo *musicInfo = (XZMusicInfo *)[self.tableData objectAtIndex:indexPath.row];
     
     XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
+    
+    [XZGlobalManager shareInstance].isPlaying = YES;
+    // 设置全局播放数据
+    [XZGlobalManager shareInstance].musicArr = self.tableData;
+    [XZGlobalManager shareInstance].playMusicId = [NSString stringWithFormat:@"%@",musicInfo.musicId];
+    [XZGlobalManager shareInstance].playIndex = indexPath.row;
+
     musicPlayVC.backType = BackTypePopBack;
     [musicPlayVC playingMusicWithExistSong:musicInfo];
     [self.navigationController pushViewController:musicPlayVC animated:YES];

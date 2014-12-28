@@ -209,19 +209,37 @@
 
 - (void)didSelectMusicInfo:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo
 {
-    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
-    musicPlayVC.backType = BackTypePopBack;
-    [musicPlayVC playingMusicWithExistSong:musicInfo];
-    [self.navigationController pushViewController:musicPlayVC animated:YES];
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+    if ([[XZGlobalManager shareInstance].playMusicId isEqualToString:musicInfo.musicId] && [XZGlobalManager shareInstance].isPlaying) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    } else {
+        [playVC playingMusicWithExistSong:musicInfo];
+        [XZGlobalManager shareInstance].isPlaying = YES;
+        // 设置全局播放数据
+        [XZGlobalManager shareInstance].musicArr = (NSMutableArray *)[[XZMusicCoreDataCenter shareInstance] fetchAllDownedMusic];
+        [XZGlobalManager shareInstance].playMusicId = [NSString stringWithFormat:@"%@",musicInfo.musicId];
+        [XZGlobalManager shareInstance].playIndex = indexNum;
+        
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
 }
 
 #pragma mark - XZDowningViewDelegate
 - (void)didSelectMusicInfoForDowning:(NSInteger)indexNum musicInfo:(XZMusicInfo *)musicInfo
 {
-    XZMusicPlayViewController *musicPlayVC = [XZMusicPlayViewController shareInstance];
-    musicPlayVC.backType = BackTypePopBack;
-    [musicPlayVC playingMusicWithExistSong:musicInfo];
-    [self.navigationController pushViewController:musicPlayVC animated:YES];
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+    if ([[XZGlobalManager shareInstance].playMusicId isEqualToString:musicInfo.musicId] && [XZGlobalManager shareInstance].isPlaying) {
+        [self.navigationController pushViewController:playVC animated:YES];
+    } else {
+        [playVC playingMusicWithExistSong:musicInfo];
+        // 设置全局播放数据
+        [XZGlobalManager shareInstance].musicArr = nil;
+        [XZGlobalManager shareInstance].isPlaying = YES;
+        [XZGlobalManager shareInstance].playIndex = 0;
+        [XZGlobalManager shareInstance].playMusicId = [NSString stringWithFormat:@"%@",musicInfo.musicId];
+        
+        [self.navigationController pushViewController:playVC animated:YES];
+    }
 }
 
 - (void)downingMusicNum:(NSInteger)num

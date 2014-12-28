@@ -13,6 +13,10 @@
 #import "XZPlayingListViewController.h"
 #import "XZGlobalManager.h"
 #import "XZMusicFileManager.h"
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface XZMusicPlayViewController () 
 @property(nonatomic, strong) XZMusicRequestForMisicSongInfoManager *musicSongInfoRequest;
@@ -139,6 +143,16 @@
     [self.musicPlayIngView playMusic:self.playSongModel];
     [self.musicPlayIngView congfigPlaying:self.musicInfo];
     [self initLrcView];
+
+//    if (NSClassFromString(@"MPNowPlayingInfoCenter")) {
+//        NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+//        [dict setObject:self.musicInfo.musicName forKey:MPMediaItemPropertyTitle];
+//        [dict setObject:self.musicInfo.musicAlbum forKey:MPMediaItemPropertyArtist];
+//        [dict setObject:[[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"logo_80.png"]] forKey:MPMediaItemPropertyArtwork];
+//        
+//        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:nil];
+//        [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:dict];
+//    }
 }
 
 - (BOOL)initPlaySong{

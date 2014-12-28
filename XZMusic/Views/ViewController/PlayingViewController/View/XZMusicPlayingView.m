@@ -279,37 +279,35 @@ static void *kBufferingRatioKVOKey = &kBufferingRatioKVOKey;
 }
 
 - (void)getPreMusic {
-    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
-    
     if ([XZGlobalManager shareInstance].playIndex == 0) {
         DLog(@"已经是第一首了");
-        [XZGlobalManager shareInstance].playIndex -= [XZGlobalManager shareInstance].musicArr.count-1;
-        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
-        
-        [playVC playingMusicWithSong:singerInfoMode];
+        [XZGlobalManager shareInstance].playIndex = [XZGlobalManager shareInstance].musicArr.count-1;
     } else {
         [XZGlobalManager shareInstance].playIndex -= 1;
-        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
-        
-        [playVC playingMusicWithSong:singerInfoMode];
     }
+    
+    [self playMusic];
 }
 
 - (void)getNextMusic {
-    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
-    
     if ([XZGlobalManager shareInstance].playIndex == [XZGlobalManager shareInstance].musicArr.count-1) {
         DLog(@"已经是最后一首了");
-
         [XZGlobalManager shareInstance].playIndex = 0;
-        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
-        
-        [playVC playingMusicWithSong:singerInfoMode];
     } else {
         [XZGlobalManager shareInstance].playIndex += 1;
-        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
-        
-        [playVC playingMusicWithSong:singerInfoMode];
+    }
+    [self playMusic];
+}
+
+- (void)playMusic
+{
+    XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
+    id data = [[XZGlobalManager shareInstance].musicArr objectAtIndex:[XZGlobalManager shareInstance].playIndex];
+    
+    if ([data isKindOfClass:[XZMusicSongModel class]]) {
+        [playVC playingMusicWithSong:(XZMusicSongModel *)data];
+    } else if ([data isKindOfClass:[XZMusicInfo class]]) {
+        [playVC playingMusicWithExistSong:(XZMusicInfo *)data];
     }
 }
 

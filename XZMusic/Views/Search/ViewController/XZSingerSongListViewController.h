@@ -9,6 +9,7 @@
 #import "XZBaseViewController.h"
 #import "XZMusicSingerModel.h"
 
+
 @interface XZSingerSongListViewController : XZBaseViewController
 @property(nonatomic, strong) XZMusicSingerModel *singerInfoModel;
 @end

@@ -8,5 +8,11 @@
 
 #import "XZBaseViewController.h"
 
+typedef NS_ENUM(NSInteger, SongListType){
+    SongListTypeForNoraml = 1, // 搜索歌曲列表
+    SongListTypeForExist = 2 // 下载歌曲列表
+};
+
 @interface XZPlayingListViewController : XZBaseViewController
+@property (nonatomic, assign) SongListType songListType;
 @end

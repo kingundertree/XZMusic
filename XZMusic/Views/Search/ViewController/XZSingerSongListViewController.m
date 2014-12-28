@@ -85,16 +85,18 @@
         return;
     }
 
+    XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
+
     XZMusicPlayViewController *playVC = [XZMusicPlayViewController shareInstance];
-    if ([XZGlobalManager shareInstance].playIndex == indexPath.row && [XZGlobalManager shareInstance].isPlaying) {
+    if ([[XZGlobalManager shareInstance].playMusicId isEqualToString:[NSString stringWithFormat:@"%lld",singerInfoMode.song_id]] && [XZGlobalManager shareInstance].isPlaying) {
         [self.navigationController pushViewController:playVC animated:YES];
     } else {
-        XZMusicSongModel *singerInfoMode = (XZMusicSongModel *)[self.singerSongsArr objectAtIndex:indexPath.row];
         [playVC playingMusicWithSong:singerInfoMode];
         [XZGlobalManager shareInstance].isPlaying = YES;
+        [XZGlobalManager shareInstance].playIndex = indexPath.row;
         // 设置全局播放数据
         [XZGlobalManager shareInstance].musicArr = self.singerSongsArr;
-        [XZGlobalManager shareInstance].playIndex = indexPath.row;
+        [XZGlobalManager shareInstance].playMusicId = [NSString stringWithFormat:@"%lld",singerInfoMode.song_id];
         
         [self.navigationController pushViewController:playVC animated:YES];
     }

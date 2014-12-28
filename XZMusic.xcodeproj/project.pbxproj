@@ -74,6 +74,7 @@
 		F870C99E1A1CD49E00A3B7A7 /* XZMusicDownloadCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C99D1A1CD49E00A3B7A7 /* XZMusicDownloadCenter.m */; };
 		F870C9A11A1CD4F900A3B7A7 /* XZMusicLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */; };
 		F87143D11A05DCAF00CF0447 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87143D01A05DCAF00CF0447 /* Launch Screen.xib */; };
+		F879EFA21A4FEF7900DD9AB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F879EFA11A4FEF7900DD9AB5 /* AVFoundation.framework */; };
 		F882FDAA1A1E1AD2000F7C7B /* XZMusicDownloadResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F882FDA91A1E1AD2000F7C7B /* XZMusicDownloadResponse.m */; };
 		F8876A2E1A4997B20081841E /* XZDownloadIngCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F8876A2D1A4997B20081841E /* XZDownloadIngCell.m */; };
 		F897C5001A0A41E200BE6AB4 /* FreeMusic.db in Resources */ = {isa = PBXBuildFile; fileRef = F897C4FF1A0A41E200BE6AB4 /* FreeMusic.db */; };
@@ -237,6 +238,7 @@
 		F8E730291A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F8E730281A2C9D4000FCAC13 /* XZMusicPlayingTimeProgress.m */; };
 		F8EE56591A3D5D2600F2CD25 /* NSDictionary+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EE56581A3D5D2600F2CD25 /* NSDictionary+XZ.m */; };
 		F8EE565C1A3D5D3500F2CD25 /* NSString+XZ.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EE565B1A3D5D3500F2CD25 /* NSString+XZ.m */; };
+		F8FFDF911A4FEC8A000B09D4 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FFDF901A4FEC8A000B09D4 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +382,7 @@
 		F870C99F1A1CD4F900A3B7A7 /* XZMusicLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicLrcView.h; sourceTree = "<group>"; };
 		F870C9A01A1CD4F900A3B7A7 /* XZMusicLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicLrcView.m; sourceTree = "<group>"; };
 		F87143D01A05DCAF00CF0447 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		F879EFA11A4FEF7900DD9AB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F882FDA81A1E1AD2000F7C7B /* XZMusicDownloadResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicDownloadResponse.h; sourceTree = "<group>"; };
 		F882FDA91A1E1AD2000F7C7B /* XZMusicDownloadResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMusicDownloadResponse.m; sourceTree = "<group>"; };
 		F8876A2C1A4997B20081841E /* XZDownloadIngCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZDownloadIngCell.h; sourceTree = "<group>"; };
@@ -605,6 +608,7 @@
 		F8EE56581A3D5D2600F2CD25 /* NSDictionary+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XZ.m"; sourceTree = "<group>"; };
 		F8EE565A1A3D5D3500F2CD25 /* NSString+XZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XZ.h"; sourceTree = "<group>"; };
 		F8EE565B1A3D5D3500F2CD25 /* NSString+XZ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XZ.m"; sourceTree = "<group>"; };
+		F8FFDF901A4FEC8A000B09D4 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,6 +616,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F879EFA21A4FEF7900DD9AB5 /* AVFoundation.framework in Frameworks */,
+				F8FFDF911A4FEC8A000B09D4 /* MediaPlayer.framework in Frameworks */,
 				F8A9B8AF19D3CB7C0006B697 /* libWeiboSDK.a in Frameworks */,
 				F8288EA419A77752008D5573 /* CoreGraphics.framework in Frameworks */,
 				F8288EA619A77752008D5573 /* UIKit.framework in Frameworks */,
@@ -722,6 +728,8 @@
 		F8288EA019A77752008D5573 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F879EFA11A4FEF7900DD9AB5 /* AVFoundation.framework */,
+				F8FFDF901A4FEC8A000B09D4 /* MediaPlayer.framework */,
 				F8288EA119A77752008D5573 /* Foundation.framework */,
 				F8288EA319A77752008D5573 /* CoreGraphics.framework */,
 				F8288EA519A77752008D5573 /* UIKit.framework */,

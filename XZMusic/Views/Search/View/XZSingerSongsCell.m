@@ -52,7 +52,7 @@
 
 - (UILabel *)songPlayedLab{
     if (!_songPlayedLab) {
-        _songPlayedLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-90, 40, 60, 20)];
+        _songPlayedLab = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-130, 45, 100, 20)];
         _songPlayedLab.backgroundColor = [UIColor clearColor];
         _songPlayedLab.textAlignment = NSTextAlignmentRight;
         _songPlayedLab.font = [UIFont xzH3Font];
