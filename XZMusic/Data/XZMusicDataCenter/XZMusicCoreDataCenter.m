@@ -357,6 +357,17 @@
     return resut;
 }
 
+- (NSArray *)fetchAllMusicByLoved
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
+    fetchRequest.entity = entity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"userWeiboId = %@ AND musicIsPraised = %@",[XZGlobalManager shareInstance].userWeiboId,[NSNumber numberWithBool:YES]];
+    
+    NSArray *resut = [self.managedObjectContext executeFetchRequest:fetchRequest error:NULL];
+    
+    return resut;
+}
 
 - (void)dealloc
 {

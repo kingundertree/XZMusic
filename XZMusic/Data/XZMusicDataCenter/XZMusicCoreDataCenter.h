@@ -46,5 +46,6 @@
 
 - (NSArray *)fetchAllMusicByPlayedTimeRank;
 - (NSArray *)fetchAllMusicByPraisedTimeRank;
+- (NSArray *)fetchAllMusicByLoved;
 
 @end

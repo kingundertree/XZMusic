@@ -26,6 +26,12 @@
 		F80B0CDF1A139567009F1785 /* DOUMPMediaLibraryAssetLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCB1A139567009F1785 /* DOUMPMediaLibraryAssetLoader.m */; };
 		F80B0CE01A139567009F1785 /* DOUSimpleHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCD1A139567009F1785 /* DOUSimpleHTTPRequest.m */; };
 		F80B0CE11A139567009F1785 /* NSData+DOUMappedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F80B0CCF1A139567009F1785 /* NSData+DOUMappedFile.m */; };
+		F8148C6A1A555598004809E2 /* XZTabBarForHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C651A555598004809E2 /* XZTabBarForHomeViewController.m */; };
+		F8148C6B1A555598004809E2 /* XZTabBarForMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C671A555598004809E2 /* XZTabBarForMeViewController.m */; };
+		F8148C6C1A555598004809E2 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C691A555598004809E2 /* XZTabBarViewController.m */; };
+		F8148C6F1A55560D004809E2 /* XZMyLovedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C6E1A55560D004809E2 /* XZMyLovedView.m */; };
+		F8148C721A55562F004809E2 /* XZMyLocalView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C711A55562F004809E2 /* XZMyLocalView.m */; };
+		F8148C751A555664004809E2 /* XZMyHearedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8148C741A555664004809E2 /* XZMyHearedView.m */; };
 		F823D9241A32E050009F5618 /* XZGlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F823D9231A32E050009F5618 /* XZGlobalManager.m */; };
 		F823D9271A332716009F5618 /* XZMusicFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F823D9261A332716009F5618 /* XZMusicFileManager.m */; };
 		F8288EA219A77752008D5573 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8288EA119A77752008D5573 /* Foundation.framework */; };
@@ -207,10 +213,7 @@
 		F8A9B8A219D3CAEA0006B697 /* XZLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81319D3CAEA0006B697 /* XZLeftMenu.m */; };
 		F8A9B8A319D3CAEA0006B697 /* XZMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81519D3CAEA0006B697 /* XZMenuButton.m */; };
 		F8A9B8A419D3CAEA0006B697 /* XZMenuMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81719D3CAEA0006B697 /* XZMenuMainViewController.m */; };
-		F8A9B8A519D3CAEA0006B697 /* XZTabBarForHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81A19D3CAEA0006B697 /* XZTabBarForHomeViewController.m */; };
-		F8A9B8A619D3CAEA0006B697 /* XZTabBarForMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81C19D3CAEA0006B697 /* XZTabBarForMeViewController.m */; };
 		F8A9B8A719D3CAEA0006B697 /* XZTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B81E19D3CAEA0006B697 /* XZTabBarView.m */; };
-		F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B82019D3CAEA0006B697 /* XZTabBarViewController.m */; };
 		F8A9B8AF19D3CB7C0006B697 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */; };
 		F8A9B8B019D3CB7C0006B697 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */; };
 		F8B2CFB71A2DE1AF00B8F16F /* XZPlayingRollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B2CFB61A2DE1AF00B8F16F /* XZPlayingRollView.m */; };
@@ -295,6 +298,18 @@
 		F80B0CCD1A139567009F1785 /* DOUSimpleHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUSimpleHTTPRequest.m; sourceTree = "<group>"; };
 		F80B0CCE1A139567009F1785 /* NSData+DOUMappedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+DOUMappedFile.h"; sourceTree = "<group>"; };
 		F80B0CCF1A139567009F1785 /* NSData+DOUMappedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+DOUMappedFile.m"; sourceTree = "<group>"; };
+		F8148C641A555598004809E2 /* XZTabBarForHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarForHomeViewController.h; sourceTree = "<group>"; };
+		F8148C651A555598004809E2 /* XZTabBarForHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarForHomeViewController.m; sourceTree = "<group>"; };
+		F8148C661A555598004809E2 /* XZTabBarForMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarForMeViewController.h; sourceTree = "<group>"; };
+		F8148C671A555598004809E2 /* XZTabBarForMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarForMeViewController.m; sourceTree = "<group>"; };
+		F8148C681A555598004809E2 /* XZTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarViewController.h; sourceTree = "<group>"; };
+		F8148C691A555598004809E2 /* XZTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarViewController.m; sourceTree = "<group>"; };
+		F8148C6D1A55560D004809E2 /* XZMyLovedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMyLovedView.h; sourceTree = "<group>"; };
+		F8148C6E1A55560D004809E2 /* XZMyLovedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMyLovedView.m; sourceTree = "<group>"; };
+		F8148C701A55562F004809E2 /* XZMyLocalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMyLocalView.h; sourceTree = "<group>"; };
+		F8148C711A55562F004809E2 /* XZMyLocalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMyLocalView.m; sourceTree = "<group>"; };
+		F8148C731A555664004809E2 /* XZMyHearedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMyHearedView.h; sourceTree = "<group>"; };
+		F8148C741A555664004809E2 /* XZMyHearedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMyHearedView.m; sourceTree = "<group>"; };
 		F823D9221A32E050009F5618 /* XZGlobalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZGlobalManager.h; sourceTree = "<group>"; };
 		F823D9231A32E050009F5618 /* XZGlobalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZGlobalManager.m; sourceTree = "<group>"; };
 		F823D9251A332716009F5618 /* XZMusicFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMusicFileManager.h; sourceTree = "<group>"; };
@@ -549,14 +564,8 @@
 		F8A9B81519D3CAEA0006B697 /* XZMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMenuButton.m; sourceTree = "<group>"; };
 		F8A9B81619D3CAEA0006B697 /* XZMenuMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZMenuMainViewController.h; sourceTree = "<group>"; };
 		F8A9B81719D3CAEA0006B697 /* XZMenuMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZMenuMainViewController.m; sourceTree = "<group>"; };
-		F8A9B81919D3CAEA0006B697 /* XZTabBarForHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarForHomeViewController.h; sourceTree = "<group>"; };
-		F8A9B81A19D3CAEA0006B697 /* XZTabBarForHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarForHomeViewController.m; sourceTree = "<group>"; };
-		F8A9B81B19D3CAEA0006B697 /* XZTabBarForMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarForMeViewController.h; sourceTree = "<group>"; };
-		F8A9B81C19D3CAEA0006B697 /* XZTabBarForMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarForMeViewController.m; sourceTree = "<group>"; };
 		F8A9B81D19D3CAEA0006B697 /* XZTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarView.h; sourceTree = "<group>"; };
 		F8A9B81E19D3CAEA0006B697 /* XZTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarView.m; sourceTree = "<group>"; };
-		F8A9B81F19D3CAEA0006B697 /* XZTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XZTabBarViewController.h; sourceTree = "<group>"; };
-		F8A9B82019D3CAEA0006B697 /* XZTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XZTabBarViewController.m; sourceTree = "<group>"; };
 		F8A9B8AB19D3CB7C0006B697 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		F8A9B8AC19D3CB7C0006B697 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		F8A9B8AD19D3CB7C0006B697 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
@@ -693,6 +702,32 @@
 				F80B0CCF1A139567009F1785 /* NSData+DOUMappedFile.m */,
 			);
 			path = DOUAudio;
+			sourceTree = "<group>";
+		};
+		F8148C621A555598004809E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F8148C6D1A55560D004809E2 /* XZMyLovedView.h */,
+				F8148C6E1A55560D004809E2 /* XZMyLovedView.m */,
+				F8148C701A55562F004809E2 /* XZMyLocalView.h */,
+				F8148C711A55562F004809E2 /* XZMyLocalView.m */,
+				F8148C731A555664004809E2 /* XZMyHearedView.h */,
+				F8148C741A555664004809E2 /* XZMyHearedView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8148C631A555598004809E2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F8148C641A555598004809E2 /* XZTabBarForHomeViewController.h */,
+				F8148C651A555598004809E2 /* XZTabBarForHomeViewController.m */,
+				F8148C661A555598004809E2 /* XZTabBarForMeViewController.h */,
+				F8148C671A555598004809E2 /* XZTabBarForMeViewController.m */,
+				F8148C681A555598004809E2 /* XZTabBarViewController.h */,
+				F8148C691A555598004809E2 /* XZTabBarViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F823D9211A32DFFD009F5618 /* GlobalManager */ = {
@@ -1445,14 +1480,10 @@
 		F8A9B81819D3CAEA0006B697 /* XZTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				F8A9B81919D3CAEA0006B697 /* XZTabBarForHomeViewController.h */,
-				F8A9B81A19D3CAEA0006B697 /* XZTabBarForHomeViewController.m */,
-				F8A9B81B19D3CAEA0006B697 /* XZTabBarForMeViewController.h */,
-				F8A9B81C19D3CAEA0006B697 /* XZTabBarForMeViewController.m */,
+				F8148C621A555598004809E2 /* View */,
+				F8148C631A555598004809E2 /* ViewController */,
 				F8A9B81D19D3CAEA0006B697 /* XZTabBarView.h */,
 				F8A9B81E19D3CAEA0006B697 /* XZTabBarView.m */,
-				F8A9B81F19D3CAEA0006B697 /* XZTabBarViewController.h */,
-				F8A9B82019D3CAEA0006B697 /* XZTabBarViewController.m */,
 			);
 			path = XZTabBar;
 			sourceTree = "<group>";
@@ -1816,7 +1847,6 @@
 				F8A9B8A119D3CAEA0006B697 /* XZHeaderButton.m in Sources */,
 				F80B0CD51A139567009F1785 /* DOUAudioFileProvider.m in Sources */,
 				F85E4ECB19F687B900AA6DE1 /* NSArray+XZNetMethod.m in Sources */,
-				F8A9B8A519D3CAEA0006B697 /* XZTabBarForHomeViewController.m in Sources */,
 				F8A7A3A81A0E4A05006587C8 /* XZBaseRequestManager.m in Sources */,
 				F85E4F0A19F6909000AA6DE1 /* XZNetCommonParamsGenerator.m in Sources */,
 				F8A9B88619D3CAEA0006B697 /* XZBaseViewController.m in Sources */,
@@ -1835,7 +1865,6 @@
 				F8D19D281A0E05AD00F7D0FD /* XZSingerSongListViewController.m in Sources */,
 				F8A7A3A41A0E48F7006587C8 /* XZMusicSongModel.m in Sources */,
 				F8A9B88519D3CAEA0006B697 /* XZBaseNaviViewController.m in Sources */,
-				F8A9B8A819D3CAEA0006B697 /* XZTabBarViewController.m in Sources */,
 				F8D19D121A0DD7F100F7D0FD /* XZBaseTableViewCell.m in Sources */,
 				F8A7A3B41A0EF742006587C8 /* XZSingerSongsCell.m in Sources */,
 				F80B0CD01A139567009F1785 /* DOUAudioAnalyzer+Default.m in Sources */,
@@ -1847,7 +1876,6 @@
 				F86968E51A41B197004D5210 /* XZDownOverView.m in Sources */,
 				F85E4F1A19F694F000AA6DE1 /* NSObject+XZNetMethod.m in Sources */,
 				F8A9B88419D3CAEA0006B697 /* UIBarButtonItem+NavItem.m in Sources */,
-				F8A9B8A619D3CAEA0006B697 /* XZTabBarForMeViewController.m in Sources */,
 				F85E4EF919F68BCD00AA6DE1 /* XZNetServiceFactory.m in Sources */,
 				F8A9B82419D3CAEA0006B697 /* XZWBLoginInfo.m in Sources */,
 				F8A9B88C19D3CAEA0006B697 /* XZBaseButton+IconWithTitle.m in Sources */,
@@ -1867,6 +1895,7 @@
 				F8B2CFBA1A2DF5C500B8F16F /* XZPlayMoreFuncView.m in Sources */,
 				F80B0CDA1A139567009F1785 /* DOUAudioSpatialAnalyzer.m in Sources */,
 				F8A7A3B11A0E57B7006587C8 /* XZSingerSongsInfoConvertOb.m in Sources */,
+				F8148C6C1A555598004809E2 /* XZTabBarViewController.m in Sources */,
 				F85E4F1719F693A000AA6DE1 /* XZKeychain.m in Sources */,
 				F8A9B8A719D3CAEA0006B697 /* XZTabBarView.m in Sources */,
 				F85E4F0E19F6911700AA6DE1 /* XZAppContext.m in Sources */,
@@ -1891,6 +1920,7 @@
 				F86968E81A41B1AA004D5210 /* XZDowningView.m in Sources */,
 				F85E4F1D19F6958D00AA6DE1 /* XZDeviceInfo.m in Sources */,
 				F85E4F2319F69B3F00AA6DE1 /* NSURLRequest+XZNetMethod.m in Sources */,
+				F8148C721A55562F004809E2 /* XZMyLocalView.m in Sources */,
 				F8EE565C1A3D5D3500F2CD25 /* NSString+XZ.m in Sources */,
 				F80B0CE11A139567009F1785 /* NSData+DOUMappedFile.m in Sources */,
 				F80B0CE01A139567009F1785 /* DOUSimpleHTTPRequest.m in Sources */,
@@ -1899,14 +1929,18 @@
 				F870C99E1A1CD49E00A3B7A7 /* XZMusicDownloadCenter.m in Sources */,
 				F80B0CD41A139567009F1785 /* DOUAudioFilePreprocessor.m in Sources */,
 				F8B5AD3E19F7DE85007CA28A /* XZRequestResponse+XZNetMethod.m in Sources */,
+				F8148C6B1A555598004809E2 /* XZTabBarForMeViewController.m in Sources */,
 				F85E4F2019F6978800AA6DE1 /* NSString+MD5Addition.m in Sources */,
 				F80B0CD61A139567009F1785 /* DOUAudioFrequencyAnalyzer.m in Sources */,
 				F80B0CDC1A139567009F1785 /* DOUAudioStreamer.m in Sources */,
 				F8A7A3AE1A0E51BD006587C8 /* XZMusicReuqestForSingerSongsManager.m in Sources */,
 				F882FDAA1A1E1AD2000F7C7B /* XZMusicDownloadResponse.m in Sources */,
 				F8A9B89119D3CAEA0006B697 /* PushBackNavigationController.m in Sources */,
+				F8148C751A555664004809E2 /* XZMyHearedView.m in Sources */,
+				F8148C6A1A555598004809E2 /* XZTabBarForHomeViewController.m in Sources */,
 				F8C4652F1A3875A100E47B33 /* XZMusicCoreDataCenter.m in Sources */,
 				F80B0CDE1A139567009F1785 /* DOUEAGLView.m in Sources */,
+				F8148C6F1A55560D004809E2 /* XZMyLovedView.m in Sources */,
 				F80B0CDD1A139567009F1785 /* DOUAudioVisualizer.m in Sources */,
 				F823D9271A332716009F5618 /* XZMusicFileManager.m in Sources */,
 				F8D19D251A0E058D00F7D0FD /* XZSearchViewController.m in Sources */,
