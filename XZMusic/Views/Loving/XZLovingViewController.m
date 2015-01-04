@@ -7,7 +7,7 @@
 //
 
 #import "XZLovingViewController.h"
-#import "XZSingerSongsCell.h"
+#import "XZSongCell.h"
 
 @interface XZLovingViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableList;
@@ -78,9 +78,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentify = @"cell";
-    XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    XZSongCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
-        cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+        cell = [[XZSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
         cell.cellType = CellTypeForLoving;
     }
     

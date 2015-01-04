@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface XZMyLocalView : UIView
+@property (nonatomic, copy) void(^completedBlock)(BOOL completed);
+- (void)displayUI:(void(^)(BOOL completed))Block;
 
 @end

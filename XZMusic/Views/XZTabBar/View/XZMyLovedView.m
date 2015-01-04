@@ -2,7 +2,7 @@
 //  XZMyLovedView.m
 //  XZMusic
 //
-//  Created by xiazer on 15/1/1.
+//  Created by xiazer on 15/1/3.
 //  Copyright (c) 2015年 xiazer. All rights reserved.
 //
 
@@ -11,10 +11,11 @@
 #import "XZMusicInfo.h"
 
 @interface XZMyLovedView ()
-@property (nonatomic, strong) UIButton *lovedBtn;
+@property (nonatomic, strong) UIButton *lovedMusicBtn;
 @property (nonatomic, strong) NSMutableString *lovedMusicNameStr;
 @property (nonatomic, strong) NSArray *lovedMusicArr;
 @end
+
 
 @implementation XZMyLovedView
 
@@ -22,44 +23,43 @@
 {
     self.completedBlock = Block;
     self.lovedMusicNameStr = [NSMutableString new];
-    self.lovedMusicArr = [[XZMusicCoreDataCenter shareInstance] fetchAllMusicByLoved];
+    self.lovedMusicArr = [[XZMusicCoreDataCenter shareInstance] fetchAllMusicByPlayedTimeRank];
     
     UILabel *titLab = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, ScreenWidth-30, 20)];
     titLab.backgroundColor = [UIColor clearColor];
-    titLab.text = @"loved歌曲";
+    titLab.text = @"最爱歌曲";
     [self addSubview:titLab];
-
-    NSString *titStr = [NSString stringWithFormat:@"loved歌曲(%ld)",(long)self.lovedMusicArr.count];
+    
+    NSString *titStr = [NSString stringWithFormat:@"最爱歌曲(%ld)",(long)self.lovedMusicArr.count];
     
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:titStr];
     [str addAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor],
                          NSFontAttributeName: [UIFont systemFontOfSize:16]
                          }
-                 range:NSMakeRange(0, 7)];
+                 range:NSMakeRange(0, 4)];
     [str addAttributes:@{NSForegroundColorAttributeName: [UIColor redColor],
                          NSFontAttributeName: [UIFont systemFontOfSize:14]
                          }
-                 range:NSMakeRange(7, titStr.length-8)];
+                 range:NSMakeRange(4, titStr.length-4)];
     
     
-    self.lovedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.lovedBtn.frame = CGRectMake(15, 25, ScreenWidth-30, 80);
-    self.lovedBtn.backgroundColor = [UIColor whiteColor];
-    self.lovedBtn.layer.masksToBounds = YES;
-    self.lovedBtn.layer.borderWidth = 1.0;
-    self.lovedBtn.layer.borderColor = [UIColor blueColor].CGColor;
-    [self.lovedBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:self.lovedBtn];
+    self.lovedMusicBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.lovedMusicBtn.frame = CGRectMake(15, 25, ScreenWidth-30, 80);
+    self.lovedMusicBtn.backgroundColor = [UIColor whiteColor];
+    self.lovedMusicBtn.layer.masksToBounds = YES;
+    self.lovedMusicBtn.layer.borderWidth = 1.0;
+    self.lovedMusicBtn.layer.borderColor = [UIColor blueColor].CGColor;
+    [self.lovedMusicBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.lovedMusicBtn];
     
-
     UILabel *btnTitLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, ScreenWidth-50, 20)];
     btnTitLab.backgroundColor = [UIColor clearColor];
     btnTitLab.attributedText = str;
-    [self.lovedBtn addSubview:btnTitLab];
-
+    [self.lovedMusicBtn addSubview:btnTitLab];
+    
     UILabel *lovedMusicTitLab = [[UILabel alloc] initWithFrame:CGRectMake(15, 30, ScreenWidth-60, 25)];
     lovedMusicTitLab.backgroundColor = [UIColor clearColor];
-    [self.lovedBtn addSubview:lovedMusicTitLab];
+    [self.lovedMusicBtn addSubview:lovedMusicTitLab];
     
     if (self.lovedMusicArr.count > 0) {
         __block XZMyLovedView *this = self;
@@ -83,5 +83,6 @@
 {
     self.completedBlock(YES);
 }
+
 
 @end

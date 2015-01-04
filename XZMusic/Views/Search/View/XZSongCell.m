@@ -6,18 +6,18 @@
 //  Copyright (c) 2014年 xiazer. All rights reserved.
 //
 
-#import "XZSingerSongsCell.h"
+#import "XZSongCell.h"
 #import "XZMusicSongModel.h"
 #import "XZMusicInfo.h"
 
-@interface XZSingerSongsCell ()
+@interface XZSongCell ()
 @property(nonatomic, strong) UILabel *songNameLab;
 @property(nonatomic, strong) UILabel *songInfoLab;
 @property(nonatomic, strong) UILabel *songTimeLab;
 @property(nonatomic, strong) UILabel *songPlayedLab;
 @end
 
-@implementation XZSingerSongsCell
+@implementation XZSongCell
 
 - (UILabel *)songNameLab{
     if (!_songNameLab) {
@@ -85,7 +85,7 @@
     [self.contentView addSubview:self.songInfoLab];
     [self.contentView addSubview:self.songTimeLab];
 
-    if (_cellType == CellTypeForLoving) {
+    if (_cellType == CellTypeForLoving || _cellType == CellTypeForHeared) {
         [self.contentView addSubview:self.songPlayedLab];
     }
 }
@@ -107,6 +107,8 @@
         self.songTimeLab.text = [self TimeformatFromSeconds:[musicInfo.musicTime intValue]];
     
         if (_cellType == CellTypeForLoving) {
+            self.songPlayedLab.text = [NSString stringWithFormat:@"播完：%ld",(long)[musicInfo.musicPlayedTime integerValue]];
+        } else if (_cellType == CellTypeForHeared) {
             self.songPlayedLab.text = [NSString stringWithFormat:@"播放：%ld",(long)[musicInfo.musicPlayTime integerValue]];
         }
     }

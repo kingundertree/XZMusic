@@ -11,7 +11,7 @@
 #import "XZTabBarForMeViewController.h"
 #import "XZTabBarView.h"
 
-@interface XZTabBarViewController ()<tabBarDelegate>
+@interface XZTabBarViewController ()<tabBarDelegate,TabBarForHomeDelegate,TabBarForMeDelegate>
 @property(nonatomic, strong) NSMutableArray *tabVcArr;
 @property(nonatomic, strong) XZTabBarView *tabBarView;
 @end
@@ -53,11 +53,13 @@
 #pragma initTabBar
 - (void)initTabBar{
     XZTabBarForHomeViewController *homeVC = [[XZTabBarForHomeViewController alloc] init];
+    homeVC.homeDelegate = self;
     homeVC.backType = BackTypeNone;
     homeVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-50);
 //    UINavigationController *navHome = [[UINavigationController alloc] initWithRootViewController:homeVC];
     
     XZTabBarForMeViewController *meVC = [[XZTabBarForMeViewController alloc] init];
+    meVC.meDelegate = self;
     meVC.backType = BackTypeNone;
     meVC.view.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight-50);
 //    UINavigationController *navMeVC = [[UINavigationController alloc] initWithRootViewController:meVC];
@@ -85,6 +87,19 @@
 - (void)rightButtonAction:(id)sender{
     if (self.tabBarDelegate && [self.tabBarDelegate respondsToSelector:@selector(tabBarRightButtonAction)]) {
         [self.tabBarDelegate tabBarRightButtonAction];
+    }
+}
+
+#pragma mark - TabBarForHomeDelegate
+- (void)pushForHomeVC:(XZBaseViewController *)vc{
+    if (self.tabBarDelegate && [self.tabBarDelegate respondsToSelector:@selector(pushVC:)]) {
+        [self.tabBarDelegate pushVC:vc];
+    }
+}
+#pragma mark - TabBarForMeDelegate
+- (void)pushForMeVC:(XZBaseViewController *)vc{
+    if (self.tabBarDelegate && [self.tabBarDelegate respondsToSelector:@selector(pushVC:)]) {
+        [self.tabBarDelegate pushVC:vc];
     }
 }
 

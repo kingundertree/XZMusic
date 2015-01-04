@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "XZBaseViewController.h"
 
-@interface XZTabBarForMeViewController : XZBaseViewController
+@protocol TabBarForMeDelegate <NSObject>
 
+- (void)pushForMeVC:(XZBaseViewController *)vc;
+
+@end
+
+@interface XZTabBarForMeViewController : XZBaseViewController
+@property (nonatomic, assign) id<TabBarForMeDelegate> meDelegate;
 @end

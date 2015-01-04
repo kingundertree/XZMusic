@@ -94,6 +94,14 @@
     [self.mainNav pushViewController:musicPlayVC animated:YES];
 }
 
+- (void)pushVC:(XZBaseViewController *)vc
+{
+    self.isOnFirstView = NO;
+
+    vc.backType = BackTypePopBack;
+    [self.mainNav pushViewController:vc animated:YES];
+}
+
 #pragma -mark UIGurstureDelegate
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     if (self.isAnimating ||

@@ -12,8 +12,9 @@ typedef NS_ENUM(NSInteger, CellType){
     CellTypeForNormal = 1,
     CellTypeForDowning = 2,
     CellTypeForLoving = 3,
+    CellTypeForHeared = 4
 };
 
-@interface XZSingerSongsCell : XZBaseTableViewCell
+@interface XZSongCell : XZBaseTableViewCell
 @property (nonatomic, assign) CellType cellType;
 @end

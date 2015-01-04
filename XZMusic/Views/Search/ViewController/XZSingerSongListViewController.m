@@ -11,7 +11,7 @@
 #import "XZMusicReuqestForSingerSongsManager.h"
 #import "XZMusicSongModel.h"
 #import "XZSingerSongsInfoConvertOb.h"
-#import "XZSingerSongsCell.h"
+#import "XZSongCell.h"
 #import "XZTableMoreCell.h"
 #import "XZMusicPlayViewController.h"
 

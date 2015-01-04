@@ -7,7 +7,7 @@
 //
 
 #import "XZTableForSingerSongsList.h"
-#import "XZSingerSongsCell.h"
+#import "XZSongCell.h"
 #import "XZMusicSongModel.h"
 #import "XZTableMoreCell.h"
 
@@ -31,9 +31,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row < self.tableData.count) {
         static NSString *cellIdentify = @"cell";
-        XZSingerSongsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+        XZSongCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
         if (!cell) {
-            cell = [[XZSingerSongsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            cell = [[XZSongCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
             cell.cellType = CellTypeForNormal;
         }
         

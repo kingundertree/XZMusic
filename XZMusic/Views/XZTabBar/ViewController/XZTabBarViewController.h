@@ -12,7 +12,7 @@
 @protocol xzTabBarDelegate <NSObject>
 
 - (void)tabBarRightButtonAction;
-
+- (void)pushVC:(XZBaseViewController *)vc;
 @end
 
 @interface XZTabBarViewController : XZBaseViewController

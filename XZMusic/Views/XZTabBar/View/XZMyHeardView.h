@@ -1,5 +1,5 @@
 //
-//  XZMyLovedView.h
+//  XZMyHeardView.h
 //  XZMusic
 //
 //  Created by xiazer on 15/1/3.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XZMyLovedView : UIView
+@interface XZMyHeardView : UIView
 @property (nonatomic, copy) void(^completedBlock)(BOOL completed);
 - (void)displayUI:(void(^)(BOOL completed))Block;
 

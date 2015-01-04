@@ -342,7 +342,7 @@
     return resut;
 }
 
-- (NSArray *)fetchAllMusicByPraisedTimeRank
+- (NSArray *)fetchAllMusicByPlayTimeRank
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"XZMusicInfo" inManagedObjectContext:self.managedObjectContext];
