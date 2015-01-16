@@ -6,4 +6,4 @@ pod 'pop', '~> 1.0'
 pod 'FMDB'
 pod 'LKDBHelper', :head
 pod 'MBProgressHUD', '~> 0.8'
-pod 'XZmultiFunctionCell'
+pod 'MultiFunctionCell', :git => 'https://github.com/kingundertree/MultiFunctionCell'
