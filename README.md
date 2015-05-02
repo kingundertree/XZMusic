@@ -23,6 +23,8 @@
 
 ### 需要fix 方法
 
+LKDBHelper.m
+
 ```
 - (instancetype)init
 {
