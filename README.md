@@ -1,4 +1,75 @@
-### XZMusic 记录
+###先上效果图
+![XZMusic](https://raw.githubusercontent.com/kingundertree/XZMusic/master/XZMusic.gif)
+
+###github地址
+
+https://github.com/kingundertree/XZMusic
+
+###说明
+1. 本md主要主要通过XZMusic分析下常见的iOS项目的搭建以及常见模块的设计和划分
+2. 本项目的音乐信息取自本地SQL数据，通过FMDB获取
+3. 音乐的统计信息采用CoreData实现
+4. 歌曲资源和歌词取自网络
+5. 播放器采用DOUAudio
+6. 采用pod方式管理第三方库
+
+
+###功能
+1. 本地搜索歌曲
+2. 歌曲播放和下载、显示歌词
+3. 歌曲的基本统计，包括点赞、播放次数等
+4. 微博登录
+	
+###主要模块
+1. 网络请求模块XZNetWorking：集成AFNetworking，支持常见的get/post/restfulget/getfulget常见请求
+2. 音乐下载模块MusicDownLoad：支持歌曲、歌词下载，包括本地存储处理，已经下载进度及常见信息回调
+3. 微博登录libWeiboSDK：配合LoginManager使用
+4. UI主结构XZMenu：实现左右结构，滑动显示菜单
+5. UITabBar结构XZTabBar
+	
+###构架设计
+
+	XZMusic
+		Data..........................本地化数据处理，包括本地音乐信息及音乐统计停息
+			XZMusicDataCenter.........coredata表信息输入输出接口
+			LKDBCenter................SQL表信息输入输出接口
+			Model.....................本地数据库数据模型
+		Libs..........................不支持pod的库
+			DOUAudio..................音乐播放，支持在线播放
+			XZNetWorking..............网络请求库，集成AFNetworking库
+			libWeiboSDK...............微博登录SDK
+		Manager.......................APP业务操作管理类
+			GlobalManager.............app全局性参数管理，比如当前播放musicId、列表信息，以及下载的实时信息
+			MusicDownLoad.............下载功能模块，支持音乐和歌词下载，本地存储处理，已经下载进度及常见信息回调
+			RequestManager............网络请求的请求
+			LoginManager..............登录操作管理
+		Model.........................app常见业务的model
+		Resource......................常见资源，包括图片等
+		Views.........................视图资源，也就是app最重要的模块
+			component.................通用的view类，包括base VC、table、Category、手势控件等
+			DownLoad..................下载VC
+			Login.....................登录VC
+			Loving....................最爱VC
+			Search....................搜索VC
+			Setting...................设置VC
+			ViewController............子页面VC
+			XZMenu....................app主view结构
+			XZTabBar..................UITabbar自定义结构
+		XZAppDelegate.h
+		XZAppDelegate.m
+		
+	Pods..............................支持第三方的类库
+	
+		platform :ios, "6.0"
+		pod 'AFNetworking', '~> 2.0'
+		pod 'pop', '~> 1.0'
+		pod 'FMDB'
+		pod 'LKDBHelper', :head
+		pod 'MBProgressHUD', '~> 0.8'
+		pod 'MultiFunctionCell', :git => 'https://github.com/kingundertree/MultiFunctionCell'
+
+
+####时间记录
 
 1. 2014.8.22 周浦万达广场麦当劳，创建项目，实现pod管理和基本配置
 2. 2014.8.28 公司，完成左右菜单结构，以及基本TabBar功能
